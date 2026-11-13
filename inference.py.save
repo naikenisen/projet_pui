@@ -1,0 +1,19 @@
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+p = "/work/imvia/in156281/projet_pui/Qwen3-30B-A3B-Instruct-2507" 
+
+t = AutoTokenizer.from_pretrained(p, trust_remote_code=True) 
+
+m = AutoModelForCausalLM.from_pretrained(p, torch_dtype=torch.bfloat16, device_map="auto", trust_remote_code=True) 
+
+
+inputs = t.apply_chat_template([{
+			"role": "user", "content": "La paroxétine est-elle contre-indiquée chez la personne âgée ?"
+	
+
+
+
+out = m.generate(inputs, max_new_tokens=500)
+
+print(t.decode(out[0][len(inputs[0]):], skip_special_tokens=True))

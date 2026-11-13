@@ -1,0 +1,216 @@
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(59218)
+mar. nov. 10 17:09:10 CET 2026
+Version CentOS : 7.7
+Starter(59218): PATH=/usr/ccub/sge/scripts:/tmp3/7637033.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(59218) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637033'
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 3
+    model_id = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+IndentationError: unexpected indent
+Starter(59218): Return code=1
+Starter end(59218)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(59772)
+mar. nov. 10 17:13:29 CET 2026
+Version CentOS : 7.7
+Starter(59772): PATH=/usr/ccub/sge/scripts:/tmp3/7637037.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(59772) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637037'
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 14
+    print(f"Downloading model weights and loading with PyTorch...")
+IndentationError: unexpected indent
+Starter(59772): Return code=1
+Starter end(59772)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(60098)
+mar. nov. 10 17:15:33 CET 2026
+Version CentOS : 7.7
+Starter(60098): PATH=/usr/ccub/sge/scripts:/tmp3/7637038.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(60098) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637038'
+Downloading tokenizer for Qwen/Qwen3-30B-A3B-Instruct-2507...
+Traceback (most recent call last):
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/transformers/utils/hub.py", line 479, in cached_files
+    hf_hub_download(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 976, in hf_hub_download
+    hf_headers = build_hf_headers(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_headers.py", line 126, in build_hf_headers
+    token_to_send = get_token_to_send(token)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_headers.py", line 154, in get_token_to_send
+    cached_token = get_token()
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_auth.py", line 49, in get_token
+    return _get_token_from_google_colab() or _get_token_from_environment() or _get_token_from_file()
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_auth.py", line 123, in _get_token_from_file
+    return _clean_token(Path(constants.HF_TOKEN_PATH).read_text())
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1266, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1252, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1120, in _opener
+    return self._accessor.open(self, flags, mode)
+PermissionError: [Errno 13] Permission denied: '/user1/imvia/in156281/.cache/huggingface/token'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 10, in <module>
+    tokenizer = AutoTokenizer.from_pretrained(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 1089, in from_pretrained
+    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/transformers/models/auto/tokenization_auto.py", line 921, in get_tokenizer_config
+    resolved_config_file = cached_file(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/transformers/utils/hub.py", line 322, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/transformers/utils/hub.py", line 524, in cached_files
+    raise OSError(
+OSError: PermissionError at /user1/imvia/in156281/.cache/huggingface/token when downloading Qwen/Qwen3-30B-A3B-Instruct-2507. Check cache directory permissions. Common causes: 1) another user is downloading the same model (please wait); 2) a previous download was canceled and the lock file needs manual removal.
+Starter(60098): Return code=1
+Starter end(60098)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(60578)
+mar. nov. 10 17:18:01 CET 2026
+Version CentOS : 7.7
+Starter(60578): PATH=/usr/ccub/sge/scripts:/tmp3/7637039.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(60578) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637039'
+Traceback (most recent call last):
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 5, in <module>
+    snapshot_download(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 165, in snapshot_download
+    repo_info = api.repo_info(repo_id=repo_id, repo_type=repo_type, revision=revision)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/hf_api.py", line 2867, in repo_info
+    return method(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/hf_api.py", line 2647, in model_info
+    headers = self._build_hf_headers(token=token)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/hf_api.py", line 9518, in _build_hf_headers
+    return build_hf_headers(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_headers.py", line 126, in build_hf_headers
+    token_to_send = get_token_to_send(token)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_headers.py", line 154, in get_token_to_send
+    cached_token = get_token()
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_auth.py", line 49, in get_token
+    return _get_token_from_google_colab() or _get_token_from_environment() or _get_token_from_file()
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_auth.py", line 123, in _get_token_from_file
+    return _clean_token(Path(constants.HF_TOKEN_PATH).read_text())
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1266, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1252, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1120, in _opener
+    return self._accessor.open(self, flags, mode)
+PermissionError: [Errno 13] Permission denied: '/user1/imvia/in156281/.cache/huggingface/token'
+Starter(60578): Return code=1
+Starter end(60578)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(61718)
+mar. nov. 10 17:27:42 CET 2026
+Version CentOS : 7.7
+Starter(61718): PATH=/usr/ccub/sge/scripts:/tmp3/7637040.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(61718) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637040'
+Fetching 27 files:   0%|          | 0/27 [00:00<?, ?it/s]/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Fetching 27 files:  96%|#########6| 26/27 [00:00<00:00, 1539.22it/s]
+/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py:986: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1323, in mkdir
+    self._accessor.mkdir(self, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Qwen3-30B-A3B-Instruct-2507/.cache/huggingface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1323, in mkdir
+    self._accessor.mkdir(self, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Qwen3-30B-A3B-Instruct-2507/.cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 12, in <module>
+    snapshot_download(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 332, in snapshot_download
+    thread_map(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 191, in thread_map
+    return _executor_map(ThreadPoolExecutor, fn, *iterables, **tqdm_kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/tqdm/contrib/concurrent.py", line 163, in _executor_map
+    return list(ex.map(
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/concurrent/futures/_base.py", line 609, in result_iterator
+    yield fs.pop().result()
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/concurrent/futures/_base.py", line 446, in result
+    return self.__get_result()
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/concurrent/futures/_base.py", line 391, in __get_result
+    raise self._exception
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/_snapshot_download.py", line 306, in _inner_hf_hub_download
+    return hf_hub_download(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 994, in hf_hub_download
+    return _hf_hub_download_to_local_dir(
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py", line 1222, in _hf_hub_download_to_local_dir
+    paths = get_local_download_paths(local_dir=local_dir, filename=filename)
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/_local_folder.py", line 218, in get_local_download_paths
+    metadata_path = _huggingface_dir(local_dir) / "download" / f"{sanitized_filename}.metadata"
+  File "/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/_local_folder.py", line 425, in _huggingface_dir
+    path.mkdir(exist_ok=True, parents=True)
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1327, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1327, in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+  File "/soft/c7/spack/0.18.0/packages/linux-centos7-zen2/python/3.9.10/gcc/11.2.0/yaks4ugnilzdifzth2pqchyo34pkezgl/lib/python3.9/pathlib.py", line 1323, in mkdir
+    self._accessor.mkdir(self, mode)
+PermissionError: [Errno 13] Permission denied: '/Qwen3-30B-A3B-Instruct-2507'
+Starter(61718): Return code=1
+Starter end(61718)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(62020)
+mar. nov. 10 17:29:35 CET 2026
+Version CentOS : 7.7
+Starter(62020): PATH=/usr/ccub/sge/scripts:/tmp3/7637042.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(62020) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637042'
+Traceback (most recent call last):
+  File "/beegfs/data/work/imvia/in156281/projet_pui/download.py", line 10, in <module>
+    local_dir = os.path.join(base_dir, "Qwen3-30B-A3B-Instruct-2507") 
+NameError: name 'base_dir' is not defined
+Starter(62020): Return code=1
+Starter end(62020)
+REMAINING: 1
+Taking GPU #0
+Starter begin : webern60.u-bourgogne.fr(62292)
+mar. nov. 10 17:30:48 CET 2026
+Version CentOS : 7.7
+Starter(62292): PATH=/usr/ccub/sge/scripts:/tmp3/7637043.1.gpu:/usr/lib64/qt-3.3/bin:/soft/c7/modules/4.1.2/bin:/usr/ccub/sge-8.1.8/bin:/usr/ccub/sge-8.1.8/bin/lx-amd64:/bin:/usr/bin:/usr/sbin:/etc:/usr/ccub/bin:/usr/local/bin:.
+Starter exec(62292) : '/usr/ccub/sge-8.1.8/ccub/spool/webern60/job_scripts/7637043'
+Fetching 27 files:   0%|          | 0/27 [00:00<?, ?it/s]/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/beegfs/data/work/imvia/in156281/projet_pui/venv/lib/python3.9/site-packages/huggingface_hub/file_download.py:986: UserWarning: `local_dir_use_symlinks` parameter is deprecated and will be ignored. The process to download files to a local folder has been updated and do not rely on symlinks anymore. You only need to pass a destination folder as`local_dir`.
+For more details, check out https://huggingface.co/docs/huggingface_hub/main/en/guides/download#download-files-to-local-folder.
+  warnings.warn(
+Fetching 27 files:  26%|##5       | 7/27 [00:10<00:28,  1.43s/it]Fetching 27 files:  30%|##9       | 8/27 [00:23<00:56,  2.98s/it]Fetching 27 files:  33%|###3      | 9/27 [00:31<01:03,  3.53s/it]Fetching 27 files:  37%|###7      | 10/27 [00:38<01:06,  3.90s/it]Fetching 27 files:  41%|####      | 11/27 [00:41<01:00,  3.77s/it]Fetching 27 files:  44%|####4     | 12/27 [00:47<00:59,  4.00s/it]Fetching 27 files:  48%|####8     | 13/27 [00:51<00:55,  4.00s/it]Fetching 27 files:  52%|#####1    | 14/27 [00:52<00:48,  3.73s/it]Fetching 27 files:  56%|#####5    | 15/27 [00:52<00:42,  3.51s/it]Fetching 27 files:  59%|#####9    | 16/27 [01:04<00:44,  4.03s/it]Fetching 27 files:  63%|######2   | 17/27 [01:04<00:38,  3.82s/it]Fetching 27 files:  67%|######6   | 18/27 [01:05<00:32,  3.65s/it]Fetching 27 files:  70%|#######   | 19/27 [01:05<00:27,  3.47s/it]Fetching 27 files:  74%|#######4  | 20/27 [01:06<00:23,  3.31s/it]Fetching 27 files:  78%|#######7  | 21/27 [01:06<00:18,  3.16s/it]Fetching 27 files:  81%|########1 | 22/27 [01:09<00:15,  3.15s/it]Fetching 27 files:  85%|########5 | 23/27 [01:14<00:12,  3.23s/it]Fetching 27 files:  89%|########8 | 24/27 [01:14<00:09,  3.11s/it]Fetching 27 files:  93%|#########2| 25/27 [01:15<00:06,  3.01s/it]Fetching 27 files:  96%|#########6| 26/27 [01:16<00:02,  2.93s/it]Fetching 27 files: 100%|##########| 27/27 [01:16<00:00,  2.84s/it]Fetching 27 files: 100%|##########| 27/27 [01:16<00:00,  2.84s/it]
+Model files downloaded to: /work/imvia/in156281/projet_pui/Qwen3-30B-A3B-Instruct-2507
+Starter(62292): Return code=0
+Starter end(62292)
