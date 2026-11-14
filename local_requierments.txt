@@ -1,0 +1,3 @@
+# For test.py (OpenRouter API call)
+openai
+python-dotenv
