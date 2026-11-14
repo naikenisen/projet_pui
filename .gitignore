@@ -1,0 +1,12 @@
+# Secrets / credentials
+.env
+api_key
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Logs / outputs
+*.out
