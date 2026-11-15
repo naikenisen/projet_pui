@@ -1,4 +1,4 @@
-# Analyse pharmaceutique d'ordonnances
+# Logiciel d'analyse pharmaceutique assistée par IA
 
 ## Installation
 
