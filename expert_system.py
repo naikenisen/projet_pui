@@ -4,34 +4,53 @@ import argparse
 import json
 import operator
 
-OPERATEURS = {">=": operator.ge, "<=": operator.le, ">": operator.gt, "<": operator.lt}
+OPERATEURS = {">=": operator.ge, "<=": operator.le, "!=": operator.ne, "==": operator.eq, ">": operator.gt, "<": operator.lt}
+
+
+def lire_valeurs(dossier):
+    patient = dossier["patient"]
+    valeurs = {**patient, **patient["biologie"]}
+    for traitement in dossier["traitements"]:
+        valeurs["dose_" + traitement["dci"]] = traitement["dosage"]
+    return valeurs
+
+
+def condition_vraie(condition, valeurs):
+    for symbole, comparer in OPERATEURS.items():
+        if symbole in condition:
+            nom, seuil = condition.split(symbole)
+            valeur = valeurs.get(nom.strip())
+            return valeur is not None and comparer(valeur, float(seuil))
+    raise ValueError(f"Condition invalide : {condition}")
+
+
+def regle_declenchee(regle, valeurs, medicaments):
+    for medicament in regle.get("medicaments", []):
+        if medicament not in medicaments:
+            return False
+
+    for condition in regle.get("conditions", []):
+        if not condition_vraie(condition, valeurs):
+            return False
+
+    nombre_vraies = 0
+    for condition in regle.get("parmi", []):
+        if condition_vraie(condition, valeurs):
+            nombre_vraies += 1
+    return nombre_vraies >= regle.get("minimum", 0)
 
 
 def verifier_regles(dossier):
     with open("regles_expert.json", encoding="utf-8") as fichier:
         regles = json.load(fichier)
 
-    # Données du patient et de sa biologie réunies dans un seul dictionnaire.
-    patient = dossier["patient"]
-    valeurs = {**patient, **patient["biologie"]}
+    valeurs = lire_valeurs(dossier)
+    medicaments = [traitement["dci"] for traitement in dossier["traitements"]]
 
     alertes = []
     for regle in regles:
-        criteres_remplis = []
-        for critere in regle["criteres"]:
-            comparer = OPERATEURS[critere["operateur"]]
-            if comparer(valeurs[critere["donnee"]], critere["seuil"]):
-                criteres_remplis.append(critere["libelle"])
-
-        if len(criteres_remplis) < regle["nombre_criteres_minimum"]:
-            continue
-
-        for traitement in dossier["traitements"]:
-            if traitement["dci"] == regle["medicament"] and traitement["dosage"] != regle["dose_recommandee"]:
-                alertes.append(
-                    f"{traitement['dci']} {traitement['dosage']} {traitement['unite']} : {regle['message']} "
-                    f"({', '.join(criteres_remplis)})"
-                )
+        if regle_declenchee(regle, valeurs, medicaments):
+            alertes.append(regle["alerte"])
     return alertes
 
 

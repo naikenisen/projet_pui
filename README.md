@@ -67,6 +67,18 @@ python3 expert_system.py --idpatient PAT-0001
 
 Affiche les alertes détectées, ou `Aucune alerte`.
 
+Les règles sont dans `regles_expert.json`. Une règle se déclenche si tous ses champs sont vérifiés :
+
+| Champ | Signification |
+|---|---|
+| `medicaments` | tous ces médicaments (DCI) sont prescrits |
+| `conditions` | toutes ces conditions sont vraies |
+| `parmi` + `minimum` | au moins `minimum` de ces conditions sont vraies |
+| `alerte` | message affiché quand la règle se déclenche |
+
+Seul `alerte` est obligatoire. Une condition s'écrit `donnee operateur valeur`, par exemple `age >= 80`, avec les opérateurs `>=`, `<=`, `>`, `<`, `==`, `!=`.
+Les données utilisables sont les champs du patient (`age`, `poids_kg`...), ceux de sa biologie (`creatinine_serique`...) et la dose de chaque médicament prescrit (`dose_apixaban`...).
+
 **Indexation** (à lancer une fois, puis à chaque ajout de PDF)
 
 ```bash
