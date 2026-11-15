@@ -7,6 +7,10 @@ Règle implémentée :
   créatinine sérique ≥ 133 µmol/L.
 """
 
+import argparse
+import json
+from pathlib import Path
+
 APIXABAN_DOSE_REDUITE_MG = 2.5
 APIXABAN_DOSE_STANDARD_MG = 5
 
@@ -79,3 +83,27 @@ def verifier_apixaban(dossier: dict) -> list[dict]:
             })
 
     return alertes
+
+
+def charger_patient(patient_id: str, fichier: Path = Path(__file__).parent / "input.json") -> dict:
+    """Retourne le dossier du patient d'identifiant patient_id dans input.json."""
+    dossiers = json.loads(fichier.read_text(encoding="utf-8"))
+    if isinstance(dossiers, dict):
+        dossiers = [dossiers]
+    for dossier in dossiers:
+        if dossier["patient"].get("id") == patient_id:
+            return dossier
+    ids = ", ".join(d["patient"].get("id", "?") for d in dossiers)
+    raise SystemExit(f"Patient '{patient_id}' introuvable dans {fichier.name}. Patients disponibles : {ids}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Applique les règles du système expert à un patient.")
+    parser.add_argument("--patient", required=True, help="identifiant du patient (ex : PAT-0001)")
+    args = parser.parse_args()
+
+    alertes = verifier_apixaban(charger_patient(args.patient))
+    if not alertes:
+        print("Aucune alerte.")
+    for a in alertes:
+        print(f"[{a['type']}] {a['message']}")

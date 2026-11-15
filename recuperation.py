@@ -6,7 +6,10 @@ les plus pertinents de la base documentaire (ChromaDB indexée par embedding.py)
 prêt à être injecté dans le prompt de génération.
 """
 
+import argparse
+import json
 import os
+from pathlib import Path
 
 import chromadb
 from dotenv import load_dotenv
@@ -90,3 +93,28 @@ def recuperer_contexte(dossier: dict) -> str:
             reference += f", Avis n° {meta['avis']}"
         blocs.append(f"[Extrait {i} — {reference}]\n{p['texte']}")
     return "\n\n---\n\n".join(blocs)
+
+
+def charger_patient(patient_id: str, fichier: Path = Path(__file__).parent / "input.json") -> dict:
+    """Retourne le dossier du patient d'identifiant patient_id dans input.json."""
+    dossiers = json.loads(fichier.read_text(encoding="utf-8"))
+    if isinstance(dossiers, dict):
+        dossiers = [dossiers]
+    for dossier in dossiers:
+        if dossier["patient"].get("id") == patient_id:
+            return dossier
+    ids = ", ".join(d["patient"].get("id", "?") for d in dossiers)
+    raise SystemExit(f"Patient '{patient_id}' introuvable dans {fichier.name}. Patients disponibles : {ids}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Récupère les passages de la base documentaire pour un patient.")
+    parser.add_argument("--patient", required=True, help="identifiant du patient (ex : PAT-0001)")
+    args = parser.parse_args()
+
+    dossier = charger_patient(args.patient)
+    print("Requêtes :")
+    for r in construire_requetes(dossier):
+        print(f"  - {r}")
+    print("\nContexte récupéré :\n")
+    print(recuperer_contexte(dossier))

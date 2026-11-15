@@ -1,5 +1,7 @@
+import argparse
 import json
 import os
+from pathlib import Path
 
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -57,3 +59,25 @@ def analyser_patient(dossier: dict) -> dict:
         return json.loads(content[content.find("{"): content.rfind("}") + 1])
     except json.JSONDecodeError:
         return {"decision": "ERREUR (réponse non JSON)", "justification": content}
+
+
+def charger_patient(patient_id: str, fichier: Path = Path(__file__).parent / "input.json") -> dict:
+    """Retourne le dossier du patient d'identifiant patient_id dans input.json."""
+    dossiers = json.loads(fichier.read_text(encoding="utf-8"))
+    if isinstance(dossiers, dict):
+        dossiers = [dossiers]
+    for dossier in dossiers:
+        if dossier["patient"].get("id") == patient_id:
+            return dossier
+    ids = ", ".join(d["patient"].get("id", "?") for d in dossiers)
+    raise SystemExit(f"Patient '{patient_id}' introuvable dans {fichier.name}. Patients disponibles : {ids}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Analyse pharmaceutique d'un patient par le LLM.")
+    parser.add_argument("--patient", required=True, help="identifiant du patient (ex : PAT-0001)")
+    args = parser.parse_args()
+
+    resultat = analyser_patient(charger_patient(args.patient))
+    print(f">>> {resultat.get('decision', '?')}\n")
+    print(resultat.get("justification", ""))
