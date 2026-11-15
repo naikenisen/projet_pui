@@ -1,0 +1,59 @@
+{
+  "patient": {
+    "id": "PAT-0001",
+    "age": 95,
+    "sexe": "F",
+    "poids_kg": 52,
+    "taille_cm": 155,
+    "biologie": {
+      "HbA1c_pourcent": 5,
+      "DFG_ml_min_1_73m2": 25
+    }
+  },
+  "traitements": [
+    {
+      "dci": "glibenclamide",
+      "specialite": "Daonil",
+      "dosage": 5,
+      "unite": "mg",
+      "posologie": "1 cp matin et soir",
+      "voie": "orale"
+    },
+    {
+      "dci": "metformine",
+      "specialite": "Glucophage",
+      "dosage": 1000,
+      "unite": "mg",
+      "posologie": "1 cp matin, midi et soir",
+      "voie": "orale"
+    },
+    {
+      "dci": "ramipril",
+      "dosage": 5,
+      "unite": "mg",
+      "posologie": "1 cp le matin",
+      "voie": "orale"
+    },
+    {
+      "dci": "apixaban",
+      "dosage": 5,
+      "unite": "mg",
+      "posologie": "1 cp matin et soir",
+      "voie": "orale"
+    },
+    {
+      "dci": "bisoprolol",
+      "dosage": 2.5,
+      "unite": "mg",
+      "posologie": "1 cp le matin",
+      "voie": "orale"
+    },
+    {
+      "dci": "paracétamol",
+      "dosage": 1,
+      "unite": "g",
+      "posologie": "1 cp jusqu'à 3 fois par jour si douleur",
+      "voie": "orale"
+    }
+  ]
+}
