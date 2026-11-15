@@ -10,3 +10,4 @@ venv/
 
 # Logs / outputs
 *.out
+chroma_db

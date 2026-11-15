@@ -30,7 +30,7 @@ def decouper(texte):
 
 def extraire_passages(chemin_pdf):
     nom_pdf = os.path.basename(chemin_pdf)
-    pages = pymupdf4llm.to_markdown(chemin_pdf, page_chunks=True)
+    pages = pymupdf4llm.to_markdown(chemin_pdf, page_chunks=True, use_ocr=False)
 
     passages = []
     for numero_page, page in enumerate(pages, start=1):
