@@ -12,12 +12,13 @@ client = OpenAI(
 )
 
 completion = client.chat.completions.create(
-    model="google/gemma-4-31b-it:free",
+    model="qwen/qwen3.6-35b-a3b",
     messages=[
         {"role": "system", "content": "Tu es un assistant utile."},
         {"role": "user", "content": "est ce que la paroxétine est indiquée chez la personne agée."},
     ],
     max_tokens=512,
+    extra_body={"reasoning": {"enabled": False}},
 )
 
 print(completion.choices[0].message.content)
