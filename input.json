@@ -8,7 +8,7 @@
     "taille_cm": 155,
     "biologie": {
       "HbA1c_pourcent": 5,
-      "DFG_ml_min_1_73m2": 25
+      "creatinine_serique": 70
     }
   },
   "traitements": [
@@ -67,7 +67,7 @@
     "taille_cm": 178,
     "biologie": {
       "HbA1c_pourcent": 5.3,
-      "DFG_ml_min_1_73m2": 105
+      "creatinine_serique": 70
     }
   },
   "traitements": [
