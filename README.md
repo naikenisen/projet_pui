@@ -19,7 +19,7 @@ Toutes les commandes se lancent depuis la racine du projet.
 | Fichier | Rôle |
 |---|---|
 | `input.json` | Liste des patients et de leurs traitements |
-| `main.py` | Analyse tous les patients avec le LLM |
+| `main.py` | Analyse tous les patients avec le LLM, le RAG et le système expert |
 | `generation.py` | Analyse un patient avec le LLM |
 | `expert_system.py` | Règles déterministes (dose d'apixaban) |
 | `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
@@ -28,14 +28,17 @@ Toutes les commandes se lancent depuis la racine du projet.
 ## Liens entre les scripts
 
 ```
-input.json --> main.py --> generation.py --> décision du LLM
+base_documentaire/ --> indexation.py --> chroma_db/
 
-base_documentaire/ --> indexation.py --> chroma_db/ --> recuperation.py
+                       recuperation.py   (passages des recommandations)
+                     /                  \
+input.json --> main.py                    --> generation.py --> décision du LLM
+                     \                  /
+                       expert_system.py  (alertes)
 ```
 
-`main.py` appelle `generation.py` pour chaque patient.
-`recuperation.py` utilise la base `chroma_db/` créée par `indexation.py`.
-`recuperation.py` et `expert_system.py` ne sont pas encore reliés à `main.py`.
+Pour chaque patient, `main.py` récupère les passages utiles avec `recuperation.py` et les alertes avec `expert_system.py`, puis les transmet à `generation.py` qui rend la décision finale.
+`recuperation.py` utilise la base `chroma_db/` créée par `indexation.py` : il faut lancer `indexation.py` avant `main.py`.
 
 ## Exécution
 
@@ -50,7 +53,7 @@ Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ` o
 **Un patient avec le LLM**
 
 ```bash
-python3 generation.py --patient PAT-0001
+python3 generation.py --idpatient PAT-0001
 ```
 
 Affiche la décision et la justification.
@@ -58,7 +61,7 @@ Affiche la décision et la justification.
 **Système expert**
 
 ```bash
-python3 expert_system.py --patient PAT-0001
+python3 expert_system.py --idpatient PAT-0001
 ```
 
 Affiche les alertes détectées, ou `Aucune alerte`.
@@ -74,7 +77,7 @@ Affiche le nombre de passages indexés par PDF et crée le dossier `chroma_db/`.
 **Récupération**
 
 ```bash
-python3 recuperation.py --patient PAT-0001
+python3 recuperation.py --idpatient PAT-0001
 ```
 
 Affiche les passages les plus pertinents pour le patient, avec leur PDF et leur page.

@@ -71,7 +71,7 @@ def charger_patient(patient_id):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--patient", required=True)
+    parser.add_argument("--idpatient", required=True)
     args = parser.parse_args()
 
-    print(recuperer_contexte(charger_patient(args.patient)))
+    print(recuperer_contexte(charger_patient(args.idpatient)))

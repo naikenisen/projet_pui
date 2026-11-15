@@ -15,6 +15,7 @@ MODEL = "qwen/qwen3.6-35b-a3b"
 SYSTEM_PROMPT = """Tu es un pharmacien clinicien hospitalier français. On te fournit un patient et son ordonnance au format JSON.
 Analyse l'ordonnance en tenant compte du terrain du patient (âge, poids, biologie), des posologies,
 des contre-indications, des interactions et des recommandations françaises.
+Si des alertes du système expert ou des extraits de recommandations sont fournis, appuie-toi dessus en priorité.
 
 Réponds uniquement avec un objet JSON :
 {"decision": "PATIENT VALIDÉ" ou "INTERVENTION PHARMACEUTIQUE PROPOSÉE", "justification": "un paragraphe court de 3 à 5 phrases"}
@@ -22,12 +23,18 @@ Réponds uniquement avec un objet JSON :
 En cas d'intervention, la justification cite le ou les médicaments en cause, le problème et l'adaptation proposée."""
 
 
-def analyser_patient(dossier):
+def analyser_patient(dossier, contexte="", alertes=None):
+    message = json.dumps(dossier, ensure_ascii=False)
+    if alertes:
+        message += "\n\nAlertes du système expert :\n" + "\n".join(alertes)
+    if contexte:
+        message += "\n\nExtraits des recommandations :\n" + contexte
+
     completion = client.chat.completions.create(
         model=MODEL,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": json.dumps(dossier, ensure_ascii=False)},
+            {"role": "user", "content": message},
         ],
         max_tokens=1024,
         temperature=0,
@@ -52,9 +59,9 @@ def charger_patient(patient_id):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--patient", required=True)
+    parser.add_argument("--idpatient", required=True)
     args = parser.parse_args()
 
-    resultat = analyser_patient(charger_patient(args.patient))
+    resultat = analyser_patient(charger_patient(args.idpatient))
     print(resultat["decision"])
     print(resultat["justification"])
