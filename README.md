@@ -44,6 +44,29 @@ input.json --> main.py                    --> generation.py --> décision du LLM
 Pour chaque patient, `main.py` récupère les passages utiles avec `recuperation.py` et les alertes avec `expert_system.py`, puis les transmet à `generation.py` qui rend la décision finale.
 `recuperation.py` utilise la base `chroma_db/` créée par `indexation.py` : il faut lancer `indexation.py` avant `main.py`.
 
+## Méthodologie
+
+![Figure 1](figures/figure_1.png)
+
+**Figure 1. Architecture générale du pipeline d'analyse pharmaceutique assistée par IA.**
+Les recommandations (PDF) sont découpées en passages puis indexées dans une base vectorielle (ChromaDB).
+Pour chaque patient, le module d'orchestration interroge en parallèle le module de récupération, qui extrait les passages pertinents, et le système expert, qui produit des alertes déterministes ; ces deux sorties sont transmises au modèle de langage, qui rend la décision finale.
+
+![Figure 2](figures/figure_2.png)
+
+**Figure 2. Récupération des extraits de recommandations pertinents pour un patient (Retrieval-Augmented Generation).**
+Les paramètres biologiques sortant des intervalles de référence sont convertis en descripteurs textuels et ajoutés au terrain du patient. Une requête est construite pour chaque ligne de prescription (DCI, dosage, posologie, terrain), encodée par Qwen3-Embedding-8B, puis soumise à une recherche des 3 plus proches voisins (distance cosinus). Les passages obtenus sont dédoublonnés, triés par distance et les 8 plus proches constituent le contexte transmis au modèle de langage.
+
+![Figure 3](figures/figure_3.png)
+
+**Figure 3. Fonctionnement du système expert à base de règles déterministes.**
+Les variables du patient (caractéristiques, biologie, dose de chaque médicament) sont extraites du dossier. Chaque règle est déclenchée si (i) tous les médicaments qu'elle cible sont prescrits, (ii) toutes ses conditions obligatoires sont vérifiées et (iii) un nombre minimal de critères optionnels est satisfait. Les messages des règles déclenchées forment la liste d'alertes transmise au modèle de langage.
+
+![Figure 4](figures/figure_4.png)
+
+**Figure 4. Génération de l'avis pharmaceutique par le modèle de langage.**
+Le message soumis au modèle (Qwen3.6-35B-A3B, température 0, sortie JSON contrainte) associe le dossier patient, les alertes du système expert et les extraits de recommandations récupérés. Le prompt système définit le rôle de pharmacien clinicien et les critères d'analyse. La réponse est un objet JSON contenant la décision (patient validé ou intervention pharmaceutique proposée), une justification de 3 à 5 phrases et les sources citées.
+
 ## Exécution
 
 **Interface web**
