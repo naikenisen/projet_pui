@@ -1,26 +1,15 @@
+"""Analyse tous les patients de input.json avec le LLM."""
+
 import json
-from pathlib import Path
 
 from generation import analyser_patient
 
-INPUT_FILE = Path(__file__).parent / "input.json"
+with open("input.json", encoding="utf-8") as fichier:
+    patients = json.load(fichier)
 
-
-def main():
-    dossiers = json.loads(INPUT_FILE.read_text(encoding="utf-8"))
-    if isinstance(dossiers, dict):  # accepte aussi un fichier avec un seul patient
-        dossiers = [dossiers]
-
-    for dossier in dossiers:
-        patient = dossier["patient"]
-        resultat = analyser_patient(dossier)
-
-        print("=" * 80)
-        print(f"Patient {patient.get('id', '?')} — {patient.get('age')} ans, {patient.get('sexe')}")
-        print(f"\n>>> {resultat.get('decision', '?')}\n")
-        print(resultat.get("justification", ""))
-    print("=" * 80)
-
-
-if __name__ == "__main__":
-    main()
+for dossier in patients:
+    resultat = analyser_patient(dossier)
+    print(dossier["patient"]["id"])
+    print(resultat["decision"])
+    print(resultat["justification"])
+    print()
