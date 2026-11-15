@@ -21,7 +21,8 @@ Toutes les commandes se lancent depuis la racine du projet.
 | `input.json` | Liste des patients et de leurs traitements |
 | `main.py` | Analyse tous les patients avec le LLM, le RAG et le système expert |
 | `generation.py` | Analyse un patient avec le LLM |
-| `expert_system.py` | Règles déterministes (dose d'apixaban) |
+| `expert_system.py` | Applique les règles déterministes de `regles_expert.json` |
+| `regles_expert.json` | Règles du système expert (ex : dose d'apixaban) |
 | `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
 | `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
 

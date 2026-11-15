@@ -1,27 +1,37 @@
-"""Règles déterministes appliquées à un patient."""
+"""Règles déterministes, définies dans regles_expert.json, appliquées à un patient."""
 
 import argparse
 import json
+import operator
+
+OPERATEURS = {">=": operator.ge, "<=": operator.le, ">": operator.gt, "<": operator.lt}
 
 
-def verifier_apixaban(dossier):
+def verifier_regles(dossier):
+    with open("regles_expert.json", encoding="utf-8") as fichier:
+        regles = json.load(fichier)
+
+    # Données du patient et de sa biologie réunies dans un seul dictionnaire.
     patient = dossier["patient"]
-
-    criteres_remplis = []
-    if patient["age"] >= 80:
-        criteres_remplis.append("âge ≥ 80 ans")
-    if patient["poids_kg"] <= 60:
-        criteres_remplis.append("poids ≤ 60 kg")
-    if patient["biologie"]["creatinine_serique"] >= 133:
-        criteres_remplis.append("créatinine ≥ 133 µmol/L")
+    valeurs = {**patient, **patient["biologie"]}
 
     alertes = []
-    for traitement in dossier["traitements"]:
-        if traitement["dci"] == "apixaban" and len(criteres_remplis) >= 2 and traitement["dosage"] != 2.5:
-            alertes.append(
-                f"Apixaban {traitement['dosage']} mg : la dose recommandée est 2,5 mg deux fois par jour "
-                f"({', '.join(criteres_remplis)})"
-            )
+    for regle in regles:
+        criteres_remplis = []
+        for critere in regle["criteres"]:
+            comparer = OPERATEURS[critere["operateur"]]
+            if comparer(valeurs[critere["donnee"]], critere["seuil"]):
+                criteres_remplis.append(critere["libelle"])
+
+        if len(criteres_remplis) < regle["nombre_criteres_minimum"]:
+            continue
+
+        for traitement in dossier["traitements"]:
+            if traitement["dci"] == regle["medicament"] and traitement["dosage"] != regle["dose_recommandee"]:
+                alertes.append(
+                    f"{traitement['dci']} {traitement['dosage']} {traitement['unite']} : {regle['message']} "
+                    f"({', '.join(criteres_remplis)})"
+                )
     return alertes
 
 
@@ -39,7 +49,7 @@ if __name__ == "__main__":
     parser.add_argument("--idpatient", required=True)
     args = parser.parse_args()
 
-    alertes = verifier_apixaban(charger_patient(args.idpatient))
+    alertes = verifier_regles(charger_patient(args.idpatient))
     if alertes:
         for alerte in alertes:
             print(alerte)

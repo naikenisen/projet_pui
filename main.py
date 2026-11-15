@@ -2,7 +2,7 @@
 
 import json
 
-from expert_system import verifier_apixaban
+from expert_system import verifier_regles
 from generation import analyser_patient
 from recuperation import recuperer_contexte
 
@@ -11,7 +11,7 @@ with open("input.json", encoding="utf-8") as fichier:
 
 for dossier in patients:
     contexte = recuperer_contexte(dossier)
-    alertes = verifier_apixaban(dossier)
+    alertes = verifier_regles(dossier)
     resultat = analyser_patient(dossier, contexte, alertes)
 
     print(dossier["patient"]["id"])

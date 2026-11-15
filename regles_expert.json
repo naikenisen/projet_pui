@@ -1,0 +1,14 @@
+[
+  {
+    "nom": "Réduction de dose de l'apixaban",
+    "medicament": "apixaban",
+    "criteres": [
+      {"donnee": "age", "operateur": ">=", "seuil": 80, "libelle": "âge ≥ 80 ans"},
+      {"donnee": "poids_kg", "operateur": "<=", "seuil": 60, "libelle": "poids ≤ 60 kg"},
+      {"donnee": "creatinine_serique", "operateur": ">=", "seuil": 133, "libelle": "créatinine ≥ 133 µmol/L"}
+    ],
+    "nombre_criteres_minimum": 2,
+    "dose_recommandee": 2.5,
+    "message": "la dose recommandée est 2,5 mg deux fois par jour"
+  }
+]
