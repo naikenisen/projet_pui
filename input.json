@@ -1,3 +1,4 @@
+[
 {
   "patient": {
     "id": "PAT-0001",
@@ -56,4 +57,36 @@
       "voie": "orale"
     }
   ]
+},
+{
+  "patient": {
+    "id": "PAT-0002",
+    "age": 34,
+    "sexe": "M",
+    "poids_kg": 74,
+    "taille_cm": 178,
+    "biologie": {
+      "HbA1c_pourcent": 5.3,
+      "DFG_ml_min_1_73m2": 105
+    }
+  },
+  "traitements": [
+    {
+      "dci": "budésonide + formotérol",
+      "specialite": "Symbicort Turbuhaler",
+      "dosage": "200/6",
+      "unite": "µg/inhalation",
+      "posologie": "1 inhalation matin et soir",
+      "voie": "inhalée"
+    },
+    {
+      "dci": "paracétamol",
+      "specialite": "Doliprane",
+      "dosage": 1,
+      "unite": "g",
+      "posologie": "1 cp jusqu'à 3 fois par jour si douleur",
+      "voie": "orale"
+    }
+  ]
 }
+]
