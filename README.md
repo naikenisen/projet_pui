@@ -48,7 +48,7 @@ Pour chaque patient, `main.py` récupère les passages utiles avec `recuperation
 python3 main.py
 ```
 
-Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ` ou `INTERVENTION PHARMACEUTIQUE PROPOSÉE`) et la justification.
+Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ` ou `INTERVENTION PHARMACEUTIQUE PROPOSÉE`), la justification et les sources citées par le modèle.
 
 **Un patient avec le LLM**
 

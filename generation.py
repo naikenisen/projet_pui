@@ -18,9 +18,11 @@ des contre-indications, des interactions et des recommandations françaises.
 Si des alertes du système expert ou des extraits de recommandations sont fournis, appuie-toi dessus en priorité.
 
 Réponds uniquement avec un objet JSON :
-{"decision": "PATIENT VALIDÉ" ou "INTERVENTION PHARMACEUTIQUE PROPOSÉE", "justification": "un paragraphe court de 3 à 5 phrases"}
+{"decision": "PATIENT VALIDÉ" ou "INTERVENTION PHARMACEUTIQUE PROPOSÉE", "justification": "un paragraphe court de 3 à 5 phrases", "sources": ["..."]}
 
-En cas d'intervention, la justification cite le ou les médicaments en cause, le problème et l'adaptation proposée."""
+En cas d'intervention, la justification cite le ou les médicaments en cause, le problème et l'adaptation proposée.
+Dans "sources", liste les références des extraits utilisés (ex : "reco_sfd.pdf, page 12") et ajoute "système expert" si tu t'appuies sur une de ses alertes.
+Laisse la liste vide si ta décision repose uniquement sur tes connaissances."""
 
 
 def analyser_patient(dossier, contexte="", alertes=None):

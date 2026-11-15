@@ -17,4 +17,5 @@ for dossier in patients:
     print(dossier["patient"]["id"])
     print(resultat["decision"])
     print(resultat["justification"])
+    print("Sources :", ", ".join(resultat.get("sources", [])) or "aucune")
     print()
