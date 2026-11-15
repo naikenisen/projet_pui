@@ -26,6 +26,8 @@ Toutes les commandes se lancent depuis la racine du projet.
 | `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
 | `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
 | `bio_anormale.json` | Valeurs normales de la biologie, utilisées par `recuperation.py` |
+| `app.py` | Interface Streamlit (analyse, base documentaire, règles, biologie) |
+| `src/` | Fonctions utilisées par `app.py` (fichiers JSON, documents, analyse) |
 
 ## Liens entre les scripts
 
@@ -43,6 +45,14 @@ Pour chaque patient, `main.py` récupère les passages utiles avec `recuperation
 `recuperation.py` utilise la base `chroma_db/` créée par `indexation.py` : il faut lancer `indexation.py` avant `main.py`.
 
 ## Exécution
+
+**Interface web**
+
+```bash
+streamlit run app.py
+```
+
+Les résultats des analyses sont enregistrés dans `resultats.json`.
 
 **Tous les patients**
 

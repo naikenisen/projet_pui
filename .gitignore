@@ -11,3 +11,5 @@ venv/
 # Logs / outputs
 *.out
 chroma_db
+# Résultats de l application
+resultats.json
