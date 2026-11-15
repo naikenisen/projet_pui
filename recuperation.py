@@ -38,8 +38,8 @@ def construire_requetes(dossier: dict) -> list[str]:
     biologie = patient.get("biologie", {})
 
     terrain = [f"patient de {patient.get('age')} ans"]
-    if "DFG_ml_min_1_73m2" in biologie:
-        terrain.append(f"DFG {biologie['DFG_ml_min_1_73m2']} mL/min/1,73m²")
+    if "creatinine_serique" in biologie:
+        terrain.append(f"DFG {biologie['creatinine_serique']} mL/min/1,73m²")
     if "HbA1c_pourcent" in biologie:
         terrain.append(f"HbA1c {biologie['HbA1c_pourcent']} %")
     terrain = ", ".join(terrain)
