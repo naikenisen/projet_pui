@@ -20,12 +20,28 @@ NOMBRE_MAX_PASSAGES = 8
 INSTRUCTION = "Instruct: Retrouver les recommandations médicales utiles pour analyser cette prescription\nQuery: "
 
 
+def bio_anormales(patient):
+    with open("bio_anormale.json", encoding="utf-8") as fichier:
+        normes = json.load(fichier)
+
+    anomalies = []
+    for nom, valeur in patient["biologie"].items():
+        if nom not in normes:
+            continue
+        norme = normes[nom]
+        if valeur < norme["min"]:
+            anomalies.append(f"{norme['libelle']} basse ({valeur} {norme['unite']})")
+        elif valeur > norme["max"]:
+            anomalies.append(f"{norme['libelle']} élevée ({valeur} {norme['unite']})")
+    return anomalies
+
+
 def construire_requetes(dossier):
     patient = dossier["patient"]
-    terrain = (
-        f"patient de {patient['age']} ans, {patient['poids_kg']} kg, "
-        f"créatinine {patient['biologie']['creatinine_serique']} µmol/L"
-    )
+    terrain = f"patient de {patient['age']} ans, {patient['poids_kg']} kg"
+    anomalies = bio_anormales(patient)
+    if anomalies:
+        terrain += ", " + ", ".join(anomalies)
 
     requetes = []
     for traitement in dossier["traitements"]:

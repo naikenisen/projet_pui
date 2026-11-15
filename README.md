@@ -25,6 +25,7 @@ Toutes les commandes se lancent depuis la racine du projet.
 | `regles_expert.json` | Règles du système expert (ex : dose d'apixaban) |
 | `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
 | `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
+| `bio_anormale.json` | Valeurs normales de la biologie, utilisées par `recuperation.py` |
 
 ## Liens entre les scripts
 

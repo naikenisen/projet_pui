@@ -1,0 +1,4 @@
+{
+  "HbA1c_pourcent": {"libelle": "HbA1c", "unite": "%", "min": 4, "max": 6},
+  "creatinine_serique": {"libelle": "créatinine sérique", "unite": "µmol/L", "min": 45, "max": 110}
+}
