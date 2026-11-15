@@ -1,7 +1,0 @@
-# For test.py (OpenRouter API call)
-openai
-python-dotenv
-
-# For embedding.py (RAG: PDF parsing + vector store)
-pymupdf4llm
-chromadb
