@@ -28,6 +28,7 @@ digraph architecture {
     chroma -> recup [style=dashed, label="read"];
 
     patients -> main;
+    main -> generation;
     main -> recup;
     main -> expert;
     recup -> generation;
