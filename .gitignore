@@ -13,3 +13,4 @@ venv/
 chroma_db
 # Résultats de l application
 resultats.json
+dataset
