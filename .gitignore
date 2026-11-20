@@ -14,3 +14,5 @@ chroma_db
 # Résultats de l application
 resultats.json
 dataset
+RCP
+dataset_test

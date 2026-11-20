@@ -6,3 +6,8 @@ il faut retravailler la façon de faire la recherche
 
 [] intégration dans la base documentaire de tous ce qui est nécessaire
 [] ajoute de toutes les règles nécessaires pour le système expert
+[] optimiser la rapidité de l'inférence
+[] vérifier la façon dont le code est implémenté au niveau du système expert
+[] faire un système de priorisation des IP selon ce qui a eu de l'impacte au chu en fonction des extractions pharma
+[] refactoriser le code
+[] retravailler la liste des recos du rag

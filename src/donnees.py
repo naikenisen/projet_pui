@@ -1,12 +1,11 @@
-"""Lecture, écriture et validation des fichiers JSON du projet (patients, règles, biologie, résultats)."""
+"""Lecture, écriture et validation des fichiers JSON du projet (patients, biologie, résultats).
+
+Les règles du système expert sont gérées par expert_system.py."""
 
 import json
 import os
 
-from expert_system import OPERATEURS
-
-FICHIER_PATIENTS = "input.json"
-FICHIER_REGLES = "regles_expert.json"
+DOSSIER_PATIENTS = "dataset"  # dossier par défaut : un fichier JSON par patient
 FICHIER_BIO = "bio_anormale.json"
 FICHIER_RESULTATS = "resultats.json"
 
@@ -24,12 +23,15 @@ def ecrire_json(chemin, donnees):
         fichier.write("\n")
 
 
-def charger_patients():
-    return lire_json(FICHIER_PATIENTS, [])
+def fichiers_patients(repertoire):
+    if not os.path.isdir(repertoire):
+        return []
+    return sorted(nom for nom in os.listdir(repertoire) if nom.endswith(".json"))
 
 
-def charger_regles():
-    return lire_json(FICHIER_REGLES, [])
+def charger_patients(repertoire=DOSSIER_PATIENTS):
+    """Renvoie la liste des dossiers patients (un fichier JSON par patient) contenus dans le répertoire."""
+    return [lire_json(os.path.join(repertoire, nom)) for nom in fichiers_patients(repertoire)]
 
 
 def charger_bio():
@@ -42,54 +44,6 @@ def charger_resultats():
 
 def sauver_resultats(resultats):
     ecrire_json(FICHIER_RESULTATS, resultats)
-
-
-def erreur_condition(condition):
-    """Renvoie un message d'erreur si la condition n'est pas lisible par expert_system.py, sinon None."""
-    for symbole in OPERATEURS:  # même ordre de recherche que expert_system.condition_vraie
-        if symbole in condition:
-            morceaux = condition.split(symbole)
-            if len(morceaux) != 2 or not morceaux[0].strip():
-                return f"« {condition} » : écrire `donnee {symbole} valeur`"
-            try:
-                float(morceaux[1])
-            except ValueError:
-                return f"« {condition} » : la valeur « {morceaux[1].strip()} » n'est pas un nombre"
-            return None
-    return f"« {condition} » : aucun opérateur parmi {', '.join(OPERATEURS)}"
-
-
-def erreurs_regle(regle):
-    if not isinstance(regle, dict):
-        return ["une règle doit être un objet JSON"]
-    erreurs = []
-    if not str(regle.get("alerte", "")).strip():
-        erreurs.append("le champ `alerte` est obligatoire")
-    for champ in ("medicaments", "conditions", "parmi"):
-        if not isinstance(regle.get(champ, []), list):
-            erreurs.append(f"`{champ}` doit être une liste")
-    for condition in regle.get("conditions", []) + regle.get("parmi", []):
-        message = erreur_condition(str(condition))
-        if message:
-            erreurs.append(message)
-    minimum = regle.get("minimum", 0)
-    if not isinstance(minimum, int) or minimum < 0:
-        erreurs.append("`minimum` doit être un entier positif")
-    elif minimum > len(regle.get("parmi", [])):
-        erreurs.append("`minimum` est plus grand que le nombre de conditions dans `parmi`")
-    return erreurs
-
-
-def sauver_regles(regles):
-    """Enregistre les règles si elles sont toutes valides. Renvoie la liste des erreurs (vide si OK)."""
-    if not isinstance(regles, list):
-        return ["le fichier doit contenir une liste de règles"]
-    erreurs = []
-    for numero, regle in enumerate(regles, start=1):
-        erreurs += [f"Règle {numero} : {e}" for e in erreurs_regle(regle)]
-    if not erreurs:
-        ecrire_json(FICHIER_REGLES, regles)
-    return erreurs
 
 
 def sauver_bio(lignes):

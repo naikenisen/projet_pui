@@ -18,11 +18,12 @@ Toutes les commandes se lancent depuis la racine du projet.
 
 | Fichier | Rôle |
 |---|---|
-| `input.json` | Liste des patients et de leurs traitements |
+| `dataset/` | Dossier d'inférence : un fichier JSON par patient (`<id>.json`), avec sa biologie et ses traitements |
 | `main.py` | Analyse tous les patients avec le LLM, le RAG et le système expert |
 | `generation.py` | Analyse un patient avec le LLM |
-| `expert_system.py` | Applique les règles déterministes de `regles_expert.json` |
-| `regles_expert.json` | Règles du système expert (ex : dose d'apixaban) |
+| `expert_system.py` | Applique les règles déterministes du système expert ; fait rédiger une nouvelle règle par le LLM |
+| `regles_generiques.json` | Règles issues du Thésaurus ANSM des interactions et de DDI-Predictor (`documents_systeme_expert/`) |
+| `regles_personnalisees.json` | Règles propres à l'établissement (ex : dose d'apixaban, daptomycine 10 mg/kg) |
 | `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
 | `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
 | `bio_anormale.json` | Valeurs normales de la biologie, utilisées par `recuperation.py` |
@@ -36,7 +37,7 @@ base_documentaire/ --> indexation.py --> chroma_db/
 
                        recuperation.py   (passages des recommandations)
                      /                  \
-input.json --> main.py                    --> generation.py --> décision du LLM
+dataset/   --> main.py                    --> generation.py --> décision du LLM
                      \                  /
                        expert_system.py  (alertes)
 ```
@@ -65,7 +66,7 @@ Les variables du patient (caractéristiques, biologie, dose de chaque médicamen
 ![Figure 4](figures/figure_4.png)
 
 **Figure 4. Génération de l'avis pharmaceutique par le modèle de langage.**
-Le message soumis au modèle (Qwen3.6-35B-A3B, température 0, sortie JSON contrainte) associe le dossier patient, les alertes du système expert et les extraits de recommandations récupérés. Le prompt système définit le rôle de pharmacien clinicien et les critères d'analyse. La réponse est un objet JSON contenant la décision (patient validé ou intervention pharmaceutique proposée), une justification de 3 à 5 phrases et les sources citées.
+Le message soumis au modèle (Qwen3.6-35B-A3B, température 0, sortie JSON contrainte) associe le dossier patient, les alertes du système expert (numérotées [A1], [A2]...) et les extraits de recommandations récupérés (numérotés [R1], [R2]...). Le prompt système définit le rôle de pharmacien clinicien, les critères d'analyse et la hiérarchie des alertes (priorité aux contre-indications). La réponse est un objet JSON contenant la décision (patient validé, surveillance proposée, vérification proposée ou intervention pharmaceutique proposée) et 1 à 4 propositions formulées au conditionnel (« Proposons… », « Suggérons… »), chacune avec les identifiants des alertes et extraits sur lesquels elle s'appuie. Les identifiants qui ne correspondent à aucune alerte ni aucun extrait fourni sont ignorés.
 
 ## Exécution
 
@@ -74,6 +75,8 @@ Le message soumis au modèle (Qwen3.6-35B-A3B, température 0, sortie JSON contr
 ```bash
 streamlit run app.py
 ```
+
+Le dossier d'inférence (par défaut `dataset`) se choisit dans la barre latérale.
 
 Les résultats des analyses sont enregistrés dans `resultats.json`.
 
@@ -88,15 +91,15 @@ Les résultats des analyses sont enregistrés dans `resultats.json`.
 **Tous les patients**
 
 ```bash
-python3 main.py
+python3 main.py --dossier dataset
 ```
 
-Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ` ou `INTERVENTION PHARMACEUTIQUE PROPOSÉE`), la justification et les sources citées par le modèle.
+Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ`, `SURVEILLANCE PROPOSÉE`, `VÉRIFICATION PROPOSÉE` ou `INTERVENTION PHARMACEUTIQUE PROPOSÉE`), la justification et les sources citées par le modèle.
 
 **Un patient avec le LLM**
 
 ```bash
-python3 generation.py --idpatient PAT-0001
+python3 generation.py --dossier dataset --idpatient 100133744
 ```
 
 Affiche la décision et la justification.
@@ -104,22 +107,30 @@ Affiche la décision et la justification.
 **Système expert**
 
 ```bash
-python3 expert_system.py --idpatient PAT-0001
+python3 expert_system.py --dossier dataset --idpatient 100133744
 ```
 
 Affiche les alertes détectées, ou `Aucune alerte`.
 
-Les règles sont dans `regles_expert.json`. Une règle se déclenche si tous ses champs sont vérifiés :
+Les règles sont dans `regles_generiques.json` (Thésaurus ANSM, DDI-Predictor) et `regles_personnalisees.json` (règles de l'établissement). Une règle se déclenche si tous ses champs sont vérifiés :
 
 | Champ | Signification |
 |---|---|
-| `medicaments` | tous ces médicaments (DCI) sont prescrits |
+| `medicaments` | tous ces médicaments (DCI) sont prescrits, sur des lignes différentes : le nom est cherché dans le libellé de chaque ligne de prescription, sans tenir compte des majuscules et des accents. Un élément peut être une liste de DCI dont une seule suffit (classe du Thésaurus) |
 | `conditions` | toutes ces conditions sont vraies |
 | `parmi` + `minimum` | au moins `minimum` de ces conditions sont vraies |
 | `alerte` | message affiché quand la règle se déclenche |
 
 Seul `alerte` est obligatoire. Une condition s'écrit `donnee operateur valeur`, par exemple `age >= 80`, avec les opérateurs `>=`, `<=`, `>`, `<`, `==`, `!=`.
-Les données utilisables sont les champs du patient (`age`, `poids_kg`...), ceux de sa biologie (`creatinine_serique`...) et la dose de chaque médicament prescrit (`dose_apixaban`...).
+Les données utilisables sont les champs du patient (`age`, `poids_kg`, `taille_cm`, `imc_kg_m2`, `surface_corporelle_m2`), ceux de sa biologie avec le nom exact du paramètre (`Créatinine (sang)`, `DFG estimé (CKD-EPI)`...) et, pour les médicaments cités dans la règle, le dosage de la spécialité (`dose_apixaban`), la dose prescrite en mg par jour (`dose_jour_daptomycine`) et en mg/kg par jour (`dose_kg_daptomycine`).
+
+Pour faire rédiger une règle personnalisée par le LLM (elle est affichée puis enregistrée après confirmation) :
+
+```bash
+python3 expert_system.py --dossier dataset --nouvelle-regle "Alerter si metformine avec un DFG < 30 mL/min"
+```
+
+Dans l'interface, l'onglet « Règles du système expert » sépare les règles personnalisées (ajout par l'assistant ou à la main, suppression) des règles génériques (consultation et recherche).
 
 **Indexation** (à lancer une fois, puis à chaque ajout de PDF)
 
@@ -132,7 +143,7 @@ Affiche le nombre de passages indexés par PDF et crée le dossier `chroma_db/`.
 **Récupération**
 
 ```bash
-python3 recuperation.py --idpatient PAT-0001
+python3 recuperation.py --dossier dataset --idpatient 100133744
 ```
 
 Affiche les passages les plus pertinents pour le patient, avec leur PDF et leur page.

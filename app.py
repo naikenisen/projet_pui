@@ -6,7 +6,9 @@ Le thème clair est défini dans .streamlit/config.toml.
 
 import html
 import json
+import math
 import os
+import re
 
 # Les scripts du projet utilisent des chemins relatifs (input.json, chroma_db...) : on se place à la racine.
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -14,8 +16,19 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import pandas as pd
 import streamlit as st
 
-from expert_system import verifier_regles
-from src.analyse import DECISION_VALIDE, analyser, lire_source
+from expert_system import (
+    OPERATEURS,
+    ajouter_regle_personnalisee,
+    appliquer_regles,
+    charger_regles_generiques,
+    charger_regles_personnalisees,
+    normaliser,
+    proposer_regle,
+    sauver_regles_personnalisees,
+    variables_inconnues,
+    verifier_regles,
+)
+from src.analyse import analyser, categorie, lire_source
 from src.documents import (
     chemin_document,
     documents_du_dossier,
@@ -26,12 +39,11 @@ from src.documents import (
     rendre_page,
 )
 from src.donnees import (
+    DOSSIER_PATIENTS,
     charger_bio,
     charger_patients,
-    charger_regles,
     charger_resultats,
     sauver_bio,
-    sauver_regles,
     sauver_resultats,
 )
 
@@ -58,6 +70,7 @@ st.markdown(
     --bordure: #D9E0E8; --fond: #F3F5F8; --surface: #FFFFFF;
     --vert: #1E7A46; --vert-fond: #E9F5EE; --orange: #A85A00; --orange-fond: #FFF3E3;
     --rouge: #B42318; --rouge-fond: #FDECEB;
+    --violet: #6B3FA0; --violet-fond: #F2ECFA; --bleu-fond: #E8F0F8;
 }}
 html, body, [class*="css"], .stMarkdown, button, input, textarea, select {{
     font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
@@ -104,6 +117,8 @@ html {{ font-size: 15.5px; }}
 .indicateur.vert .valeur {{ color: var(--vert); }}
 .indicateur.orange .valeur {{ color: var(--orange); }}
 .indicateur.rouge .valeur {{ color: var(--rouge); }}
+.indicateur.violet .valeur {{ color: var(--violet); }}
+.indicateur.bleu .valeur {{ color: var(--bleu); }}
 [data-testid="stMetric"] {{ padding: 0; }}
 [data-testid="stMetricLabel"] p {{ color: var(--texte-3); font-size: 0.75rem; }}
 [data-testid="stMetricValue"] {{ font-size: 1.4rem; font-weight: 600; }}
@@ -135,6 +150,8 @@ html {{ font-size: 15.5px; }}
 }}
 .decision.valide {{ background: var(--vert-fond); border-color: var(--vert); color: var(--vert); }}
 .decision.intervention {{ background: var(--orange-fond); border-color: var(--orange); color: var(--orange); }}
+.decision.verification {{ background: var(--violet-fond); border-color: var(--violet); color: var(--violet); }}
+.decision.surveillance {{ background: var(--bleu-fond); border-color: var(--bleu); color: var(--bleu); }}
 .decision.erreur {{ background: var(--rouge-fond); border-color: var(--rouge); color: var(--rouge); }}
 .libelle {{
     font-size: 0.75rem; font-weight: 600; color: var(--texte-3); text-transform: uppercase;
@@ -144,8 +161,54 @@ html {{ font-size: 15.5px; }}
     background: var(--orange-fond); border-left: 3px solid var(--orange); border-radius: 3px;
     padding: 0.4rem 0.7rem; margin-bottom: 0.35rem; font-size: 0.86rem; color: var(--texte);
 }}
+.alerte .entete-alerte {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.2rem; }}
+.alerte .complement {{ margin-top: 0.25rem; }}
+.alerte .prescription {{ margin-top: 0.25rem; font-size: 0.78rem; color: var(--texte-2); }}
+
+/* Règles du système expert */
+.regle {{
+    background: var(--surface); border: 1px solid var(--bordure); border-left: 4px solid var(--bleu);
+    border-radius: 4px; padding: 0.65rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.86rem; color: var(--texte);
+}}
+.regle.ci {{ border-left-color: var(--rouge); }}
+.regle.asdec {{ border-left-color: var(--orange); }}
+.regle.pe {{ border-left-color: #C9A100; }}
+.regle.apec {{ border-left-color: #9AA6B2; }}
+.regle.perso {{ border-left-color: var(--vert); }}
+.regle .entete {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem; }}
+.regle .titre {{ font-weight: 600; font-size: 0.93rem; margin-right: 0.2rem; }}
+.regle .bloc {{ margin: 0.3rem 0; line-height: 1.45; }}
+.regle .etiquette {{ font-weight: 600; color: var(--texte-2); }}
+.regle ul {{ margin: 0.15rem 0 0 0; padding-left: 1.2rem; }}
+.regle li {{ margin: 0.05rem 0; }}
+.regle details {{ margin-top: 0.35rem; }}
+.regle summary {{ cursor: pointer; color: var(--texte-3); font-size: 0.8rem; }}
+.regle .pied {{ margin-top: 0.35rem; font-size: 0.75rem; color: var(--texte-3); }}
+.badge {{
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 0.1rem 0.45rem; border-radius: 3px; white-space: nowrap;
+}}
+.badge.ci {{ background: var(--rouge-fond); color: var(--rouge); }}
+.badge.asdec {{ background: var(--orange-fond); color: var(--orange); }}
+.badge.pe {{ background: #FFF7D6; color: #7A5B00; }}
+.badge.apec {{ background: #EEF1F4; color: var(--texte-2); }}
+.badge.pk {{ background: var(--bleu-clair); color: var(--bleu); }}
+.badge.perso {{ background: var(--vert-fond); color: var(--vert); }}
+.puce {{
+    display: inline-block; background: var(--fond); border: 1px solid var(--bordure); border-radius: 3px;
+    padding: 0 0.35rem; margin: 0.1rem 0.2rem 0.1rem 0; font-size: 0.8rem;
+}}
 .profil {{ color: var(--texte); font-weight: 500; }}
 .discret {{ color: var(--texte-3); font-size: 0.76rem; margin-top: 0.6rem; }}
+
+/* Avis pharmaceutique : un point par proposition, ses sources en dessous */
+.point {{
+    border-left: 2px solid var(--bordure); padding: 0.1rem 0 0.1rem 0.7rem; margin: 0.5rem 0 0.1rem 0;
+    font-size: 0.9rem; color: var(--texte);
+}}
+.stButton > button[kind="tertiary"] {{
+    min-height: 1.4rem; padding: 0 0.3rem; font-size: 0.78rem; color: var(--bleu); text-decoration: underline;
+}}
 </style>
 """,
     unsafe_allow_html=True,
@@ -158,6 +221,63 @@ def titre_section(texte):
 
 def libelle(texte):
     st.markdown(f'<div class="libelle">{html.escape(texte)}</div>', unsafe_allow_html=True)
+
+
+def mettre_en_forme(texte):
+    """Texte du Thésaurus en HTML : un retour à la ligne par niveau (« Contre-indication avec : ») et par tiret."""
+    texte = html.escape(texte, quote=False)
+    texte = re.sub(
+        r"\s*\b(Contre-indication|Association déconseillée|Précaution d'emploi|A prendre en compte)( avec)?\s*:",
+        r"<br><b>\1\2 :</b>", texte,
+    )
+    texte = re.sub(r"\s+-\s+(?=\S)", "<br>• ", texte)
+    return texte.removeprefix("<br>")
+
+
+# Niveaux du Thésaurus ANSM : code, libellé affiché, du plus grave au moins grave
+NIVEAUX = {"CI": "Contre-indication", "ASDEC": "Association déconseillée", "PE": "Précaution d'emploi",
+           "APEC": "À prendre en compte"}
+NIVEAUX_COMPLETS = {"CONTRE-INDICATION": "CI", "Association DECONSEILLEE": "ASDEC", "Précaution d'emploi": "PE",
+                    "A prendre en compte": "APEC"}
+# « Interaction A + B (niveau) : ... » (Thésaurus) et « Interaction pharmacocinétique A + B : ... » (DDI-Predictor)
+_CODE = "(?:CI|ASDEC|PE|APEC)"
+MOTIF_ALERTE_THESAURUS = re.compile(
+    rf"^Interaction (.+?) \(({_CODE}(?: - {_CODE})*|{'|'.join(map(re.escape, NIVEAUX_COMPLETS))})\) : (.*)$", re.DOTALL
+)
+MOTIF_ALERTE_DDI = re.compile(r"^Interaction pharmacocinétique (.+?) : (.*)$", re.DOTALL)
+
+
+def codes_niveau(regle):
+    """« CI - ASDEC - APEC » -> ["CI", "ASDEC", "APEC"] ; [] pour une règle sans niveau (DDI-Predictor, personnalisée)."""
+    niveau = regle.get("niveau") or ""
+    if niveau in NIVEAUX_COMPLETS:
+        return [NIVEAUX_COMPLETS[niveau]]
+    return [code.strip() for code in niveau.split("-") if code.strip() in NIVEAUX]
+
+
+def badge(texte, classe):
+    return f'<span class="badge {classe}">{html.escape(texte)}</span>'
+
+
+def afficher_alerte(alerte):
+    """Alerte du système expert : niveau et titre, message, conduite à tenir et lignes de prescription."""
+    alerte, _, prescription = alerte.partition(" [Prescription : ")
+    entete = ""
+    if trouve := MOTIF_ALERTE_THESAURUS.match(alerte):
+        titre, niveau, alerte = trouve.groups()
+        entete = "".join(badge(NIVEAUX[c], c.lower()) for c in codes_niveau({"niveau": niveau}))
+        entete += f" <b>{html.escape(titre)}</b>"
+    elif trouve := MOTIF_ALERTE_DDI.match(alerte):
+        titre, alerte = trouve.groups()
+        entete = f'{badge("Pharmacocinétique", "pk")} <b>{html.escape(titre)}</b>'
+    message, _, conduite = alerte.partition(" Conduite à tenir : ")
+    contenu = f'<div class="entete-alerte">{entete}</div>' if entete else ""
+    contenu += mettre_en_forme(message)
+    if conduite:
+        contenu += f'<div class="complement"><b>Conduite à tenir :</b><br>{mettre_en_forme(conduite)}</div>'
+    if prescription:
+        contenu += f'<div class="prescription">Prescription : {html.escape(prescription.rstrip("]"))}</div>'
+    st.markdown(f'<div class="alerte">{contenu}</div>', unsafe_allow_html=True)
 
 
 # ---------------------------------------------------------------------------
@@ -196,14 +316,53 @@ def bouton_source(source, cle):
         ouvrir_document(nom, page)
 
 
+@st.dialog("Alerte du système expert", width="large")
+def ouvrir_alerte(alerte):
+    afficher_alerte(alerte)
+
+
+def lien_alerte(alerte, cle):
+    """Lien « [alerte experte] » : le survol affiche l'alerte, le clic l'ouvre en détail."""
+    if st.button("[alerte experte]", key=cle, type="tertiary", help=alerte):
+        ouvrir_alerte(alerte)
+
+
+def afficher_point(point, cle):
+    """Une proposition de l'avis pharmaceutique, suivie de ses sources sous forme de liens.
+
+    Les alertes du système expert ne sont visibles qu'à travers ces liens (pas de liste séparée).
+    """
+    st.markdown(f'<div class="point">{html.escape(point["texte"])}</div>', unsafe_allow_html=True)
+    if not point["sources"]:
+        return
+    with st.container(horizontal=True, gap="small"):
+        for numero, source in enumerate(point["sources"]):
+            if source["type"] == "alerte":
+                lien_alerte(source["texte"], cle=f"{cle}-{numero}")
+            elif st.button(f"[{source['source']}, p. {source['page']}]", key=f"{cle}-{numero}", type="tertiary",
+                           help=f"Ouvrir {source['source']} à la page {source['page']}"):
+                ouvrir_document(source["source"], source["page"])
+
+
 # ---------------------------------------------------------------------------
 # Barre latérale : base patients et base documentaire
 # ---------------------------------------------------------------------------
 
-patients = charger_patients()
-
 with st.sidebar:
     titre_section("Base patients")
+    repertoire = st.text_input(
+        "Dossier d'inférence", value=DOSSIER_PATIENTS, key="repertoire_patients",
+        help="Dossier contenant un fichier JSON par patient (chemin relatif à la racine du projet ou absolu).",
+    ).strip()
+    if os.path.isdir(repertoire):
+        try:
+            patients = charger_patients(repertoire)
+        except Exception as erreur:
+            patients = []
+            st.error(f"Lecture des dossiers patients impossible : {erreur}")
+    else:
+        patients = []
+        st.error(f"Le dossier « {repertoire} » n'existe pas.")
     st.metric("Dossiers patients", len(patients))
 
     titre_section("Base documentaire")
@@ -255,20 +414,32 @@ with st.sidebar:
 # Panneau principal
 # ---------------------------------------------------------------------------
 
+LIBELLES_STATUT = {
+    "intervention": "Intervention proposée",
+    "verification": "Vérification proposée",
+    "surveillance": "Surveillance proposée",
+    "valide": "Validé",
+    "erreur": "Erreur d'analyse",
+    "non_analyse": "Non analysé",
+}
+
+
 def statut(resultat):
     """Renvoie (code, libellé) du statut d'un dossier."""
     if resultat is None:
-        return "non_analyse", "Non analysé"
-    if "erreur" in resultat:
-        return "erreur", "Erreur d'analyse"
-    if resultat["decision"] == DECISION_VALIDE:
-        return "valide", "Validé"
-    return "intervention", "Intervention proposée"
+        code = "non_analyse"
+    elif "erreur" in resultat:
+        code = "erreur"
+    else:
+        code = categorie(resultat["decision"])
+    return code, LIBELLES_STATUT[code]
 
 
 resultats = charger_resultats()
 statuts = {d["patient"]["id"]: statut(resultats.get(d["patient"]["id"]))[0] for d in patients}
-compte = {code: list(statuts.values()).count(code) for code in ("non_analyse", "erreur", "valide", "intervention")}
+compte = {code: list(statuts.values()).count(code) for code in LIBELLES_STATUT}
+# Dossiers à analyser par « Lancer l'analyse » : jamais analysés ou en échec
+a_analyser = [d for d in patients if statuts[d["patient"]["id"]] in ("non_analyse", "erreur")]
 
 st.markdown(
     f"""
@@ -279,6 +450,7 @@ st.markdown(
     <span class="logiciel">{html.escape(NOM_LOGICIEL)}</span>
   </div>
   <div class="contexte">
+    <span>Dossier <b>{html.escape(repertoire)}</b></span>
     <span><b>{len(patients)}</b> dossiers</span>
     <span><b>{len(indexes)}</b> référentiels indexés</span>
   </div>
@@ -287,14 +459,24 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-colonne_titre, colonne_action = st.columns([3, 1], vertical_alignment="center")
+colonne_titre, colonne_action, colonne_relance = st.columns([2, 1, 1], vertical_alignment="center")
 colonne_titre.markdown(
     '<p class="titre-page">Analyse des prescriptions</p>'
     '<p class="sous-titre-page">Système expert, recommandations de référence et modèle de langage</p>',
     unsafe_allow_html=True,
 )
 lancer = colonne_action.button(
-    "Lancer l'analyse de tous les patients", type="primary", disabled=not patients, use_container_width=True
+    f"Lancer l'analyse ({len(a_analyser)} dossiers)",
+    type="primary",
+    disabled=not a_analyser,
+    use_container_width=True,
+    help="Analyse uniquement les dossiers non analysés ou en erreur",
+)
+relancer = colonne_relance.button(
+    "Relancer l'analyse de tous les patients",
+    disabled=not patients,
+    use_container_width=True,
+    help="Analyse à nouveau tous les dossiers, y compris ceux déjà analysés",
 )
 
 st.markdown(
@@ -302,7 +484,9 @@ st.markdown(
 <div class="indicateurs">
   <div class="indicateur"><div class="valeur">{len(patients)}</div><div class="nom">Dossiers</div></div>
   <div class="indicateur"><div class="valeur">{len(patients) - compte["non_analyse"]}</div><div class="nom">Analysés</div></div>
-  <div class="indicateur orange"><div class="valeur">{compte["intervention"]}</div><div class="nom">Interventions proposées</div></div>
+  <div class="indicateur orange"><div class="valeur">{compte["intervention"]}</div><div class="nom">Interventions</div></div>
+  <div class="indicateur violet"><div class="valeur">{compte["verification"]}</div><div class="nom">Vérifications</div></div>
+  <div class="indicateur bleu"><div class="valeur">{compte["surveillance"]}</div><div class="nom">Surveillances</div></div>
   <div class="indicateur vert"><div class="valeur">{compte["valide"]}</div><div class="nom">Validés</div></div>
   <div class="indicateur rouge"><div class="valeur">{compte["erreur"]}</div><div class="nom">Erreurs</div></div>
   <div class="indicateur"><div class="valeur">{compte["non_analyse"]}</div><div class="nom">Non analysés</div></div>
@@ -311,11 +495,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-if lancer:
+if lancer or relancer:
+    selection = patients if relancer else a_analyser
     barre = st.progress(0.0, text="Analyse en cours...")
-    for numero, dossier in enumerate(patients, start=1):
+    for numero, dossier in enumerate(selection, start=1):
         identifiant = dossier["patient"]["id"]
-        barre.progress((numero - 1) / len(patients), text=f"Analyse du dossier {identifiant} ({numero}/{len(patients)})")
+        barre.progress((numero - 1) / len(selection), text=f"Analyse du dossier {identifiant} ({numero}/{len(selection)})")
         resultats[identifiant] = analyser(dossier)
         sauver_resultats(resultats)  # sauvegarde au fil de l'eau
     barre.empty()
@@ -328,7 +513,29 @@ onglet_resultats, onglet_regles, onglet_bio = st.tabs(
 
 # --- Onglet résultats -------------------------------------------------------
 
-def afficher_patient(dossier, resultat):
+def profil_patient(patient):
+    """Résumé lisible des caractéristiques du patient (les champs non renseignés sont omis)."""
+    morceaux = []
+    if patient.get("age") is not None:
+        morceaux.append(f"{patient['age']} ans")
+    for cle, unite in (("poids_kg", "kg"), ("taille_cm", "cm"), ("imc_kg_m2", "kg/m² (IMC)"), ("surface_corporelle_m2", "m² (SC)")):
+        if patient.get(cle) is not None:
+            morceaux.append(f"{patient[cle]} {unite}")
+    return " · ".join(morceaux) or "Âge, poids et taille non renseignés"
+
+
+def interpretation(nom, valeur, normes):
+    norme = normes.get(nom)
+    if norme is None or not isinstance(valeur, (int, float)):
+        return ""
+    if valeur < norme["min"]:
+        return "Basse"
+    if valeur > norme["max"]:
+        return "Élevée"
+    return "Normale"
+
+
+def afficher_patient(dossier, resultat, normes):
     patient = dossier["patient"]
     identifiant = patient["id"]
 
@@ -336,18 +543,38 @@ def afficher_patient(dossier, resultat):
 
     with colonne_patient:
         libelle("Profil patient")
-        st.markdown(
-            f'<div class="profil">{patient.get("age", "?")} ans · {patient.get("sexe", "?")} · '
-            f'{patient.get("poids_kg", "?")} kg · {patient.get("taille_cm", "?")} cm</div>',
-            unsafe_allow_html=True,
-        )
+        st.markdown(f'<div class="profil">{html.escape(profil_patient(patient))}</div>', unsafe_allow_html=True)
+        if patient.get("jour_reference"):
+            st.caption(f"Jour de référence : {patient['jour_reference']}")
         biologie = patient.get("biologie", {})
         if biologie:
-            libelle("Biologie")
-            st.markdown(" · ".join(f"`{cle}` {valeur}" for cle, valeur in biologie.items()))
-        libelle("Prescription")
-        # Tout en texte : la colonne dosage mélange nombres et chaînes ("200/6")
-        tableau = pd.DataFrame(dossier["traitements"]).fillna("").astype(str)
+            libelle(f"Biologie ({len(biologie)} paramètres)")
+            tableau_biologie = pd.DataFrame(
+                [
+                    {
+                        "Paramètre": nom,
+                        "Valeur": str(mesure.get("valeur", "")),
+                        "Unité": mesure.get("unite") or "",
+                        "Interprétation": interpretation(nom, mesure.get("valeur"), normes),
+                        "Date": mesure.get("date_heure_examen") or "",
+                    }
+                    for nom, mesure in biologie.items()
+                ]
+            ).sort_values("Interprétation", key=lambda c: c.map({"Basse": 0, "Élevée": 0, "Normale": 1, "": 2}))
+            st.dataframe(tableau_biologie, hide_index=True, use_container_width=True, height=250)
+        libelle(f"Prescription ({len(dossier['traitements'])} lignes)")
+        tableau = pd.DataFrame(
+            [
+                {
+                    "Médicament": t.get("libelle_medicament", ""),
+                    "Posologie": t.get("posologie", ""),
+                    "Début": t.get("date_debut") or "",
+                    "Fin": t.get("date_fin") or "",
+                }
+                for t in dossier["traitements"]
+            ],
+            columns=["Médicament", "Posologie", "Début", "Fin"],
+        )
         st.dataframe(tableau, hide_index=True, use_container_width=True)
         if st.button("Relancer l'analyse de ce patient", key=f"analyser-{identifiant}"):
             with st.spinner(f"Analyse du dossier {identifiant} en cours..."):
@@ -368,23 +595,21 @@ def afficher_patient(dossier, resultat):
             st.code(resultat["erreur"], language=None)
             return
 
-        classe = "valide" if resultat["decision"] == DECISION_VALIDE else "intervention"
+        classe = categorie(resultat["decision"])
         st.markdown(
             f'<div class="decision {classe}">{html.escape(resultat["decision"])}</div>', unsafe_allow_html=True
         )
-        st.write(resultat["justification"])
-
-        if resultat.get("alertes"):
-            libelle("Alertes du système expert")
-            for alerte in resultat["alertes"]:
-                st.markdown(f'<div class="alerte">{html.escape(alerte)}</div>', unsafe_allow_html=True)
-
-        libelle("Sources")
-        if resultat.get("sources"):
-            for numero, source in enumerate(resultat["sources"]):
-                bouton_source(source, cle=f"source-{identifiant}-{numero}")
-        else:
-            st.caption("Aucune source citée : avis fondé sur les connaissances générales du modèle.")
+        if "points" in resultat:
+            for numero, point in enumerate(resultat["points"]):
+                afficher_point(point, cle=f"point-{identifiant}-{numero}")
+        else:  # analyse faite avant le passage aux points : justification en un paragraphe
+            st.write(resultat["justification"])
+            for numero, source in enumerate(resultat.get("sources", [])):
+                if lire_source(source):
+                    bouton_source(source, cle=f"source-{identifiant}-{numero}")
+            with st.container(horizontal=True, gap="small"):
+                for numero, alerte in enumerate(resultat.get("alertes", [])):
+                    lien_alerte(alerte, cle=f"alerte-{identifiant}-{numero}")
         st.markdown(f'<div class="discret">Analyse réalisée le {resultat["date"]}</div>', unsafe_allow_html=True)
 
 
@@ -392,28 +617,44 @@ with onglet_resultats:
     filtres = {
         "Tous": None,
         f"Interventions ({compte['intervention']})": {"intervention"},
+        f"Vérifications ({compte['verification']})": {"verification"},
+        f"Surveillances ({compte['surveillance']})": {"surveillance"},
         f"Validés ({compte['valide']})": {"valide"},
         f"Non analysés / erreurs ({compte['non_analyse'] + compte['erreur']})": {"non_analyse", "erreur"},
     }
     colonne_filtre, colonne_recherche = st.columns([3, 1], vertical_alignment="bottom")
     filtre = colonne_filtre.radio("Filtrer", list(filtres), horizontal=True, label_visibility="collapsed")
     recherche = colonne_recherche.text_input(
-        "Rechercher", placeholder="Identifiant ou DCI", label_visibility="collapsed"
+        "Rechercher", placeholder="Identifiant ou médicament", label_visibility="collapsed"
     ).strip().lower()
 
     # Les dossiers nécessitant une action apparaissent en premier
-    ordre = {"intervention": 0, "erreur": 1, "non_analyse": 2, "valide": 3}
-    couleurs = {"intervention": "orange", "erreur": "red", "non_analyse": "gray", "valide": "green"}
+    ordre = {"intervention": 0, "verification": 1, "surveillance": 2, "erreur": 3, "non_analyse": 4, "valide": 5}
+    couleurs = {
+        "intervention": "orange", "verification": "violet", "surveillance": "blue",
+        "erreur": "red", "non_analyse": "gray", "valide": "green",
+    }
     affiches = [
         d for d in sorted(patients, key=lambda d: ordre[statuts[d["patient"]["id"]]])
         if (filtres[filtre] is None or statuts[d["patient"]["id"]] in filtres[filtre])
         and (
             not recherche
             or recherche in d["patient"]["id"].lower()
-            or any(recherche in str(t.get("dci", "")).lower() for t in d["traitements"])
+            or any(recherche in str(t.get("libelle_medicament", "")).lower() for t in d["traitements"])
         )
     ]
 
+    # Affichage page par page : afficher des milliers de dossiers d'un coup rendrait l'interface très lente
+    TAILLE_PAGE = 20
+    nb_pages = max(1, math.ceil(len(affiches) / TAILLE_PAGE))
+    if nb_pages > 1:
+        colonne_page, colonne_info = st.columns([1, 4], vertical_alignment="bottom")
+        page = colonne_page.number_input(f"Page (sur {nb_pages})", min_value=1, max_value=nb_pages, value=1)
+        debut = (page - 1) * TAILLE_PAGE
+        colonne_info.caption(f"Dossiers {debut + 1} à {min(debut + TAILLE_PAGE, len(affiches))} sur {len(affiches)}")
+        affiches = affiches[debut:debut + TAILLE_PAGE]
+
+    normes = charger_bio()
     if not affiches:
         st.caption("Aucun dossier ne correspond à la sélection.")
     for dossier in affiches:
@@ -421,117 +662,324 @@ with onglet_resultats:
         identifiant = patient["id"]
         code, etat = statut(resultats.get(identifiant))
         nb_alertes = len(resultats.get(identifiant, {}).get("alertes", []))
-        resume = (
-            f"{patient.get('age', '?')} ans · {patient.get('sexe', '?')} · "
-            f"{len(dossier['traitements'])} lignes de traitement"
-        )
+        age = f"{patient['age']} ans" if patient.get("age") is not None else "âge non renseigné"
+        resume = f"{age} · {len(dossier['traitements'])} lignes de traitement"
         if nb_alertes:
             resume += f" · {nb_alertes} alerte(s)"
         with st.expander(f"**{identifiant}**  ·  :{couleurs[code]}[{etat}]  ·  :gray[{resume}]"):
-            afficher_patient(dossier, resultats.get(identifiant))
+            afficher_patient(dossier, resultats.get(identifiant), normes)
 
 
 # --- Onglet règles ----------------------------------------------------------
 
-def lignes(texte):
-    return [ligne.strip() for ligne in texte.replace(",", "\n").splitlines() if ligne.strip()]
+def lignes(texte, virgules=False):
+    """Une valeur par ligne (et par virgule si virgules=True : les noms de biologie peuvent contenir des virgules)."""
+    if virgules:
+        texte = texte.replace(",", "\n")
+    return [ligne.strip() for ligne in texte.splitlines() if ligne.strip()]
 
+
+SYMBOLES = {">=": "≥", "<=": "≤", "!=": "≠", "==": "=", ">": ">", "<": "<"}
+DONNEES_PATIENT = {"age": ("âge", "ans"), "poids_kg": ("poids", "kg"), "taille_cm": ("taille", "cm"),
+                   "imc_kg_m2": ("IMC", "kg/m²"), "surface_corporelle_m2": ("surface corporelle", "m²")}
+REGLES_PAR_PAGE = 25
+
+
+def nombre_lisible(valeur):
+    return f"{float(valeur):g}".replace(".", ",")
+
+
+def de(nom):
+    """« de daptomycine », « d'apixaban »."""
+    return f"d'{nom}" if nom[:1].lower() in "aeiouyhéè" else f"de {nom}"
+
+
+def phrase_condition(condition, unites):
+    """« dose_kg_daptomycine < 10 » -> « dose de daptomycine < 10 mg/kg/jour »."""
+    for symbole in OPERATEURS:  # même ordre de recherche que expert_system.condition_vraie
+        if symbole in condition:
+            nom, seuil = (morceau.strip() for morceau in condition.split(symbole, 1))
+            break
+    else:
+        return condition
+    if nom in DONNEES_PATIENT:
+        donnee, unite = DONNEES_PATIENT[nom]
+    elif nom.startswith("dose_jour_"):
+        donnee, unite = f"dose {de(nom[10:])}", "mg/jour"
+    elif nom.startswith("dose_kg_"):
+        donnee, unite = f"dose {de(nom[8:])}", "mg/kg/jour"
+    elif nom.startswith("dose_"):
+        donnee, unite = f"dosage {de(nom[5:])}", ""
+    else:
+        donnee, unite = nom, unites.get(nom, "")
+    try:
+        seuil = nombre_lisible(seuil)
+    except ValueError:
+        pass
+    return f"{donnee} {SYMBOLES[symbole]} {seuil} {unite}".strip()
+
+
+def carte_regle_personnalisee(regle, unites):
+    """Carte HTML : message d'alerte puis critères de déclenchement en langage courant."""
+    medicaments = regle.get("medicaments", [])
+    noms = [m if isinstance(m, str) else " ou ".join(m) for m in medicaments]
+    titre = " + ".join(n[:1].upper() + n[1:] for n in noms) or "Tous les patients"
+    origine = "Rédigée par l'assistant" if regle.get("demande") else "Règle personnalisée"
+
+    criteres = []
+    if noms:
+        criteres.append(" et ".join(noms) + (" prescrits" if len(noms) > 1 else " prescrit")
+                        + (" (sur des lignes différentes)" if len(noms) > 1 else ""))
+    criteres += [phrase_condition(c, unites) for c in regle.get("conditions", [])]
+    if regle.get("parmi"):
+        choix = "".join(f"<li>{html.escape(phrase_condition(c, unites))}</li>" for c in regle["parmi"])
+        criteres_parmi = f"au moins {regle.get('minimum', 0)} critère(s) parmi :<ul>{choix}</ul>"
+    else:
+        criteres_parmi = ""
+    liste = "".join(f"<li>{html.escape(c)}</li>" for c in criteres)
+    if criteres_parmi:
+        liste += f"<li>{criteres_parmi}</li>"
+
+    contenu = (
+        f'<div class="entete">{badge(origine, "perso")}<span class="titre">{html.escape(titre)}</span></div>'
+        f'<div class="bloc"><span class="etiquette">Alerte :</span> {html.escape(regle.get("alerte", ""))}</div>'
+        f'<div class="bloc"><span class="etiquette">Se déclenche si :</span><ul>{liste}</ul></div>'
+    )
+    if regle.get("demande"):
+        contenu += f'<div class="pied">Demande du pharmacien : « {html.escape(regle["demande"])} »</div>'
+    return f'<div class="regle perso">{contenu}</div>'
+
+
+def carte_regle_generique(regle):
+    """Carte HTML : niveau, couple de médicaments, risque, conduite à tenir et DCI recherchées."""
+    codes = codes_niveau(regle)
+    if codes:
+        badges = "".join(badge(NIVEAUX[c], c.lower()) for c in codes)
+        classe = codes[0].lower()  # le plus grave donne la couleur de la carte
+    else:
+        badges, classe = badge("Pharmacocinétique", "pk"), ""
+    titre = regle.get("titre") or " + ".join(m if isinstance(m, str) else "classe" for m in regle.get("medicaments", []))
+
+    if "risque" in regle:
+        contenu = f'<div class="bloc"><span class="etiquette">Risque :</span> {mettre_en_forme(regle["risque"])}</div>'
+        if regle.get("conduite"):
+            contenu += (f'<div class="bloc"><span class="etiquette">Conduite à tenir :</span><br>'
+                        f'{mettre_en_forme(regle["conduite"])}</div>')
+    else:
+        contenu = f'<div class="bloc">{mettre_en_forme(regle["alerte"])}</div>'
+
+    # DCI cherchées dans les libellés, utile surtout pour les classes du Thésaurus
+    parties = titre.split(" + ")
+    medicaments = regle.get("medicaments", [])
+    if any(not isinstance(m, str) for m in medicaments):
+        lignes_dci = ""
+        for numero, medicament in enumerate(medicaments):
+            nom = parties[numero] if len(parties) == len(medicaments) else f"Médicament {numero + 1}"
+            dci = [medicament] if isinstance(medicament, str) else medicament
+            puces = "".join(f'<span class="puce">{html.escape(d)}</span>' for d in dci)
+            lignes_dci += f'<div class="bloc"><span class="etiquette">{html.escape(nom)} :</span> {puces}</div>'
+        contenu += f"<details><summary>DCI recherchées dans la prescription</summary>{lignes_dci}</details>"
+
+    return (f'<div class="regle {classe}"><div class="entete">{badges}'
+            f'<span class="titre">{html.escape(titre)}</span></div>{contenu}'
+            f'<div class="pied">{html.escape(regle.get("source", ""))}</div></div>')
+
+
+# Paramètres biologiques des dossiers chargés, avec leur unité : le LLM doit utiliser leur nom exact
+parametres_biologie = {}
+for d in patients:
+    for cle, mesure in d["patient"].get("biologie", {}).items():
+        parametres_biologie.setdefault(cle, mesure.get("unite") or "")
 
 with onglet_regles:
-    regles = charger_regles()
+    regles_personnalisees = charger_regles_personnalisees()
+    regles_generiques = charger_regles_generiques()
     st.caption(
-        "Une règle se déclenche lorsque l'ensemble de ses critères est vérifié. Une condition s'écrit "
-        "`donnee operateur valeur` (opérateurs `>=` `<=` `>` `<` `==` `!=`). Données disponibles : "
-        "caractéristiques du patient (`age`, `poids_kg`...), biologie (`creatinine_serique`...) et dose "
-        "de chaque médicament prescrit (`dose_apixaban`...)."
+        "Une règle se déclenche lorsque l'ensemble de ses critères est vérifié. Les **règles génériques** sont issues "
+        "du Thésaurus ANSM des interactions médicamenteuses et de DDI-Predictor ; les **règles personnalisées** sont "
+        "propres à l'établissement et peuvent être rédigées par l'assistant à partir d'une demande en langage naturel."
     )
+    onglet_perso, onglet_generiques, onglet_test = st.tabs([
+        f"Règles personnalisées ({len(regles_personnalisees)})",
+        f"Règles génériques ({len(regles_generiques)})",
+        "Vérification sur un dossier",
+    ])
 
-    libelle(f"Règles actives ({len(regles)})")
-    for numero, regle in enumerate(regles):
-        with st.container(border=True):
-            colonne_texte, colonne_supprimer = st.columns([6, 1], vertical_alignment="center")
-            colonne_texte.markdown(f"**{numero + 1}.** {regle.get('alerte', '')}")
-            details = []
-            if regle.get("medicaments"):
-                details.append("Médicaments : " + ", ".join(f"`{m}`" for m in regle["medicaments"]))
-            if regle.get("conditions"):
-                details.append("Conditions requises : " + ", ".join(f"`{c}`" for c in regle["conditions"]))
-            if regle.get("parmi"):
-                details.append(
-                    f"Au moins {regle.get('minimum', 0)} critère(s) parmi : "
-                    + ", ".join(f"`{c}`" for c in regle["parmi"])
-                )
-            if details:
-                colonne_texte.caption("  \n".join(details))
+    with onglet_perso:
+        libelle("Ajouter une règle avec l'assistant")
+        with st.form("demande_regle", border=False):
+            demande = st.text_area(
+                "Demande", label_visibility="collapsed", height=90,
+                placeholder="Ex. : Alerter si la metformine est prescrite avec un DFG inférieur à 30 mL/min : "
+                            "contre-indication, arrêter la metformine.",
+            )
+            proposer = st.form_submit_button("Proposer une règle", type="primary")
+        if proposer and demande.strip():
+            with st.spinner("Rédaction de la règle par le modèle..."):
+                try:
+                    st.session_state["regle_proposee"] = proposer_regle(demande.strip(), parametres_biologie)
+                except Exception as erreur:
+                    st.session_state.pop("regle_proposee", None)
+                    st.error(f"Le modèle n'a pas pu rédiger de règle : {erreur}")
+
+        proposee = st.session_state.get("regle_proposee")
+        if proposee:
+            libelle("Règle proposée : à vérifier avant enregistrement")
+            st.markdown(carte_regle_personnalisee(proposee, parametres_biologie), unsafe_allow_html=True)
+            for nom in variables_inconnues(proposee, parametres_biologie):
+                st.warning(f"La donnée « {nom} » n'existe pas dans les dossiers : cette condition sera toujours fausse.")
+            declenchements = sum(1 for d in patients if appliquer_regles(d, [proposee]))
+            st.caption(f"Se déclencherait pour {declenchements} dossier(s) sur {len(patients)} du dossier « {repertoire} ».")
+            with st.expander("JSON de la règle"):
+                st.json(proposee)
+            colonne_enregistrer, colonne_annuler, _ = st.columns([1, 1, 3])
+            if colonne_enregistrer.button("Enregistrer la règle", type="primary", use_container_width=True):
+                erreurs = ajouter_regle_personnalisee(proposee)
+                if erreurs:
+                    for erreur in erreurs:
+                        st.error(erreur)
+                else:
+                    del st.session_state["regle_proposee"]
+                    st.toast("Règle personnalisée enregistrée.")
+                    st.rerun()
+            if colonne_annuler.button("Annuler", use_container_width=True):
+                del st.session_state["regle_proposee"]
+                st.rerun()
+
+        libelle(f"Règles personnalisées ({len(regles_personnalisees)})")
+        if not regles_personnalisees:
+            st.caption("Aucune règle personnalisée.")
+        for numero, regle in enumerate(regles_personnalisees):
+            colonne_texte, colonne_supprimer = st.columns([7, 1])
+            colonne_texte.markdown(carte_regle_personnalisee(regle, parametres_biologie), unsafe_allow_html=True)
             if colonne_supprimer.button("Supprimer", key=f"supprimer-regle-{numero}", use_container_width=True):
-                sauver_regles(regles[:numero] + regles[numero + 1:])
+                sauver_regles_personnalisees(regles_personnalisees[:numero] + regles_personnalisees[numero + 1:])
                 st.rerun()
 
-    libelle("Nouvelle règle")
-    with st.form("ajout_regle", clear_on_submit=False):
-        alerte = st.text_area(
-            "Message d'alerte (obligatoire)",
-            placeholder="Ex. : Metformine contre-indiquée en cas d'insuffisance rénale sévère",
-        )
-        colonne_a, colonne_b = st.columns(2)
-        medicaments = colonne_a.text_area(
-            "Médicaments concernés (DCI, un par ligne)", placeholder="metformine",
-            help="La règle ne s'applique que si tous ces médicaments sont prescrits.",
-        )
-        conditions = colonne_b.text_area(
-            "Conditions requises (une par ligne)", placeholder="creatinine_serique >= 200"
-        )
-        parmi = colonne_a.text_area("Critères au choix (un par ligne)", placeholder="age >= 80")
-        minimum = colonne_b.number_input("Nombre minimal de critères au choix vérifiés", min_value=0, value=0)
-        ajouter = st.form_submit_button("Enregistrer la règle", type="primary")
+        with st.expander("Saisie manuelle d'une règle"):
+            st.caption(
+                "Une condition s'écrit `donnee operateur valeur` (opérateurs `>=` `<=` `>` `<` `==` `!=`). Données "
+                "disponibles : caractéristiques du patient (`age`, `poids_kg`, `taille_cm`, `imc_kg_m2`, "
+                "`surface_corporelle_m2`), biologie avec le nom exact du paramètre (`Créatinine (sang)`, "
+                "`DFG estimé (CKD-EPI)`...) et, pour les médicaments cités dans la règle, dosage de la spécialité "
+                "(`dose_apixaban`), dose en mg par jour (`dose_jour_daptomycine`) et en mg/kg par jour "
+                "(`dose_kg_daptomycine`). Un médicament est considéré comme prescrit si son nom figure dans le "
+                "libellé d'une ligne de prescription (sans tenir compte des majuscules et des accents)."
+            )
+            with st.form("ajout_regle", clear_on_submit=False, border=False):
+                alerte = st.text_area(
+                    "Message d'alerte (obligatoire)",
+                    placeholder="Ex. : Metformine contre-indiquée en cas d'insuffisance rénale sévère",
+                )
+                colonne_a, colonne_b = st.columns(2)
+                medicaments = colonne_a.text_area(
+                    "Médicaments concernés (DCI, un par ligne)", placeholder="apixaban",
+                    help="La règle ne s'applique que si tous ces médicaments sont prescrits.",
+                )
+                conditions = colonne_b.text_area(
+                    "Conditions requises (une par ligne)", placeholder="DFG estimé (CKD-EPI) < 30"
+                )
+                parmi = colonne_a.text_area("Critères au choix (un par ligne)", placeholder="age >= 80")
+                minimum = colonne_b.number_input("Nombre minimal de critères au choix vérifiés", min_value=0, value=0)
+                ajouter = st.form_submit_button("Enregistrer la règle", type="primary")
 
-    if ajouter:
-        nouvelle = {"alerte": alerte.strip()}
-        if lignes(medicaments):
-            nouvelle["medicaments"] = lignes(medicaments)
-        if lignes(conditions):
-            nouvelle["conditions"] = lignes(conditions)
-        if lignes(parmi):
-            nouvelle["parmi"] = lignes(parmi)
-            nouvelle["minimum"] = int(minimum)
-        erreurs = sauver_regles(regles + [nouvelle])
-        if erreurs:
-            for erreur in erreurs:
-                st.error(erreur)
+            if ajouter:
+                nouvelle = {"alerte": alerte.strip()}
+                if lignes(medicaments, virgules=True):
+                    nouvelle["medicaments"] = lignes(medicaments, virgules=True)
+                if lignes(conditions):
+                    nouvelle["conditions"] = lignes(conditions)
+                if lignes(parmi):
+                    nouvelle["parmi"] = lignes(parmi)
+                    nouvelle["minimum"] = int(minimum)
+                erreurs = ajouter_regle_personnalisee(nouvelle)
+                if erreurs:
+                    for erreur in erreurs:
+                        st.error(erreur)
+                else:
+                    st.success("Règle enregistrée.")
+                    st.rerun()
+
+        with st.expander("Édition avancée du fichier regles_personnalisees.json"):
+            texte = st.text_area(
+                "Contenu JSON", json.dumps(regles_personnalisees, ensure_ascii=False, indent=2), height=350,
+                key="json_regles",
+            )
+            if st.button("Enregistrer les modifications"):
+                try:
+                    erreurs = sauver_regles_personnalisees(json.loads(texte))
+                except json.JSONDecodeError as erreur:
+                    erreurs = [f"JSON invalide : {erreur}"]
+                if erreurs:
+                    for erreur in erreurs:
+                        st.error(erreur)
+                else:
+                    st.success("Règles enregistrées.")
+                    st.rerun()
+
+    with onglet_generiques:
+        st.caption(
+            "Règles extraites des documents de référence (fichier regles_generiques.json), en lecture seule. "
+            "Une classe du Thésaurus (ex : anticoagulants oraux) est recherchée via la liste de ses DCI."
+        )
+        colonne_recherche_regle, colonne_niveau, colonne_source = st.columns([3, 3, 2], vertical_alignment="bottom")
+        recherche_regle = normaliser(colonne_recherche_regle.text_input(
+            "Rechercher", placeholder="DCI, classe ou mot-clé (ex : apixaban, hyperkaliémie)", key="recherche_regle"
+        ).strip())
+        niveaux_choisis = colonne_niveau.multiselect(
+            "Niveau", list(NIVEAUX.values()) + ["Pharmacocinétique"], placeholder="Tous les niveaux"
+        )
+        source_choisie = colonne_source.selectbox("Source", ["Toutes", "Thésaurus ANSM", "DDI-Predictor"])
+
+        def niveau_retenu(regle):
+            if not niveaux_choisis:
+                return True
+            libelles = [NIVEAUX[c] for c in codes_niveau(regle)] or ["Pharmacocinétique"]
+            return any(l in niveaux_choisis for l in libelles)
+
+        filtrees = [
+            r for r in regles_generiques
+            if (source_choisie == "Toutes" or r.get("source", "").startswith(source_choisie))
+            and niveau_retenu(r)
+            and (
+                not recherche_regle
+                or recherche_regle in normaliser(r["alerte"])
+                or recherche_regle in json.dumps(r.get("medicaments", []), ensure_ascii=False)
+            )
+        ]
+        nb_pages_regles = max(1, math.ceil(len(filtrees) / REGLES_PAR_PAGE))
+        colonne_page_regle, colonne_info_regle = st.columns([1, 4], vertical_alignment="bottom")
+        page_regle = colonne_page_regle.number_input(
+            f"Page (sur {nb_pages_regles})", min_value=1, max_value=nb_pages_regles, value=1, key="page_regles"
+        )
+        debut_regle = (page_regle - 1) * REGLES_PAR_PAGE
+        if filtrees:
+            colonne_info_regle.caption(
+                f"Règles {debut_regle + 1} à {min(debut_regle + REGLES_PAR_PAGE, len(filtrees))} sur {len(filtrees)}"
+            )
         else:
-            st.success("Règle enregistrée.")
-            st.rerun()
-
-    with st.expander("Édition avancée du fichier regles_expert.json"):
-        texte = st.text_area(
-            "Contenu JSON", json.dumps(regles, ensure_ascii=False, indent=2), height=350, key="json_regles"
+            colonne_info_regle.caption("Aucune règle ne correspond à la recherche.")
+        st.markdown(
+            "".join(carte_regle_generique(r) for r in filtrees[debut_regle:debut_regle + REGLES_PAR_PAGE]),
+            unsafe_allow_html=True,
         )
-        if st.button("Enregistrer les modifications"):
-            try:
-                erreurs = sauver_regles(json.loads(texte))
-            except json.JSONDecodeError as erreur:
-                erreurs = [f"JSON invalide : {erreur}"]
-            if erreurs:
-                for erreur in erreurs:
-                    st.error(erreur)
-            else:
-                st.success("Règles enregistrées.")
-                st.rerun()
 
-    libelle("Vérification des règles sur un dossier")
-    if patients:
-        choix = st.selectbox("Patient", [d["patient"]["id"] for d in patients], key="test_regles")
-        dossier = next(d for d in patients if d["patient"]["id"] == choix)
-        try:
-            alertes = verifier_regles(dossier)
-        except Exception as erreur:
-            alertes = None
-            st.error(f"Erreur dans les règles : {erreur}")
-        if alertes:
-            for alerte in alertes:
-                st.markdown(f'<div class="alerte">{html.escape(alerte)}</div>', unsafe_allow_html=True)
-        elif alertes is not None:
-            st.success("Aucune alerte pour ce dossier.")
+    with onglet_test:
+        if patients:
+            choix = st.selectbox("Patient", [d["patient"]["id"] for d in patients], key="test_regles")
+            dossier = next(d for d in patients if d["patient"]["id"] == choix)
+            try:
+                alertes = verifier_regles(dossier)
+            except Exception as erreur:
+                alertes = None
+                st.error(f"Erreur dans les règles : {erreur}")
+            if alertes:
+                for alerte in alertes:
+                    afficher_alerte(alerte)
+            elif alertes is not None:
+                st.success("Aucune alerte pour ce dossier.")
+        else:
+            st.caption("Aucun dossier patient chargé.")
 
 
 # --- Onglet biologie --------------------------------------------------------
@@ -541,9 +989,17 @@ with onglet_bio:
         "Intervalles de référence utilisés pour signaler une biologie anormale lors de la recherche documentaire. "
         "La clé doit correspondre exactement au nom du paramètre dans la biologie des patients."
     )
-    cles_patients = sorted({cle for d in patients for cle in d["patient"].get("biologie", {})})
-    if cles_patients:
-        st.caption("Paramètres présents dans la base patients : " + ", ".join(f"`{c}`" for c in cles_patients))
+    parametres = {}
+    for d in patients:
+        for cle, mesure in d["patient"].get("biologie", {}).items():
+            parametres.setdefault(cle, {"Clé": cle, "Unité": mesure.get("unite") or "", "Nombre de patients": 0})
+            parametres[cle]["Nombre de patients"] += 1
+    if parametres:
+        with st.expander(f"Paramètres présents dans le dossier « {repertoire} » ({len(parametres)})"):
+            st.dataframe(
+                pd.DataFrame(parametres.values()).sort_values("Nombre de patients", ascending=False),
+                hide_index=True, use_container_width=True,
+            )
 
     tableau_bio = pd.DataFrame(
         [{"cle": cle, **norme} for cle, norme in charger_bio().items()],

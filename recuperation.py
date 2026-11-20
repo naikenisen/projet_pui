@@ -8,6 +8,7 @@ import chromadb
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from expert_system import charger_patient
 from indexation import CHROMA_DIR, COLLECTION_NAME, EMBEDDING_MODEL
 
 load_dotenv()
@@ -25,34 +26,43 @@ def bio_anormales(patient):
         normes = json.load(fichier)
 
     anomalies = []
-    for nom, valeur in patient["biologie"].items():
-        if nom not in normes:
+    for nom, mesure in patient["biologie"].items():
+        if nom not in normes or not isinstance(mesure.get("valeur"), (int, float)):
             continue
         norme = normes[nom]
+        valeur = mesure["valeur"]
+        unite = mesure.get("unite") or norme["unite"]
         if valeur < norme["min"]:
-            anomalies.append(f"{norme['libelle']} basse ({valeur} {norme['unite']})")
+            anomalies.append(f"{norme['libelle']} basse ({valeur} {unite})")
         elif valeur > norme["max"]:
-            anomalies.append(f"{norme['libelle']} élevée ({valeur} {norme['unite']})")
+            anomalies.append(f"{norme['libelle']} élevée ({valeur} {unite})")
     return anomalies
 
 
 def construire_requetes(dossier):
     patient = dossier["patient"]
-    terrain = f"patient de {patient['age']} ans, {patient['poids_kg']} kg"
-    anomalies = bio_anormales(patient)
-    if anomalies:
-        terrain += ", " + ", ".join(anomalies)
+    terrain = []
+    if patient.get("age") is not None:
+        terrain.append(f"patient de {patient['age']} ans")
+    if patient.get("poids_kg") is not None:
+        terrain.append(f"{patient['poids_kg']} kg")
+    terrain += bio_anormales(patient)
 
     requetes = []
     for traitement in dossier["traitements"]:
-        requetes.append(
-            f"{traitement['dci']} {traitement['dosage']} {traitement['unite']}, {traitement['posologie']}, {terrain}"
-        )
+        requete = f"{traitement['libelle_medicament']}, {traitement['posologie']}"
+        if terrain:
+            requete += ", " + ", ".join(terrain)
+        if requete not in requetes:  # une même ligne peut être prescrite plusieurs fois
+            requetes.append(requete)
     return requetes
 
 
 def recuperer_contexte(dossier):
+    """Passages les plus proches de la prescription : liste de {"texte", "source", "page", "distance"}."""
     requetes = construire_requetes(dossier)
+    if not requetes:
+        return []
     reponse = client.embeddings.create(model=EMBEDDING_MODEL, input=[INSTRUCTION + r for r in requetes])
     vecteurs = [element.embedding for element in reponse.data]
 
@@ -68,26 +78,14 @@ def recuperer_contexte(dossier):
             if id_passage not in passages or distance < passages[id_passage]["distance"]:
                 passages[id_passage] = {"texte": texte, "source": meta["source"], "page": meta["page"], "distance": distance}
 
-    meilleurs = sorted(passages.values(), key=lambda p: p["distance"])[:NOMBRE_MAX_PASSAGES]
-
-    contexte = ""
-    for p in meilleurs:
-        contexte += f"[{p['source']}, page {p['page']}]\n{p['texte']}\n\n"
-    return contexte
-
-
-def charger_patient(patient_id):
-    with open("input.json", encoding="utf-8") as fichier:
-        patients = json.load(fichier)
-    for dossier in patients:
-        if dossier["patient"]["id"] == patient_id:
-            return dossier
-    raise SystemExit(f"Patient introuvable : {patient_id}")
+    return sorted(passages.values(), key=lambda p: p["distance"])[:NOMBRE_MAX_PASSAGES]
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--idpatient", required=True)
+    parser.add_argument("--dossier", required=True, help="dossier contenant les fichiers JSON des patients")
+    parser.add_argument("--idpatient", required=True, help="numéro du patient (nom du fichier JSON sans .json)")
     args = parser.parse_args()
 
-    print(recuperer_contexte(charger_patient(args.idpatient)))
+    for p in recuperer_contexte(charger_patient(args.dossier, args.idpatient)):
+        print(f"[{p['source']}, page {p['page']}]\n{p['texte']}\n")
