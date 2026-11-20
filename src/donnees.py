@@ -5,7 +5,7 @@ Les règles du système expert sont gérées par expert_system.py."""
 import json
 import os
 
-DOSSIER_PATIENTS = "dataset"  # dossier par défaut : un fichier JSON par patient
+DOSSIER_PATIENTS = "dataset_test"  # dossier par défaut : un fichier JSON par patient
 FICHIER_BIO = "bio_anormale.json"
 FICHIER_RESULTATS = "resultats.json"
 

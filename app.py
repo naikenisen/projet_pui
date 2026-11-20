@@ -201,14 +201,77 @@ html {{ font-size: 15.5px; }}
 .profil {{ color: var(--texte); font-weight: 500; }}
 .discret {{ color: var(--texte-3); font-size: 0.76rem; margin-top: 0.6rem; }}
 
-/* Avis pharmaceutique : un point par proposition, ses sources en dessous */
-.point {{
-    border-left: 2px solid var(--bordure); padding: 0.1rem 0 0.1rem 0.7rem; margin: 0.5rem 0 0.1rem 0;
-    font-size: 0.9rem; color: var(--texte);
+/* Avis pharmaceutique : chaque point est un cadre contenant la proposition puis ses sources.
+   Les cadres sont des st.container(key="cadre-<type>-...") : Streamlit leur donne la classe st-key-<key>. */
+[class*="st-key-cadre-"] {{
+    border: 1px solid var(--bordure); border-left: 3px solid var(--bordure); border-radius: 4px;
+    background: var(--surface); padding: 0.5rem 0.75rem; margin: 0.35rem 0; gap: 0.35rem;
 }}
+[class*="st-key-cadre-intervention"] {{ border: 1.5px solid var(--orange); background: var(--orange-fond); }}
+[class*="st-key-cadre-verification"] {{ border-left-color: var(--violet); }}
+[class*="st-key-cadre-surveillance"] {{ border-left-color: var(--bleu); }}
+[class*="st-key-cadre-validation"] {{ border-left-color: var(--vert); }}
+/* Streamlit donne une marge basse négative aux blocs markdown : sans correction, les sources remontent sur le texte */
+[class*="st-key-cadre-"] [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
+[class*="st-key-cadre-"] [data-testid="stMarkdownContainer"] p {{ margin: 0 !important; }}
+.point {{ font-size: 0.9rem; color: var(--texte); line-height: 1.45; }}
+p.point.intervention, .point.intervention {{ font-weight: 700 !important; }}
+/* Dossier ouvert : zones à hauteur calculée sur l'écran, chacune défile seule (la page ne défile pas).
+   Hauteur disponible ≈ 100vh moins barre d'application, onglets, barre de navigation et libellés. */
+div.st-key-zone-bio, div.st-key-zone-prescription, div.st-key-zone-avis {{
+    overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
+}}
+div.st-key-zone-bio {{ height: calc(100vh - 390px) !important; min-height: 220px; }}
+div.st-key-zone-prescription {{ height: calc((100vh - 360px) * 0.5) !important; min-height: 160px; }}
+div.st-key-zone-avis {{ height: calc((100vh - 360px) * 0.5) !important; min-height: 180px; }}
+.st-key-zone-avis > div {{ margin-bottom: 0.5rem; }}
+.tableau th {{ position: sticky; top: 0; z-index: 1; }}
+
+/* Liste des patients : colonnes alignées (grille), chaque ligne recouverte d'un bouton invisible */
+.st-key-liste-patients {{ border: 1px solid var(--bordure); border-radius: 4px; background: var(--surface);
+    overflow: hidden; margin-top: 0.4rem; }}
+.st-key-liste-patients [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
+.ligne-patient {{
+    display: grid; grid-template-columns: 9rem 13rem 6rem 10rem 6rem 1fr; align-items: center;
+    padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--bordure); font-size: 0.87rem; color: var(--texte);
+}}
+.ligne-patient.entete {{ background: var(--fond); color: var(--texte-3); font-size: 0.74rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 0.9rem; }}
+.ligne-patient .statut {{ font-weight: 600; }}
+.statut.intervention {{ color: var(--orange); }} .statut.verification {{ color: var(--violet); }}
+.statut.surveillance {{ color: var(--bleu); }} .statut.valide {{ color: var(--vert); }}
+.statut.erreur {{ color: var(--rouge); }} .statut.non_analyse {{ color: var(--texte-3); }}
+[class*="st-key-ligne-"] {{ position: relative; }}
+[class*="st-key-ligne-"]:hover {{ background: var(--bleu-clair); cursor: pointer; }}
+[class*="st-key-ouvrir-"] {{ position: absolute; inset: 0; z-index: 2; }}
+[class*="st-key-ouvrir-"] .stButton, [class*="st-key-ouvrir-"] button {{
+    width: 100%; height: 100%; opacity: 0; cursor: pointer;
+}}
+.titre-sources {{ font-size: 0.74rem; font-weight: 600; color: var(--texte-3); text-transform: uppercase;
+    letter-spacing: 0.05em; }}
+/* Liens de sources : texte bleu pastel sur fond bleu très clair */
 .stButton > button[kind="tertiary"] {{
-    min-height: 1.4rem; padding: 0 0.3rem; font-size: 0.78rem; color: var(--bleu); text-decoration: underline;
+    min-height: 1.4rem; padding: 0.05rem 0.5rem; background: #F0F6FD; border: 1px solid #C6DDF5; border-radius: 10px;
 }}
+.stButton > button[kind="tertiary"], .stButton > button[kind="tertiary"] p {{
+    color: #5B9BD5; font-size: 0.78rem; font-weight: 500;
+}}
+.stButton > button[kind="tertiary"]:hover {{ background: #E2EEFB; border-color: #9EC3EA; }}
+.stButton > button[kind="tertiary"]:hover p {{ color: #3E7FC1; }}
+.source-llm {{
+    display: inline-block; font-size: 0.78rem; color: var(--texte-2); background: #EEF1F4;
+    border: 1px solid var(--bordure); border-radius: 10px; padding: 0.05rem 0.5rem;
+}}
+
+/* Tableaux de la biologie et de la prescription : tout le texte visible, sans défilement horizontal */
+.tableau {{ width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--surface);
+    border: 1px solid var(--bordure); table-layout: auto; }}
+.tableau th {{ text-align: left; font-weight: 600; color: var(--texte-2); background: var(--fond);
+    padding: 0.3rem 0.45rem; border-bottom: 1px solid var(--bordure); }}
+.tableau td {{ padding: 0.28rem 0.45rem; border-bottom: 1px solid var(--bordure); vertical-align: top;
+    white-space: normal; overflow-wrap: anywhere; }}
+.tableau td.court {{ white-space: nowrap; }}
+.tableau tr.anormal td {{ color: var(--rouge); background: var(--rouge-fond); font-weight: 500; }}
 </style>
 """,
     unsafe_allow_html=True,
@@ -322,26 +385,45 @@ def ouvrir_alerte(alerte):
 
 
 def lien_alerte(alerte, cle):
-    """Lien « [alerte experte] » : le survol affiche l'alerte, le clic l'ouvre en détail."""
-    if st.button("[alerte experte]", key=cle, type="tertiary", help=alerte):
+    """Lien « Alerte experte » : le survol affiche l'alerte, le clic l'ouvre en détail."""
+    if st.button("Alerte experte", key=cle, type="tertiary", help=alerte):
         ouvrir_alerte(alerte)
 
 
-def afficher_point(point, cle):
-    """Une proposition de l'avis pharmaceutique, suivie de ses sources sous forme de liens.
+def type_deduit(texte, categorie_decision):
+    """Type d'un point d'une analyse antérieure aux points typés, d'après sa formulation et la décision."""
+    debut = normaliser(texte)[:60]
+    if "verifi" in debut:
+        return "verification"
+    if "surveill" in debut:
+        return "surveillance"
+    return "validation" if categorie_decision == "valide" else categorie_decision
 
-    Les alertes du système expert ne sont visibles qu'à travers ces liens (pas de liste séparée).
+
+def afficher_point(point, cle, categorie_decision=""):
+    """Une proposition de l'avis pharmaceutique dans un cadre, avec ses sources en bas du même cadre.
+
+    Intervention : texte en gras, cadre orange. Les alertes du système expert ne sont visibles qu'à travers
+    ces liens (pas de liste séparée).
     """
-    st.markdown(f'<div class="point">{html.escape(point["texte"])}</div>', unsafe_allow_html=True)
-    if not point["sources"]:
-        return
-    with st.container(horizontal=True, gap="small"):
-        for numero, source in enumerate(point["sources"]):
-            if source["type"] == "alerte":
-                lien_alerte(source["texte"], cle=f"{cle}-{numero}")
-            elif st.button(f"[{source['source']}, p. {source['page']}]", key=f"{cle}-{numero}", type="tertiary",
-                           help=f"Ouvrir {source['source']} à la page {source['page']}"):
-                ouvrir_document(source["source"], source["page"])
+    type_ = point.get("type") or type_deduit(point["texte"], categorie_decision)
+    with st.container(key=f"cadre-{type_}-{cle}"):
+        st.markdown(f'<p class="point {type_}">{html.escape(point["texte"])}</p>', unsafe_allow_html=True)
+        with st.container(horizontal=True, gap="small", vertical_alignment="center"):
+            st.markdown('<span class="titre-sources">Sources</span>', unsafe_allow_html=True)
+            if not point["sources"]:
+                st.markdown('<span class="source-llm">connaissances du modèle uniquement : ni alerte ni '
+                            'recommandation</span>', unsafe_allow_html=True)
+            afficher_liens_sources(point["sources"], cle)
+
+
+def afficher_liens_sources(sources, cle):
+    for numero, source in enumerate(sources):
+        if source["type"] == "alerte":
+            lien_alerte(source["texte"], cle=f"{cle}-{numero}")
+        elif st.button(f"{source['source']}, p. {source['page']}", key=f"{cle}-{numero}", type="tertiary",
+                       help=f"Ouvrir {source['source']} à la page {source['page']}"):
+            ouvrir_document(source["source"], source["page"])
 
 
 # ---------------------------------------------------------------------------
@@ -459,41 +541,45 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-colonne_titre, colonne_action, colonne_relance = st.columns([2, 1, 1], vertical_alignment="center")
-colonne_titre.markdown(
-    '<p class="titre-page">Analyse des prescriptions</p>'
-    '<p class="sous-titre-page">Système expert, recommandations de référence et modèle de langage</p>',
-    unsafe_allow_html=True,
-)
-lancer = colonne_action.button(
-    f"Lancer l'analyse ({len(a_analyser)} dossiers)",
-    type="primary",
-    disabled=not a_analyser,
-    use_container_width=True,
-    help="Analyse uniquement les dossiers non analysés ou en erreur",
-)
-relancer = colonne_relance.button(
-    "Relancer l'analyse de tous les patients",
-    disabled=not patients,
-    use_container_width=True,
-    help="Analyse à nouveau tous les dossiers, y compris ceux déjà analysés",
-)
-
-st.markdown(
-    f"""
-<div class="indicateurs">
-  <div class="indicateur"><div class="valeur">{len(patients)}</div><div class="nom">Dossiers</div></div>
-  <div class="indicateur"><div class="valeur">{len(patients) - compte["non_analyse"]}</div><div class="nom">Analysés</div></div>
-  <div class="indicateur orange"><div class="valeur">{compte["intervention"]}</div><div class="nom">Interventions</div></div>
-  <div class="indicateur violet"><div class="valeur">{compte["verification"]}</div><div class="nom">Vérifications</div></div>
-  <div class="indicateur bleu"><div class="valeur">{compte["surveillance"]}</div><div class="nom">Surveillances</div></div>
-  <div class="indicateur vert"><div class="valeur">{compte["valide"]}</div><div class="nom">Validés</div></div>
-  <div class="indicateur rouge"><div class="valeur">{compte["erreur"]}</div><div class="nom">Erreurs</div></div>
-  <div class="indicateur"><div class="valeur">{compte["non_analyse"]}</div><div class="nom">Non analysés</div></div>
-</div>
-""",
-    unsafe_allow_html=True,
-)
+# Dossier ouvert : en-tête et indicateurs masqués pour que le dossier tienne dans l'écran sans défilement
+vue_dossier = bool(st.session_state.get("patient_ouvert"))
+lancer = relancer = False
+if not vue_dossier:
+    colonne_titre, colonne_action, colonne_relance = st.columns([2, 1, 1], vertical_alignment="center")
+    colonne_titre.markdown(
+        '<p class="titre-page">Analyse des prescriptions</p>'
+        '<p class="sous-titre-page">Système expert, recommandations de référence et modèle de langage</p>',
+        unsafe_allow_html=True,
+    )
+    lancer = colonne_action.button(
+        f"Lancer l'analyse ({len(a_analyser)} dossiers)",
+        type="primary",
+        disabled=not a_analyser,
+        use_container_width=True,
+        help="Analyse uniquement les dossiers non analysés ou en erreur",
+    )
+    relancer = colonne_relance.button(
+        "Relancer l'analyse de tous les patients",
+        disabled=not patients,
+        use_container_width=True,
+        help="Analyse à nouveau tous les dossiers, y compris ceux déjà analysés",
+    )
+    
+    st.markdown(
+        f"""
+    <div class="indicateurs">
+      <div class="indicateur"><div class="valeur">{len(patients)}</div><div class="nom">Dossiers</div></div>
+      <div class="indicateur"><div class="valeur">{len(patients) - compte["non_analyse"]}</div><div class="nom">Analysés</div></div>
+      <div class="indicateur orange"><div class="valeur">{compte["intervention"]}</div><div class="nom">Interventions</div></div>
+      <div class="indicateur violet"><div class="valeur">{compte["verification"]}</div><div class="nom">Vérifications</div></div>
+      <div class="indicateur bleu"><div class="valeur">{compte["surveillance"]}</div><div class="nom">Surveillances</div></div>
+      <div class="indicateur vert"><div class="valeur">{compte["valide"]}</div><div class="nom">Validés</div></div>
+      <div class="indicateur rouge"><div class="valeur">{compte["erreur"]}</div><div class="nom">Erreurs</div></div>
+      <div class="indicateur"><div class="valeur">{compte["non_analyse"]}</div><div class="nom">Non analysés</div></div>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
 
 if lancer or relancer:
     selection = patients if relancer else a_analyser
@@ -535,11 +621,36 @@ def interpretation(nom, valeur, normes):
     return "Normale"
 
 
+def tableau_html(colonnes, lignes, classes_lignes=(), colonnes_courtes=()):
+    """Tableau HTML qui s'adapte à la largeur (retour à la ligne, pas de défilement).
+
+    classes_lignes : classe CSS de chaque ligne ("anormal" pour la colorer en rouge).
+    colonnes_courtes : colonnes à ne jamais couper (identifiant, valeur, dates).
+    """
+    entete = "".join(f"<th>{html.escape(c)}</th>" for c in colonnes)
+    corps = ""
+    for numero, ligne in enumerate(lignes):
+        classe = classes_lignes[numero] if numero < len(classes_lignes) else ""
+        cellules = "".join(
+            f'<td class="court">{html.escape(str(v))}</td>' if c in colonnes_courtes else f"<td>{html.escape(str(v))}</td>"
+            for c, v in zip(colonnes, ligne)
+        )
+        corps += f'<tr class="{classe}">{cellules}</tr>'
+    st.markdown(f'<table class="tableau"><thead><tr>{entete}</tr></thead><tbody>{corps}</tbody></table>',
+                unsafe_allow_html=True)
+
+
 def afficher_patient(dossier, resultat, normes):
+    """Biologie à gauche ; prescription en haut à droite, avis pharmaceutique en dessous.
+
+    Chaque zone a une hauteur calculée sur celle de l'écran (CSS .st-key-zone-*) et défile seule : la page ne
+    défile pas, le pharmacien passe d'un dossier à l'autre sans faire défiler. Aucun défilement horizontal.
+    """
     patient = dossier["patient"]
     identifiant = patient["id"]
+    traitements = dossier["traitements"]
 
-    colonne_patient, colonne_resultat = st.columns([2, 3], gap="large")
+    colonne_patient, colonne_resultat = st.columns([2, 3], gap="medium")
 
     with colonne_patient:
         libelle("Profil patient")
@@ -549,94 +660,195 @@ def afficher_patient(dossier, resultat, normes):
         biologie = patient.get("biologie", {})
         if biologie:
             libelle(f"Biologie ({len(biologie)} paramètres)")
-            tableau_biologie = pd.DataFrame(
-                [
-                    {
-                        "Paramètre": nom,
-                        "Valeur": str(mesure.get("valeur", "")),
-                        "Unité": mesure.get("unite") or "",
-                        "Interprétation": interpretation(nom, mesure.get("valeur"), normes),
-                        "Date": mesure.get("date_heure_examen") or "",
-                    }
-                    for nom, mesure in biologie.items()
-                ]
-            ).sort_values("Interprétation", key=lambda c: c.map({"Basse": 0, "Élevée": 0, "Normale": 1, "": 2}))
-            st.dataframe(tableau_biologie, hide_index=True, use_container_width=True, height=250)
-        libelle(f"Prescription ({len(dossier['traitements'])} lignes)")
-        tableau = pd.DataFrame(
-            [
-                {
-                    "Médicament": t.get("libelle_medicament", ""),
-                    "Posologie": t.get("posologie", ""),
-                    "Début": t.get("date_debut") or "",
-                    "Fin": t.get("date_fin") or "",
-                }
-                for t in dossier["traitements"]
-            ],
-            columns=["Médicament", "Posologie", "Début", "Fin"],
-        )
-        st.dataframe(tableau, hide_index=True, use_container_width=True)
-        if st.button("Relancer l'analyse de ce patient", key=f"analyser-{identifiant}"):
-            with st.spinner(f"Analyse du dossier {identifiant} en cours..."):
-                resultats[identifiant] = analyser(dossier)
-                sauver_resultats(resultats)
-            st.rerun()
+            mesures = sorted(
+                ((nom, mesure, interpretation(nom, mesure.get("valeur"), normes)) for nom, mesure in biologie.items()),
+                key=lambda m: {"Basse": 0, "Élevée": 0, "Normale": 1, "": 2}[m[2]],
+            )
+            with st.container(key="zone-bio", border=False):
+                tableau_html(
+                    ["Paramètre", "Valeur", "Interprétation", "Date"],
+                    [[nom, f"{mesure.get('valeur', '')} {mesure.get('unite') or ''}".strip(), etat,
+                      (mesure.get("date_heure_examen") or "")[:16]] for nom, mesure, etat in mesures],
+                    classes_lignes=["anormal" if etat in ("Basse", "Élevée") else "" for _, _, etat in mesures],
+                )
 
     with colonne_resultat:
-        libelle("Avis pharmaceutique")
-        if resultat is None:
-            st.info("Dossier non analysé.")
-            return
-        if "erreur" in resultat:
-            st.markdown(
-                f'<div class="decision erreur">Échec de l\'analyse ({resultat["date"]})</div>',
-                unsafe_allow_html=True,
+        # Lignes dont le LLM propose la modification (points « intervention ») : en rouge
+        a_modifier = {n for point in (resultat or {}).get("points", []) for n in point.get("lignes_a_modifier", [])}
+        legende = " · en rouge : modification proposée" if a_modifier else ""
+        libelle(f"Prescription ({len(traitements)} lignes){legende}")
+        with st.container(key="zone-prescription", border=False):
+            tableau_html(
+                ["N°", "Médicament", "Posologie", "Début", "Fin"],
+                [[f"L{numero}", t.get("libelle_medicament", ""), t.get("posologie", ""), t.get("date_debut") or "",
+                  t.get("date_fin") or ""] for numero, t in enumerate(traitements, start=1)],
+                classes_lignes=["anormal" if numero in a_modifier else "" for numero in range(1, len(traitements) + 1)],
+                colonnes_courtes=("N°", "Début", "Fin"),
             )
-            st.code(resultat["erreur"], language=None)
-            return
+        libelle("Avis pharmaceutique")
+        with st.container(key="zone-avis", border=False):
+            afficher_avis(resultat, identifiant)
 
-        classe = categorie(resultat["decision"])
+
+def afficher_avis(resultat, identifiant):
+    """Décision et points de l'avis pharmaceutique."""
+    if resultat is None:
+        st.info("Dossier non analysé.")
+        return
+    if "erreur" in resultat:
         st.markdown(
-            f'<div class="decision {classe}">{html.escape(resultat["decision"])}</div>', unsafe_allow_html=True
+            f'<div class="decision erreur">Échec de l\'analyse ({resultat["date"]})</div>',
+            unsafe_allow_html=True,
         )
-        if "points" in resultat:
-            for numero, point in enumerate(resultat["points"]):
-                afficher_point(point, cle=f"point-{identifiant}-{numero}")
-        else:  # analyse faite avant le passage aux points : justification en un paragraphe
-            st.write(resultat["justification"])
-            for numero, source in enumerate(resultat.get("sources", [])):
-                if lire_source(source):
-                    bouton_source(source, cle=f"source-{identifiant}-{numero}")
-            with st.container(horizontal=True, gap="small"):
-                for numero, alerte in enumerate(resultat.get("alertes", [])):
-                    lien_alerte(alerte, cle=f"alerte-{identifiant}-{numero}")
-        st.markdown(f'<div class="discret">Analyse réalisée le {resultat["date"]}</div>', unsafe_allow_html=True)
+        st.code(resultat["erreur"], language=None)
+        return
 
+    classe = categorie(resultat["decision"])
+    st.markdown(
+        f'<div class="decision {classe}">{html.escape(resultat["decision"])}</div>', unsafe_allow_html=True
+    )
+    if "points" in resultat:
+        for numero, point in enumerate(resultat["points"]):
+            afficher_point(point, cle=f"point-{identifiant}-{numero}", categorie_decision=classe)
+    else:  # analyse faite avant le passage aux points : justification en un paragraphe
+        st.write(resultat["justification"])
+        for numero, source in enumerate(resultat.get("sources", [])):
+            if lire_source(source):
+                bouton_source(source, cle=f"source-{identifiant}-{numero}")
+        with st.container(horizontal=True, gap="small"):
+            for numero, alerte in enumerate(resultat.get("alertes", [])):
+                lien_alerte(alerte, cle=f"alerte-{identifiant}-{numero}")
+    st.markdown(f'<div class="discret">Analyse réalisée le {resultat["date"]}</div>', unsafe_allow_html=True)
+
+
+# Les widgets non affichés perdent leur valeur : on conserve le filtre et la recherche quand un patient est ouvert
+for cle in ("filtre", "recherche"):
+    if cle in st.session_state:
+        st.session_state[cle] = st.session_state[cle]
+st.session_state.setdefault("patient_ouvert", None)
+
+FILTRES = {
+    "tous": ("Tous", None),
+    "intervention": ("Interventions", {"intervention"}),
+    "verification": ("Vérifications", {"verification"}),
+    "surveillance": ("Surveillances", {"surveillance"}),
+    "valide": ("Validés", {"valide"}),
+    "autres": ("Non analysés / erreurs", {"non_analyse", "erreur"}),
+}
+# Les dossiers nécessitant une action apparaissent en premier
+ORDRE_STATUTS = {"intervention": 0, "verification": 1, "surveillance": 2, "erreur": 3, "non_analyse": 4, "valide": 5}
+COULEURS_STATUTS = {"intervention": "#A85A00", "verification": "#6B3FA0", "surveillance": "#0B4F8A",
+                    "erreur": "#B42318", "non_analyse": "#7A8899", "valide": "#1E7A46"}
+
+
+def libelle_filtre(code):
+    nom, codes = FILTRES[code]
+    return nom if codes is None else f"{nom} ({sum(compte[c] for c in codes)})"
+
+
+def ouvrir_patient(identifiant):
+    st.session_state.patient_ouvert = identifiant
+
+
+def fermer_patient():
+    st.session_state.patient_ouvert = None
+
+
+def revenir_page_1():
+    st.session_state.page_liste = 1
+
+
+PATIENTS_PAR_PAGE = 30
+
+
+def afficher_liste(affiches):
+    """Liste des patients, une ligne cliquable par patient (page par page)."""
+    if not affiches:
+        st.caption("Aucun dossier ne correspond à la sélection.")
+        return
+    nb_pages = max(1, math.ceil(len(affiches) / PATIENTS_PAR_PAGE))
+    page = min(st.session_state.get("page_liste", 1), nb_pages)
+    debut = (page - 1) * PATIENTS_PAR_PAGE
+
+    with st.container(key="liste-patients", gap=None):
+        st.markdown(
+            '<div class="ligne-patient entete"><span>Patient</span><span>Statut</span><span>Âge</span>'
+            '<span>Lignes de traitement</span><span>Alertes</span><span>Analysé le</span></div>',
+            unsafe_allow_html=True,
+        )
+        for dossier in affiches[debut:debut + PATIENTS_PAR_PAGE]:
+            patient = dossier["patient"]
+            identifiant = patient["id"]
+            resultat = resultats.get(identifiant) or {}
+            code, etat = statut(resultats.get(identifiant))
+            cellules = [
+                f"<b>{html.escape(identifiant)}</b>",
+                f'<span class="statut {code}">{html.escape(etat)}</span>',
+                f"{patient['age']} ans" if patient.get("age") is not None else "—",
+                str(len(dossier["traitements"])),
+                str(len(resultat.get("alertes", []))) if resultat.get("alertes") else "—",
+                html.escape(resultat.get("date", "")) or "—",
+            ]
+            # Ligne en HTML (colonnes alignées) recouverte d'un bouton invisible qui ouvre le dossier
+            with st.container(key=f"ligne-{identifiant}", gap=None):
+                st.markdown('<div class="ligne-patient">' + "".join(f"<span>{c}</span>" for c in cellules) + "</div>",
+                            unsafe_allow_html=True)
+                st.button(f"Ouvrir le dossier {identifiant}", key=f"ouvrir-{identifiant}", on_click=ouvrir_patient,
+                          args=(identifiant,), use_container_width=True)
+
+    colonne_info, colonne_precedent, colonne_page, colonne_suivant = st.columns([5, 1, 1, 1], vertical_alignment="center")
+    colonne_info.caption(f"Dossiers {debut + 1} à {min(debut + PATIENTS_PAR_PAGE, len(affiches))} sur {len(affiches)}")
+    if nb_pages > 1:
+        colonne_precedent.button("‹", key="page-precedente", disabled=page == 1, use_container_width=True,
+                                 on_click=lambda: st.session_state.update(page_liste=page - 1))
+        colonne_page.markdown(f'<div class="discret" style="text-align:center; margin:0">Page {page} / {nb_pages}</div>',
+                              unsafe_allow_html=True)
+        colonne_suivant.button("›", key="page-suivante", disabled=page == nb_pages, use_container_width=True,
+                               on_click=lambda: st.session_state.update(page_liste=page + 1))
+
+
+def afficher_dossier_ouvert(affiches):
+    """Dossier en pleine largeur, avec retour à la liste et navigation vers le patient précédent ou suivant."""
+    identifiant = st.session_state.patient_ouvert
+    liste = affiches if any(d["patient"]["id"] == identifiant for d in affiches) else patients_tries
+    position = next(i for i, d in enumerate(liste) if d["patient"]["id"] == identifiant)
+    dossier = liste[position]
+    code, etat = statut(resultats.get(identifiant))
+
+    colonne_retour, colonne_titre, colonne_relance, colonne_precedent, colonne_position, colonne_suivant = st.columns(
+        [1.3, 3, 1.6, 1, 0.7, 1], vertical_alignment="center"
+    )
+    colonne_retour.button("← Liste des patients", on_click=fermer_patient, use_container_width=True)
+    colonne_titre.markdown(
+        f'<span class="titre-page">Patient {html.escape(identifiant)}</span> &nbsp; '
+        f'<span style="color: {COULEURS_STATUTS[code]}; font-weight: 600">{html.escape(etat)}</span>',
+        unsafe_allow_html=True,
+    )
+    if colonne_relance.button("Relancer l'analyse", key=f"analyser-{identifiant}", use_container_width=True,
+                              help="Analyse à nouveau ce patient"):
+        with st.spinner(f"Analyse du dossier {identifiant} en cours..."):
+            resultats[identifiant] = analyser(dossier)
+            sauver_resultats(resultats)
+        st.rerun()
+    if position > 0:
+        colonne_precedent.button("‹ Précédent", on_click=ouvrir_patient, args=(liste[position - 1]["patient"]["id"],),
+                                 use_container_width=True)
+    colonne_position.markdown(f'<div class="discret" style="text-align:center; margin:0">{position + 1} / {len(liste)}</div>',
+                              unsafe_allow_html=True)
+    if position < len(liste) - 1:
+        colonne_suivant.button("Suivant ›", on_click=ouvrir_patient, args=(liste[position + 1]["patient"]["id"],),
+                               use_container_width=True)
+    afficher_patient(dossier, resultats.get(identifiant), charger_bio())
+
+
+patients_tries = sorted(patients, key=lambda d: ORDRE_STATUTS[statuts[d["patient"]["id"]]])
 
 with onglet_resultats:
-    filtres = {
-        "Tous": None,
-        f"Interventions ({compte['intervention']})": {"intervention"},
-        f"Vérifications ({compte['verification']})": {"verification"},
-        f"Surveillances ({compte['surveillance']})": {"surveillance"},
-        f"Validés ({compte['valide']})": {"valide"},
-        f"Non analysés / erreurs ({compte['non_analyse'] + compte['erreur']})": {"non_analyse", "erreur"},
-    }
-    colonne_filtre, colonne_recherche = st.columns([3, 1], vertical_alignment="bottom")
-    filtre = colonne_filtre.radio("Filtrer", list(filtres), horizontal=True, label_visibility="collapsed")
-    recherche = colonne_recherche.text_input(
-        "Rechercher", placeholder="Identifiant ou médicament", label_visibility="collapsed"
-    ).strip().lower()
-
-    # Les dossiers nécessitant une action apparaissent en premier
-    ordre = {"intervention": 0, "verification": 1, "surveillance": 2, "erreur": 3, "non_analyse": 4, "valide": 5}
-    couleurs = {
-        "intervention": "orange", "verification": "violet", "surveillance": "blue",
-        "erreur": "red", "non_analyse": "gray", "valide": "green",
-    }
+    filtre = st.session_state.get("filtre", "tous")
+    recherche = st.session_state.get("recherche", "").strip().lower()
     affiches = [
-        d for d in sorted(patients, key=lambda d: ordre[statuts[d["patient"]["id"]]])
-        if (filtres[filtre] is None or statuts[d["patient"]["id"]] in filtres[filtre])
+        d for d in patients_tries
+        if (FILTRES[filtre][1] is None or statuts[d["patient"]["id"]] in FILTRES[filtre][1])
         and (
             not recherche
             or recherche in d["patient"]["id"].lower()
@@ -644,30 +856,16 @@ with onglet_resultats:
         )
     ]
 
-    # Affichage page par page : afficher des milliers de dossiers d'un coup rendrait l'interface très lente
-    TAILLE_PAGE = 20
-    nb_pages = max(1, math.ceil(len(affiches) / TAILLE_PAGE))
-    if nb_pages > 1:
-        colonne_page, colonne_info = st.columns([1, 4], vertical_alignment="bottom")
-        page = colonne_page.number_input(f"Page (sur {nb_pages})", min_value=1, max_value=nb_pages, value=1)
-        debut = (page - 1) * TAILLE_PAGE
-        colonne_info.caption(f"Dossiers {debut + 1} à {min(debut + TAILLE_PAGE, len(affiches))} sur {len(affiches)}")
-        affiches = affiches[debut:debut + TAILLE_PAGE]
-
-    normes = charger_bio()
-    if not affiches:
-        st.caption("Aucun dossier ne correspond à la sélection.")
-    for dossier in affiches:
-        patient = dossier["patient"]
-        identifiant = patient["id"]
-        code, etat = statut(resultats.get(identifiant))
-        nb_alertes = len(resultats.get(identifiant, {}).get("alertes", []))
-        age = f"{patient['age']} ans" if patient.get("age") is not None else "âge non renseigné"
-        resume = f"{age} · {len(dossier['traitements'])} lignes de traitement"
-        if nb_alertes:
-            resume += f" · {nb_alertes} alerte(s)"
-        with st.expander(f"**{identifiant}**  ·  :{couleurs[code]}[{etat}]  ·  :gray[{resume}]"):
-            afficher_patient(dossier, resultats.get(identifiant), normes)
+    if st.session_state.patient_ouvert in statuts:
+        afficher_dossier_ouvert(affiches)
+    else:
+        st.session_state.patient_ouvert = None
+        colonne_filtre, colonne_recherche = st.columns([3, 1], vertical_alignment="bottom")
+        colonne_filtre.radio("Filtrer", list(FILTRES), format_func=libelle_filtre, horizontal=True,
+                             label_visibility="collapsed", key="filtre", on_change=revenir_page_1)
+        colonne_recherche.text_input("Rechercher", placeholder="Identifiant ou médicament",
+                                     label_visibility="collapsed", key="recherche", on_change=revenir_page_1)
+        afficher_liste(affiches)
 
 
 # --- Onglet règles ----------------------------------------------------------

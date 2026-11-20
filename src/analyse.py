@@ -33,6 +33,7 @@ def analyser(dossier):
         return {
             "decision": resultat["decision"],
             "points": resultat["points"],
+            "raisonnement": resultat["raisonnement"],
             "justification": resultat["justification"],
             "sources": resultat["sources"],
             "alertes": alertes,
