@@ -14,6 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
 from expert_system import (
     ajouter_regle_personnalisee,
@@ -244,9 +245,13 @@ div.st-key-zone-avis {{ height: calc((100vh - 360px) * 0.5) !important; min-heig
 .st-key-zone-avis > div {{ margin-bottom: 0.5rem; }}
 .tableau th {{ position: sticky; top: 0; z-index: 1; }}
 
-/* Liste des patients : colonnes alignées (grille), chaque ligne recouverte d'un bouton invisible */
-.st-key-liste-patients {{ border: 1px solid var(--bordure); border-radius: 4px; background: var(--surface);
-    overflow: hidden; margin-top: 0.4rem; }}
+/* Liste des patients : colonnes alignées (grille), chaque ligne recouverte d'un bouton invisible.
+   La liste défile seule dans une zone à hauteur d'écran (la page ne défile pas) ; l'en-tête de colonnes reste visible. */
+div.st-key-liste-patients {{ border: 1px solid var(--bordure); border-radius: 4px; background: var(--surface);
+    margin-top: 0.4rem; overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
+    max-height: calc(100vh - 400px) !important; min-height: 200px; }}
+.st-key-liste-patients > div:first-child {{ position: sticky; top: 0; z-index: 3; }}
+.st-key-ajuster-liste {{ display: none; }}
 .st-key-liste-patients [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
 .ligne-patient {{
     display: grid; grid-template-columns: 9rem 13rem 6rem 10rem 6rem 1fr; align-items: center;
@@ -634,21 +639,11 @@ def fermer_patient():
     st.session_state.patient_ouvert = None
 
 
-def revenir_page_1():
-    st.session_state.page_liste = 1
-
-
-PATIENTS_PAR_PAGE = 30
-
-
 def afficher_liste(affiches):
-    """Liste des patients, une ligne cliquable par patient (page par page)."""
+    """Liste des patients, une ligne cliquable par patient, dans une zone qui défile (CSS .st-key-liste-patients)."""
     if not affiches:
         st.caption("Aucun dossier ne correspond à la sélection.")
         return
-    nb_pages = max(1, math.ceil(len(affiches) / PATIENTS_PAR_PAGE))
-    page = min(st.session_state.get("page_liste", 1), nb_pages)
-    debut = (page - 1) * PATIENTS_PAR_PAGE
 
     with st.container(key="liste-patients", gap=None):
         st.markdown(
@@ -656,7 +651,7 @@ def afficher_liste(affiches):
             '<span>Lignes de traitement</span><span>Alertes</span><span>Analysé le</span></div>',
             unsafe_allow_html=True,
         )
-        for dossier in affiches[debut:debut + PATIENTS_PAR_PAGE]:
+        for dossier in affiches:
             patient = dossier["patient"]
             identifiant = patient["id"]
             resultat = resultats.get(identifiant) or {}
@@ -676,15 +671,30 @@ def afficher_liste(affiches):
                 st.button(f"Ouvrir le dossier {identifiant}", key=f"ouvrir-{identifiant}", on_click=ouvrir_patient,
                           args=(identifiant,), use_container_width=True)
 
-    colonne_info, colonne_precedent, colonne_page, colonne_suivant = st.columns([5, 1, 1, 1], vertical_alignment="center")
-    colonne_info.caption(f"Dossiers {debut + 1} à {min(debut + PATIENTS_PAR_PAGE, len(affiches))} sur {len(affiches)}")
-    if nb_pages > 1:
-        colonne_precedent.button("‹", key="page-precedente", disabled=page == 1, use_container_width=True,
-                                 on_click=lambda: st.session_state.update(page_liste=page - 1))
-        colonne_page.markdown(f'<div class="discret" style="text-align:center; margin:0">Page {page} / {nb_pages}</div>',
-                              unsafe_allow_html=True)
-        colonne_suivant.button("›", key="page-suivante", disabled=page == nb_pages, use_container_width=True,
-                               on_click=lambda: st.session_state.update(page_liste=page + 1))
+    st.caption(f"{len(affiches)} dossier{'s' if len(affiches) > 1 else ''} affiché{'s' if len(affiches) > 1 else ''}")
+    with st.container(key="ajuster-liste"):
+        components.html(SCRIPT_HAUTEUR_LISTE, height=0)
+
+
+# La hauteur de l'en-tête (titres et filtres sur une ou deux lignes) dépend de la largeur de l'écran : ce script
+# (dans un cadre invisible) donne à la liste toute la hauteur restante, pour que la page elle-même ne défile pas.
+# Sans lui, la hauteur reste celle du CSS (.st-key-liste-patients).
+SCRIPT_HAUTEUR_LISTE = """
+<script>
+const page = window.parent.document;
+function ajuster() {
+    const liste = page.querySelector(".st-key-liste-patients");
+    const principal = page.querySelector('[data-testid="stMain"]');
+    if (!liste || !principal) return;
+    const haut = liste.getBoundingClientRect().top + principal.scrollTop;
+    const bas = 75;  // légende « N dossiers affichés » et marge basse de la page
+    const hauteur = Math.max(200, window.parent.innerHeight - haut - bas);
+    if (liste.style.maxHeight !== hauteur + "px") liste.style.setProperty("max-height", hauteur + "px", "important");
+}
+ajuster();
+setInterval(ajuster, 250);
+</script>
+"""
 
 
 def afficher_dossier_ouvert(affiches):
@@ -742,9 +752,9 @@ with onglet_resultats:
         st.session_state.patient_ouvert = None
         colonne_filtre, colonne_recherche = st.columns([3, 1], vertical_alignment="bottom")
         colonne_filtre.radio("Filtrer", list(FILTRES), format_func=libelle_filtre, horizontal=True,
-                             label_visibility="collapsed", key="filtre", on_change=revenir_page_1)
+                             label_visibility="collapsed", key="filtre")
         colonne_recherche.text_input("Rechercher", placeholder="Identifiant ou médicament",
-                                     label_visibility="collapsed", key="recherche", on_change=revenir_page_1)
+                                     label_visibility="collapsed", key="recherche")
         afficher_liste(affiches)
 
 
