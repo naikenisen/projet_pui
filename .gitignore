@@ -16,3 +16,7 @@ resultats.json
 dataset
 RCP
 dataset_test
+# Vitrine exportée (contient les dossiers patients)
+vitrine/
+vitrine.zip
+original_dataset

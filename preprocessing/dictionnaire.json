@@ -1,0 +1,50 @@
+{
+  "traitements": {
+    "fichier": "ANONYMISED_TRAITEMENTS.csv",
+    "colonnes": {
+      "numero_anonyme": "id_patient",
+      "Libellé Médicament Prescrit": "libelle_medicament",
+      "Date Début Prescription": "date_debut",
+      "Date Fin Prescription": "date_fin",
+      "Unité Prescription MED": "unite_prise",
+      "Quantité Prescrite Totale MED": "quantite_par_jour",
+      "Dosage Principe Actif": "dosage_principe_actif",
+      "Unité Principe Actif": "unite_principe_actif",
+      "Fréquence Journalière Prescription": "frequence_jours",
+      "Fréquence Horaire Prescription": "moments_prise",
+      "Prescription à Demande (O/N)": "si_besoin"
+    },
+    "exclure": {
+      "Statut Prescription": [
+        "ANN",
+        "SUPR"
+      ]
+    }
+  },
+  "biologie": {
+    "fichier": "ANONYMISED_BIO.csv",
+    "colonnes": {
+      "numero_anonyme": "id_patient",
+      "Examen_LibelleRecupere": "examen",
+      "Result": "valeur",
+      "Unite.Libelle": "unite",
+      "Dateheure": "date_heure_examen",
+      "Dem Date en date": "date_demande"
+    }
+  },
+  "clinique": {
+    "fichier": "ANONYMISED_CLINIQUE.csv",
+    "colonnes": {
+      "numero_anonyme": "id_patient",
+      "Age Séjour (Années)": "age",
+      "Taille Séjour": "taille_cm",
+      "Poids Séjour": "poids_kg",
+      "Surface Corporelle Séjour": "surface_corporelle_m2",
+      "Indice Masse Corporelle": "imc_kg_m2"
+    },
+    "arrondi": {
+      "surface_corporelle_m2": 3,
+      "imc_kg_m2": 1
+    }
+  }
+}

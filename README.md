@@ -28,7 +28,8 @@ Toutes les commandes se lancent depuis la racine du projet.
 | `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
 | `bio_anormale.json` | Valeurs normales de la biologie, utilisées par `recuperation.py` |
 | `app.py` | Interface Streamlit (analyse, base documentaire, règles, biologie) |
-| `src/` | Fonctions utilisées par `app.py` (fichiers JSON, documents, analyse) |
+| `src/` | Fonctions utilisées par `app.py` (fichiers JSON, documents, analyse, mise en forme HTML) |
+| `export_vitrine.py` | Exporte l'interface et les résultats en vitrine HTML statique (`vitrine/`, `vitrine.zip`) |
 
 ## Liens entre les scripts
 
@@ -147,3 +148,13 @@ python3 recuperation.py --dossier dataset --idpatient 100133744
 ```
 
 Affiche les passages les plus pertinents pour le patient, avec leur PDF et leur page.
+
+**Vitrine de démonstration**
+
+```bash
+python3 export_vitrine.py
+```
+
+Génère `vitrine/` et `vitrine.zip` : une copie de l'interface avec les patients, les résultats déjà calculés (`resultats.json`), les règles et les PDF de la base documentaire. On l'ouvre par double-clic sur `vitrine/index.html`, sans Python ni internet : elle peut être copiée sur une clé USB ou envoyée par mail, une fois zippée. Les boutons d'analyse, d'indexation et de rédaction de règles y sont désactivés.
+
+Options : `--dossier` (patients à exporter, par défaut `dataset_test`), `--sortie` (par défaut `vitrine`), `--masquer-identifiants` (remplace les identifiants par « Patient 01 », « Patient 02 »...), `--pdf-originaux` (copie les PDF sans recompresser leurs images ; l'archive passe d'environ 10 Mo à plus de 30 Mo). Relancer le script après de nouvelles analyses pour mettre la vitrine à jour.
