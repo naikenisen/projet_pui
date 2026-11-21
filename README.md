@@ -60,7 +60,7 @@ Run once, then each time a PDF is added to `src/rag/RAG_Docs/`:
 python3 indexing.py
 ```
 
-Prints the number of passages indexed per PDF and creates the `src/rag/chroma_db/` folder.
+Prints the number of passages indexed per PDF and creates the `src/rag/chroma_db/` folder. Re-indexing a PDF replaces its passages (those of a previous version are deleted).
 
 ### Retrieval (RAG)
 
@@ -161,7 +161,7 @@ src/front/
 ├── services/             data access and backend calls, no Streamlit
 │   ├── data.py           patient files, laboratory reference ranges
 │   ├── analysis.py       runs main.py --remaining, re-analysis of one patient
-│   └── documents.py      RAG documents: list, indexing, page rendering
+│   └── documents.py      RAG documents: list, upload, page rendering (indexing by indexing.py)
 ├── rendering/            HTML generation, no Streamlit
 │   ├── opinion.py        record status, decision category, sources
 │   ├── record.py         patient profile, laboratory and prescription tables

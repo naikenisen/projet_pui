@@ -1,39 +1,18 @@
-"""RAG documents: list of the PDFs indexed in ChromaDB, indexing of a PDF and rendering of a page."""
+"""RAG documents: list of the PDFs indexed in ChromaDB, upload of a PDF and rendering of a page.
+
+The indexing itself is done by indexing.py (index_pdf)."""
 
 import os
 
-import chromadb
 import pymupdf
 
-from indexing import (
-    CHROMA_DIR,
-    COLLECTION_NAME,
-    PDF_FOLDER,
-    compute_embeddings,
-    extract_passages,
-)
-
-
-def _collection(create=False):
-    chroma = chromadb.PersistentClient(path=CHROMA_DIR)
-    if create:
-        # Same parameters as indexing.py
-        return chroma.get_or_create_collection(
-            COLLECTION_NAME, embedding_function=None, metadata={"hnsw:space": "cosine"}
-        )
-    try:
-        return chroma.get_collection(COLLECTION_NAME, embedding_function=None)
-    except Exception:
-        return None
+from indexing import PDF_FOLDER, get_collection, index_pdf  # noqa: F401 (index_pdf is used by the pages)
 
 
 def indexed_documents():
     """Returns {pdf_name: passage_count} for the documents present in ChromaDB."""
-    collection = _collection()
-    if collection is None:
-        return {}
     counts = {}
-    for meta in collection.get(include=["metadatas"])["metadatas"]:
+    for meta in get_collection().get(include=["metadatas"])["metadatas"]:
         counts[meta["source"]] = counts.get(meta["source"], 0) + 1
     return dict(sorted(counts.items()))
 
@@ -55,23 +34,6 @@ def save_pdf(name, content):
     with open(path, "wb") as file:
         file.write(content)
     return path
-
-
-def index_pdf(path):
-    """Indexes a PDF (replacing its previous passages if it was already indexed). Returns the passage count."""
-    name = os.path.basename(path)
-    passages = extract_passages(path)
-    texts = [p["text"] for p in passages]
-    collection = _collection(create=True)
-    collection.delete(where={"source": name})
-    if passages:
-        collection.upsert(
-            ids=[p["id"] for p in passages],
-            documents=texts,
-            metadatas=[{"source": p["source"], "page": p["page"]} for p in passages],
-            embeddings=compute_embeddings(texts),
-        )
-    return len(passages)
 
 
 def page_count(path):

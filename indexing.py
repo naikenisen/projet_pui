@@ -54,25 +54,31 @@ def compute_embeddings(texts):
     return vectors
 
 
-if __name__ == "__main__":
+def get_collection():
     chroma = chromadb.PersistentClient(path=CHROMA_DIR)
-    collection = chroma.get_or_create_collection(
-        COLLECTION_NAME,
-        embedding_function=None,
-        metadata={"hnsw:space": "cosine"},
-    )
+    return chroma.get_or_create_collection(COLLECTION_NAME, embedding_function=None, metadata={"hnsw:space": "cosine"})
 
-    for file_name in sorted(os.listdir(PDF_FOLDER)):
-        if not file_name.endswith(".pdf"):
-            continue
 
-        passages = extract_passages(os.path.join(PDF_FOLDER, file_name))
-        texts = [p["text"] for p in passages]
+def index_pdf(pdf_path):
+    """Replaces the passages of the PDF in ChromaDB (old ones are deleted). Returns the number of passages."""
+    passages = extract_passages(pdf_path)
+    texts = [p["text"] for p in passages]
+    embeddings = compute_embeddings(texts)
 
+    collection = get_collection()
+    collection.delete(where={"source": os.path.basename(pdf_path)})
+    if passages:
         collection.upsert(
             ids=[p["id"] for p in passages],
             documents=texts,
             metadatas=[{"source": p["source"], "page": p["page"]} for p in passages],
-            embeddings=compute_embeddings(texts),
+            embeddings=embeddings,
         )
-        print(f"{file_name}: {len(passages)} passages indexed")
+    return len(passages)
+
+
+if __name__ == "__main__":
+    for file_name in sorted(os.listdir(PDF_FOLDER)):
+        if file_name.endswith(".pdf"):
+            count = index_pdf(os.path.join(PDF_FOLDER, file_name))
+            print(f"{file_name}: {count} passages indexed")
