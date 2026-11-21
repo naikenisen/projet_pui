@@ -10,14 +10,10 @@ import pymupdf
 import streamlit as st
 
 from indexing import PDF_FOLDER, get_collection, index_pdf
-from src.ui.common import label
+from ui.common import label
 
 
 def render_page():
-    st.caption(
-        "Référentiels (PDF) dans lesquels le RAG recherche les passages utiles à l'analyse de chaque patient. "
-        "Les documents sont enregistrés dans src/rag/RAG_Docs/ et indexés dans la base vectorielle."
-    )
     indexed = indexed_documents()
     _indexed(indexed)
     _not_indexed(indexed)
@@ -108,7 +104,7 @@ def _indexed(indexed):
 
 
 def _not_indexed(indexed):
-    """PDFs present in src/rag/RAG_Docs/ but not in the vector database."""
+    """PDFs present in ressources/rag/RAG_Docs/ but not in the vector database."""
     not_indexed = [name for name in folder_documents() if name not in indexed]
     if not not_indexed:
         return

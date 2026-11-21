@@ -6,5 +6,5 @@ venv/
 *.out
 /full_dataset/
 preprocessing/dataset/
-src/kbs/KBS_Docs/RCP/
+ressources/kbs/KBS_Docs/RCP/
 preprocessing/original_dataset/

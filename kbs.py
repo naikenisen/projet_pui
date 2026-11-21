@@ -1,9 +1,9 @@
 """Knowledge-Based System (KBS): deterministic rules applied to a patient, and rule drafting by the LLM.
 
 Rules are split across two files:
-- src/kbs/generic_rules.json: ANSM Thesaurus of drug interactions and DDI-Predictor AUC ratios (src/kbs/KBS_Docs/),
+- ressources/kbs/generic_rules.json: ANSM Thesaurus of drug interactions and DDI-Predictor AUC ratios (ressources/kbs/KBS_Docs/),
   not editable from the interface;
-- src/kbs/personalized_rules.json: hospital-specific rules (e.g. apixaban dose, daptomycin 10 mg/kg),
+- ressources/kbs/personalized_rules.json: hospital-specific rules (e.g. apixaban dose, daptomycin 10 mg/kg),
   written by hand or drafted by the LLM at a pharmacist's request.
 In "drugs", each item is either a name ("ramipril") or a list of equivalent names
 (the members of a Thesaurus class, e.g. all oral anticoagulants).
@@ -17,7 +17,7 @@ import os
 import re
 import unicodedata
 
-KBS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "kbs")
+KBS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "kbs")
 GENERIC_RULES_FILE = os.path.join(KBS_FOLDER, "generic_rules.json")
 PERSONALIZED_RULES_FILE = os.path.join(KBS_FOLDER, "personalized_rules.json")
 

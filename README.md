@@ -50,17 +50,17 @@ python3 main.py --all         # all patients: the results file is overwritten
 
 The folder is `dataset` by default; use `--folder full_dataset` to analyse the full dataset.
 
-Each result is saved in `src/inference_results.json` as soon as the patient is analysed: the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the typed points with their sources, the KBS alerts and the date. An error is stored in the result of the patient instead of stopping the run.
+Each result is saved in `inference_results.json` as soon as the patient is analysed: the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the typed points with their sources, the KBS alerts and the date. An error is stored in the result of the patient instead of stopping the run.
 
 ### Indexing
 
-Run once, then each time a PDF is added to `src/rag/RAG_Docs/`:
+Run once, then each time a PDF is added to `ressources/rag/RAG_Docs/`:
 
 ```bash
 python3 indexing.py
 ```
 
-Prints the number of passages indexed per PDF and creates the `src/rag/chroma_db/` folder. Re-indexing a PDF replaces its passages (those of a previous version are deleted).
+Prints the number of passages indexed per PDF and creates the `ressources/rag/chroma_db/` folder. Re-indexing a PDF replaces its passages (those of a previous version are deleted).
 
 ### Retrieval (RAG)
 
@@ -88,7 +88,7 @@ python3 kbs.py --folder dataset --patient-id 100133744
 
 Prints the detected alerts, or `No alert`.
 
-The rules are in `src/kbs/generic_rules.json` (ANSM Thesaurus, DDI-Predictor) and `src/kbs/personalized_rules.json` (hospital rules). The texts of the generic rules are kept in French, as in the source documents. A rule is triggered if all its fields are satisfied:
+The rules are in `ressources/kbs/generic_rules.json` (ANSM Thesaurus, DDI-Predictor) and `ressources/kbs/personalized_rules.json` (hospital rules). The texts of the generic rules are kept in French, as in the source documents. A rule is triggered if all its fields are satisfied:
 
 | Field | Meaning |
 |---|---|
@@ -130,7 +130,7 @@ streamlit run app.py
 ```
 
 The interface always works on the patients of `dataset/`; `full_dataset/` is analysed from the command line only (`python3 main.py --remaining --folder full_dataset`).
-The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `src/inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
+The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
 
 ![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 
@@ -140,29 +140,27 @@ The “Lancer l'analyse” button runs `main.py --remaining` (patients without a
 
 *Viewing a source: clicking a reference opens the PDF at the page cited by the model.*
 
-The interface is in French and has three pages. On the “Résultats d'analyse” page, the indicators and the “Lancer l'analyse” button are above the patient list. On the “Règles du KBS” page, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. The “Documents du RAG” page lists the indexed guidelines (click to view), indexes the PDFs added to `src/rag/RAG_Docs/` and uploads new ones. Any other change (generic rules, manual editing of `src/kbs/personalized_rules.json`, laboratory reference ranges in `src/biology/lab_reference_ranges.json`) is made directly in the files, outside the interface.
+The interface is in French and has three pages. On the “Résultats d'analyse” page, the indicators and the “Lancer l'analyse” button are above the patient list. On the “Règles du KBS” page, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. The “Documents du RAG” page lists the indexed guidelines (click to view), indexes the PDFs added to `ressources/rag/RAG_Docs/` and uploads new ones. Any other change (generic rules, manual editing of `ressources/kbs/personalized_rules.json`, laboratory reference ranges in `ressources/lab_reference_ranges.json`) is made directly in the files, outside the interface.
 
 ### Code
 
 `app.py` holds what is common to every page (configuration, style, application bar) and declares the pages with
-`st.navigation`. The interface code is in `src/ui/`, with one module per page of the application: each page loads
+`st.navigation`. The interface code is in `ui/`, with one module per page of the application: each page loads
 its own data and calls the backend scripts of the project root for any processing (analysis, rules, indexing).
 
 ```
 app.py                    entry point: page configuration, application bar, list of the pages
-src/
-├── inference_results.json    analysis results saved by main.py
-├── lab_reference_ranges.json reference ranges of laboratory values
-└── ui/
-    ├── analysis_results.py   “Résultats d'analyse” page: indicators, “Lancer l'analyse” (main.py --remaining),
-    │                         patient list, open record, pharmaceutical opinion and KBS alerts
-    ├── KBS_rules.py          “Règles du KBS” page: LLM assistant (kbs.propose_rule), proposed rule, rule list
-    ├── RAG_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
-    │                         PDF viewer also opened from the sources of the opinion
-    ├── common.py             shared by the pages: page frame, patient records of dataset/, small helpers
-    └── assets/
-        ├── style.css         style of the whole interface
-        └── list_height.html  script giving the patient list the remaining screen height
+inference_results.json    analysis results saved by main.py
+ui/
+├── analysis_results.py   “Résultats d'analyse” page: indicators, “Lancer l'analyse” (main.py --remaining),
+│                         patient list, open record, pharmaceutical opinion and KBS alerts
+├── KBS_rules.py          “Règles du KBS” page: LLM assistant (kbs.propose_rule), proposed rule, rule list
+├── RAG_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
+│                         PDF viewer also opened from the sources of the opinion
+├── common.py             shared by the pages: page frame, patient records of dataset/, small helpers
+└── assets/
+    ├── style.css         style of the whole interface
+    └── list_height.html  script giving the patient list the remaining screen height
 ```
 
 ---
@@ -173,12 +171,12 @@ src/
 |---|---|
 | `dataset/` | Inference folder (80 patients): one JSON file per patient (`<id>.json`), with laboratory values and treatments |
 | `full_dataset/` | Full inference folder (1919 patients, not versioned), same format |
-| `src/kbs/generic_rules.json` | KBS rules from the ANSM Thesaurus of drug interactions and from DDI-Predictor |
-| `src/kbs/personalized_rules.json` | Hospital-specific KBS rules (e.g. apixaban dose, daptomycin 10 mg/kg) |
-| `src/kbs/KBS_Docs/` | Reference documents from which the generic KBS rules were extracted (ANSM Thesaurus, DDI-Predictor) |
-| `src/rag/RAG_Docs/` | Guidelines (PDF) used by the RAG |
-| `src/rag/chroma_db/` | Vector database created by `indexing.py` |
-| `src/lab_reference_ranges.json` | Reference ranges of laboratory values, used by `retrieval.py` and `generation.py` |
+| `ressources/kbs/generic_rules.json` | KBS rules from the ANSM Thesaurus of drug interactions and from DDI-Predictor |
+| `ressources/kbs/personalized_rules.json` | Hospital-specific KBS rules (e.g. apixaban dose, daptomycin 10 mg/kg) |
+| `ressources/kbs/KBS_Docs/` | Reference documents from which the generic KBS rules were extracted (ANSM Thesaurus, DDI-Predictor) |
+| `ressources/rag/RAG_Docs/` | Guidelines (PDF) used by the RAG |
+| `ressources/rag/chroma_db/` | Vector database created by `indexing.py` |
+| `ressources/lab_reference_ranges.json` | Reference ranges of laboratory values, used by `retrieval.py` and `generation.py` |
 | `preprocessing/` | Builds the patient JSON files from the anonymised CSV extractions (`preprocessing/original_dataset/`, not versioned) |
 | `paper/` | Article, presentation and figures (`paper/figures_en/`) |
 

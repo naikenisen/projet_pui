@@ -3,7 +3,7 @@
 Run from the project root:  streamlit run app.py
 
 This file holds what is common to every page (configuration, style, application bar) and declares the pages;
-the code of each page is in src/ui/ (see src/ui/__init__.py).
+the code of each page is in ui/ (see ui/__init__.py).
 Streamlit re-runs this script, then the selected page, from the top after each interaction.
 """
 
@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 
-from src.ui import KBS_rules, RAG_documents, analysis_results, common
+from ui import KBS_rules, RAG_documents, analysis_results, common
 
 common.configure_page()
 common.inject_style()

@@ -9,7 +9,6 @@ the way the search is done must be reworked
 [] speed up inference
 [] check how the KBS is implemented in the code
 [] build a prioritisation system for pharmaceutical interventions (PI) based on what had an impact at the hospital, from the pharmacy extractions
-[] refactor the code
 [] rework the list of guidelines used by the RAG
-[] remove non utile functions from the app
-[] passer à un vrai KBS
+[] move to a true KBS
+[] refactor the code and make it minimal, cut UI files in sub files relative to visual components again

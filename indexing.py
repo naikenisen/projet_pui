@@ -1,4 +1,4 @@
-"""Splits the PDFs of src/rag/RAG_Docs/ into passages, computes their embeddings and stores them in ChromaDB."""
+"""Splits the PDFs of ressources/rag/RAG_Docs/ into passages, computes their embeddings and stores them in ChromaDB."""
 
 import os
 
@@ -10,7 +10,7 @@ from openai import OpenAI
 load_dotenv()
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
 
-RAG_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "rag")
+RAG_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag")
 PDF_FOLDER = os.path.join(RAG_FOLDER, "RAG_Docs")
 CHROMA_DIR = os.path.join(RAG_FOLDER, "chroma_db")
 COLLECTION_NAME = "rag_docs"

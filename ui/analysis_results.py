@@ -1,7 +1,7 @@
 """“Résultats d'analyse” page: indicators and analysis button, patient list, open patient record.
 
-The analysis is done by main.py: the “Lancer l'analyse” button runs `main.py --remaining`, the “Relancer l'analyse”
-button of a record calls main.analyse. Results are stored in src/inference_results.json.
+The analysis is done by main.py: the “Lancer l'analyse” button runs `main.py --remaining`.
+Results are stored in inference_results.json (project root).
 Streamlit re-runs the page from the top after each interaction: ResultsState is rebuilt at each run from the files,
 while st.session_state keeps what must survive between runs (open patient, filter, search).
 """
@@ -25,8 +25,8 @@ from generation import (
     lab_interpretation,
     read_lab_ranges,
 )
-from src.ui.RAG_documents import open_document
-from src.ui.common import PATIENTS_FOLDER, badge, label, load_patients, read_asset
+from ui.RAG_documents import open_document
+from ui.common import PATIENTS_FOLDER, badge, label, load_patients, read_asset
 
 
 def render_page():
@@ -146,12 +146,6 @@ def run_main():
                 other_lines.append(line.rstrip())
     if process.returncode:
         raise RuntimeError("\n".join(other_lines[-5:]) or f"main.py exited with code {process.returncode}")
-
-
-def analyse_and_save(results, record):
-    """Analyses one record again (main.analyse), stores the result in results and saves the results file."""
-    results[record["patient"]["id"]] = main.analyse(record)
-    main.save_results(results)
 
 
 # ---------------------------------------------------------------------------
@@ -275,7 +269,6 @@ def _render_list(state, shown):
         for record in shown:
             _patient_row(state, record)
 
-    st.caption(f"{len(shown)} dossier{'s' if len(shown) > 1 else ''} affiché{'s' if len(shown) > 1 else ''}")
     with st.container(key="adjust-list"):
         components.html(LIST_HEIGHT_SCRIPT, height=0)
 
@@ -319,8 +312,8 @@ def _navigation_bar(state, records, position):
     patient_id = record["patient"]["id"]
     code, state_label = status(state.results.get(patient_id))
 
-    back_column, title_column, rerun_column, previous_column, position_column, next_column = st.columns(
-        [1.3, 3, 1.6, 1, 0.7, 1], vertical_alignment="center"
+    back_column, title_column, previous_column, position_column, next_column = st.columns(
+        [1.3, 4.6, 1, 0.7, 1], vertical_alignment="center"
     )
     back_column.button("← Liste des patients", on_click=close_patient, use_container_width=True)
     title_column.markdown(
@@ -328,11 +321,6 @@ def _navigation_bar(state, records, position):
         f'<span style="color: {STATUS_COLORS[code]}; font-weight: 600">{html.escape(state_label)}</span>',
         unsafe_allow_html=True,
     )
-    if rerun_column.button("Relancer l'analyse", key=f"analyse-{patient_id}", use_container_width=True,
-                           help="Analyse à nouveau ce patient"):
-        with st.spinner(f"Analyse du dossier {patient_id} en cours..."):
-            analyse_and_save(state.results, record)
-        st.rerun()
     if position > 0:
         previous_column.button("‹ Précédent", on_click=open_patient, args=(records[position - 1]["patient"]["id"],),
                                use_container_width=True)
@@ -537,7 +525,7 @@ FULL_LEVELS = {"CONTRE-INDICATION": "CI", "Association DECONSEILLEE": "ASDEC", "
                "A prendre en compte": "APEC"}
 PHARMACOKINETIC = "Pharmacocinétique"
 # “Interaction A + B (level) : ...” (Thesaurus) and “Interaction pharmacocinétique A + B : ...” (DDI-Predictor),
-# as written in src/kbs/generic_rules.json
+# as written in ressources/kbs/generic_rules.json
 _CODE = "(?:CI|ASDEC|PE|APEC)"
 THESAURUS_ALERT_PATTERN = re.compile(
     rf"^Interaction (.+?) \(({_CODE}(?: - {_CODE})*|{'|'.join(map(re.escape, FULL_LEVELS))})\) : (.*)$", re.DOTALL

@@ -1,7 +1,7 @@
 """“Règles du KBS” page: personalized rules drafted by the LLM assistant, review before saving, list with deletion.
 
-The generic rules (src/kbs/generic_rules.json) are not shown: they are applied during the analysis only.
-Personalized rules are edited by hand in src/kbs/personalized_rules.json, outside the interface.
+The generic rules (ressources/kbs/generic_rules.json) are not shown: they are applied during the analysis only.
+Personalized rules are edited by hand in ressources/kbs/personalized_rules.json, outside the interface.
 """
 
 import html
@@ -18,16 +18,10 @@ from kbs import (
     save_personalized_rules,
     unknown_variables,
 )
-from src.ui.common import badge, label, load_patients
+from ui.common import badge, label, load_patients
 
 
 def render_page():
-    st.caption(
-        "Une règle personnalisée du Knowledge-Based System (KBS) se déclenche lorsque l'ensemble de ses critères "
-        "est vérifié. Elle est rédigée par l'assistant à partir d'une demande en langage naturel, puis vérifiée "
-        "avant enregistrement. Les règles génériques (Thésaurus ANSM, DDI-Predictor) sont aussi appliquées lors "
-        "de l'analyse."
-    )
     patients = load_patients()
     parameters = biology_parameters(patients)
     _assistant(parameters)
