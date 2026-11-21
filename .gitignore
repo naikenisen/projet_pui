@@ -1,6 +1,5 @@
 # Secrets / credentials
 .env
-api_key
 
 # Python
 __pycache__/
@@ -10,9 +9,7 @@ venv/
 
 # Logs / outputs
 *.out
-chroma_db
-# Résultats de l application
-resultats.json
+
 dataset
 RCP
 original_dataset
