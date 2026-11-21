@@ -8,7 +8,8 @@ import os
 from generation import LAB_RANGES_FILE
 
 PATIENTS_FOLDER = "dataset"  # default folder: one JSON file per patient
-RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "inference_results.json")
+SRC_FOLDER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+RESULTS_FILE = os.path.join(SRC_FOLDER, "results", "inference_results.json")
 
 
 def read_json(path, default=None):

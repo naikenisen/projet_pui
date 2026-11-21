@@ -20,14 +20,14 @@ All commands below are run from the project root.
 |---|---|
 | `dataset/` | Inference folder (80 patients), loaded by default in the interface: one JSON file per patient (`<id>.json`), with laboratory values and treatments |
 | `full_dataset/` | Full inference folder (1919 patients, not versioned), same format |
-| `app.py` | Streamlit interface (analysis, RAG documents, KBS rules, laboratory reference ranges) |
+| `app.py` | Entry point of the Streamlit interface: assembles the views of `src/front/` |
 | `main.py` | Analyses every patient with the LLM, the RAG and the KBS |
 | `generation.py` | Analyses a patient with the LLM |
 | `kbs.py` | Knowledge-Based System (KBS): applies the deterministic rules; has the LLM draft a new rule |
 | `indexing.py` | Indexes the PDFs of `src/rag/RAG_Docs/` in ChromaDB |
 | `retrieval.py` | Searches ChromaDB for the passages useful for a patient |
-| `src/front/` | Modules of the Streamlit interface (JSON files, documents, analysis, HTML formatting) |
-| `src/front/inference_results.json` | Analysis results saved by the interface |
+| `src/front/` | Code of the Streamlit interface (see [Interface code](#interface-code)) |
+| `src/results/inference_results.json` | Analysis results saved by the interface |
 | `src/kbs/generic_rules.json` | KBS rules from the ANSM Thesaurus of drug interactions and from DDI-Predictor |
 | `src/kbs/personalized_rules.json` | Hospital-specific KBS rules (e.g. apixaban dose, daptomycin 10 mg/kg) |
 | `src/kbs/KBS_Docs/` | Reference documents from which the generic KBS rules were extracted (ANSM Thesaurus, DDI-Predictor) |
@@ -51,6 +51,49 @@ dataset/ --> main.py              --> generation.py --> LLM decision
 
 For each patient, `main.py` gets the useful passages from `retrieval.py` and the alerts from `kbs.py`, then passes them to `generation.py`, which gives the final decision.
 `retrieval.py` uses the `src/rag/chroma_db/` database created by `indexing.py`: run the indexing before the analysis.
+
+## Interface code
+
+`app.py` only assembles the screen. The interface code is in `src/front/`, split by responsibility so that each
+area of the screen can be changed without reading the rest. The backend scripts at the root (`kbs.py`,
+`generation.py`, `retrieval.py`, `indexing.py`, `main.py`) are only called through `src/front/services/`.
+
+```
+src/front/
+├── theme.py              page configuration, style injection, application bar
+├── state.py              AppState (data shared by the views during one run) and patient navigation
+├── assets/
+│   ├── style.css         style of the whole interface
+│   └── list_height.html  script giving the patient list the remaining screen height
+├── services/             data access and backend calls, no Streamlit
+│   ├── data.py           patient files, laboratory reference ranges, inference results
+│   ├── analysis.py       analysis of one patient (KBS + RAG + LLM) and saving of the result
+│   └── documents.py      RAG documents: list, indexing, page rendering
+├── rendering/            HTML generation, no Streamlit
+│   ├── opinion.py        record status, decision category, sources
+│   ├── record.py         patient profile, laboratory and prescription tables
+│   ├── alerts.py         KBS alerts and Thesaurus level badges
+│   └── rules.py          KBS rule cards
+├── components/           reusable Streamlit widgets
+│   ├── widgets.py        titles, labels, tables, alerts, error messages
+│   └── dialogs.py        document viewer and KBS alert dialogs, source links
+└── views/                one module per area of the screen
+    ├── sidebar.py        patient folder, RAG documents, guideline upload
+    ├── overview.py       title, analysis buttons, indicators
+    ├── results/          “Analysis results” tab
+    │   ├── tab.py
+    │   ├── patient_list.py
+    │   ├── patient_record.py
+    │   └── opinion.py
+    ├── rules/            “KBS rules” tab
+    │   ├── tab.py
+    │   ├── personalized.py   LLM assistant, rule list, manual entry, JSON editing
+    │   ├── generic.py        search and pagination of the generic rules
+    │   └── check.py          alerts of all rules for one record
+    └── biology.py        “Laboratory reference ranges” tab
+```
+
+`services/` and `rendering/` do not import Streamlit: they can be tested without running the interface.
 
 ## Methodology
 
@@ -85,7 +128,7 @@ streamlit run app.py
 
 The inference folder (`dataset` by default, or `full_dataset`) is chosen in the sidebar.
 
-Analysis results are saved in `src/front/inference_results.json`.
+Analysis results are saved in `src/results/inference_results.json`.
 
 ![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 

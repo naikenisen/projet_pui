@@ -1,0 +1,14 @@
+<script>
+const page = window.parent.document;
+function adjust() {
+    const list = page.querySelector(".st-key-patient-list");
+    const main = page.querySelector('[data-testid="stMain"]');
+    if (!list || !main) return;
+    const top = list.getBoundingClientRect().top + main.scrollTop;
+    const bottom = 75;  // “N records shown” caption and bottom margin of the page
+    const height = Math.max(200, window.parent.innerHeight - top - bottom);
+    if (list.style.maxHeight !== height + "px") list.style.setProperty("max-height", height + "px", "important");
+}
+adjust();
+setInterval(adjust, 250);
+</script>

@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bar-height: 52px;  /* height of the fixed application bar */
+    --blue: #0B4F8A; --blue-dark: #08355C; --blue-light: #E8F0F8;
+    --text: #1A2433; --text-2: #4A5A6E; --text-3: #7A8899;
+    --border: #D9E0E8; --background: #F3F5F8; --surface: #FFFFFF;
+    --green: #1E7A46; --green-bg: #E9F5EE; --orange: #A85A00; --orange-bg: #FFF3E3;
+    --red: #B42318; --red-bg: #FDECEB;
+    --purple: #6B3FA0; --purple-bg: #F2ECFA; --blue-bg: #E8F0F8;
+}
+html, body, [class*="css"], .stMarkdown, button, input, textarea, select {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+}
+html { font-size: 15.5px; }
+#MainMenu, footer, [data-testid="stDecoration"], [data-testid="stStatusWidget"] { display: none; }
+
+/* Fixed application bar at the top */
+.app-bar {
+    position: fixed; top: 0; left: 0; right: 0; height: var(--bar-height); z-index: 1000001;
+    background: var(--blue-dark); color: #FFFFFF; display: flex; align-items: center;
+    justify-content: space-between; padding: 0 1.25rem; font-size: 0.98rem;
+    border-bottom: 1px solid #052440;
+}
+.app-bar .brand { display: flex; align-items: center; gap: 0.75rem; }
+.app-bar .hospital { font-weight: 700; letter-spacing: 0.02em; }
+.app-bar .separator { width: 1px; height: 22px; background: rgba(255,255,255,0.35); }
+.app-bar .software { color: rgba(255,255,255,0.85); font-weight: 400; }
+.app-bar .context { font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.25rem; }
+.app-bar .context b { color: #FFFFFF; font-weight: 600; }
+[data-testid="stHeader"] { top: var(--bar-height); background: transparent; height: 2.5rem; }
+[data-testid="stSidebar"] { top: var(--bar-height); height: calc(100vh - var(--bar-height)); }
+.block-container { padding-top: calc(var(--bar-height) + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }
+
+/* Sidebar */
+[data-testid="stSidebar"] { background: var(--surface); border-right: 1px solid var(--border); }
+[data-testid="stSidebar"] .stButton > button { justify-content: flex-start; text-align: left; }
+.section-title {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-3); margin: 1rem 0 0.4rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
+}
+
+/* Page header and indicator strip */
+.page-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 0; }
+.page-subtitle { font-size: 0.82rem; color: var(--text-3); margin: 0.1rem 0 0 0; }
+.indicators {
+    display: flex; background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+    margin: 0.9rem 0 0.6rem 0;
+}
+.indicator { flex: 1; padding: 0.6rem 1rem; border-right: 1px solid var(--border); }
+.indicator:last-child { border-right: none; }
+.indicator .value { font-size: 1.35rem; font-weight: 600; color: var(--text); line-height: 1.2; }
+.indicator .name { font-size: 0.76rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }
+.indicator.green .value { color: var(--green); }
+.indicator.orange .value { color: var(--orange); }
+.indicator.red .value { color: var(--red); }
+.indicator.purple .value { color: var(--purple); }
+.indicator.blue .value { color: var(--blue); }
+[data-testid="stMetric"] { padding: 0; }
+[data-testid="stMetricLabel"] p { color: var(--text-3); font-size: 0.75rem; }
+[data-testid="stMetricValue"] { font-size: 1.4rem; font-weight: 600; }
+
+/* Components: plain corners, thin borders */
+.stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] > button {
+    border-radius: 4px; font-weight: 500; font-size: 0.85rem; min-height: 2.1rem; padding: 0.2rem 0.8rem;
+}
+.stButton > button[kind="primary"], [data-testid="stFormSubmitButton"] > button[kind="primaryFormSubmit"] {
+    background: var(--blue); border-color: var(--blue);
+}
+.stTextInput input, .stNumberInput input, .stTextArea textarea, [data-baseweb="select"] > div { border-radius: 4px; }
+[data-testid="stExpander"] details {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+}
+[data-testid="stExpander"] summary { padding: 0.55rem 0.9rem; font-size: 0.9rem; }
+[data-testid="stExpander"] summary:hover { background: var(--blue-light); }
+[data-testid="stExpander"] { margin-bottom: -0.6rem; }
+[data-testid="stVerticalBlockBorderWrapper"] { border-radius: 4px; }
+.stTabs [data-baseweb="tab-list"] { gap: 0; border-bottom: 1px solid var(--border); }
+.stTabs [data-baseweb="tab"] { padding: 0.55rem 1.1rem; font-weight: 500; font-size: 0.88rem; }
+.stTabs [aria-selected="true"] { color: var(--blue); }
+[data-testid="stDataFrame"] { border: 1px solid var(--border); border-radius: 4px; }
+
+/* Record content */
+.decision {
+    border-radius: 3px; padding: 0.55rem 0.8rem; font-weight: 600; font-size: 0.88rem;
+    border-left: 3px solid; margin-bottom: 0.6rem; letter-spacing: 0.01em;
+}
+.decision.validated { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.decision.intervention { background: var(--orange-bg); border-color: var(--orange); color: var(--orange); }
+.decision.verification { background: var(--purple-bg); border-color: var(--purple); color: var(--purple); }
+.decision.monitoring { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); }
+.decision.error { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+.label {
+    font-size: 0.75rem; font-weight: 600; color: var(--text-3); text-transform: uppercase;
+    letter-spacing: 0.07em; margin: 0.8rem 0 0.3rem 0;
+}
+.alert {
+    background: var(--orange-bg); border-left: 3px solid var(--orange); border-radius: 3px;
+    padding: 0.4rem 0.7rem; margin-bottom: 0.35rem; font-size: 0.86rem; color: var(--text);
+}
+.alert .alert-header { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.2rem; }
+.alert .complement { margin-top: 0.25rem; }
+.alert .prescription { margin-top: 0.25rem; font-size: 0.78rem; color: var(--text-2); }
+
+/* KBS rules */
+.rule {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--blue);
+    border-radius: 4px; padding: 0.65rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.86rem; color: var(--text);
+}
+.rule.ci { border-left-color: var(--red); }
+.rule.asdec { border-left-color: var(--orange); }
+.rule.pe { border-left-color: #C9A100; }
+.rule.apec { border-left-color: #9AA6B2; }
+.rule.custom { border-left-color: var(--green); }
+.rule .header { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem; }
+.rule .title { font-weight: 600; font-size: 0.93rem; margin-right: 0.2rem; }
+.rule .block { margin: 0.3rem 0; line-height: 1.45; }
+.rule .field-label { font-weight: 600; color: var(--text-2); }
+.rule ul { margin: 0.15rem 0 0 0; padding-left: 1.2rem; }
+.rule li { margin: 0.05rem 0; }
+.rule details { margin-top: 0.35rem; }
+.rule summary { cursor: pointer; color: var(--text-3); font-size: 0.8rem; }
+.rule .footer { margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-3); }
+.badge {
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+    padding: 0.1rem 0.45rem; border-radius: 3px; white-space: nowrap;
+}
+.badge.ci { background: var(--red-bg); color: var(--red); }
+.badge.asdec { background: var(--orange-bg); color: var(--orange); }
+.badge.pe { background: #FFF7D6; color: #7A5B00; }
+.badge.apec { background: #EEF1F4; color: var(--text-2); }
+.badge.pk { background: var(--blue-light); color: var(--blue); }
+.badge.custom { background: var(--green-bg); color: var(--green); }
+.chip {
+    display: inline-block; background: var(--background); border: 1px solid var(--border); border-radius: 3px;
+    padding: 0 0.35rem; margin: 0.1rem 0.2rem 0.1rem 0; font-size: 0.8rem;
+}
+.profile { color: var(--text); font-weight: 500; }
+.muted { color: var(--text-3); font-size: 0.76rem; margin-top: 0.6rem; }
+
+/* Pharmaceutical opinion: each point is a frame containing the proposal then its sources.
+   The frames are st.container(key="frame-<type>-..."): Streamlit gives them the class st-key-<key>. */
+[class*="st-key-frame-"] {
+    border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: 4px;
+    background: var(--surface); padding: 0.5rem 0.75rem; margin: 0.35rem 0; gap: 0.35rem;
+}
+[class*="st-key-frame-intervention"] { border: 1.5px solid var(--orange); background: var(--orange-bg); }
+[class*="st-key-frame-verification"] { border-left-color: var(--purple); }
+[class*="st-key-frame-monitoring"] { border-left-color: var(--blue); }
+[class*="st-key-frame-validation"] { border-left-color: var(--green); }
+/* Streamlit gives markdown blocks a negative bottom margin: without this fix, the sources overlap the text */
+[class*="st-key-frame-"] [data-testid="stMarkdownContainer"] { margin-bottom: 0 !important; }
+[class*="st-key-frame-"] [data-testid="stMarkdownContainer"] p { margin: 0 !important; }
+.point { font-size: 0.9rem; color: var(--text); line-height: 1.45; }
+p.point.intervention, .point.intervention { font-weight: 700 !important; }
+/* Open record: areas whose height is computed from the screen, each scrolls on its own (the page does not).
+   Available height ≈ 100vh minus application bar, tabs, navigation bar and labels. */
+div.st-key-zone-biology, div.st-key-zone-prescription, div.st-key-zone-opinion {
+    overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
+}
+div.st-key-zone-biology { height: calc(100vh - 390px) !important; min-height: 220px; }
+div.st-key-zone-prescription { height: calc((100vh - 360px) * 0.5) !important; min-height: 160px; }
+div.st-key-zone-opinion { height: calc((100vh - 360px) * 0.5) !important; min-height: 180px; }
+.st-key-zone-opinion > div { margin-bottom: 0.5rem; }
+.data-table th { position: sticky; top: 0; z-index: 1; }
+
+/* Patient list: aligned columns (grid), each row covered by an invisible button.
+   The list scrolls on its own in a screen-high area (the page does not); the column header stays visible. */
+div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; background: var(--surface);
+    margin-top: 0.4rem; overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
+    max-height: calc(100vh - 400px) !important; min-height: 200px; }
+.st-key-patient-list > div:first-child { position: sticky; top: 0; z-index: 3; }
+.st-key-adjust-list { display: none; }
+.st-key-patient-list [data-testid="stMarkdownContainer"] { margin-bottom: 0 !important; }
+.patient-row {
+    display: grid; grid-template-columns: 9rem 13rem 6rem 10rem 6rem 1fr; align-items: center;
+    padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--border); font-size: 0.87rem; color: var(--text);
+}
+.patient-row.header-row { background: var(--background); color: var(--text-3); font-size: 0.74rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 0.9rem; }
+.patient-row .status { font-weight: 600; }
+.status.intervention { color: var(--orange); } .status.verification { color: var(--purple); }
+.status.monitoring { color: var(--blue); } .status.validated { color: var(--green); }
+.status.error { color: var(--red); } .status.not_analysed { color: var(--text-3); }
+[class*="st-key-row-"] { position: relative; }
+[class*="st-key-row-"]:hover { background: var(--blue-light); cursor: pointer; }
+[class*="st-key-open-"] { position: absolute; inset: 0; z-index: 2; }
+[class*="st-key-open-"] .stButton, [class*="st-key-open-"] button {
+    width: 100%; height: 100%; opacity: 0; cursor: pointer;
+}
+.sources-title { font-size: 0.74rem; font-weight: 600; color: var(--text-3); text-transform: uppercase;
+    letter-spacing: 0.05em; }
+/* Source links: pastel blue text on a very light blue background */
+.stButton > button[kind="tertiary"] {
+    min-height: 1.4rem; padding: 0.05rem 0.5rem; background: #F0F6FD; border: 1px solid #C6DDF5; border-radius: 10px;
+}
+.stButton > button[kind="tertiary"], .stButton > button[kind="tertiary"] p {
+    color: #5B9BD5; font-size: 0.78rem; font-weight: 500;
+}
+.stButton > button[kind="tertiary"]:hover { background: #E2EEFB; border-color: #9EC3EA; }
+.stButton > button[kind="tertiary"]:hover p { color: #3E7FC1; }
+.llm-source {
+    display: inline-block; font-size: 0.78rem; color: var(--text-2); background: #EEF1F4;
+    border: 1px solid var(--border); border-radius: 10px; padding: 0.05rem 0.5rem;
+}
+
+/* Laboratory and prescription tables: all text visible, no horizontal scrolling */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--surface);
+    border: 1px solid var(--border); table-layout: auto; }
+.data-table th { text-align: left; font-weight: 600; color: var(--text-2); background: var(--background);
+    padding: 0.3rem 0.45rem; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 0.28rem 0.45rem; border-bottom: 1px solid var(--border); vertical-align: top;
+    white-space: normal; overflow-wrap: anywhere; }
+.data-table td.short { white-space: nowrap; }
+.data-table tr.abnormal td { color: var(--red); background: var(--red-bg); font-weight: 500; }
