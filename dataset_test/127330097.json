@@ -1,149 +1,149 @@
 {
   "patient": {
     "id": "127330097",
-    "jour_reference": "2025-06-18",
+    "reference_date": "2025-06-18",
     "age": 88,
-    "taille_cm": 150,
-    "poids_kg": null,
-    "surface_corporelle_m2": null,
-    "imc_kg_m2": null,
-    "biologie": {}
+    "height_cm": 150,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "CANDESARTAN 8 MG (LABO ARROW LAB), CPR SÉC",
-      "date_debut": "2025-06-04",
-      "date_fin": "2025-07-04",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 0.5,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "CANDESARTAN 8 MG (LABO ARROW LAB), CPR SÉC",
+      "start_date": "2025-06-04",
+      "end_date": "2025-07-04",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 0.5,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 8,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "0,5 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "0.5 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "AMLODIPINE 10 MG ARROW GENERIQUES, GÉLULE",
-      "date_debut": "2025-06-04",
-      "date_fin": "2025-07-04",
-      "unite_prise": "gélule(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "AMLODIPINE 10 MG ARROW GENERIQUES, GÉLULE",
+      "start_date": "2025-06-04",
+      "end_date": "2025-07-04",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 10,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 gélule(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 gélule(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
-      "date_debut": "2025-06-05",
-      "date_fin": "2025-07-05",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "start_date": "2025-06-05",
+      "end_date": "2025-07-05",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 20,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
-      "date_debut": "2025-06-04",
-      "date_fin": "2025-07-04",
-      "unite_prise": "gélule(s)",
-      "quantite_par_jour": null,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": true,
-      "principes_actifs": [
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "start_date": "2025-06-04",
+      "end_date": "2025-07-04",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
         {
           "dosage": 500,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+      "dosage_regimen": "gélule(s) as needed — specific times — every day"
     },
     {
-      "libelle_medicament": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
-      "date_debut": "2025-06-05",
-      "date_fin": "2025-07-05",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 0.5,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
+      "start_date": "2025-06-05",
+      "end_date": "2025-07-05",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 0.5,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 25,
-          "unite": "mg"
+          "unit": "mg"
         },
         {
           "dosage": 15,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "0,5 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "0.5 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "MIANSERINE 30 MG (LABO ARROW), CPR SÉC",
-      "date_debut": "2025-06-04",
-      "date_fin": "2025-07-04",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "MIANSERINE 30 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2025-06-04",
+      "end_date": "2025-07-04",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 30,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "ATENOLOL 50 MG (LABO ARROW), CPR SÉC",
-      "date_debut": "2025-06-05",
-      "date_fin": "2025-07-05",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "ATENOLOL 50 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2025-06-05",
+      "end_date": "2025-07-05",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 50,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
-      "date_debut": "2025-06-05",
-      "date_fin": "2025-07-05",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "drug_label": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
+      "start_date": "2025-06-05",
+      "end_date": "2025-07-05",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     }
   ]
 }

@@ -1,48 +1,48 @@
-"""Combien de patients le filtre 1 va-t-il extraire (= nombre de patients dans dataset.json) ?
+"""How many patients does filter 1 extract (= number of patients in dataset/)?
 
-Utilise exactement les mêmes fonctions et la même graine que preprocessing.py.
+Uses exactly the same functions and the same seed as preprocessing.py.
 """
 
-import pandas as pd
-
 from preprocessing import (
-    GRAINE, STATUTS_EXCLUS, bio_avant_jour, charger_bio, charger_clinique,
-    charger_traitements, choisir_jours, lire_csv, prescriptions_du_jour,
+    DICTIONARY, SEED, biology_before_day, choose_days, load_biology, load_clinical,
+    load_treatments, prescriptions_of_the_day, read_raw_csv,
 )
 
-brut = lire_csv("ANONYMISED_TRAITEMENTS.csv")
-print("=== TRAITEMENTS bruts")
-print(f"lignes CSV                      : {len(brut)}")
-print(f"patients                        : {brut['id_patient'].nunique()}")
-print("lignes par statut               :", brut["statut"].replace("", "(vide)").value_counts().to_dict())
+raw = read_raw_csv("treatments")
+patient_column = next(raw_name for raw_name, name in DICTIONARY["treatments"]["columns"].items() if name == "patient_id")
+excluded = DICTIONARY["treatments"].get("exclude", {})
+print("=== Raw TREATMENTS")
+print(f"CSV rows                        : {len(raw)}")
+print(f"patients                        : {raw[patient_column].nunique()}")
+for column, values in excluded.items():
+    print(f"rows per {column}:", raw[column].replace("", "(empty)").value_counts().to_dict())
 
-toutes = charger_traitements(statuts_exclus=set())
-lignes = charger_traitements()
-print(f"\n=== Prescriptions regroupées (1 ligne CSV par principe actif -> 1 prescription)")
-print(f"prescriptions, tous statuts     : {len(toutes)}  ({toutes['id_patient'].nunique()} patients)")
-print(f"sans statuts {sorted(STATUTS_EXCLUS)}      : {len(lignes)}  ({lignes['id_patient'].nunique()} patients)")
+lines, _ = load_treatments()
+print("\n=== Grouped prescriptions (1 CSV row per active ingredient -> 1 prescription)")
+print(f"without excluded statuses {excluded} : {len(lines)}  ({lines['patient_id'].nunique()} patients)")
 
-jours = choisir_jours(lignes)
-presc = prescriptions_du_jour(lignes, jours)
-n_presc = presc.groupby("id_patient").size()
+days = choose_days(lines)
+presc = prescriptions_of_the_day(lines, days)
+presc_count = presc.groupby("patient_id").size()
 
-print(f"\n=== FILTRE 1 (graine = {GRAINE})")
-print(f">>> PATIENTS DANS LE JSON       : {len(jours)}")
-print(f"perdus car seulement annulé/supprimé : {brut['id_patient'].nunique() - len(jours)}")
-print(f"prescriptions concomitantes / patient : médiane {n_presc.median():.0f}, "
-      f"min {n_presc.min()}, max {n_presc.max()}, total {n_presc.sum()}")
-print("jours de référence par année    :", jours.dt.year.value_counts().sort_index().to_dict())
+print(f"\n=== FILTER 1 (seed = {SEED})")
+print(f">>> PATIENTS IN THE JSON        : {len(days)}")
+print(f"lost because only cancelled/deleted : {raw[patient_column].nunique() - len(days)}")
+print(f"concomitant prescriptions / patient : median {presc_count.median():.0f}, "
+      f"min {presc_count.min()}, max {presc_count.max()}, total {presc_count.sum()}")
+print("reference dates per year        :", days.dt.year.value_counts().sort_index().to_dict())
 
-clin = charger_clinique()
-avec_clin = jours.index.isin(clin.index)
-print(f"\n=== Données associées aux {len(jours)} patients")
-print(f"avec données CLINIQUE           : {avec_clin.sum()}")
-print(f"  dont poids connu              : {clin.reindex(jours.index)['poids_kg'].notna().sum()}")
-print(f"  dont taille connue            : {clin.reindex(jours.index)['taille_cm'].notna().sum()}")
+clinical = load_clinical()
+with_clinical = days.index.isin(clinical.index)
+print(f"\n=== Data associated with the {len(days)} patients")
+print(f"with CLINICAL data              : {with_clinical.sum()}")
+print(f"  of which known weight         : {clinical.reindex(days.index)['weight_kg'].notna().sum()}")
+print(f"  of which known height         : {clinical.reindex(days.index)['height_cm'].notna().sum()}")
 
-bio = bio_avant_jour(charger_bio(), jours)
-n_bio = bio.groupby("id_patient").size().reindex(jours.index, fill_value=0)
-print(f"FILTRE 2 - avec >= 1 résultat bio avant le jour : {(n_bio > 0).sum()}")
-print(f"  examens / patient (si > 0)    : médiane {n_bio[n_bio > 0].median():.0f}, max {n_bio.max()}")
-print(f"  sans aucune bio avant le jour : {(n_bio == 0).sum()}")
-print(f"avec CLINIQUE + bio + traitements : {(avec_clin & (n_bio > 0).to_numpy()).sum()}")
+biology, _ = load_biology()
+biology = biology_before_day(biology, days)
+biology_count = biology.groupby("patient_id").size().reindex(days.index, fill_value=0)
+print(f"FILTER 2 - with >= 1 laboratory result before the day : {(biology_count > 0).sum()}")
+print(f"  tests / patient (if > 0)      : median {biology_count[biology_count > 0].median():.0f}, max {biology_count.max()}")
+print(f"  without any laboratory value before the day : {(biology_count == 0).sum()}")
+print(f"with CLINICAL + biology + treatments : {(with_clinical & (biology_count > 0).to_numpy()).sum()}")

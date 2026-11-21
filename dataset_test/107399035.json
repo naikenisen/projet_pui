@@ -1,290 +1,290 @@
 {
   "patient": {
     "id": "107399035",
-    "jour_reference": "2024-05-18",
+    "reference_date": "2024-05-18",
     "age": 87,
-    "taille_cm": 164,
-    "poids_kg": 67.1,
-    "surface_corporelle_m2": 1.732,
-    "imc_kg_m2": 24.9,
-    "biologie": {
+    "height_cm": 164,
+    "weight_kg": 67.1,
+    "body_surface_area_m2": 1.732,
+    "bmi_kg_m2": 24.9,
+    "biology": {
       "25-OH-Vitamine D": {
-        "valeur": 48.4,
-        "unite": "nmol/L",
-        "date_heure_examen": "2024-03-17 08:00:00",
-        "date_demande": "2024-03-17 08:00:00"
+        "value": 48.4,
+        "unit": "nmol/L",
+        "test_datetime": "2024-03-17 08:00:00",
+        "request_date": "2024-03-17 08:00:00"
       },
       "ALAT (sang)": {
-        "valeur": 18,
-        "unite": "UI/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 18,
+        "unit": "UI/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "ASAT (sang)": {
-        "valeur": 14,
-        "unite": "UI/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 14,
+        "unit": "UI/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Bilirubine totale (sang)": {
-        "valeur": 9,
-        "unite": "µmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 9,
+        "unit": "µmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "CO2 total (sang)": {
-        "valeur": 24,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 24,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "CRP (sang)": {
-        "valeur": 19,
-        "unite": "mg/L",
-        "date_heure_examen": "2024-03-21 07:05:00",
-        "date_demande": "2024-03-21 07:05:00"
+        "value": 19,
+        "unit": "mg/L",
+        "test_datetime": "2024-03-21 07:05:00",
+        "request_date": "2024-03-21 07:05:00"
       },
       "Capacité totale de fixation de la transferrine (sang)": {
-        "valeur": 49,
-        "unite": "µmol/L",
-        "date_heure_examen": "2024-03-17 08:00:00",
-        "date_demande": "2024-03-17 08:00:00"
+        "value": 49,
+        "unit": "µmol/L",
+        "test_datetime": "2024-03-17 08:00:00",
+        "request_date": "2024-03-17 08:00:00"
       },
       "Chlore (sang)": {
-        "valeur": 105,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 105,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
-        "valeur": 33.3,
-        "unite": "g/dL",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 33.3,
+        "unit": "g/dL",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Créatinine (sang)": {
-        "valeur": 94,
-        "unite": "µmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 94,
+        "unit": "µmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "DFG estimé (CKD-EPI)": {
-        "valeur": 51,
-        "unite": "mL/min/1,73 m²",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 51,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Fer (sang)": {
-        "valeur": 5.7,
-        "unite": "µmol/L",
-        "date_heure_examen": "2024-03-17 08:00:00",
-        "date_demande": "2024-03-17 08:00:00"
+        "value": 5.7,
+        "unit": "µmol/L",
+        "test_datetime": "2024-03-17 08:00:00",
+        "request_date": "2024-03-17 08:00:00"
       },
       "Ferritine (sang)": {
-        "valeur": 207,
-        "unite": "µg/L",
-        "date_heure_examen": "2024-03-17 08:00:00",
-        "date_demande": "2024-03-17 08:00:00"
+        "value": 207,
+        "unit": "µg/L",
+        "test_datetime": "2024-03-17 08:00:00",
+        "request_date": "2024-03-17 08:00:00"
       },
       "Gamma-GT (sang)": {
-        "valeur": 342,
-        "unite": "UI/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 342,
+        "unit": "UI/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Glycémie (sang)": {
-        "valeur": 9.32,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-23 08:00:00",
-        "date_demande": "2024-03-23 08:00:00"
+        "value": 9.32,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-23 08:00:00",
+        "request_date": "2024-03-23 08:00:00"
       },
       "Hématies": {
-        "valeur": 2.99,
-        "unite": "10^6/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 2.99,
+        "unit": "10^6/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Hématocrite": {
-        "valeur": 25.8,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 25.8,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Hémoglobine": {
-        "valeur": 8.6,
-        "unite": "g/dL",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 8.6,
+        "unit": "g/dL",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Indice de distribution des hématies (IDR)": {
-        "valeur": 14.7,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 14.7,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Leucocytes": {
-        "valeur": 10.3,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 10.3,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Lymphocytes (%)": {
-        "valeur": 19.9,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 19.9,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Lymphocytes (valeur absolue)": {
-        "valeur": 2.04,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 2.04,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Monocytes (%)": {
-        "valeur": 6.8,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 6.8,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Monocytes (valeur absolue)": {
-        "valeur": 0.7,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 0.7,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Phosphatases alcalines (sang)": {
-        "valeur": 394,
-        "unite": "UI/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 394,
+        "unit": "UI/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Plaquettes": {
-        "valeur": 676,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 676,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires basophiles (%)": {
-        "valeur": 0.9,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 0.9,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires basophiles (valeur absolue)": {
-        "valeur": 0.09,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 0.09,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires neutrophiles (%)": {
-        "valeur": 70.9,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 70.9,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires neutrophiles (valeur absolue)": {
-        "valeur": 7.3,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 7.3,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires éosinophiles (%)": {
-        "valeur": 1.5,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 1.5,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Polynucléaires éosinophiles (valeur absolue)": {
-        "valeur": 0.15,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 0.15,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Potassium (sang)": {
-        "valeur": 3.7,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 3.7,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Protéines totales (sang)": {
-        "valeur": 69,
-        "unite": "g/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 69,
+        "unit": "g/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Réticulocytes (%)": {
-        "valeur": 3.82,
-        "unite": "%",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 3.82,
+        "unit": "%",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Réticulocytes (valeur absolue)": {
-        "valeur": 114.2,
-        "unite": "10^3/mm³",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 114.2,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Sodium (sang)": {
-        "valeur": 139,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 139,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "TSH (sang)": {
-        "valeur": 4.05,
-        "unite": "mUI/L",
-        "date_heure_examen": "2024-03-21 07:05:00",
-        "date_demande": "2024-03-21 07:05:00"
+        "value": 4.05,
+        "unit": "mUI/L",
+        "test_datetime": "2024-03-21 07:05:00",
+        "request_date": "2024-03-21 07:05:00"
       },
       "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
-        "valeur": 28.8,
-        "unite": "pg",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 28.8,
+        "unit": "pg",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Transferrine (sang)": {
-        "valeur": 1.96,
-        "unite": "g/L",
-        "date_heure_examen": "2024-03-17 08:00:00",
-        "date_demande": "2024-03-17 08:00:00"
+        "value": 1.96,
+        "unit": "g/L",
+        "test_datetime": "2024-03-17 08:00:00",
+        "request_date": "2024-03-17 08:00:00"
       },
       "Urée (sang)": {
-        "valeur": 9.5,
-        "unite": "mmol/L",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 9.5,
+        "unit": "mmol/L",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Volume globulaire moyen (VGM)": {
-        "valeur": 86.3,
-        "unite": "fL",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 86.3,
+        "unit": "fL",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       },
       "Volume plaquettaire moyen (VMP)": {
-        "valeur": 10.2,
-        "unite": "fL",
-        "date_heure_examen": "2024-03-26 08:04:00",
-        "date_demande": "2024-03-26 08:04:00"
+        "value": 10.2,
+        "unit": "fL",
+        "test_datetime": "2024-03-26 08:04:00",
+        "request_date": "2024-03-26 08:04:00"
       }
     }
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "COLECALCIFEROL 50 000 IU/2 ML (ZYMAD), SOL BUV, AMP",
-      "date_debut": "2024-03-20",
-      "date_fin": "2024-05-19",
-      "unite_prise": "ampoule(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "1/7",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "COLECALCIFEROL 50 000 IU/2 ML (ZYMAD), SOL BUV, AMP",
+      "start_date": "2024-03-20",
+      "end_date": "2024-05-19",
+      "intake_unit": "ampoule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1/7",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 50000,
-          "unite": "iu"
+          "unit": "iu"
         }
       ],
-      "posologie": "1 ampoule(s) par jour — horaires spécifiques — 1 jour(s) sur 7"
+      "dosage_regimen": "1 ampoule(s) per day — specific times — 1 day(s) out of 7"
     }
   ]
 }

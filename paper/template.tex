@@ -12,7 +12,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{graphicx}
 
-\title{AI-assisted pharmaceutical analysis of prescriptions combining retrieval-augmented generation and a rule-based expert system}
+\title{AI-assisted pharmaceutical analysis of prescriptions combining retrieval-augmented generation and a knowledge-based system}
 
 \author{
 	Isen Naiken \\
@@ -39,10 +39,10 @@
 \renewcommand{\shorttitle}{AI-assisted pharmaceutical analysis of prescriptions}
 
 \hypersetup{
-pdftitle={AI-assisted pharmaceutical analysis of prescriptions combining retrieval-augmented generation and a rule-based expert system},
+pdftitle={AI-assisted pharmaceutical analysis of prescriptions combining retrieval-augmented generation and a knowledge-based system},
 pdfsubject={cs.CL, cs.AI},
 pdfauthor={Isen Naiken, Bastian Fouquier, Mathieu Boulin, Marie-Pierre Guenfoudi},
-pdfkeywords={Clinical pharmacy, Medication review, Large language model, Retrieval-augmented generation, Expert system},
+pdfkeywords={Clinical pharmacy, Medication review, Large language model, Retrieval-augmented generation, Knowledge-based system},
 }
 
 \begin{document}
@@ -51,14 +51,14 @@ pdfkeywords={Clinical pharmacy, Medication review, Large language model, Retriev
 \begin{abstract}
 	\textbf{Background.} % TODO
 
-	\textbf{Methods.} We developed a pipeline that analyses each prescription in three steps. First, a retrieval module searches clinical guidelines for passages relevant to the patient. The guidelines are split into passages and stored in a vector database. One query is built for each prescription line, using the drug, its dose, its dosage regimen and the patient profile, including abnormal laboratory values. Second, a rule-based expert system checks the prescription against deterministic rules written by pharmacists and returns alerts. Third, a large language model receives the patient record, the alerts and the retrieved passages. It returns a structured opinion: the patient is either validated or a pharmaceutical intervention is proposed, with a short justification and the sources used. A graphical interface allows pharmacists to run the analysis, read the results, open the cited sources, add documents and edit the rules.
+	\textbf{Methods.} We developed a pipeline that analyses each prescription in three steps. First, a retrieval module searches clinical guidelines for passages relevant to the patient. The guidelines are split into passages and stored in a vector database. One query is built for each prescription line, using the drug, its dose, its dosage regimen and the patient profile, including abnormal laboratory values. Second, a rule-based Knowledge-Based System (KBS) checks the prescription against deterministic rules written by pharmacists and returns alerts. Third, a large language model receives the patient record, the alerts and the retrieved passages. It returns a structured opinion: the patient is either validated or a pharmaceutical intervention is proposed, with a short justification and the sources used. A graphical interface allows pharmacists to run the analysis, read the results, open the cited sources, add documents and edit the rules.
 
 	\textbf{Results.} % TODO
 
 	\textbf{Conclusion.} % TODO
 \end{abstract}
 
-\keywords{Clinical pharmacy \and Medication review \and Large language model \and Retrieval-augmented generation \and Expert system}
+\keywords{Clinical pharmacy \and Medication review \and Large language model \and Retrieval-augmented generation \and Knowledge-based system}
 
 
 % TODO: Introduction
@@ -69,14 +69,14 @@ pdfkeywords={Clinical pharmacy, Medication review, Large language model, Retriev
 
 \subsection{Overview}
 
-The system analyses the prescription of each patient and returns a pharmaceutical opinion. It combines three modules: a retrieval module, a rule-based expert system and a large language model (LLM) (Figure~\ref{fig:architecture}). Before any analysis, the clinical guidelines are indexed in a vector database. For each patient, the retrieval module and the expert system are run first. Their outputs are then passed to the LLM, which gives the final decision.
+The system analyses the prescription of each patient and returns a pharmaceutical opinion. It combines three modules: a retrieval module, a rule-based Knowledge-Based System (KBS) and a large language model (LLM) (Figure~\ref{fig:architecture}). Before any analysis, the clinical guidelines are indexed in a vector database. For each patient, the retrieval module and the KBS are run first. Their outputs are then passed to the LLM, which gives the final decision.
 
 Each patient record is stored in JSON format. It contains the patient identifier, age, sex, weight, height and laboratory values (glycated haemoglobin [HbA1c] and serum creatinine). It also contains the list of prescribed drugs. Each prescription line gives the international nonproprietary name (INN), the brand name when available, the dose, the unit, the dosage regimen and the route of administration.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{figures_en/figure_1.pdf}
-	\caption{Overall architecture of the pipeline. Guidelines (PDF) are split into passages and indexed in a vector database (ChromaDB). For each patient, the retrieval module extracts relevant passages and the expert system produces deterministic alerts. Both outputs are passed to the language model, which gives the final decision.}
+	\caption{Overall architecture of the pipeline. Guidelines (PDF) are split into passages and indexed in a vector database (ChromaDB). For each patient, the retrieval module extracts relevant passages and the KBS produces deterministic alerts. Both outputs are passed to the language model, which gives the final decision.}
 	\label{fig:architecture}
 \end{figure}
 
@@ -102,9 +102,9 @@ The retrieval module selects the guideline passages that are useful for a given 
 	\label{fig:retrieval}
 \end{figure}
 
-\subsection{Rule-based expert system}
+\subsection{Knowledge-Based System (KBS)}
 
-The expert system applies deterministic rules to the patient record (Figure~\ref{fig:expert}). Rules are stored in a JSON file and can be written by pharmacists without programming. Each rule has four fields:
+The KBS applies deterministic rules to the patient record (Figure~\ref{fig:kbs}). Rules are stored in a JSON file and can be written by pharmacists without programming. Each rule has four fields:
 \begin{itemize}
 	\item \texttt{medicaments}: drugs that must all be prescribed;
 	\item \texttt{conditions}: conditions that must all be true;
@@ -113,38 +113,38 @@ The expert system applies deterministic rules to the patient record (Figure~\ref
 \end{itemize}
 Only the message is required. A condition compares a variable with a threshold (for example, \texttt{age >= 80}). The variables are the patient characteristics, the laboratory values and the dose of each prescribed drug. A condition on a missing variable is considered false.
 
-The rules are checked one after the other. A rule is triggered when all its fields are satisfied. For example, one rule checks the dose of apixaban: an alert is raised when the dose is not 2.5~mg and the patient meets at least two of the following criteria: age $\geq$ 80 years, weight $\leq$ 60~kg, serum creatinine $\geq$ 133~$\mu$mol/L. The output of the expert system is the list of messages of all triggered rules. This list may be empty.
+The rules are checked one after the other. A rule is triggered when all its fields are satisfied. For example, one rule checks the dose of apixaban: an alert is raised when the dose is not 2.5~mg and the patient meets at least two of the following criteria: age $\geq$ 80 years, weight $\leq$ 60~kg, serum creatinine $\geq$ 133~$\mu$mol/L. The output of the KBS is the list of messages of all triggered rules. This list may be empty.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figures_en/figure_3.pdf}
-	\caption{Rule-based expert system. Patient variables are extracted from the record. A rule is triggered if (i) all its target drugs are prescribed, (ii) all its mandatory conditions are true and (iii) a minimum number of optional criteria is met. The messages of the triggered rules form the list of alerts passed to the LLM.}
-	\label{fig:expert}
+	\caption{Knowledge-Based System (KBS). Patient variables are extracted from the record. A rule is triggered if (i) all its target drugs are prescribed, (ii) all its mandatory conditions are true and (iii) a minimum number of optional criteria is met. The messages of the triggered rules form the list of alerts passed to the LLM.}
+	\label{fig:kbs}
 \end{figure}
 
 \subsection{Generation of the pharmaceutical opinion}
 
 The final decision is made by an LLM (Figure~\ref{fig:generation}). We used Qwen3.6-35B-A3B, accessed through the OpenRouter API. The temperature was set to 0 to obtain reproducible answers. The output was limited to 1,024 tokens, the reasoning mode was disabled, and the model was required to answer in JSON format.
 
-The system prompt asks the model to act as a hospital clinical pharmacist. The model must take into account the patient profile (age, weight, laboratory values), the doses, contraindications, drug interactions and French guidelines. It must rely first on the expert system alerts and on the guideline passages when they are provided. The user message contains the patient record in JSON format, followed by the alerts and the retrieved passages.
+The system prompt asks the model to act as a hospital clinical pharmacist. The model must take into account the patient profile (age, weight, laboratory values), the doses, contraindications, drug interactions and French guidelines. It must rely first on the KBS alerts and on the guideline passages when they are provided. The user message contains the patient record in JSON format, followed by the alerts and the retrieved passages.
 
 The model returns three fields:
 \begin{itemize}
 	\item \texttt{decision}: either ``patient validated'' or ``pharmaceutical intervention proposed'';
 	\item \texttt{justification}: three to five sentences. In case of intervention, the justification names the drugs involved, the problem and the proposed change;
-	\item \texttt{sources}: the passages used (file and page), and ``expert system'' if an alert was used. The list is empty when the decision relies only on the knowledge of the model.
+	\item \texttt{sources}: the passages used (file and page), and ``KBS'' if an alert was used. The list is empty when the decision relies only on the knowledge of the model.
 \end{itemize}
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.85\textwidth]{figures_en/figure_4.pdf}
-	\caption{Generation of the pharmaceutical opinion. The user message combines the patient record, the expert system alerts and the retrieved guideline passages. The system prompt defines the role of the model and the analysis criteria. The model (Qwen3.6-35B-A3B, temperature 0, JSON output) returns a decision, a short justification and the cited sources.}
+	\caption{Generation of the pharmaceutical opinion. The user message combines the patient record, the KBS alerts and the retrieved guideline passages. The system prompt defines the role of the model and the analysis criteria. The model (Qwen3.6-35B-A3B, temperature 0, JSON output) returns a decision, a short justification and the cited sources.}
 	\label{fig:generation}
 \end{figure}
 
 \subsection{Implementation}
 
-The pipeline was written in Python. A graphical interface was built with Streamlit for use by pharmacists. It allows users to run the analysis for all patients or for a single patient, to read the results, and to open the cited sources at the relevant page. It also allows users to add new guidelines to the document base, to add or edit expert system rules, and to update the reference ranges of laboratory values. These changes do not require any programming.
+The pipeline was written in Python. A graphical interface was built with Streamlit for use by pharmacists. It allows users to run the analysis for all patients or for a single patient, to read the results, and to open the cited sources at the relevant page. It also allows users to add new guidelines to the document base, to add or edit KBS rules, and to update the reference ranges of laboratory values. These changes do not require any programming.
 
 % TODO: Evaluation (dataset, reference standard, metrics)
 
@@ -156,14 +156,14 @@ The pipeline was written in Python. A graphical interface was built with Streaml
 
 \subsection{Graphical interface}
 
-Figure~\ref{fig:interface_results} shows the main screen of the interface. The top of the screen gives the number of patients, the number of analysed records, and the number of validations and proposed interventions. Records can be filtered by status and searched by patient identifier or drug name. Records that need an action are shown first. For each patient, the interface shows the patient profile, the laboratory values, the prescription, the decision, the justification, the expert system alerts and the cited sources.
+Figure~\ref{fig:interface_results} shows the main screen of the interface. The top of the screen gives the number of patients, the number of analysed records, and the number of validations and proposed interventions. Records can be filtered by status and searched by patient identifier or drug name. Records that need an action are shown first. For each patient, the interface shows the patient profile, the laboratory values, the prescription, the decision, the justification, the KBS alerts and the cited sources.
 
 Each cited source can be opened with one click. The PDF is then shown at the page cited by the model (Figure~\ref{fig:interface_source}). This allows the pharmacist to check quickly the information used by the model.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{interface_screenshot_1.png}
-	\caption{Main screen of the graphical interface. For each patient, the interface shows the patient profile, the prescription, the pharmaceutical opinion, the expert system alerts and the cited sources.}
+	\caption{Main screen of the graphical interface. For each patient, the interface shows the patient profile, the prescription, the pharmaceutical opinion, the KBS alerts and the cited sources.}
 	\label{fig:interface_results}
 \end{figure}
 

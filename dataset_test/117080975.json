@@ -1,354 +1,354 @@
 {
   "patient": {
     "id": "117080975",
-    "jour_reference": "2024-08-02",
+    "reference_date": "2024-08-02",
     "age": null,
-    "taille_cm": null,
-    "poids_kg": null,
-    "surface_corporelle_m2": null,
-    "imc_kg_m2": null,
-    "biologie": {
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
       "Albumine - électrophorèse (%)": {
-        "valeur": 56.4,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 56.4,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Albumine - électrophorèse (g/L)": {
-        "valeur": 46.2,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 46.2,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Alpha-1 globulines (%)": {
-        "valeur": 3,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 3,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Alpha-1 globulines (g/L)": {
-        "valeur": 2.5,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 2.5,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Alpha-2 globulines (%)": {
-        "valeur": 11.2,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 11.2,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Alpha-2 globulines (g/L)": {
-        "valeur": 9.2,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 9.2,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Bêta-1 globulines (%)": {
-        "valeur": 8.6,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 8.6,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Bêta-1 globulines (g/L)": {
-        "valeur": 7.1,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 7.1,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Bêta-2 globulines (%)": {
-        "valeur": 4.7,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 4.7,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Bêta-2 globulines (g/L)": {
-        "valeur": 3.9,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 3.9,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "CK totales (sang)": {
-        "valeur": 80,
-        "unite": "UI/L",
-        "date_heure_examen": "2024-07-25 08:10:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 80,
+        "unit": "UI/L",
+        "test_datetime": "2024-07-25 08:10:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Gamma globulines (%)": {
-        "valeur": 16.1,
-        "unite": "%",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 16.1,
+        "unit": "%",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Gamma globulines (g/L)": {
-        "valeur": 13.2,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 13.2,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "IgA (sang)": {
-        "valeur": 4.81,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 07:59:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 4.81,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 07:59:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "IgG (sang)": {
-        "valeur": 12,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 07:59:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 12,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 07:59:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "IgM (sang)": {
-        "valeur": 1.4,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 07:59:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 1.4,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 07:59:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "Protéines totales (sang)": {
-        "valeur": 82,
-        "unite": "g/L",
-        "date_heure_examen": "2024-07-25 08:09:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 82,
+        "unit": "g/L",
+        "test_datetime": "2024-07-25 08:09:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "T3 libre (sang)": {
-        "valeur": 4.8,
-        "unite": "pmol/L",
-        "date_heure_examen": "2024-07-25 08:10:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 4.8,
+        "unit": "pmol/L",
+        "test_datetime": "2024-07-25 08:10:00",
+        "request_date": "2024-07-25 08:10:00"
       },
       "T4 libre (sang)": {
-        "valeur": 18,
-        "unite": "pmol/L",
-        "date_heure_examen": "2024-07-25 08:10:00",
-        "date_demande": "2024-07-25 08:10:00"
+        "value": 18,
+        "unit": "pmol/L",
+        "test_datetime": "2024-07-25 08:10:00",
+        "request_date": "2024-07-25 08:10:00"
       }
     }
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 8 MG+5 MG (LABO EG), CPR",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 8 MG+5 MG (LABO EG), CPR",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 5,
-          "unite": "mg"
+          "unit": "mg"
         },
         {
           "dosage": 8,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 20,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "CYAMEMAZINE 40 MG/ML (TERCIAN), SOL BUV EN GTTE, FLAC 30 ML",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "goutte(s)",
-      "quantite_par_jour": 30,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "CYAMEMAZINE 40 MG/ML (TERCIAN), SOL BUV EN GTTE, FLAC 30 ML",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "goutte(s)",
+      "quantity_per_day": 30,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 1200,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "30 goutte(s) par jour — soir — tous les jours"
+      "dosage_regimen": "30 goutte(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "LEVOTHYROXINE 75 UG (LEVOTHYROX), CPR SÉC",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "LEVOTHYROXINE 75 UG (LEVOTHYROX), CPR SÉC",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 75,
-          "unite": "ug"
+          "unit": "ug"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "FENOFIBRATE 160 MG (LABO ARROW), CPR",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "FENOFIBRATE 160 MG (LABO ARROW), CPR",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 160,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 0.5,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 0.5,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 25,
-          "unite": "ug"
+          "unit": "ug"
         }
       ],
-      "posologie": "0,5 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "0.5 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "MELATONINE LP 2 MG (LABO ARROW), CPR LP",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "MELATONINE LP 2 MG (LABO ARROW), CPR LP",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 2,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "BISOPROLOL 5 MG (LABO VIATRIS), CPR SÉC",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "BISOPROLOL 5 MG (LABO VIATRIS), CPR SÉC",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 5,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "BETAHISTINE 24 MG (BETASERC), CPR",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 2,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin.Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "BETAHISTINE 24 MG (BETASERC), CPR",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 24,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "2 comprimé(s) par jour — matin, soir — tous les jours"
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
     },
     {
-      "libelle_medicament": "APIXABAN 5 MG (ELIQUIS), CPR",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 2,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin.Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "APIXABAN 5 MG (ELIQUIS), CPR",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 5,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "2 comprimé(s) par jour — matin, soir — tous les jours"
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
     },
     {
-      "libelle_medicament": "RISPERIDONE 1 MG (LABO VIATRIS), CPR ORODISP",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "RISPERIDONE 1 MG (LABO VIATRIS), CPR ORODISP",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 1,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "HYDROCORTISONE 10 MG (LABO ROUSSEL), CPR SÉC",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 2,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "HYDROCORTISONE 10 MG (LABO ROUSSEL), CPR SÉC",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 10,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "2 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "2 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "SOLIFENACINE 5 MG (LABO VIATRIS), CPR",
-      "date_debut": "2024-07-25",
-      "date_fin": "2024-08-24",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 2,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "SOLIFENACINE 5 MG (LABO VIATRIS), CPR",
+      "start_date": "2024-07-25",
+      "end_date": "2024-08-24",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 5,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "2 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "2 comprimé(s) per day — soir — every day"
     }
   ]
 }

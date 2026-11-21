@@ -1,103 +1,103 @@
 {
   "patient": {
     "id": "100227558",
-    "jour_reference": "2025-04-17",
+    "reference_date": "2025-04-17",
     "age": null,
-    "taille_cm": null,
-    "poids_kg": null,
-    "surface_corporelle_m2": null,
-    "imc_kg_m2": null,
-    "biologie": {}
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "LEVOTHYROXINE 100 UG (LEVOTHYROX), CPR SÉC",
-      "date_debut": "2025-04-09",
-      "date_fin": "2025-04-19",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "LEVOTHYROXINE 100 UG (LEVOTHYROX), CPR SÉC",
+      "start_date": "2025-04-09",
+      "end_date": "2025-04-19",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 100,
-          "unite": "ug"
+          "unit": "ug"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET",
-      "date_debut": "2025-04-08",
-      "date_fin": "2025-04-18",
-      "unite_prise": "sachet(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Midi",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET",
+      "start_date": "2025-04-08",
+      "end_date": "2025-04-18",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Midi",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 75,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 sachet(s) par jour — midi — tous les jours"
+      "dosage_regimen": "1 sachet(s) per day — midi — every day"
     },
     {
-      "libelle_medicament": "IRBESARTAN+HYDROCHLOROTHIAZIDE 150 MG+12.5 MG (LABO EG), CPR",
-      "date_debut": "2025-04-09",
-      "date_fin": "2025-04-19",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "IRBESARTAN+HYDROCHLOROTHIAZIDE 150 MG+12.5 MG (LABO EG), CPR",
+      "start_date": "2025-04-09",
+      "end_date": "2025-04-19",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 12.5,
-          "unite": "mg"
+          "unit": "mg"
         },
         {
           "dosage": 150,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "ATORVASTATINE 40 MG (LABO EG LABO), CPR",
-      "date_debut": "2025-04-08",
-      "date_fin": "2025-04-18",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "ATORVASTATINE 40 MG (LABO EG LABO), CPR",
+      "start_date": "2025-04-08",
+      "end_date": "2025-04-18",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 40,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "RILMENIDINE 1 MG (LABO ARROW), CPR",
-      "date_debut": "2025-04-08",
-      "date_fin": "2025-04-18",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "RILMENIDINE 1 MG (LABO ARROW), CPR",
+      "start_date": "2025-04-08",
+      "end_date": "2025-04-18",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 1,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     }
   ]
 }

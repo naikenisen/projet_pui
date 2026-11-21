@@ -8,14 +8,14 @@ digraph generation {
 
     // Inputs
     node [shape=note, style=filled, fillcolor="#FFFFFF"];
-    dossier  [label=<<B>Patient record</B><BR/>JSON: patient + treatments>];
-    alertes  [label=<<B>Alerts A</B><BR/><FONT POINT-SIZE="8.5">expert system (Figure 3)</FONT>>];
-    contexte [label=<<B>Documentary context</B><BR/><FONT POINT-SIZE="8.5">retrieval (Figure 2)</FONT>>];
-    { rank=same; dossier; alertes; contexte; }
+    record  [label=<<B>Patient record</B><BR/>JSON: patient + treatments>];
+    alerts  [label=<<B>Alerts A</B><BR/><FONT POINT-SIZE="8.5">KBS (Figure 3)</FONT>>];
+    context [label=<<B>Documentary context</B><BR/><FONT POINT-SIZE="8.5">retrieval (Figure 2)</FONT>>];
+    { rank=same; record; alerts; context; }
 
     // Step 1
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4"];
-    message [label=<<B>1. User message construction</B><BR/>patient record JSON<BR/>+ “Expert system alerts” (if A ≠ ∅)<BR/>+ “Guideline excerpts” (if context not empty)>];
+    message [label=<<B>1. User message construction</B><BR/>patient record JSON<BR/>+ “KBS alerts” (if A ≠ ∅)<BR/>+ “Guideline excerpts” (if context not empty)>];
 
     prompt [shape=note, style=filled, fillcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="1">
         <TR><TD ALIGN="LEFT"><B>System prompt</B></TD></TR>
@@ -34,18 +34,18 @@ digraph generation {
     post [label=<<B>3. Post-processing</B><BR/>extraction of the { … } substring<BR/>JSON parsing>];
 
     // Output
-    sortie [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#3A3A3A" BGCOLOR="#FFFFFF">
+    output [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#3A3A3A" BGCOLOR="#FFFFFF">
         <TR><TD COLSPAN="2" ALIGN="LEFT" BGCOLOR="#F2F2F2"><B>Pharmaceutical opinion</B></TD></TR>
         <TR><TD ALIGN="LEFT"><I>decision</I></TD><TD ALIGN="LEFT">PATIENT VALIDATED  |  PHARMACEUTICAL INTERVENTION PROPOSED</TD></TR>
         <TR><TD ALIGN="LEFT"><I>justification</I></TD><TD ALIGN="LEFT">3 to 5 sentences; in case of intervention:<BR ALIGN="LEFT"/>drug(s) involved, issue, proposed adjustment<BR ALIGN="LEFT"/></TD></TR>
-        <TR><TD ALIGN="LEFT"><I>sources</I></TD><TD ALIGN="LEFT">“file.pdf, page p”, “expert system”,<BR ALIGN="LEFT"/>or empty list (model knowledge only)<BR ALIGN="LEFT"/></TD></TR>
+        <TR><TD ALIGN="LEFT"><I>sources</I></TD><TD ALIGN="LEFT">“file.pdf, page p”, “KBS”,<BR ALIGN="LEFT"/>or empty list (model knowledge only)<BR ALIGN="LEFT"/></TD></TR>
         </TABLE>>];
 
-    dossier -> message;
-    alertes -> message;
-    contexte -> message;
+    record -> message;
+    alerts -> message;
+    context -> message;
     message -> llm [label=" user role"];
     prompt -> llm [label="system role"];
     llm -> post;
-    post -> sortie;
+    post -> output;
 }

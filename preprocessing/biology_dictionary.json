@@ -1,12 +1,12 @@
 {
-  "formule_leucocytaire": [
+  "leukocyte_formula": [
     "Polynucléaires neutrophiles",
     "Polynucléaires éosinophiles",
     "Polynucléaires basophiles",
     "Lymphocytes",
     "Monocytes"
   ],
-  "unites": {
+  "units": {
     "10E3/mm3": "10^3/mm³",
     ".10*3/mm³": "10^3/mm³",
     "10E6/mm3": "10^6/mm³",
@@ -40,7 +40,7 @@
     "copies/mL": "copie(s)/mL",
     "L/24h": "L"
   },
-  "examens": {
+  "tests": {
     "(1-3)-Béta-D-glucanes :": "Bêta-D-glucanes (1-3)",
     "1-3-Béta-D-Glucane :": "Bêta-D-glucanes (1-3)",
     "1-3-Béta-D-Glucanes :": "Bêta-D-glucanes (1-3)",

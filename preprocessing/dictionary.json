@@ -1,0 +1,50 @@
+{
+  "treatments": {
+    "file": "ANONYMISED_TRAITEMENTS.csv",
+    "columns": {
+      "numero_anonyme": "patient_id",
+      "Libellé Médicament Prescrit": "drug_label",
+      "Date Début Prescription": "start_date",
+      "Date Fin Prescription": "end_date",
+      "Unité Prescription MED": "intake_unit",
+      "Quantité Prescrite Totale MED": "quantity_per_day",
+      "Dosage Principe Actif": "active_ingredient_dosage",
+      "Unité Principe Actif": "active_ingredient_unit",
+      "Fréquence Journalière Prescription": "day_frequency",
+      "Fréquence Horaire Prescription": "intake_times",
+      "Prescription à Demande (O/N)": "as_needed"
+    },
+    "exclude": {
+      "Statut Prescription": [
+        "ANN",
+        "SUPR"
+      ]
+    }
+  },
+  "biology": {
+    "file": "ANONYMISED_BIO.csv",
+    "columns": {
+      "numero_anonyme": "patient_id",
+      "Examen_LibelleRecupere": "test",
+      "Result": "value",
+      "Unite.Libelle": "unit",
+      "Dateheure": "test_datetime",
+      "Dem Date en date": "request_date"
+    }
+  },
+  "clinical": {
+    "file": "ANONYMISED_CLINIQUE.csv",
+    "columns": {
+      "numero_anonyme": "patient_id",
+      "Age Séjour (Années)": "age",
+      "Taille Séjour": "height_cm",
+      "Poids Séjour": "weight_kg",
+      "Surface Corporelle Séjour": "body_surface_area_m2",
+      "Indice Masse Corporelle": "bmi_kg_m2"
+    },
+    "rounding": {
+      "body_surface_area_m2": 3,
+      "bmi_kg_m2": 1
+    }
+  }
+}

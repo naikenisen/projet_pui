@@ -1,149 +1,164 @@
-# Logiciel d'analyse pharmaceutique assistée par IA
+# AI-assisted pharmaceutical analysis software
 
 ## Installation
 
 ```bash
-pip install -r requierments.txt
+pip install -r requirements.txt
 ```
 
-Créer un fichier `.env` à la racine du projet :
+Create a `.env` file at the project root:
 
 ```
-OPENROUTER_API_KEY=votre_cle
+OPENROUTER_API_KEY=your_key
 ```
 
-Toutes les commandes se lancent depuis la racine du projet.
+All commands below are run from the project root.
 
-## Fichiers
+## Files
 
-| Fichier | Rôle |
+| File | Role |
 |---|---|
-| `dataset/` | Dossier d'inférence : un fichier JSON par patient (`<id>.json`), avec sa biologie et ses traitements |
-| `main.py` | Analyse tous les patients avec le LLM, le RAG et le système expert |
-| `generation.py` | Analyse un patient avec le LLM |
-| `expert_system.py` | Applique les règles déterministes du système expert ; fait rédiger une nouvelle règle par le LLM |
-| `regles_generiques.json` | Règles issues du Thésaurus ANSM des interactions et de DDI-Predictor (`documents_systeme_expert/`) |
-| `regles_personnalisees.json` | Règles propres à l'établissement (ex : dose d'apixaban, daptomycine 10 mg/kg) |
-| `indexation.py` | Indexe les PDF de `base_documentaire/` dans ChromaDB |
-| `recuperation.py` | Cherche dans ChromaDB les passages utiles pour un patient |
-| `bio_anormale.json` | Valeurs normales de la biologie, utilisées par `recuperation.py` |
-| `app.py` | Interface Streamlit (analyse, base documentaire, règles, biologie) |
-| `src/` | Fonctions utilisées par `app.py` (fichiers JSON, documents, analyse, mise en forme HTML) |
+| `dataset/` | Inference folder: one JSON file per patient (`<id>.json`), with laboratory values and treatments |
+| `dataset_test/` | Smaller inference folder (80 patients), loaded by default in the interface |
+| `app.py` | Streamlit interface (analysis, RAG documents, KBS rules, laboratory reference ranges) |
+| `main.py` | Analyses every patient with the LLM, the RAG and the KBS |
+| `generation.py` | Analyses a patient with the LLM |
+| `kbs.py` | Knowledge-Based System (KBS): applies the deterministic rules; has the LLM draft a new rule |
+| `indexing.py` | Indexes the PDFs of `src/rag/RAG_Docs/` in ChromaDB |
+| `retrieval.py` | Searches ChromaDB for the passages useful for a patient |
+| `src/front/` | Modules of the Streamlit interface (JSON files, documents, analysis, HTML formatting) |
+| `src/front/inference_results.json` | Analysis results saved by the interface |
+| `src/kbs/generic_rules.json` | KBS rules from the ANSM Thesaurus of drug interactions and from DDI-Predictor |
+| `src/kbs/personalized_rules.json` | Hospital-specific KBS rules (e.g. apixaban dose, daptomycin 10 mg/kg) |
+| `src/kbs/KBS_Docs/` | Reference documents from which the generic KBS rules were extracted (ANSM Thesaurus, DDI-Predictor) |
+| `src/rag/RAG_Docs/` | Guidelines (PDF) used by the RAG |
+| `src/rag/chroma_db/` | Vector database created by `indexing.py` |
+| `src/biology/lab_reference_ranges.json` | Reference ranges of laboratory values, used by `retrieval.py`, `generation.py` and the interface |
+| `preprocessing/` | Builds the patient JSON files from the anonymised CSV extractions (`preprocessing/original_dataset/`, not versioned) |
+| `paper/` | Article, presentation and figures (`paper/figures_en/`) |
 
-## Liens entre les scripts
+## Links between the scripts
 
 ```
-base_documentaire/ --> indexation.py --> chroma_db/
+src/rag/RAG_Docs/ --> indexing.py --> src/rag/chroma_db/
 
-                       recuperation.py   (passages des recommandations)
-                     /                  \
-dataset/   --> main.py                    --> generation.py --> décision du LLM
-                     \                  /
-                       expert_system.py  (alertes)
+                  retrieval.py   (guideline passages)
+                /              \
+dataset/ --> main.py              --> generation.py --> LLM decision
+                \              /
+                  kbs.py         (KBS alerts)
 ```
 
-Pour chaque patient, `main.py` récupère les passages utiles avec `recuperation.py` et les alertes avec `expert_system.py`, puis les transmet à `generation.py` qui rend la décision finale.
-`recuperation.py` utilise la base `chroma_db/` créée par `indexation.py` : il faut lancer `indexation.py` avant `main.py`.
+For each patient, `main.py` gets the useful passages from `retrieval.py` and the alerts from `kbs.py`, then passes them to `generation.py`, which gives the final decision.
+`retrieval.py` uses the `src/rag/chroma_db/` database created by `indexing.py`: run the indexing before the analysis.
 
-## Méthodologie
+## Methodology
 
-![Figure 1](figures/figure_1.png)
+![Figure 1](paper/figures_en/figure_1.png)
 
-**Figure 1. Architecture générale du pipeline d'analyse pharmaceutique assistée par IA.**
-Les recommandations (PDF) sont découpées en passages puis indexées dans une base vectorielle (ChromaDB).
-Pour chaque patient, le module d'orchestration interroge en parallèle le module de récupération, qui extrait les passages pertinents, et le système expert, qui produit des alertes déterministes ; ces deux sorties sont transmises au modèle de langage, qui rend la décision finale.
+**Figure 1. Overall architecture of the AI-assisted pharmaceutical analysis pipeline.**
+Guidelines (PDF) are split into passages and indexed in a vector database (ChromaDB).
+For each patient, the orchestration module queries in parallel the retrieval module, which extracts the relevant passages, and the Knowledge-Based System (KBS), which produces deterministic alerts; both outputs are passed to the language model, which gives the final decision.
 
-![Figure 2](figures/figure_2.png)
+![Figure 2](paper/figures_en/figure_2.png)
 
-**Figure 2. Récupération des extraits de recommandations pertinents pour un patient (Retrieval-Augmented Generation).**
-Les paramètres biologiques sortant des intervalles de référence sont convertis en descripteurs textuels et ajoutés au terrain du patient. Une requête est construite pour chaque ligne de prescription (DCI, dosage, posologie, terrain), encodée par Qwen3-Embedding-8B, puis soumise à une recherche des 3 plus proches voisins (distance cosinus). Les passages obtenus sont dédoublonnés, triés par distance et les 8 plus proches constituent le contexte transmis au modèle de langage.
+**Figure 2. Retrieval of the relevant guideline excerpts for a patient (Retrieval-Augmented Generation).**
+Laboratory parameters outside their reference ranges are converted into textual descriptors and added to the patient profile. A query is built for each prescription line (drug label, dosage regimen, patient profile), encoded with Qwen3-Embedding-8B, then submitted to a 3-nearest-neighbour search (cosine distance). The retrieved passages are deduplicated and sorted by distance, and the 8 closest form the context passed to the language model.
 
-![Figure 3](figures/figure_3.png)
+![Figure 3](paper/figures_en/figure_3.png)
 
-**Figure 3. Fonctionnement du système expert à base de règles déterministes.**
-Les variables du patient (caractéristiques, biologie, dose de chaque médicament) sont extraites du dossier. Chaque règle est déclenchée si (i) tous les médicaments qu'elle cible sont prescrits, (ii) toutes ses conditions obligatoires sont vérifiées et (iii) un nombre minimal de critères optionnels est satisfait. Les messages des règles déclenchées forment la liste d'alertes transmise au modèle de langage.
+**Figure 3. Operation of the Knowledge-Based System (KBS) made of deterministic rules.**
+Patient variables (characteristics, laboratory values, dose of each drug) are extracted from the record. Each rule is triggered if (i) all the drugs it targets are prescribed, (ii) all its mandatory conditions are met and (iii) a minimum number of optional criteria is satisfied. The messages of the triggered rules form the list of alerts passed to the language model.
 
-![Figure 4](figures/figure_4.png)
+![Figure 4](paper/figures_en/figure_4.png)
 
-**Figure 4. Génération de l'avis pharmaceutique par le modèle de langage.**
-Le message soumis au modèle (Qwen3.6-35B-A3B, température 0, sortie JSON contrainte) associe le dossier patient (lignes numérotées L1, L2..., statut de chaque ligne au jour de référence, dose par jour calculée par le code, biologie anormale signalée, médicaments présents sur plusieurs lignes avec leur dose totale), les alertes du système expert (numérotées [A1], [A2]...) et les extraits de recommandations récupérés (numérotés [R1], [R2]...). Le prompt système définit le rôle de pharmacien clinicien, les critères d'analyse et la hiérarchie des alertes (priorité aux contre-indications). La réponse est un objet JSON contenant la décision (patient validé, surveillance proposée, vérification proposée ou intervention pharmaceutique proposée) et 1 à 4 propositions typées (intervention, vérification, surveillance, validation) formulées comme des propositions (« Proposons… », « Suggérons… »), chacune avec les identifiants des alertes et extraits sur lesquels elle s'appuie. Les identifiants qui ne correspondent à aucune alerte ni aucun extrait fourni sont ignorés. La décision affichée est celle du point le plus grave ; pour une intervention, le LLM indique aussi les lignes à modifier, affichées en rouge dans la prescription.
+**Figure 4. Generation of the pharmaceutical opinion by the language model.**
+The message submitted to the model (Qwen3.6-35B-A3B, temperature 0, constrained JSON output) combines the patient record (lines numbered L1, L2..., status of each line on the reference date, daily dose computed by the code, abnormal laboratory values flagged, drugs present on several lines with their total dose), the KBS alerts (numbered [A1], [A2]...) and the retrieved guideline excerpts (numbered [R1], [R2]...). The system prompt defines the clinical pharmacist role, the analysis criteria and the ranking of the alerts (contraindications first). The response is a JSON object containing the decision (patient validated, monitoring proposed, verification proposed or pharmaceutical intervention proposed) and 1 to 4 typed points (intervention, verification, monitoring, validation) written as proposals (“We propose…”, “We suggest…”), each with the identifiers of the alerts and excerpts it relies on. Identifiers that match no provided alert or excerpt are ignored. The displayed decision is that of the most severe point; for an intervention, the LLM also gives the lines to modify, shown in red in the prescription.
 
-## Exécution
+## Usage
 
-**Interface web**
+**Web interface**
 
 ```bash
 streamlit run app.py
 ```
 
-Le dossier d'inférence (par défaut `dataset`) se choisit dans la barre latérale.
+The inference folder (`dataset_test` by default) is chosen in the sidebar.
 
-Les résultats des analyses sont enregistrés dans `resultats.json`.
+Analysis results are saved in `src/front/inference_results.json`.
 
-![Liste des dossiers analysés : indicateurs, filtres, avis pharmaceutique, alertes du système expert et sources citées](paper/interface_screenshot_1.png)
+![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 
-*Résultats d'analyse : pour chaque patient, profil, biologie, prescription, avis pharmaceutique, alertes du système expert et sources cliquables.*
+*Analysis results: for each patient, profile, laboratory values, prescription, pharmaceutical opinion, KBS alerts and clickable sources.*
 
-![Consultation d'une source citée : le PDF s'ouvre directement à la page référencée](paper/interface_screenshot_2.png)
+![Viewing a cited source: the PDF opens directly at the referenced page](paper/interface_screenshot_2.png)
 
-*Consultation d'une source : un clic sur une référence ouvre le PDF à la page citée par le modèle.*
+*Viewing a source: clicking a reference opens the PDF at the page cited by the model.*
 
-**Tous les patients**
-
-```bash
-python3 main.py --dossier dataset
-```
-
-Affiche pour chaque patient : son identifiant, la décision (`PATIENT VALIDÉ`, `SURVEILLANCE PROPOSÉE`, `VÉRIFICATION PROPOSÉE` ou `INTERVENTION PHARMACEUTIQUE PROPOSÉE`), la justification et les sources citées par le modèle.
-
-**Un patient avec le LLM**
+**All patients**
 
 ```bash
-python3 generation.py --dossier dataset --idpatient 100133744
+python3 main.py --folder dataset
 ```
 
-Affiche la décision et la justification.
+Prints for each patient: its identifier, the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the justification and the sources cited by the model.
 
-**Système expert**
+**One patient with the LLM**
 
 ```bash
-python3 expert_system.py --dossier dataset --idpatient 100133744
+python3 generation.py --folder dataset --patient-id 100133744
 ```
 
-Affiche les alertes détectées, ou `Aucune alerte`.
+Prints the decision and the justification.
 
-Les règles sont dans `regles_generiques.json` (Thésaurus ANSM, DDI-Predictor) et `regles_personnalisees.json` (règles de l'établissement). Une règle se déclenche si tous ses champs sont vérifiés :
+**Knowledge-Based System (KBS)**
 
-| Champ | Signification |
+```bash
+python3 kbs.py --folder dataset --patient-id 100133744
+```
+
+Prints the detected alerts, or `No alert`.
+
+The rules are in `src/kbs/generic_rules.json` (ANSM Thesaurus, DDI-Predictor) and `src/kbs/personalized_rules.json` (hospital rules). The texts of the generic rules are kept in French, as in the source documents. A rule is triggered if all its fields are satisfied:
+
+| Field | Meaning |
 |---|---|
-| `medicaments` | tous ces médicaments (DCI) sont prescrits, sur des lignes différentes : le nom est cherché dans le libellé de chaque ligne de prescription, sans tenir compte des majuscules et des accents. Un élément peut être une liste de DCI dont une seule suffit (classe du Thésaurus) |
-| `conditions` | toutes ces conditions sont vraies |
-| `parmi` + `minimum` | au moins `minimum` de ces conditions sont vraies |
-| `alerte` | message affiché quand la règle se déclenche |
+| `drugs` | all these drugs (INN) are prescribed, on different lines: the name is searched in the label of each prescription line, ignoring case and accents. An item can be a list of INNs, any one of which is enough (Thesaurus class) |
+| `conditions` | all these conditions are true |
+| `any_of` + `minimum` | at least `minimum` of these conditions are true |
+| `alert` | message displayed when the rule is triggered |
 
-Seul `alerte` est obligatoire. Une condition s'écrit `donnee operateur valeur`, par exemple `age >= 80`, avec les opérateurs `>=`, `<=`, `>`, `<`, `==`, `!=`.
-Les données utilisables sont les champs du patient (`age`, `poids_kg`, `taille_cm`, `imc_kg_m2`, `surface_corporelle_m2`), ceux de sa biologie avec le nom exact du paramètre (`Créatinine (sang)`, `DFG estimé (CKD-EPI)`...) et, pour les médicaments cités dans la règle, le dosage de la spécialité (`dose_apixaban`), la dose prescrite en mg par jour (`dose_jour_daptomycine`) et en mg/kg par jour (`dose_kg_daptomycine`).
+Only `alert` is required. A condition is written `variable operator value`, for example `age >= 80`, with the operators `>=`, `<=`, `>`, `<`, `==`, `!=`.
+The usable variables are the patient fields (`age`, `weight_kg`, `height_cm`, `bmi_kg_m2`, `body_surface_area_m2`), the laboratory values with the exact parameter name (`Créatinine (sang)`, `DFG estimé (CKD-EPI)`...) and, for the drugs named in the rule, the product strength (`dose_apixaban`), the prescribed dose in mg per day (`daily_dose_daptomycine`) and in mg/kg per day (`dose_per_kg_daptomycine`).
 
-Pour faire rédiger une règle personnalisée par le LLM (elle est affichée puis enregistrée après confirmation) :
-
-```bash
-python3 expert_system.py --dossier dataset --nouvelle-regle "Alerter si metformine avec un DFG < 30 mL/min"
-```
-
-Dans l'interface, l'onglet « Règles du système expert » sépare les règles personnalisées (ajout par l'assistant ou à la main, suppression) des règles génériques (consultation et recherche).
-
-**Indexation** (à lancer une fois, puis à chaque ajout de PDF)
+To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
 
 ```bash
-python3 indexation.py
+python3 kbs.py --folder dataset --new-rule "Alert if metformin with an eGFR < 30 mL/min"
 ```
 
-Affiche le nombre de passages indexés par PDF et crée le dossier `chroma_db/`.
+In the interface, the “KBS rules” tab separates the personalized rules (added by the assistant or by hand, deletion) from the generic rules (viewing and search).
 
-**Récupération**
+**Indexing** (run once, then each time a PDF is added)
 
 ```bash
-python3 recuperation.py --dossier dataset --idpatient 100133744
+python3 indexing.py
 ```
 
-Affiche les passages les plus pertinents pour le patient, avec leur PDF et leur page.
+Prints the number of passages indexed per PDF and creates the `src/rag/chroma_db/` folder.
+
+**Retrieval**
+
+```bash
+python3 retrieval.py --folder dataset --patient-id 100133744
+```
+
+Prints the most relevant passages for the patient, with their PDF and page.
+
+**Preprocessing** (rebuilds the patient files from the CSV files of `preprocessing/original_dataset/`)
+
+```bash
+python3 preprocessing/preprocessing.py
+```
+
+Writes one JSON file per patient to `preprocessing/dataset/`. `python3 preprocessing/analysis.py` prints the number of patients kept at each filtering step.

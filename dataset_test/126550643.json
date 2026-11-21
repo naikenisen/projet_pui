@@ -1,201 +1,201 @@
 {
   "patient": {
     "id": "126550643",
-    "jour_reference": "2024-05-21",
+    "reference_date": "2024-05-21",
     "age": null,
-    "taille_cm": null,
-    "poids_kg": null,
-    "surface_corporelle_m2": null,
-    "imc_kg_m2": null,
-    "biologie": {}
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "ALFUZOSINE LP 10 MG (XATRAL LP), CPR LP",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "ALFUZOSINE LP 10 MG (XATRAL LP), CPR LP",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 10,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "gélule(s)",
-      "quantite_par_jour": 3,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin.Midi.Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 600,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "3 gélule(s) par jour — matin, midi, soir — tous les jours"
+      "dosage_regimen": "3 gélule(s) per day — matin, midi, soir — every day"
     },
     {
-      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": null,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": true,
-      "principes_actifs": [
+      "drug_label": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
         {
           "dosage": 10,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+      "dosage_regimen": "comprimé(s) as needed — specific times — every day"
     },
     {
-      "libelle_medicament": "FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 40,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
     },
     {
-      "libelle_medicament": "MELATONINE LP 2 MG (CIRCADIN), CPR LP",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "MELATONINE LP 2 MG (CIRCADIN), CPR LP",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 2,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "TINZAPARINE 10 000 IU ANTIXA/0.5 ML (INNOHEP), SOL INJ, SRG",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "seringue(s) pré-remplie(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "TINZAPARINE 10 000 IU ANTIXA/0.5 ML (INNOHEP), SOL INJ, SRG",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "seringue(s) pré-remplie(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 10000,
-          "unite": "axa_iu"
+          "unit": "axa_iu"
         }
       ],
-      "posologie": "1 seringue(s) pré-remplie(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 seringue(s) pré-remplie(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 20,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     },
     {
-      "libelle_medicament": "TRINITRINE 0.3 MG/DOSE (NATISPRAY), SOL PR PULV BUCC, FLAC 18 ML",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "dose(s)",
-      "quantite_par_jour": null,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": true,
-      "principes_actifs": [
+      "drug_label": "TRINITRINE 0.3 MG/DOSE (NATISPRAY), SOL PR PULV BUCC, FLAC 18 ML",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "dose(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
         {
           "dosage": 90,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "dose(s) si besoin — horaires spécifiques — tous les jours"
+      "dosage_regimen": "dose(s) as needed — specific times — every day"
     },
     {
-      "libelle_medicament": "BISOPROLOL 1.25 MG (LABO VIATRIS), CPR",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 5,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin.Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "BISOPROLOL 1.25 MG (LABO VIATRIS), CPR",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 5,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 1.25,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "5 comprimé(s) par jour — matin, soir — tous les jours"
+      "dosage_regimen": "5 comprimé(s) per day — matin, soir — every day"
     },
     {
-      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "gélule(s)",
-      "quantite_par_jour": null,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": true,
-      "principes_actifs": [
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
         {
           "dosage": 500,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+      "dosage_regimen": "gélule(s) as needed — specific times — every day"
     },
     {
-      "libelle_medicament": "MIRTAZAPINE 15 MG (LABO BIOGARAN), CPR ORODISP",
-      "date_debut": "2024-05-11",
-      "date_fin": "2024-06-10",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "MIRTAZAPINE 15 MG (LABO BIOGARAN), CPR ORODISP",
+      "start_date": "2024-05-11",
+      "end_date": "2024-06-10",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 15,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
     }
   ]
 }

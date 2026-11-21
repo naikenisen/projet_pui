@@ -6,11 +6,11 @@ Figure 1 (figure_1.pdf)
 Proposed title:
   Overall architecture of the AI-assisted pharmaceutical analysis pipeline.
 Alternative:
-  System overview: document indexing, retrieval augmentation, expert system and opinion generation.
+  System overview: document indexing, retrieval augmentation, Knowledge-Based System (KBS) and opinion generation.
 Suggested caption:
   Guidelines (PDF) are split into passages and indexed in a vector database (ChromaDB).
   For each patient, the orchestration module queries in parallel the retrieval module,
-  which extracts relevant passages, and the expert system, which produces deterministic alerts;
+  which extracts relevant passages, and the Knowledge-Based System (KBS), which produces deterministic alerts;
   both outputs are passed to the language model, which issues the final decision.
 
 Figure 2 (figure_2.pdf)
@@ -29,7 +29,7 @@ Suggested caption:
 Figure 3 (figure_3.pdf)
 -----------------------
 Proposed title:
-  Operation of the deterministic rule-based expert system.
+  Operation of the deterministic rule-based Knowledge-Based System (KBS).
 Alternative:
   Sequential evaluation of prescription safety rules and alert generation.
 Suggested caption:
@@ -46,7 +46,7 @@ Alternative:
   Integration of the patient record, alerts and documentary context to produce a structured opinion.
 Suggested caption:
   The message submitted to the model (Qwen3.6-35B-A3B, temperature 0, constrained JSON output) combines
-  the patient record, the expert system alerts and the retrieved guideline excerpts. The system prompt
+  the patient record, the KBS alerts and the retrieved guideline excerpts. The system prompt
   defines the clinical pharmacist role and the analysis criteria. The response is a JSON object
   containing the decision (patient validated or pharmaceutical intervention proposed), a 3- to
   5-sentence justification and the cited sources.

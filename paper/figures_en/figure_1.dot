@@ -7,31 +7,31 @@ digraph architecture {
 
     // Data
     node [shape=folder, style=filled, fillcolor="#FFFFFF"];
-    base     [label=<<B>base_documentaire/</B><BR/><FONT POINT-SIZE="8.5">guidelines (PDF)</FONT>>];
-    patients [shape=note, label=<<B>input.json</B><BR/><FONT POINT-SIZE="8.5">patients and prescriptions</FONT>>];
+    base     [label=<<B>RAG_Docs/</B><BR/><FONT POINT-SIZE="8.5">guidelines (PDF)</FONT>>];
+    patients [shape=note, label=<<B>dataset/</B><BR/><FONT POINT-SIZE="8.5">one JSON file per patient</FONT>>];
     chroma   [shape=cylinder, label=<<B>chroma_db/</B><BR/><FONT POINT-SIZE="8.5">vector index</FONT>>];
     decision [shape=note, label=<<B>LLM decision</B><BR/><FONT POINT-SIZE="8.5">opinion, justification, sources</FONT>>];
 
     // Scripts
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.18,0.08"];
-    indexation [label=<<B>indexation.py</B>>];
+    indexing [label=<<B>indexing.py</B>>];
     main       [label=<<B>main.py</B><BR/><FONT POINT-SIZE="8.5">orchestration</FONT>>];
-    recup      [label=<<B>recuperation.py</B><BR/><FONT POINT-SIZE="8.5">guideline passages</FONT>>];
-    expert     [label=<<B>expert_system.py</B><BR/><FONT POINT-SIZE="8.5">alerts</FONT>>];
+    retrieval      [label=<<B>retrieval.py</B><BR/><FONT POINT-SIZE="8.5">guideline passages</FONT>>];
+    kbs        [label=<<B>kbs.py</B><BR/><FONT POINT-SIZE="8.5">KBS alerts</FONT>>];
     generation [label=<<B>generation.py</B>>];
 
     { rank=same; base; patients; }
-    { rank=same; indexation; main; }
-    { rank=same; chroma; recup; expert; }
+    { rank=same; indexing; main; }
+    { rank=same; chroma; retrieval; kbs; }
 
-    base -> indexation -> chroma;
-    chroma -> recup [style=dashed, label="read"];
+    base -> indexing -> chroma;
+    chroma -> retrieval [style=dashed, label="read"];
 
     patients -> main;
     main -> generation;
-    main -> recup;
-    main -> expert;
-    recup -> generation;
-    expert -> generation;
+    main -> retrieval;
+    main -> kbs;
+    retrieval -> generation;
+    kbs -> generation;
     generation -> decision;
 }

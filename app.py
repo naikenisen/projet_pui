@@ -1,7 +1,7 @@
-"""Interface Streamlit : analyse des patients, base documentaire, règles du système expert et biologie.
+"""Streamlit interface: patient analysis, RAG documents, KBS rules and laboratory reference ranges.
 
-Lancement depuis la racine du projet :  streamlit run app.py
-Le thème clair est défini dans .streamlit/config.toml.
+Run from the project root:  streamlit run app.py
+The light theme is defined in .streamlit/config.toml.
 """
 
 import html
@@ -9,73 +9,75 @@ import json
 import math
 import os
 
-# Les scripts du projet utilisent des chemins relatifs (input.json, chroma_db...) : on se place à la racine.
+# The default inference folder (dataset_test) is relative to the project root.
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
-from expert_system import (
-    ajouter_regle_personnalisee,
-    appliquer_regles,
-    charger_regles_generiques,
-    charger_regles_personnalisees,
-    normaliser,
-    proposer_regle,
-    sauver_regles_personnalisees,
-    variables_inconnues,
-    verifier_regles,
+from src.front.analysis import analyse
+from src.front.data import (
+    PATIENTS_FOLDER,
+    load_lab_ranges,
+    load_patients,
+    load_results,
+    save_lab_ranges,
+    save_results,
 )
-from src.affichage import (
-    COULEURS_STATUTS,
-    LIBELLES_STATUT,
-    NIVEAUX,
-    ORDRE_STATUTS,
-    carte_regle_generique,
-    carte_regle_personnalisee,
-    categorie,
-    codes_niveau,
-    html_alerte,
-    html_tableau,
-    lignes_a_modifier,
-    lire_source,
-    profil_patient,
-    statut,
-    tableau_biologie,
-    tableau_prescription,
-    type_deduit,
+from src.front.display import (
+    LEVELS,
+    PHARMACOKINETIC,
+    STATUS_COLORS,
+    STATUS_LABELS,
+    STATUS_ORDER,
+    category,
+    generic_rule_card,
+    html_alert,
+    html_table,
+    inferred_type,
+    level_codes,
+    lines_to_modify,
+    patient_profile,
+    personalized_rule_card,
+    prescription_table,
+    read_source,
+    biology_table,
+    status,
 )
-from src.analyse import analyser
-from src.documents import (
-    chemin_document,
-    documents_du_dossier,
-    documents_indexes,
-    enregistrer_pdf,
-    indexer_pdf,
-    nombre_pages,
-    rendre_page,
+from src.front.documents import (
+    document_path,
+    folder_documents,
+    index_pdf,
+    indexed_documents,
+    page_count,
+    render_page,
+    save_pdf,
 )
-from src.donnees import (
-    DOSSIER_PATIENTS,
-    charger_bio,
-    charger_patients,
-    charger_resultats,
-    sauver_bio,
-    sauver_resultats,
+from kbs import (
+    PERSONALIZED_RULES_FILE,
+    add_personalized_rule,
+    apply_rules,
+    check_rules,
+    load_generic_rules,
+    load_personalized_rules,
+    normalize,
+    propose_rule,
+    save_personalized_rules,
+    unknown_variables,
 )
 
-NOM_ETABLISSEMENT = "CHU Dijon Bourgogne"
-NOM_LOGICIEL = "Logiciel d'analyse pharmaceutique assistée par IA"
+HOSPITAL_NAME = "CHU Dijon Bourgogne"
+SOFTWARE_NAME = "AI-assisted pharmaceutical analysis software"
 
-st.set_page_config(page_title=f"{NOM_ETABLISSEMENT} - Analyse pharmaceutique", layout="wide")
+st.set_page_config(page_title=f"{HOSPITAL_NAME} - Pharmaceutical analysis", layout="wide")
 
 
 # ---------------------------------------------------------------------------
-# Style : barre d'application fixe, interface dense de type logiciel métier
+# Style: fixed application bar, dense business-software interface
 # ---------------------------------------------------------------------------
 
-HAUTEUR_BARRE = 52  # px
+BAR_HEIGHT = 52  # px
 
 st.markdown(
     f"""
@@ -83,12 +85,12 @@ st.markdown(
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {{
-    --bleu: #0B4F8A; --bleu-fonce: #08355C; --bleu-clair: #E8F0F8;
-    --texte: #1A2433; --texte-2: #4A5A6E; --texte-3: #7A8899;
-    --bordure: #D9E0E8; --fond: #F3F5F8; --surface: #FFFFFF;
-    --vert: #1E7A46; --vert-fond: #E9F5EE; --orange: #A85A00; --orange-fond: #FFF3E3;
-    --rouge: #B42318; --rouge-fond: #FDECEB;
-    --violet: #6B3FA0; --violet-fond: #F2ECFA; --bleu-fond: #E8F0F8;
+    --blue: #0B4F8A; --blue-dark: #08355C; --blue-light: #E8F0F8;
+    --text: #1A2433; --text-2: #4A5A6E; --text-3: #7A8899;
+    --border: #D9E0E8; --background: #F3F5F8; --surface: #FFFFFF;
+    --green: #1E7A46; --green-bg: #E9F5EE; --orange: #A85A00; --orange-bg: #FFF3E3;
+    --red: #B42318; --red-bg: #FDECEB;
+    --purple: #6B3FA0; --purple-bg: #F2ECFA; --blue-bg: #E8F0F8;
 }}
 html, body, [class*="css"], .stMarkdown, button, input, textarea, select {{
     font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
@@ -96,182 +98,182 @@ html, body, [class*="css"], .stMarkdown, button, input, textarea, select {{
 html {{ font-size: 15.5px; }}
 #MainMenu, footer, [data-testid="stDecoration"], [data-testid="stStatusWidget"] {{ display: none; }}
 
-/* Barre d'application fixe en haut */
-.barre-app {{
-    position: fixed; top: 0; left: 0; right: 0; height: {HAUTEUR_BARRE}px; z-index: 1000001;
-    background: var(--bleu-fonce); color: #FFFFFF; display: flex; align-items: center;
+/* Fixed application bar at the top */
+.app-bar {{
+    position: fixed; top: 0; left: 0; right: 0; height: {BAR_HEIGHT}px; z-index: 1000001;
+    background: var(--blue-dark); color: #FFFFFF; display: flex; align-items: center;
     justify-content: space-between; padding: 0 1.25rem; font-size: 0.98rem;
     border-bottom: 1px solid #052440;
 }}
-.barre-app .marque {{ display: flex; align-items: center; gap: 0.75rem; }}
-.barre-app .etablissement {{ font-weight: 700; letter-spacing: 0.02em; }}
-.barre-app .separateur {{ width: 1px; height: 22px; background: rgba(255,255,255,0.35); }}
-.barre-app .logiciel {{ color: rgba(255,255,255,0.85); font-weight: 400; }}
-.barre-app .contexte {{ font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.25rem; }}
-.barre-app .contexte b {{ color: #FFFFFF; font-weight: 600; }}
-[data-testid="stHeader"] {{ top: {HAUTEUR_BARRE}px; background: transparent; height: 2.5rem; }}
-[data-testid="stSidebar"] {{ top: {HAUTEUR_BARRE}px; height: calc(100vh - {HAUTEUR_BARRE}px); }}
-.block-container {{ padding-top: calc({HAUTEUR_BARRE}px + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }}
+.app-bar .brand {{ display: flex; align-items: center; gap: 0.75rem; }}
+.app-bar .hospital {{ font-weight: 700; letter-spacing: 0.02em; }}
+.app-bar .separator {{ width: 1px; height: 22px; background: rgba(255,255,255,0.35); }}
+.app-bar .software {{ color: rgba(255,255,255,0.85); font-weight: 400; }}
+.app-bar .context {{ font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.25rem; }}
+.app-bar .context b {{ color: #FFFFFF; font-weight: 600; }}
+[data-testid="stHeader"] {{ top: {BAR_HEIGHT}px; background: transparent; height: 2.5rem; }}
+[data-testid="stSidebar"] {{ top: {BAR_HEIGHT}px; height: calc(100vh - {BAR_HEIGHT}px); }}
+.block-container {{ padding-top: calc({BAR_HEIGHT}px + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }}
 
-/* Barre latérale */
-[data-testid="stSidebar"] {{ background: var(--surface); border-right: 1px solid var(--bordure); }}
+/* Sidebar */
+[data-testid="stSidebar"] {{ background: var(--surface); border-right: 1px solid var(--border); }}
 [data-testid="stSidebar"] .stButton > button {{ justify-content: flex-start; text-align: left; }}
-.titre-section {{
+.section-title {{
     font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--texte-3); margin: 1rem 0 0.4rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid var(--bordure);
+    color: var(--text-3); margin: 1rem 0 0.4rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
 }}
 
-/* En-tête de page et bandeau d'indicateurs */
-.titre-page {{ font-size: 1.15rem; font-weight: 600; color: var(--texte); margin: 0; }}
-.sous-titre-page {{ font-size: 0.82rem; color: var(--texte-3); margin: 0.1rem 0 0 0; }}
-.indicateurs {{
-    display: flex; background: var(--surface); border: 1px solid var(--bordure); border-radius: 4px;
+/* Page header and indicator strip */
+.page-title {{ font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 0; }}
+.page-subtitle {{ font-size: 0.82rem; color: var(--text-3); margin: 0.1rem 0 0 0; }}
+.indicators {{
+    display: flex; background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
     margin: 0.9rem 0 0.6rem 0;
 }}
-.indicateur {{ flex: 1; padding: 0.6rem 1rem; border-right: 1px solid var(--bordure); }}
-.indicateur:last-child {{ border-right: none; }}
-.indicateur .valeur {{ font-size: 1.35rem; font-weight: 600; color: var(--texte); line-height: 1.2; }}
-.indicateur .nom {{ font-size: 0.76rem; color: var(--texte-3); text-transform: uppercase; letter-spacing: 0.05em; }}
-.indicateur.vert .valeur {{ color: var(--vert); }}
-.indicateur.orange .valeur {{ color: var(--orange); }}
-.indicateur.rouge .valeur {{ color: var(--rouge); }}
-.indicateur.violet .valeur {{ color: var(--violet); }}
-.indicateur.bleu .valeur {{ color: var(--bleu); }}
+.indicator {{ flex: 1; padding: 0.6rem 1rem; border-right: 1px solid var(--border); }}
+.indicator:last-child {{ border-right: none; }}
+.indicator .value {{ font-size: 1.35rem; font-weight: 600; color: var(--text); line-height: 1.2; }}
+.indicator .name {{ font-size: 0.76rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }}
+.indicator.green .value {{ color: var(--green); }}
+.indicator.orange .value {{ color: var(--orange); }}
+.indicator.red .value {{ color: var(--red); }}
+.indicator.purple .value {{ color: var(--purple); }}
+.indicator.blue .value {{ color: var(--blue); }}
 [data-testid="stMetric"] {{ padding: 0; }}
-[data-testid="stMetricLabel"] p {{ color: var(--texte-3); font-size: 0.75rem; }}
+[data-testid="stMetricLabel"] p {{ color: var(--text-3); font-size: 0.75rem; }}
 [data-testid="stMetricValue"] {{ font-size: 1.4rem; font-weight: 600; }}
 
-/* Composants : angles sobres, bordures fines */
+/* Components: plain corners, thin borders */
 .stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] > button {{
     border-radius: 4px; font-weight: 500; font-size: 0.85rem; min-height: 2.1rem; padding: 0.2rem 0.8rem;
 }}
 .stButton > button[kind="primary"], [data-testid="stFormSubmitButton"] > button[kind="primaryFormSubmit"] {{
-    background: var(--bleu); border-color: var(--bleu);
+    background: var(--blue); border-color: var(--blue);
 }}
 .stTextInput input, .stNumberInput input, .stTextArea textarea, [data-baseweb="select"] > div {{ border-radius: 4px; }}
 [data-testid="stExpander"] details {{
-    background: var(--surface); border: 1px solid var(--bordure); border-radius: 4px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
 }}
 [data-testid="stExpander"] summary {{ padding: 0.55rem 0.9rem; font-size: 0.9rem; }}
-[data-testid="stExpander"] summary:hover {{ background: var(--bleu-clair); }}
+[data-testid="stExpander"] summary:hover {{ background: var(--blue-light); }}
 [data-testid="stExpander"] {{ margin-bottom: -0.6rem; }}
 [data-testid="stVerticalBlockBorderWrapper"] {{ border-radius: 4px; }}
-.stTabs [data-baseweb="tab-list"] {{ gap: 0; border-bottom: 1px solid var(--bordure); }}
+.stTabs [data-baseweb="tab-list"] {{ gap: 0; border-bottom: 1px solid var(--border); }}
 .stTabs [data-baseweb="tab"] {{ padding: 0.55rem 1.1rem; font-weight: 500; font-size: 0.88rem; }}
-.stTabs [aria-selected="true"] {{ color: var(--bleu); }}
-[data-testid="stDataFrame"] {{ border: 1px solid var(--bordure); border-radius: 4px; }}
+.stTabs [aria-selected="true"] {{ color: var(--blue); }}
+[data-testid="stDataFrame"] {{ border: 1px solid var(--border); border-radius: 4px; }}
 
-/* Contenu des dossiers */
+/* Record content */
 .decision {{
     border-radius: 3px; padding: 0.55rem 0.8rem; font-weight: 600; font-size: 0.88rem;
     border-left: 3px solid; margin-bottom: 0.6rem; letter-spacing: 0.01em;
 }}
-.decision.valide {{ background: var(--vert-fond); border-color: var(--vert); color: var(--vert); }}
-.decision.intervention {{ background: var(--orange-fond); border-color: var(--orange); color: var(--orange); }}
-.decision.verification {{ background: var(--violet-fond); border-color: var(--violet); color: var(--violet); }}
-.decision.surveillance {{ background: var(--bleu-fond); border-color: var(--bleu); color: var(--bleu); }}
-.decision.erreur {{ background: var(--rouge-fond); border-color: var(--rouge); color: var(--rouge); }}
-.libelle {{
-    font-size: 0.75rem; font-weight: 600; color: var(--texte-3); text-transform: uppercase;
+.decision.validated {{ background: var(--green-bg); border-color: var(--green); color: var(--green); }}
+.decision.intervention {{ background: var(--orange-bg); border-color: var(--orange); color: var(--orange); }}
+.decision.verification {{ background: var(--purple-bg); border-color: var(--purple); color: var(--purple); }}
+.decision.monitoring {{ background: var(--blue-bg); border-color: var(--blue); color: var(--blue); }}
+.decision.error {{ background: var(--red-bg); border-color: var(--red); color: var(--red); }}
+.label {{
+    font-size: 0.75rem; font-weight: 600; color: var(--text-3); text-transform: uppercase;
     letter-spacing: 0.07em; margin: 0.8rem 0 0.3rem 0;
 }}
-.alerte {{
-    background: var(--orange-fond); border-left: 3px solid var(--orange); border-radius: 3px;
-    padding: 0.4rem 0.7rem; margin-bottom: 0.35rem; font-size: 0.86rem; color: var(--texte);
+.alert {{
+    background: var(--orange-bg); border-left: 3px solid var(--orange); border-radius: 3px;
+    padding: 0.4rem 0.7rem; margin-bottom: 0.35rem; font-size: 0.86rem; color: var(--text);
 }}
-.alerte .entete-alerte {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.2rem; }}
-.alerte .complement {{ margin-top: 0.25rem; }}
-.alerte .prescription {{ margin-top: 0.25rem; font-size: 0.78rem; color: var(--texte-2); }}
+.alert .alert-header {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.2rem; }}
+.alert .complement {{ margin-top: 0.25rem; }}
+.alert .prescription {{ margin-top: 0.25rem; font-size: 0.78rem; color: var(--text-2); }}
 
-/* Règles du système expert */
-.regle {{
-    background: var(--surface); border: 1px solid var(--bordure); border-left: 4px solid var(--bleu);
-    border-radius: 4px; padding: 0.65rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.86rem; color: var(--texte);
+/* KBS rules */
+.rule {{
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--blue);
+    border-radius: 4px; padding: 0.65rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.86rem; color: var(--text);
 }}
-.regle.ci {{ border-left-color: var(--rouge); }}
-.regle.asdec {{ border-left-color: var(--orange); }}
-.regle.pe {{ border-left-color: #C9A100; }}
-.regle.apec {{ border-left-color: #9AA6B2; }}
-.regle.perso {{ border-left-color: var(--vert); }}
-.regle .entete {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem; }}
-.regle .titre {{ font-weight: 600; font-size: 0.93rem; margin-right: 0.2rem; }}
-.regle .bloc {{ margin: 0.3rem 0; line-height: 1.45; }}
-.regle .etiquette {{ font-weight: 600; color: var(--texte-2); }}
-.regle ul {{ margin: 0.15rem 0 0 0; padding-left: 1.2rem; }}
-.regle li {{ margin: 0.05rem 0; }}
-.regle details {{ margin-top: 0.35rem; }}
-.regle summary {{ cursor: pointer; color: var(--texte-3); font-size: 0.8rem; }}
-.regle .pied {{ margin-top: 0.35rem; font-size: 0.75rem; color: var(--texte-3); }}
+.rule.ci {{ border-left-color: var(--red); }}
+.rule.asdec {{ border-left-color: var(--orange); }}
+.rule.pe {{ border-left-color: #C9A100; }}
+.rule.apec {{ border-left-color: #9AA6B2; }}
+.rule.custom {{ border-left-color: var(--green); }}
+.rule .header {{ display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem; }}
+.rule .title {{ font-weight: 600; font-size: 0.93rem; margin-right: 0.2rem; }}
+.rule .block {{ margin: 0.3rem 0; line-height: 1.45; }}
+.rule .field-label {{ font-weight: 600; color: var(--text-2); }}
+.rule ul {{ margin: 0.15rem 0 0 0; padding-left: 1.2rem; }}
+.rule li {{ margin: 0.05rem 0; }}
+.rule details {{ margin-top: 0.35rem; }}
+.rule summary {{ cursor: pointer; color: var(--text-3); font-size: 0.8rem; }}
+.rule .footer {{ margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-3); }}
 .badge {{
     font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
     padding: 0.1rem 0.45rem; border-radius: 3px; white-space: nowrap;
 }}
-.badge.ci {{ background: var(--rouge-fond); color: var(--rouge); }}
-.badge.asdec {{ background: var(--orange-fond); color: var(--orange); }}
+.badge.ci {{ background: var(--red-bg); color: var(--red); }}
+.badge.asdec {{ background: var(--orange-bg); color: var(--orange); }}
 .badge.pe {{ background: #FFF7D6; color: #7A5B00; }}
-.badge.apec {{ background: #EEF1F4; color: var(--texte-2); }}
-.badge.pk {{ background: var(--bleu-clair); color: var(--bleu); }}
-.badge.perso {{ background: var(--vert-fond); color: var(--vert); }}
-.puce {{
-    display: inline-block; background: var(--fond); border: 1px solid var(--bordure); border-radius: 3px;
+.badge.apec {{ background: #EEF1F4; color: var(--text-2); }}
+.badge.pk {{ background: var(--blue-light); color: var(--blue); }}
+.badge.custom {{ background: var(--green-bg); color: var(--green); }}
+.chip {{
+    display: inline-block; background: var(--background); border: 1px solid var(--border); border-radius: 3px;
     padding: 0 0.35rem; margin: 0.1rem 0.2rem 0.1rem 0; font-size: 0.8rem;
 }}
-.profil {{ color: var(--texte); font-weight: 500; }}
-.discret {{ color: var(--texte-3); font-size: 0.76rem; margin-top: 0.6rem; }}
+.profile {{ color: var(--text); font-weight: 500; }}
+.muted {{ color: var(--text-3); font-size: 0.76rem; margin-top: 0.6rem; }}
 
-/* Avis pharmaceutique : chaque point est un cadre contenant la proposition puis ses sources.
-   Les cadres sont des st.container(key="cadre-<type>-...") : Streamlit leur donne la classe st-key-<key>. */
-[class*="st-key-cadre-"] {{
-    border: 1px solid var(--bordure); border-left: 3px solid var(--bordure); border-radius: 4px;
+/* Pharmaceutical opinion: each point is a frame containing the proposal then its sources.
+   The frames are st.container(key="frame-<type>-..."): Streamlit gives them the class st-key-<key>. */
+[class*="st-key-frame-"] {{
+    border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: 4px;
     background: var(--surface); padding: 0.5rem 0.75rem; margin: 0.35rem 0; gap: 0.35rem;
 }}
-[class*="st-key-cadre-intervention"] {{ border: 1.5px solid var(--orange); background: var(--orange-fond); }}
-[class*="st-key-cadre-verification"] {{ border-left-color: var(--violet); }}
-[class*="st-key-cadre-surveillance"] {{ border-left-color: var(--bleu); }}
-[class*="st-key-cadre-validation"] {{ border-left-color: var(--vert); }}
-/* Streamlit donne une marge basse négative aux blocs markdown : sans correction, les sources remontent sur le texte */
-[class*="st-key-cadre-"] [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
-[class*="st-key-cadre-"] [data-testid="stMarkdownContainer"] p {{ margin: 0 !important; }}
-.point {{ font-size: 0.9rem; color: var(--texte); line-height: 1.45; }}
+[class*="st-key-frame-intervention"] {{ border: 1.5px solid var(--orange); background: var(--orange-bg); }}
+[class*="st-key-frame-verification"] {{ border-left-color: var(--purple); }}
+[class*="st-key-frame-monitoring"] {{ border-left-color: var(--blue); }}
+[class*="st-key-frame-validation"] {{ border-left-color: var(--green); }}
+/* Streamlit gives markdown blocks a negative bottom margin: without this fix, the sources overlap the text */
+[class*="st-key-frame-"] [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
+[class*="st-key-frame-"] [data-testid="stMarkdownContainer"] p {{ margin: 0 !important; }}
+.point {{ font-size: 0.9rem; color: var(--text); line-height: 1.45; }}
 p.point.intervention, .point.intervention {{ font-weight: 700 !important; }}
-/* Dossier ouvert : zones à hauteur calculée sur l'écran, chacune défile seule (la page ne défile pas).
-   Hauteur disponible ≈ 100vh moins barre d'application, onglets, barre de navigation et libellés. */
-div.st-key-zone-bio, div.st-key-zone-prescription, div.st-key-zone-avis {{
+/* Open record: areas whose height is computed from the screen, each scrolls on its own (the page does not).
+   Available height ≈ 100vh minus application bar, tabs, navigation bar and labels. */
+div.st-key-zone-biology, div.st-key-zone-prescription, div.st-key-zone-opinion {{
     overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
 }}
-div.st-key-zone-bio {{ height: calc(100vh - 390px) !important; min-height: 220px; }}
+div.st-key-zone-biology {{ height: calc(100vh - 390px) !important; min-height: 220px; }}
 div.st-key-zone-prescription {{ height: calc((100vh - 360px) * 0.5) !important; min-height: 160px; }}
-div.st-key-zone-avis {{ height: calc((100vh - 360px) * 0.5) !important; min-height: 180px; }}
-.st-key-zone-avis > div {{ margin-bottom: 0.5rem; }}
-.tableau th {{ position: sticky; top: 0; z-index: 1; }}
+div.st-key-zone-opinion {{ height: calc((100vh - 360px) * 0.5) !important; min-height: 180px; }}
+.st-key-zone-opinion > div {{ margin-bottom: 0.5rem; }}
+.data-table th {{ position: sticky; top: 0; z-index: 1; }}
 
-/* Liste des patients : colonnes alignées (grille), chaque ligne recouverte d'un bouton invisible.
-   La liste défile seule dans une zone à hauteur d'écran (la page ne défile pas) ; l'en-tête de colonnes reste visible. */
-div.st-key-liste-patients {{ border: 1px solid var(--bordure); border-radius: 4px; background: var(--surface);
+/* Patient list: aligned columns (grid), each row covered by an invisible button.
+   The list scrolls on its own in a screen-high area (the page does not); the column header stays visible. */
+div.st-key-patient-list {{ border: 1px solid var(--border); border-radius: 4px; background: var(--surface);
     margin-top: 0.4rem; overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
     max-height: calc(100vh - 400px) !important; min-height: 200px; }}
-.st-key-liste-patients > div:first-child {{ position: sticky; top: 0; z-index: 3; }}
-.st-key-ajuster-liste {{ display: none; }}
-.st-key-liste-patients [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
-.ligne-patient {{
+.st-key-patient-list > div:first-child {{ position: sticky; top: 0; z-index: 3; }}
+.st-key-adjust-list {{ display: none; }}
+.st-key-patient-list [data-testid="stMarkdownContainer"] {{ margin-bottom: 0 !important; }}
+.patient-row {{
     display: grid; grid-template-columns: 9rem 13rem 6rem 10rem 6rem 1fr; align-items: center;
-    padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--bordure); font-size: 0.87rem; color: var(--texte);
+    padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--border); font-size: 0.87rem; color: var(--text);
 }}
-.ligne-patient.entete {{ background: var(--fond); color: var(--texte-3); font-size: 0.74rem; font-weight: 600;
+.patient-row.header-row {{ background: var(--background); color: var(--text-3); font-size: 0.74rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.05em; padding: 0.4rem 0.9rem; }}
-.ligne-patient .statut {{ font-weight: 600; }}
-.statut.intervention {{ color: var(--orange); }} .statut.verification {{ color: var(--violet); }}
-.statut.surveillance {{ color: var(--bleu); }} .statut.valide {{ color: var(--vert); }}
-.statut.erreur {{ color: var(--rouge); }} .statut.non_analyse {{ color: var(--texte-3); }}
-[class*="st-key-ligne-"] {{ position: relative; }}
-[class*="st-key-ligne-"]:hover {{ background: var(--bleu-clair); cursor: pointer; }}
-[class*="st-key-ouvrir-"] {{ position: absolute; inset: 0; z-index: 2; }}
-[class*="st-key-ouvrir-"] .stButton, [class*="st-key-ouvrir-"] button {{
+.patient-row .status {{ font-weight: 600; }}
+.status.intervention {{ color: var(--orange); }} .status.verification {{ color: var(--purple); }}
+.status.monitoring {{ color: var(--blue); }} .status.validated {{ color: var(--green); }}
+.status.error {{ color: var(--red); }} .status.not_analysed {{ color: var(--text-3); }}
+[class*="st-key-row-"] {{ position: relative; }}
+[class*="st-key-row-"]:hover {{ background: var(--blue-light); cursor: pointer; }}
+[class*="st-key-open-"] {{ position: absolute; inset: 0; z-index: 2; }}
+[class*="st-key-open-"] .stButton, [class*="st-key-open-"] button {{
     width: 100%; height: 100%; opacity: 0; cursor: pointer;
 }}
-.titre-sources {{ font-size: 0.74rem; font-weight: 600; color: var(--texte-3); text-transform: uppercase;
+.sources-title {{ font-size: 0.74rem; font-weight: 600; color: var(--text-3); text-transform: uppercase;
     letter-spacing: 0.05em; }}
-/* Liens de sources : texte bleu pastel sur fond bleu très clair */
+/* Source links: pastel blue text on a very light blue background */
 .stButton > button[kind="tertiary"] {{
     min-height: 1.4rem; padding: 0.05rem 0.5rem; background: #F0F6FD; border: 1px solid #C6DDF5; border-radius: 10px;
 }}
@@ -280,735 +282,734 @@ div.st-key-liste-patients {{ border: 1px solid var(--bordure); border-radius: 4p
 }}
 .stButton > button[kind="tertiary"]:hover {{ background: #E2EEFB; border-color: #9EC3EA; }}
 .stButton > button[kind="tertiary"]:hover p {{ color: #3E7FC1; }}
-.source-llm {{
-    display: inline-block; font-size: 0.78rem; color: var(--texte-2); background: #EEF1F4;
-    border: 1px solid var(--bordure); border-radius: 10px; padding: 0.05rem 0.5rem;
+.llm-source {{
+    display: inline-block; font-size: 0.78rem; color: var(--text-2); background: #EEF1F4;
+    border: 1px solid var(--border); border-radius: 10px; padding: 0.05rem 0.5rem;
 }}
 
-/* Tableaux de la biologie et de la prescription : tout le texte visible, sans défilement horizontal */
-.tableau {{ width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--surface);
-    border: 1px solid var(--bordure); table-layout: auto; }}
-.tableau th {{ text-align: left; font-weight: 600; color: var(--texte-2); background: var(--fond);
-    padding: 0.3rem 0.45rem; border-bottom: 1px solid var(--bordure); }}
-.tableau td {{ padding: 0.28rem 0.45rem; border-bottom: 1px solid var(--bordure); vertical-align: top;
+/* Laboratory and prescription tables: all text visible, no horizontal scrolling */
+.data-table {{ width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--surface);
+    border: 1px solid var(--border); table-layout: auto; }}
+.data-table th {{ text-align: left; font-weight: 600; color: var(--text-2); background: var(--background);
+    padding: 0.3rem 0.45rem; border-bottom: 1px solid var(--border); }}
+.data-table td {{ padding: 0.28rem 0.45rem; border-bottom: 1px solid var(--border); vertical-align: top;
     white-space: normal; overflow-wrap: anywhere; }}
-.tableau td.court {{ white-space: nowrap; }}
-.tableau tr.anormal td {{ color: var(--rouge); background: var(--rouge-fond); font-weight: 500; }}
+.data-table td.short {{ white-space: nowrap; }}
+.data-table tr.abnormal td {{ color: var(--red); background: var(--red-bg); font-weight: 500; }}
 </style>
 """,
     unsafe_allow_html=True,
 )
 
 
-def titre_section(texte):
-    st.markdown(f'<div class="titre-section">{html.escape(texte)}</div>', unsafe_allow_html=True)
+def section_title(text):
+    st.markdown(f'<div class="section-title">{html.escape(text)}</div>', unsafe_allow_html=True)
 
 
-def libelle(texte):
-    st.markdown(f'<div class="libelle">{html.escape(texte)}</div>', unsafe_allow_html=True)
+def label(text):
+    st.markdown(f'<div class="label">{html.escape(text)}</div>', unsafe_allow_html=True)
 
 
-def afficher_alerte(alerte):
-    st.markdown(html_alerte(alerte), unsafe_allow_html=True)
+def show_alert(alert):
+    st.markdown(html_alert(alert), unsafe_allow_html=True)
 
 
 # ---------------------------------------------------------------------------
-# Visionneuse de documents
+# Document viewer
 # ---------------------------------------------------------------------------
 
-@st.dialog("Consultation du document", width="large")
-def ouvrir_document(nom, page=1):
-    chemin = chemin_document(nom)
-    if not os.path.exists(chemin):
-        st.error(f"Le document « {nom} » est introuvable dans la base documentaire.")
+@st.dialog("Document viewer", width="large")
+def open_document(name, page=1):
+    path = document_path(name)
+    if not os.path.exists(path):
+        st.error(f"The document “{name}” cannot be found in the RAG documents.")
         return
 
-    total = nombre_pages(chemin)
-    st.markdown(f"**{nom}**")
-    colonne_page, colonne_telechargement = st.columns([1, 1], vertical_alignment="bottom")
-    page = colonne_page.number_input(
-        f"Page (sur {total})", min_value=1, max_value=total, value=min(page, total), key=f"page-{nom}-{page}"
+    total = page_count(path)
+    st.markdown(f"**{name}**")
+    page_column, download_column = st.columns([1, 1], vertical_alignment="bottom")
+    page = page_column.number_input(
+        f"Page (of {total})", min_value=1, max_value=total, value=min(page, total), key=f"page-{name}-{page}"
     )
-    with open(chemin, "rb") as fichier:
-        colonne_telechargement.download_button(
-            "Télécharger le PDF", fichier.read(), file_name=nom, mime="application/pdf",
+    with open(path, "rb") as file:
+        download_column.download_button(
+            "Download PDF", file.read(), file_name=name, mime="application/pdf",
             use_container_width=True,
         )
-    st.image(rendre_page(chemin, page))
+    st.image(render_page(path, page))
 
 
-def bouton_source(source, cle):
-    """Affiche un bouton qui ouvre la source si c'est un PDF de la base, sinon un simple texte."""
-    document = lire_source(source)
+def source_button(source, key):
+    """Shows a button that opens the source if it is a PDF of the RAG documents, otherwise plain text."""
+    document = read_source(source)
     if document is None:
         st.markdown(f"- {source}")
         return
-    nom, page = document
-    if st.button(source, key=cle, help=f"Ouvrir {nom} à la page {page}"):
-        ouvrir_document(nom, page)
+    name, page = document
+    if st.button(source, key=key, help=f"Open {name} at page {page}"):
+        open_document(name, page)
 
 
-@st.dialog("Alerte du système expert", width="large")
-def ouvrir_alerte(alerte):
-    afficher_alerte(alerte)
+@st.dialog("KBS alert", width="large")
+def open_alert(alert):
+    show_alert(alert)
 
 
-def lien_alerte(alerte, cle):
-    """Lien « Alerte experte » : le survol affiche l'alerte, le clic l'ouvre en détail."""
-    if st.button("Alerte experte", key=cle, type="tertiary", help=alerte):
-        ouvrir_alerte(alerte)
+def alert_link(alert, key):
+    """“KBS alert” link: hovering shows the alert, clicking opens it in detail."""
+    if st.button("KBS alert", key=key, type="tertiary", help=alert):
+        open_alert(alert)
 
 
-def afficher_point(point, cle, categorie_decision=""):
-    """Une proposition de l'avis pharmaceutique dans un cadre, avec ses sources en bas du même cadre.
+def show_point(point, key, decision_category=""):
+    """One proposal of the pharmaceutical opinion in a frame, with its sources at the bottom of the same frame.
 
-    Intervention : texte en gras, cadre orange. Les alertes du système expert ne sont visibles qu'à travers
-    ces liens (pas de liste séparée).
+    Intervention: bold text, orange frame. KBS alerts are only visible through these links (no separate list).
     """
-    type_ = point.get("type") or type_deduit(point["texte"], categorie_decision)
-    with st.container(key=f"cadre-{type_}-{cle}"):
-        st.markdown(f'<p class="point {type_}">{html.escape(point["texte"])}</p>', unsafe_allow_html=True)
+    type_ = point.get("type") or inferred_type(point["text"], decision_category)
+    with st.container(key=f"frame-{type_}-{key}"):
+        st.markdown(f'<p class="point {type_}">{html.escape(point["text"])}</p>', unsafe_allow_html=True)
         with st.container(horizontal=True, gap="small", vertical_alignment="center"):
-            st.markdown('<span class="titre-sources">Sources</span>', unsafe_allow_html=True)
+            st.markdown('<span class="sources-title">Sources</span>', unsafe_allow_html=True)
             if not point["sources"]:
-                st.markdown('<span class="source-llm">connaissances du modèle uniquement : ni alerte ni '
-                            'recommandation</span>', unsafe_allow_html=True)
-            afficher_liens_sources(point["sources"], cle)
+                st.markdown('<span class="llm-source">model knowledge only: no alert or guideline</span>',
+                            unsafe_allow_html=True)
+            show_source_links(point["sources"], key)
 
 
-def afficher_liens_sources(sources, cle):
-    for numero, source in enumerate(sources):
-        if source["type"] == "alerte":
-            lien_alerte(source["texte"], cle=f"{cle}-{numero}")
-        elif st.button(f"{source['source']}, p. {source['page']}", key=f"{cle}-{numero}", type="tertiary",
-                       help=f"Ouvrir {source['source']} à la page {source['page']}"):
-            ouvrir_document(source["source"], source["page"])
+def show_source_links(sources, key):
+    for number, source in enumerate(sources):
+        if source["type"] == "alert":
+            alert_link(source["text"], key=f"{key}-{number}")
+        elif st.button(f"{source['source']}, p. {source['page']}", key=f"{key}-{number}", type="tertiary",
+                       help=f"Open {source['source']} at page {source['page']}"):
+            open_document(source["source"], source["page"])
 
 
 # ---------------------------------------------------------------------------
-# Barre latérale : base patients et base documentaire
+# Sidebar: patient base and RAG documents
 # ---------------------------------------------------------------------------
 
 with st.sidebar:
-    titre_section("Base patients")
-    repertoire = st.text_input(
-        "Dossier d'inférence", value=DOSSIER_PATIENTS, key="repertoire_patients",
-        help="Dossier contenant un fichier JSON par patient (chemin relatif à la racine du projet ou absolu).",
+    section_title("Patient base")
+    folder = st.text_input(
+        "Inference folder", value=PATIENTS_FOLDER, key="patients_folder",
+        help="Folder containing one JSON file per patient (path relative to the project root, or absolute).",
     ).strip()
-    if os.path.isdir(repertoire):
+    if os.path.isdir(folder):
         try:
-            patients = charger_patients(repertoire)
-        except Exception as erreur:
+            patients = load_patients(folder)
+        except Exception as error:
             patients = []
-            st.error(f"Lecture des dossiers patients impossible : {erreur}")
+            st.error(f"Unable to read the patient records: {error}")
     else:
         patients = []
-        st.error(f"Le dossier « {repertoire} » n'existe pas.")
-    st.metric("Dossiers patients", len(patients))
+        st.error(f"The folder “{folder}” does not exist.")
+    st.metric("Patient records", len(patients))
 
-    titre_section("Base documentaire")
+    section_title("RAG documents")
     try:
-        indexes = documents_indexes()
-    except Exception as erreur:
-        indexes = {}
-        st.error(f"Lecture de la base vectorielle impossible : {erreur}")
+        indexed = indexed_documents()
+    except Exception as error:
+        indexed = {}
+        st.error(f"Unable to read the vector database: {error}")
 
-    if indexes:
-        st.caption("Référentiels indexés. Cliquer pour consulter.")
-        for nom, nb_passages in indexes.items():
-            if st.button(f"{nom}  ·  {nb_passages} passages", key=f"doc-{nom}", use_container_width=True):
-                ouvrir_document(nom)
+    if indexed:
+        st.caption("Indexed guidelines. Click to view.")
+        for name, passage_count in indexed.items():
+            if st.button(f"{name}  ·  {passage_count} passages", key=f"doc-{name}", use_container_width=True):
+                open_document(name)
     else:
-        st.info("Aucun référentiel indexé.")
+        st.info("No indexed guideline.")
 
-    non_indexes = [nom for nom in documents_du_dossier() if nom not in indexes]
-    if non_indexes:
-        st.caption("Documents en attente d'indexation")
-        for nom in non_indexes:
-            colonne_nom, colonne_bouton = st.columns([3, 2], vertical_alignment="center")
-            colonne_nom.markdown(f"`{nom}`")
-            if colonne_bouton.button("Indexer", key=f"indexer-{nom}", use_container_width=True):
-                with st.spinner(f"Indexation de {nom} en cours..."):
-                    nb = indexer_pdf(chemin_document(nom))
-                st.toast(f"{nom} : {nb} passages indexés")
+    not_indexed = [name for name in folder_documents() if name not in indexed]
+    if not_indexed:
+        st.caption("Documents waiting to be indexed")
+        for name in not_indexed:
+            name_column, button_column = st.columns([3, 2], vertical_alignment="center")
+            name_column.markdown(f"`{name}`")
+            if button_column.button("Index", key=f"index-{name}", use_container_width=True):
+                with st.spinner(f"Indexing {name}..."):
+                    count = index_pdf(document_path(name))
+                st.toast(f"{name}: {count} passages indexed")
                 st.rerun()
 
-    titre_section("Ajouter un référentiel")
-    with st.form("ajout_document", clear_on_submit=True, border=False):
-        fichiers = st.file_uploader(
-            "Documents PDF", type="pdf", accept_multiple_files=True, label_visibility="collapsed",
-            help="Le document est enregistré dans la base documentaire puis indexé.",
+    section_title("Add a guideline")
+    with st.form("add_document", clear_on_submit=True, border=False):
+        files = st.file_uploader(
+            "PDF documents", type="pdf", accept_multiple_files=True, label_visibility="collapsed",
+            help="The document is saved in the RAG documents, then indexed.",
         )
-        envoye = st.form_submit_button("Indexer les documents", use_container_width=True)
-    if envoye and fichiers:
-        for fichier in fichiers:
-            with st.spinner(f"Indexation de {fichier.name} en cours..."):
+        submitted = st.form_submit_button("Index the documents", use_container_width=True)
+    if submitted and files:
+        for file in files:
+            with st.spinner(f"Indexing {file.name}..."):
                 try:
-                    nb = indexer_pdf(enregistrer_pdf(fichier.name, fichier.getvalue()))
-                    st.toast(f"{fichier.name} : {nb} passages indexés")
-                except Exception as erreur:
-                    st.error(f"{fichier.name} : {erreur}")
+                    count = index_pdf(save_pdf(file.name, file.getvalue()))
+                    st.toast(f"{file.name}: {count} passages indexed")
+                except Exception as error:
+                    st.error(f"{file.name}: {error}")
         st.rerun()
 
 
 # ---------------------------------------------------------------------------
-# Panneau principal
+# Main panel
 # ---------------------------------------------------------------------------
 
-resultats = charger_resultats()
-statuts = {d["patient"]["id"]: statut(resultats.get(d["patient"]["id"]))[0] for d in patients}
-compte = {code: list(statuts.values()).count(code) for code in LIBELLES_STATUT}
-# Dossiers à analyser par « Lancer l'analyse » : jamais analysés ou en échec
-a_analyser = [d for d in patients if statuts[d["patient"]["id"]] in ("non_analyse", "erreur")]
+results = load_results()
+statuses = {r["patient"]["id"]: status(results.get(r["patient"]["id"]))[0] for r in patients}
+counts = {code: list(statuses.values()).count(code) for code in STATUS_LABELS}
+# Records analysed by “Run the analysis”: never analysed or failed
+to_analyse = [r for r in patients if statuses[r["patient"]["id"]] in ("not_analysed", "error")]
 
 st.markdown(
     f"""
-<div class="barre-app">
-  <div class="marque">
-    <span class="etablissement">{html.escape(NOM_ETABLISSEMENT)}</span>
-    <span class="separateur"></span>
-    <span class="logiciel">{html.escape(NOM_LOGICIEL)}</span>
+<div class="app-bar">
+  <div class="brand">
+    <span class="hospital">{html.escape(HOSPITAL_NAME)}</span>
+    <span class="separator"></span>
+    <span class="software">{html.escape(SOFTWARE_NAME)}</span>
   </div>
-  <div class="contexte">
-    <span>Dossier <b>{html.escape(repertoire)}</b></span>
-    <span><b>{len(patients)}</b> dossiers</span>
-    <span><b>{len(indexes)}</b> référentiels indexés</span>
+  <div class="context">
+    <span>Folder <b>{html.escape(folder)}</b></span>
+    <span><b>{len(patients)}</b> records</span>
+    <span><b>{len(indexed)}</b> indexed guidelines</span>
   </div>
 </div>
 """,
     unsafe_allow_html=True,
 )
 
-# Dossier ouvert : en-tête et indicateurs masqués pour que le dossier tienne dans l'écran sans défilement
-vue_dossier = bool(st.session_state.get("patient_ouvert"))
-lancer = relancer = False
-if not vue_dossier:
-    colonne_titre, colonne_action, colonne_relance = st.columns([2, 1, 1], vertical_alignment="center")
-    colonne_titre.markdown(
-        '<p class="titre-page">Analyse des prescriptions</p>'
-        '<p class="sous-titre-page">Système expert, recommandations de référence et modèle de langage</p>',
+# Open record: header and indicators hidden so that the record fits on the screen without scrolling
+record_view = bool(st.session_state.get("open_patient"))
+run = rerun_all = False
+if not record_view:
+    title_column, action_column, rerun_column = st.columns([2, 1, 1], vertical_alignment="center")
+    title_column.markdown(
+        '<p class="page-title">Prescription analysis</p>'
+        '<p class="page-subtitle">Knowledge-Based System (KBS), reference guidelines and language model</p>',
         unsafe_allow_html=True,
     )
-    lancer = colonne_action.button(
-        f"Lancer l'analyse ({len(a_analyser)} dossiers)",
+    run = action_column.button(
+        f"Run the analysis ({len(to_analyse)} records)",
         type="primary",
-        disabled=not a_analyser,
+        disabled=not to_analyse,
         use_container_width=True,
-        help="Analyse uniquement les dossiers non analysés ou en erreur",
+        help="Analyses only the records not yet analysed or in error",
     )
-    relancer = colonne_relance.button(
-        "Relancer l'analyse de tous les patients",
+    rerun_all = rerun_column.button(
+        "Re-run the analysis of all patients",
         disabled=not patients,
         use_container_width=True,
-        help="Analyse à nouveau tous les dossiers, y compris ceux déjà analysés",
+        help="Analyses all the records again, including those already analysed",
     )
-    
+
     st.markdown(
         f"""
-    <div class="indicateurs">
-      <div class="indicateur"><div class="valeur">{len(patients)}</div><div class="nom">Dossiers</div></div>
-      <div class="indicateur"><div class="valeur">{len(patients) - compte["non_analyse"]}</div><div class="nom">Analysés</div></div>
-      <div class="indicateur orange"><div class="valeur">{compte["intervention"]}</div><div class="nom">Interventions</div></div>
-      <div class="indicateur violet"><div class="valeur">{compte["verification"]}</div><div class="nom">Vérifications</div></div>
-      <div class="indicateur bleu"><div class="valeur">{compte["surveillance"]}</div><div class="nom">Surveillances</div></div>
-      <div class="indicateur vert"><div class="valeur">{compte["valide"]}</div><div class="nom">Validés</div></div>
-      <div class="indicateur rouge"><div class="valeur">{compte["erreur"]}</div><div class="nom">Erreurs</div></div>
-      <div class="indicateur"><div class="valeur">{compte["non_analyse"]}</div><div class="nom">Non analysés</div></div>
+    <div class="indicators">
+      <div class="indicator"><div class="value">{len(patients)}</div><div class="name">Records</div></div>
+      <div class="indicator"><div class="value">{len(patients) - counts["not_analysed"]}</div><div class="name">Analysed</div></div>
+      <div class="indicator orange"><div class="value">{counts["intervention"]}</div><div class="name">Interventions</div></div>
+      <div class="indicator purple"><div class="value">{counts["verification"]}</div><div class="name">Verifications</div></div>
+      <div class="indicator blue"><div class="value">{counts["monitoring"]}</div><div class="name">Monitoring</div></div>
+      <div class="indicator green"><div class="value">{counts["validated"]}</div><div class="name">Validated</div></div>
+      <div class="indicator red"><div class="value">{counts["error"]}</div><div class="name">Errors</div></div>
+      <div class="indicator"><div class="value">{counts["not_analysed"]}</div><div class="name">Not analysed</div></div>
     </div>
     """,
         unsafe_allow_html=True,
     )
 
-if lancer or relancer:
-    selection = patients if relancer else a_analyser
-    barre = st.progress(0.0, text="Analyse en cours...")
-    for numero, dossier in enumerate(selection, start=1):
-        identifiant = dossier["patient"]["id"]
-        barre.progress((numero - 1) / len(selection), text=f"Analyse du dossier {identifiant} ({numero}/{len(selection)})")
-        resultats[identifiant] = analyser(dossier)
-        sauver_resultats(resultats)  # sauvegarde au fil de l'eau
-    barre.empty()
+if run or rerun_all:
+    selection = patients if rerun_all else to_analyse
+    bar = st.progress(0.0, text="Analysis in progress...")
+    for number, record in enumerate(selection, start=1):
+        patient_id = record["patient"]["id"]
+        bar.progress((number - 1) / len(selection), text=f"Analysing record {patient_id} ({number}/{len(selection)})")
+        results[patient_id] = analyse(record)
+        save_results(results)  # saved as we go
+    bar.empty()
     st.rerun()
 
-onglet_resultats, onglet_regles, onglet_bio = st.tabs(
-    ["Résultats d'analyse", "Règles du système expert", "Valeurs biologiques de référence"]
+results_tab, rules_tab, biology_tab = st.tabs(
+    ["Analysis results", "KBS rules", "Laboratory reference ranges"]
 )
 
 
-# --- Onglet résultats -------------------------------------------------------
+# --- Results tab --------------------------------------------------------------
 
-def tableau_html(colonnes, lignes, classes_lignes=(), colonnes_courtes=()):
-    st.markdown(html_tableau(colonnes, lignes, classes_lignes, colonnes_courtes), unsafe_allow_html=True)
+def table(columns, rows, row_classes=(), short_columns=()):
+    st.markdown(html_table(columns, rows, row_classes, short_columns), unsafe_allow_html=True)
 
 
-def afficher_patient(dossier, resultat, normes):
-    """Biologie à gauche ; prescription en haut à droite, avis pharmaceutique en dessous.
+def show_patient(record, result, ranges):
+    """Laboratory values on the left; prescription at the top right, pharmaceutical opinion below.
 
-    Chaque zone a une hauteur calculée sur celle de l'écran (CSS .st-key-zone-*) et défile seule : la page ne
-    défile pas, le pharmacien passe d'un dossier à l'autre sans faire défiler. Aucun défilement horizontal.
+    Each area has a height computed from the screen height (CSS .st-key-zone-*) and scrolls on its own: the page
+    does not scroll, the pharmacist moves from one record to the next without scrolling. No horizontal scrolling.
     """
-    patient = dossier["patient"]
-    identifiant = patient["id"]
-    traitements = dossier["traitements"]
+    patient = record["patient"]
+    patient_id = patient["id"]
+    treatments = record["treatments"]
 
-    colonne_patient, colonne_resultat = st.columns([2, 3], gap="medium")
+    patient_column, result_column = st.columns([2, 3], gap="medium")
 
-    with colonne_patient:
-        libelle("Profil patient")
-        st.markdown(f'<div class="profil">{html.escape(profil_patient(patient))}</div>', unsafe_allow_html=True)
-        if patient.get("jour_reference"):
-            st.caption(f"Jour de référence : {patient['jour_reference']}")
-        biologie = patient.get("biologie", {})
-        if biologie:
-            libelle(f"Biologie ({len(biologie)} paramètres)")
-            lignes_bio, classes_bio = tableau_biologie(biologie, normes)
-            with st.container(key="zone-bio", border=False):
-                tableau_html(["Paramètre", "Valeur", "Interprétation", "Date"], lignes_bio, classes_lignes=classes_bio)
+    with patient_column:
+        label("Patient profile")
+        st.markdown(f'<div class="profile">{html.escape(patient_profile(patient))}</div>', unsafe_allow_html=True)
+        if patient.get("reference_date"):
+            st.caption(f"Reference date: {patient['reference_date']}")
+        biology = patient.get("biology", {})
+        if biology:
+            label(f"Laboratory values ({len(biology)} parameters)")
+            biology_rows, biology_classes = biology_table(biology, ranges)
+            with st.container(key="zone-biology", border=False):
+                table(["Parameter", "Value", "Interpretation", "Date"], biology_rows, row_classes=biology_classes)
 
-    with colonne_resultat:
-        # Lignes dont le LLM propose la modification (points « intervention ») : en rouge
-        a_modifier = lignes_a_modifier(resultat)
-        legende = " · en rouge : modification proposée" if a_modifier else ""
-        libelle(f"Prescription ({len(traitements)} lignes){legende}")
+    with result_column:
+        # Lines the LLM proposes to modify (“intervention” points): in red
+        to_modify = lines_to_modify(result)
+        legend = " · in red: change proposed" if to_modify else ""
+        label(f"Prescription ({len(treatments)} lines){legend}")
         with st.container(key="zone-prescription", border=False):
-            lignes_presc, classes_presc = tableau_prescription(traitements, a_modifier)
-            tableau_html(["N°", "Médicament", "Posologie", "Début", "Fin"], lignes_presc, classes_lignes=classes_presc,
-                         colonnes_courtes=("N°", "Début", "Fin"))
-        libelle("Avis pharmaceutique")
-        with st.container(key="zone-avis", border=False):
-            afficher_avis(resultat, identifiant)
+            prescription_rows, prescription_classes = prescription_table(treatments, to_modify)
+            table(["No.", "Drug", "Dosage regimen", "Start", "End"], prescription_rows,
+                  row_classes=prescription_classes, short_columns=("No.", "Start", "End"))
+        label("Pharmaceutical opinion")
+        with st.container(key="zone-opinion", border=False):
+            show_opinion(result, patient_id)
 
 
-def afficher_avis(resultat, identifiant):
-    """Décision et points de l'avis pharmaceutique."""
-    if resultat is None:
-        st.info("Dossier non analysé.")
+def show_opinion(result, patient_id):
+    """Decision and points of the pharmaceutical opinion."""
+    if result is None:
+        st.info("Record not analysed.")
         return
-    if "erreur" in resultat:
+    if "error" in result:
         st.markdown(
-            f'<div class="decision erreur">Échec de l\'analyse ({resultat["date"]})</div>',
+            f'<div class="decision error">Analysis failed ({result["date"]})</div>',
             unsafe_allow_html=True,
         )
-        st.code(resultat["erreur"], language=None)
+        st.code(result["error"], language=None)
         return
 
-    classe = categorie(resultat["decision"])
+    css_class = category(result["decision"])
     st.markdown(
-        f'<div class="decision {classe}">{html.escape(resultat["decision"])}</div>', unsafe_allow_html=True
+        f'<div class="decision {css_class}">{html.escape(result["decision"])}</div>', unsafe_allow_html=True
     )
-    if "points" in resultat:
-        for numero, point in enumerate(resultat["points"]):
-            afficher_point(point, cle=f"point-{identifiant}-{numero}", categorie_decision=classe)
-    else:  # analyse faite avant le passage aux points : justification en un paragraphe
-        st.write(resultat["justification"])
-        for numero, source in enumerate(resultat.get("sources", [])):
-            if lire_source(source):
-                bouton_source(source, cle=f"source-{identifiant}-{numero}")
+    if "points" in result:
+        for number, point in enumerate(result["points"]):
+            show_point(point, key=f"point-{patient_id}-{number}", decision_category=css_class)
+    else:  # analysis made before points were introduced: justification in one paragraph
+        st.write(result["justification"])
+        for number, source in enumerate(result.get("sources", [])):
+            if read_source(source):
+                source_button(source, key=f"source-{patient_id}-{number}")
         with st.container(horizontal=True, gap="small"):
-            for numero, alerte in enumerate(resultat.get("alertes", [])):
-                lien_alerte(alerte, cle=f"alerte-{identifiant}-{numero}")
-    st.markdown(f'<div class="discret">Analyse réalisée le {resultat["date"]}</div>', unsafe_allow_html=True)
+            for number, alert in enumerate(result.get("alerts", [])):
+                alert_link(alert, key=f"alert-{patient_id}-{number}")
+    st.markdown(f'<div class="muted">Analysed on {result["date"]}</div>', unsafe_allow_html=True)
 
 
-# Les widgets non affichés perdent leur valeur : on conserve le filtre et la recherche quand un patient est ouvert
-for cle in ("filtre", "recherche"):
-    if cle in st.session_state:
-        st.session_state[cle] = st.session_state[cle]
-st.session_state.setdefault("patient_ouvert", None)
+# Widgets that are not displayed lose their value: keep the filter and the search when a patient is open
+for key in ("filter", "search"):
+    if key in st.session_state:
+        st.session_state[key] = st.session_state[key]
+st.session_state.setdefault("open_patient", None)
 
-FILTRES = {
-    "tous": ("Tous", None),
+FILTERS = {
+    "all": ("All", None),
     "intervention": ("Interventions", {"intervention"}),
-    "verification": ("Vérifications", {"verification"}),
-    "surveillance": ("Surveillances", {"surveillance"}),
-    "valide": ("Validés", {"valide"}),
-    "autres": ("Non analysés / erreurs", {"non_analyse", "erreur"}),
+    "verification": ("Verifications", {"verification"}),
+    "monitoring": ("Monitoring", {"monitoring"}),
+    "validated": ("Validated", {"validated"}),
+    "others": ("Not analysed / errors", {"not_analysed", "error"}),
 }
 
 
-def libelle_filtre(code):
-    nom, codes = FILTRES[code]
-    return nom if codes is None else f"{nom} ({sum(compte[c] for c in codes)})"
+def filter_label(code):
+    name, codes = FILTERS[code]
+    return name if codes is None else f"{name} ({sum(counts[c] for c in codes)})"
 
 
-def ouvrir_patient(identifiant):
-    st.session_state.patient_ouvert = identifiant
+def open_patient(patient_id):
+    st.session_state.open_patient = patient_id
 
 
-def fermer_patient():
-    st.session_state.patient_ouvert = None
+def close_patient():
+    st.session_state.open_patient = None
 
 
-def afficher_liste(affiches):
-    """Liste des patients, une ligne cliquable par patient, dans une zone qui défile (CSS .st-key-liste-patients)."""
-    if not affiches:
-        st.caption("Aucun dossier ne correspond à la sélection.")
+def show_list(shown):
+    """Patient list, one clickable row per patient, in a scrolling area (CSS .st-key-patient-list)."""
+    if not shown:
+        st.caption("No record matches the selection.")
         return
 
-    with st.container(key="liste-patients", gap=None):
+    with st.container(key="patient-list", gap=None):
         st.markdown(
-            '<div class="ligne-patient entete"><span>Patient</span><span>Statut</span><span>Âge</span>'
-            '<span>Lignes de traitement</span><span>Alertes</span><span>Analysé le</span></div>',
+            '<div class="patient-row header-row"><span>Patient</span><span>Status</span><span>Age</span>'
+            '<span>Treatment lines</span><span>Alerts</span><span>Analysed on</span></div>',
             unsafe_allow_html=True,
         )
-        for dossier in affiches:
-            patient = dossier["patient"]
-            identifiant = patient["id"]
-            resultat = resultats.get(identifiant) or {}
-            code, etat = statut(resultats.get(identifiant))
-            cellules = [
-                f"<b>{html.escape(identifiant)}</b>",
-                f'<span class="statut {code}">{html.escape(etat)}</span>',
-                f"{patient['age']} ans" if patient.get("age") is not None else "—",
-                str(len(dossier["traitements"])),
-                str(len(resultat.get("alertes", []))) if resultat.get("alertes") else "—",
-                html.escape(resultat.get("date", "")) or "—",
+        for record in shown:
+            patient = record["patient"]
+            patient_id = patient["id"]
+            result = results.get(patient_id) or {}
+            code, state = status(results.get(patient_id))
+            cells = [
+                f"<b>{html.escape(patient_id)}</b>",
+                f'<span class="status {code}">{html.escape(state)}</span>',
+                f"{patient['age']} years" if patient.get("age") is not None else "—",
+                str(len(record["treatments"])),
+                str(len(result.get("alerts", []))) if result.get("alerts") else "—",
+                html.escape(result.get("date", "")) or "—",
             ]
-            # Ligne en HTML (colonnes alignées) recouverte d'un bouton invisible qui ouvre le dossier
-            with st.container(key=f"ligne-{identifiant}", gap=None):
-                st.markdown('<div class="ligne-patient">' + "".join(f"<span>{c}</span>" for c in cellules) + "</div>",
+            # HTML row (aligned columns) covered by an invisible button that opens the record
+            with st.container(key=f"row-{patient_id}", gap=None):
+                st.markdown('<div class="patient-row">' + "".join(f"<span>{c}</span>" for c in cells) + "</div>",
                             unsafe_allow_html=True)
-                st.button(f"Ouvrir le dossier {identifiant}", key=f"ouvrir-{identifiant}", on_click=ouvrir_patient,
-                          args=(identifiant,), use_container_width=True)
+                st.button(f"Open record {patient_id}", key=f"open-{patient_id}", on_click=open_patient,
+                          args=(patient_id,), use_container_width=True)
 
-    st.caption(f"{len(affiches)} dossier{'s' if len(affiches) > 1 else ''} affiché{'s' if len(affiches) > 1 else ''}")
-    with st.container(key="ajuster-liste"):
-        components.html(SCRIPT_HAUTEUR_LISTE, height=0)
+    st.caption(f"{len(shown)} record{'s' if len(shown) > 1 else ''} shown")
+    with st.container(key="adjust-list"):
+        components.html(LIST_HEIGHT_SCRIPT, height=0)
 
 
-# La hauteur de l'en-tête (titres et filtres sur une ou deux lignes) dépend de la largeur de l'écran : ce script
-# (dans un cadre invisible) donne à la liste toute la hauteur restante, pour que la page elle-même ne défile pas.
-# Sans lui, la hauteur reste celle du CSS (.st-key-liste-patients).
-SCRIPT_HAUTEUR_LISTE = """
+# The height of the header (titles and filters on one or two lines) depends on the screen width: this script
+# (in an invisible frame) gives the list all the remaining height, so that the page itself does not scroll.
+# Without it, the height is the one from the CSS (.st-key-patient-list).
+LIST_HEIGHT_SCRIPT = """
 <script>
 const page = window.parent.document;
-function ajuster() {
-    const liste = page.querySelector(".st-key-liste-patients");
-    const principal = page.querySelector('[data-testid="stMain"]');
-    if (!liste || !principal) return;
-    const haut = liste.getBoundingClientRect().top + principal.scrollTop;
-    const bas = 75;  // légende « N dossiers affichés » et marge basse de la page
-    const hauteur = Math.max(200, window.parent.innerHeight - haut - bas);
-    if (liste.style.maxHeight !== hauteur + "px") liste.style.setProperty("max-height", hauteur + "px", "important");
+function adjust() {
+    const list = page.querySelector(".st-key-patient-list");
+    const main = page.querySelector('[data-testid="stMain"]');
+    if (!list || !main) return;
+    const top = list.getBoundingClientRect().top + main.scrollTop;
+    const bottom = 75;  // “N records shown” caption and bottom margin of the page
+    const height = Math.max(200, window.parent.innerHeight - top - bottom);
+    if (list.style.maxHeight !== height + "px") list.style.setProperty("max-height", height + "px", "important");
 }
-ajuster();
-setInterval(ajuster, 250);
+adjust();
+setInterval(adjust, 250);
 </script>
 """
 
 
-def afficher_dossier_ouvert(affiches):
-    """Dossier en pleine largeur, avec retour à la liste et navigation vers le patient précédent ou suivant."""
-    identifiant = st.session_state.patient_ouvert
-    liste = affiches if any(d["patient"]["id"] == identifiant for d in affiches) else patients_tries
-    position = next(i for i, d in enumerate(liste) if d["patient"]["id"] == identifiant)
-    dossier = liste[position]
-    code, etat = statut(resultats.get(identifiant))
+def show_open_record(shown):
+    """Full-width record, with a way back to the list and navigation to the previous or next patient."""
+    patient_id = st.session_state.open_patient
+    records = shown if any(r["patient"]["id"] == patient_id for r in shown) else sorted_patients
+    position = next(i for i, r in enumerate(records) if r["patient"]["id"] == patient_id)
+    record = records[position]
+    code, state = status(results.get(patient_id))
 
-    colonne_retour, colonne_titre, colonne_relance, colonne_precedent, colonne_position, colonne_suivant = st.columns(
+    back_column, title_column, rerun_column, previous_column, position_column, next_column = st.columns(
         [1.3, 3, 1.6, 1, 0.7, 1], vertical_alignment="center"
     )
-    colonne_retour.button("← Liste des patients", on_click=fermer_patient, use_container_width=True)
-    colonne_titre.markdown(
-        f'<span class="titre-page">Patient {html.escape(identifiant)}</span> &nbsp; '
-        f'<span style="color: {COULEURS_STATUTS[code]}; font-weight: 600">{html.escape(etat)}</span>',
+    back_column.button("← Patient list", on_click=close_patient, use_container_width=True)
+    title_column.markdown(
+        f'<span class="page-title">Patient {html.escape(patient_id)}</span> &nbsp; '
+        f'<span style="color: {STATUS_COLORS[code]}; font-weight: 600">{html.escape(state)}</span>',
         unsafe_allow_html=True,
     )
-    if colonne_relance.button("Relancer l'analyse", key=f"analyser-{identifiant}", use_container_width=True,
-                              help="Analyse à nouveau ce patient"):
-        with st.spinner(f"Analyse du dossier {identifiant} en cours..."):
-            resultats[identifiant] = analyser(dossier)
-            sauver_resultats(resultats)
+    if rerun_column.button("Re-run the analysis", key=f"analyse-{patient_id}", use_container_width=True,
+                           help="Analyses this patient again"):
+        with st.spinner(f"Analysing record {patient_id}..."):
+            results[patient_id] = analyse(record)
+            save_results(results)
         st.rerun()
     if position > 0:
-        colonne_precedent.button("‹ Précédent", on_click=ouvrir_patient, args=(liste[position - 1]["patient"]["id"],),
-                                 use_container_width=True)
-    colonne_position.markdown(f'<div class="discret" style="text-align:center; margin:0">{position + 1} / {len(liste)}</div>',
-                              unsafe_allow_html=True)
-    if position < len(liste) - 1:
-        colonne_suivant.button("Suivant ›", on_click=ouvrir_patient, args=(liste[position + 1]["patient"]["id"],),
+        previous_column.button("‹ Previous", on_click=open_patient, args=(records[position - 1]["patient"]["id"],),
                                use_container_width=True)
-    afficher_patient(dossier, resultats.get(identifiant), charger_bio())
+    position_column.markdown(f'<div class="muted" style="text-align:center; margin:0">{position + 1} / {len(records)}</div>',
+                             unsafe_allow_html=True)
+    if position < len(records) - 1:
+        next_column.button("Next ›", on_click=open_patient, args=(records[position + 1]["patient"]["id"],),
+                           use_container_width=True)
+    show_patient(record, results.get(patient_id), load_lab_ranges())
 
 
-patients_tries = sorted(patients, key=lambda d: ORDRE_STATUTS[statuts[d["patient"]["id"]]])
+sorted_patients = sorted(patients, key=lambda r: STATUS_ORDER[statuses[r["patient"]["id"]]])
 
-with onglet_resultats:
-    filtre = st.session_state.get("filtre", "tous")
-    recherche = st.session_state.get("recherche", "").strip().lower()
-    affiches = [
-        d for d in patients_tries
-        if (FILTRES[filtre][1] is None or statuts[d["patient"]["id"]] in FILTRES[filtre][1])
+with results_tab:
+    selected_filter = st.session_state.get("filter", "all")
+    search = st.session_state.get("search", "").strip().lower()
+    shown = [
+        r for r in sorted_patients
+        if (FILTERS[selected_filter][1] is None or statuses[r["patient"]["id"]] in FILTERS[selected_filter][1])
         and (
-            not recherche
-            or recherche in d["patient"]["id"].lower()
-            or any(recherche in str(t.get("libelle_medicament", "")).lower() for t in d["traitements"])
+            not search
+            or search in r["patient"]["id"].lower()
+            or any(search in str(t.get("drug_label", "")).lower() for t in r["treatments"])
         )
     ]
 
-    if st.session_state.patient_ouvert in statuts:
-        afficher_dossier_ouvert(affiches)
+    if st.session_state.open_patient in statuses:
+        show_open_record(shown)
     else:
-        st.session_state.patient_ouvert = None
-        colonne_filtre, colonne_recherche = st.columns([3, 1], vertical_alignment="bottom")
-        colonne_filtre.radio("Filtrer", list(FILTRES), format_func=libelle_filtre, horizontal=True,
-                             label_visibility="collapsed", key="filtre")
-        colonne_recherche.text_input("Rechercher", placeholder="Identifiant ou médicament",
-                                     label_visibility="collapsed", key="recherche")
-        afficher_liste(affiches)
+        st.session_state.open_patient = None
+        filter_column, search_column = st.columns([3, 1], vertical_alignment="bottom")
+        filter_column.radio("Filter", list(FILTERS), format_func=filter_label, horizontal=True,
+                            label_visibility="collapsed", key="filter")
+        search_column.text_input("Search", placeholder="Identifier or drug",
+                                 label_visibility="collapsed", key="search")
+        show_list(shown)
 
 
-# --- Onglet règles ----------------------------------------------------------
+# --- Rules tab ------------------------------------------------------------------
 
-def lignes(texte, virgules=False):
-    """Une valeur par ligne (et par virgule si virgules=True : les noms de biologie peuvent contenir des virgules)."""
-    if virgules:
-        texte = texte.replace(",", "\n")
-    return [ligne.strip() for ligne in texte.splitlines() if ligne.strip()]
+def lines(text, commas=False):
+    """One value per line (and per comma if commas=True: laboratory names may contain commas)."""
+    if commas:
+        text = text.replace(",", "\n")
+    return [line.strip() for line in text.splitlines() if line.strip()]
 
 
-REGLES_PAR_PAGE = 25
+RULES_PER_PAGE = 25
 
-# Paramètres biologiques des dossiers chargés, avec leur unité : le LLM doit utiliser leur nom exact
-parametres_biologie = {}
-for d in patients:
-    for cle, mesure in d["patient"].get("biologie", {}).items():
-        parametres_biologie.setdefault(cle, mesure.get("unite") or "")
+# Laboratory parameters of the loaded records, with their unit: the LLM must use their exact name
+biology_parameters = {}
+for r in patients:
+    for key, measure in r["patient"].get("biology", {}).items():
+        biology_parameters.setdefault(key, measure.get("unit") or "")
 
-with onglet_regles:
-    regles_personnalisees = charger_regles_personnalisees()
-    regles_generiques = charger_regles_generiques()
+with rules_tab:
+    personalized_rules = load_personalized_rules()
+    generic_rules = load_generic_rules()
     st.caption(
-        "Une règle se déclenche lorsque l'ensemble de ses critères est vérifié. Les **règles génériques** sont issues "
-        "du Thésaurus ANSM des interactions médicamenteuses et de DDI-Predictor ; les **règles personnalisées** sont "
-        "propres à l'établissement et peuvent être rédigées par l'assistant à partir d'une demande en langage naturel."
+        "A rule of the Knowledge-Based System (KBS) is triggered when all its criteria are met. **Generic rules** "
+        "come from the ANSM Thesaurus of drug interactions and from DDI-Predictor; **personalized rules** are "
+        "specific to the hospital and can be drafted by the assistant from a natural-language request."
     )
-    onglet_perso, onglet_generiques, onglet_test = st.tabs([
-        f"Règles personnalisées ({len(regles_personnalisees)})",
-        f"Règles génériques ({len(regles_generiques)})",
-        "Vérification sur un dossier",
+    personalized_tab, generic_tab, test_tab = st.tabs([
+        f"Personalized rules ({len(personalized_rules)})",
+        f"Generic rules ({len(generic_rules)})",
+        "Check on a record",
     ])
 
-    with onglet_perso:
-        libelle("Ajouter une règle avec l'assistant")
-        with st.form("demande_regle", border=False):
-            demande = st.text_area(
-                "Demande", label_visibility="collapsed", height=90,
-                placeholder="Ex. : Alerter si la metformine est prescrite avec un DFG inférieur à 30 mL/min : "
-                            "contre-indication, arrêter la metformine.",
+    with personalized_tab:
+        label("Add a rule with the assistant")
+        with st.form("rule_request", border=False):
+            request = st.text_area(
+                "Request", label_visibility="collapsed", height=90,
+                placeholder="E.g.: Alert if metformin is prescribed with an eGFR below 30 mL/min: "
+                            "contraindication, stop metformin.",
             )
-            proposer = st.form_submit_button("Proposer une règle", type="primary")
-        if proposer and demande.strip():
-            with st.spinner("Rédaction de la règle par le modèle..."):
+            propose = st.form_submit_button("Propose a rule", type="primary")
+        if propose and request.strip():
+            with st.spinner("The model is drafting the rule..."):
                 try:
-                    st.session_state["regle_proposee"] = proposer_regle(demande.strip(), parametres_biologie)
-                except Exception as erreur:
-                    st.session_state.pop("regle_proposee", None)
-                    st.error(f"Le modèle n'a pas pu rédiger de règle : {erreur}")
+                    st.session_state["proposed_rule"] = propose_rule(request.strip(), biology_parameters)
+                except Exception as error:
+                    st.session_state.pop("proposed_rule", None)
+                    st.error(f"The model could not draft a rule: {error}")
 
-        proposee = st.session_state.get("regle_proposee")
-        if proposee:
-            libelle("Règle proposée : à vérifier avant enregistrement")
-            st.markdown(carte_regle_personnalisee(proposee, parametres_biologie), unsafe_allow_html=True)
-            for nom in variables_inconnues(proposee, parametres_biologie):
-                st.warning(f"La donnée « {nom} » n'existe pas dans les dossiers : cette condition sera toujours fausse.")
-            declenchements = sum(1 for d in patients if appliquer_regles(d, [proposee]))
-            st.caption(f"Se déclencherait pour {declenchements} dossier(s) sur {len(patients)} du dossier « {repertoire} ».")
-            with st.expander("JSON de la règle"):
-                st.json(proposee)
-            colonne_enregistrer, colonne_annuler, _ = st.columns([1, 1, 3])
-            if colonne_enregistrer.button("Enregistrer la règle", type="primary", use_container_width=True):
-                erreurs = ajouter_regle_personnalisee(proposee)
-                if erreurs:
-                    for erreur in erreurs:
-                        st.error(erreur)
+        proposed = st.session_state.get("proposed_rule")
+        if proposed:
+            label("Proposed rule: check before saving")
+            st.markdown(personalized_rule_card(proposed, biology_parameters), unsafe_allow_html=True)
+            for name in unknown_variables(proposed, biology_parameters):
+                st.warning(f"The variable “{name}” does not exist in the records: this condition will always be false.")
+            triggers = sum(1 for r in patients if apply_rules(r, [proposed]))
+            st.caption(f"Would be triggered for {triggers} record(s) out of {len(patients)} in the folder “{folder}”.")
+            with st.expander("Rule JSON"):
+                st.json(proposed)
+            save_column, cancel_column, _ = st.columns([1, 1, 3])
+            if save_column.button("Save the rule", type="primary", use_container_width=True):
+                errors = add_personalized_rule(proposed)
+                if errors:
+                    for error in errors:
+                        st.error(error)
                 else:
-                    del st.session_state["regle_proposee"]
-                    st.toast("Règle personnalisée enregistrée.")
+                    del st.session_state["proposed_rule"]
+                    st.toast("Personalized rule saved.")
                     st.rerun()
-            if colonne_annuler.button("Annuler", use_container_width=True):
-                del st.session_state["regle_proposee"]
+            if cancel_column.button("Cancel", use_container_width=True):
+                del st.session_state["proposed_rule"]
                 st.rerun()
 
-        libelle(f"Règles personnalisées ({len(regles_personnalisees)})")
-        if not regles_personnalisees:
-            st.caption("Aucune règle personnalisée.")
-        for numero, regle in enumerate(regles_personnalisees):
-            colonne_texte, colonne_supprimer = st.columns([7, 1])
-            colonne_texte.markdown(carte_regle_personnalisee(regle, parametres_biologie), unsafe_allow_html=True)
-            if colonne_supprimer.button("Supprimer", key=f"supprimer-regle-{numero}", use_container_width=True):
-                sauver_regles_personnalisees(regles_personnalisees[:numero] + regles_personnalisees[numero + 1:])
+        label(f"Personalized rules ({len(personalized_rules)})")
+        if not personalized_rules:
+            st.caption("No personalized rule.")
+        for number, rule in enumerate(personalized_rules):
+            text_column, delete_column = st.columns([7, 1])
+            text_column.markdown(personalized_rule_card(rule, biology_parameters), unsafe_allow_html=True)
+            if delete_column.button("Delete", key=f"delete-rule-{number}", use_container_width=True):
+                save_personalized_rules(personalized_rules[:number] + personalized_rules[number + 1:])
                 st.rerun()
 
-        with st.expander("Saisie manuelle d'une règle"):
+        with st.expander("Manual rule entry"):
             st.caption(
-                "Une condition s'écrit `donnee operateur valeur` (opérateurs `>=` `<=` `>` `<` `==` `!=`). Données "
-                "disponibles : caractéristiques du patient (`age`, `poids_kg`, `taille_cm`, `imc_kg_m2`, "
-                "`surface_corporelle_m2`), biologie avec le nom exact du paramètre (`Créatinine (sang)`, "
-                "`DFG estimé (CKD-EPI)`...) et, pour les médicaments cités dans la règle, dosage de la spécialité "
-                "(`dose_apixaban`), dose en mg par jour (`dose_jour_daptomycine`) et en mg/kg par jour "
-                "(`dose_kg_daptomycine`). Un médicament est considéré comme prescrit si son nom figure dans le "
-                "libellé d'une ligne de prescription (sans tenir compte des majuscules et des accents)."
+                "A condition is written `variable operator value` (operators `>=` `<=` `>` `<` `==` `!=`). Available "
+                "variables: patient characteristics (`age`, `weight_kg`, `height_cm`, `bmi_kg_m2`, "
+                "`body_surface_area_m2`), laboratory values with the exact parameter name (`Créatinine (sang)`, "
+                "`DFG estimé (CKD-EPI)`...) and, for the drugs named in the rule, the product strength "
+                "(`dose_apixaban`), the dose in mg per day (`daily_dose_daptomycine`) and in mg/kg per day "
+                "(`dose_per_kg_daptomycine`). A drug is considered prescribed if its name appears in the label of a "
+                "prescription line (ignoring case and accents)."
             )
-            with st.form("ajout_regle", clear_on_submit=False, border=False):
-                alerte = st.text_area(
-                    "Message d'alerte (obligatoire)",
-                    placeholder="Ex. : Metformine contre-indiquée en cas d'insuffisance rénale sévère",
+            with st.form("add_rule", clear_on_submit=False, border=False):
+                alert = st.text_area(
+                    "Alert message (required)",
+                    placeholder="E.g.: Metformin contraindicated in severe renal failure",
                 )
-                colonne_a, colonne_b = st.columns(2)
-                medicaments = colonne_a.text_area(
-                    "Médicaments concernés (DCI, un par ligne)", placeholder="apixaban",
-                    help="La règle ne s'applique que si tous ces médicaments sont prescrits.",
+                column_a, column_b = st.columns(2)
+                drugs = column_a.text_area(
+                    "Drugs involved (INN, one per line)", placeholder="apixaban",
+                    help="The rule only applies if all these drugs are prescribed.",
                 )
-                conditions = colonne_b.text_area(
-                    "Conditions requises (une par ligne)", placeholder="DFG estimé (CKD-EPI) < 30"
+                conditions = column_b.text_area(
+                    "Required conditions (one per line)", placeholder="DFG estimé (CKD-EPI) < 30"
                 )
-                parmi = colonne_a.text_area("Critères au choix (un par ligne)", placeholder="age >= 80")
-                minimum = colonne_b.number_input("Nombre minimal de critères au choix vérifiés", min_value=0, value=0)
-                ajouter = st.form_submit_button("Enregistrer la règle", type="primary")
+                any_of = column_a.text_area("Optional criteria (one per line)", placeholder="age >= 80")
+                minimum = column_b.number_input("Minimum number of optional criteria met", min_value=0, value=0)
+                add = st.form_submit_button("Save the rule", type="primary")
 
-            if ajouter:
-                nouvelle = {"alerte": alerte.strip()}
-                if lignes(medicaments, virgules=True):
-                    nouvelle["medicaments"] = lignes(medicaments, virgules=True)
-                if lignes(conditions):
-                    nouvelle["conditions"] = lignes(conditions)
-                if lignes(parmi):
-                    nouvelle["parmi"] = lignes(parmi)
-                    nouvelle["minimum"] = int(minimum)
-                erreurs = ajouter_regle_personnalisee(nouvelle)
-                if erreurs:
-                    for erreur in erreurs:
-                        st.error(erreur)
+            if add:
+                new_rule = {"alert": alert.strip()}
+                if lines(drugs, commas=True):
+                    new_rule["drugs"] = lines(drugs, commas=True)
+                if lines(conditions):
+                    new_rule["conditions"] = lines(conditions)
+                if lines(any_of):
+                    new_rule["any_of"] = lines(any_of)
+                    new_rule["minimum"] = int(minimum)
+                errors = add_personalized_rule(new_rule)
+                if errors:
+                    for error in errors:
+                        st.error(error)
                 else:
-                    st.success("Règle enregistrée.")
+                    st.success("Rule saved.")
                     st.rerun()
 
-        with st.expander("Édition avancée du fichier regles_personnalisees.json"):
-            texte = st.text_area(
-                "Contenu JSON", json.dumps(regles_personnalisees, ensure_ascii=False, indent=2), height=350,
-                key="json_regles",
+        with st.expander(f"Advanced editing of {os.path.relpath(PERSONALIZED_RULES_FILE)}"):
+            text = st.text_area(
+                "JSON content", json.dumps(personalized_rules, ensure_ascii=False, indent=2), height=350,
+                key="rules_json",
             )
-            if st.button("Enregistrer les modifications"):
+            if st.button("Save changes"):
                 try:
-                    erreurs = sauver_regles_personnalisees(json.loads(texte))
-                except json.JSONDecodeError as erreur:
-                    erreurs = [f"JSON invalide : {erreur}"]
-                if erreurs:
-                    for erreur in erreurs:
-                        st.error(erreur)
+                    errors = save_personalized_rules(json.loads(text))
+                except json.JSONDecodeError as error:
+                    errors = [f"Invalid JSON: {error}"]
+                if errors:
+                    for error in errors:
+                        st.error(error)
                 else:
-                    st.success("Règles enregistrées.")
+                    st.success("Rules saved.")
                     st.rerun()
 
-    with onglet_generiques:
+    with generic_tab:
         st.caption(
-            "Règles extraites des documents de référence (fichier regles_generiques.json), en lecture seule. "
-            "Une classe du Thésaurus (ex : anticoagulants oraux) est recherchée via la liste de ses DCI."
+            "Rules extracted from the reference documents of src/kbs/KBS_Docs/ (src/kbs/generic_rules.json), read-only. "
+            "A Thesaurus class (e.g. oral anticoagulants) is searched through the list of its INNs."
         )
-        colonne_recherche_regle, colonne_niveau, colonne_source = st.columns([3, 3, 2], vertical_alignment="bottom")
-        recherche_regle = normaliser(colonne_recherche_regle.text_input(
-            "Rechercher", placeholder="DCI, classe ou mot-clé (ex : apixaban, hyperkaliémie)", key="recherche_regle"
+        rule_search_column, level_column, source_column = st.columns([3, 3, 2], vertical_alignment="bottom")
+        rule_search = normalize(rule_search_column.text_input(
+            "Search", placeholder="INN, class or keyword (e.g. apixaban, hyperkaliémie)", key="rule_search"
         ).strip())
-        niveaux_choisis = colonne_niveau.multiselect(
-            "Niveau", list(NIVEAUX.values()) + ["Pharmacocinétique"], placeholder="Tous les niveaux"
+        chosen_levels = level_column.multiselect(
+            "Level", list(LEVELS.values()) + [PHARMACOKINETIC], placeholder="All levels"
         )
-        source_choisie = colonne_source.selectbox("Source", ["Toutes", "Thésaurus ANSM", "DDI-Predictor"])
+        chosen_source = source_column.selectbox("Source", ["All", "ANSM Thesaurus", "DDI-Predictor"])
 
-        def niveau_retenu(regle):
-            if not niveaux_choisis:
+        def level_selected(rule):
+            if not chosen_levels:
                 return True
-            libelles = [NIVEAUX[c] for c in codes_niveau(regle)] or ["Pharmacocinétique"]
-            return any(l in niveaux_choisis for l in libelles)
+            labels = [LEVELS[c] for c in level_codes(rule)] or [PHARMACOKINETIC]
+            return any(l in chosen_levels for l in labels)
 
-        filtrees = [
-            r for r in regles_generiques
-            if (source_choisie == "Toutes" or r.get("source", "").startswith(source_choisie))
-            and niveau_retenu(r)
+        filtered = [
+            r for r in generic_rules
+            if (chosen_source == "All" or r.get("source", "").startswith(chosen_source))
+            and level_selected(r)
             and (
-                not recherche_regle
-                or recherche_regle in normaliser(r["alerte"])
-                or recherche_regle in json.dumps(r.get("medicaments", []), ensure_ascii=False)
+                not rule_search
+                or rule_search in normalize(r["alert"])
+                or rule_search in json.dumps(r.get("drugs", []), ensure_ascii=False)
             )
         ]
-        nb_pages_regles = max(1, math.ceil(len(filtrees) / REGLES_PAR_PAGE))
-        colonne_page_regle, colonne_info_regle = st.columns([1, 4], vertical_alignment="bottom")
-        page_regle = colonne_page_regle.number_input(
-            f"Page (sur {nb_pages_regles})", min_value=1, max_value=nb_pages_regles, value=1, key="page_regles"
+        rule_page_count = max(1, math.ceil(len(filtered) / RULES_PER_PAGE))
+        rule_page_column, rule_info_column = st.columns([1, 4], vertical_alignment="bottom")
+        rule_page = rule_page_column.number_input(
+            f"Page (of {rule_page_count})", min_value=1, max_value=rule_page_count, value=1, key="rules_page"
         )
-        debut_regle = (page_regle - 1) * REGLES_PAR_PAGE
-        if filtrees:
-            colonne_info_regle.caption(
-                f"Règles {debut_regle + 1} à {min(debut_regle + REGLES_PAR_PAGE, len(filtrees))} sur {len(filtrees)}"
+        rule_start = (rule_page - 1) * RULES_PER_PAGE
+        if filtered:
+            rule_info_column.caption(
+                f"Rules {rule_start + 1} to {min(rule_start + RULES_PER_PAGE, len(filtered))} of {len(filtered)}"
             )
         else:
-            colonne_info_regle.caption("Aucune règle ne correspond à la recherche.")
+            rule_info_column.caption("No rule matches the search.")
         st.markdown(
-            "".join(carte_regle_generique(r) for r in filtrees[debut_regle:debut_regle + REGLES_PAR_PAGE]),
+            "".join(generic_rule_card(r) for r in filtered[rule_start:rule_start + RULES_PER_PAGE]),
             unsafe_allow_html=True,
         )
 
-    with onglet_test:
+    with test_tab:
         if patients:
-            choix = st.selectbox("Patient", [d["patient"]["id"] for d in patients], key="test_regles")
-            dossier = next(d for d in patients if d["patient"]["id"] == choix)
+            choice = st.selectbox("Patient", [r["patient"]["id"] for r in patients], key="rules_test")
+            record = next(r for r in patients if r["patient"]["id"] == choice)
             try:
-                alertes = verifier_regles(dossier)
-            except Exception as erreur:
-                alertes = None
-                st.error(f"Erreur dans les règles : {erreur}")
-            if alertes:
-                for alerte in alertes:
-                    afficher_alerte(alerte)
-            elif alertes is not None:
-                st.success("Aucune alerte pour ce dossier.")
+                alerts = check_rules(record)
+            except Exception as error:
+                alerts = None
+                st.error(f"Error in the rules: {error}")
+            if alerts:
+                for alert in alerts:
+                    show_alert(alert)
+            elif alerts is not None:
+                st.success("No alert for this record.")
         else:
-            st.caption("Aucun dossier patient chargé.")
+            st.caption("No patient record loaded.")
 
 
-# --- Onglet biologie --------------------------------------------------------
+# --- Laboratory tab ---------------------------------------------------------------
 
-with onglet_bio:
+with biology_tab:
     st.caption(
-        "Intervalles de référence utilisés pour signaler une biologie anormale lors de la recherche documentaire. "
-        "La clé doit correspondre exactement au nom du paramètre dans la biologie des patients."
+        "Reference ranges used to flag abnormal laboratory values for the LLM and the guideline search. "
+        "The key must exactly match the parameter name in the patients' laboratory values."
     )
-    parametres = {}
-    for d in patients:
-        for cle, mesure in d["patient"].get("biologie", {}).items():
-            parametres.setdefault(cle, {"Clé": cle, "Unité": mesure.get("unite") or "", "Nombre de patients": 0})
-            parametres[cle]["Nombre de patients"] += 1
-    if parametres:
-        with st.expander(f"Paramètres présents dans le dossier « {repertoire} » ({len(parametres)})"):
+    parameters = {}
+    for r in patients:
+        for key, measure in r["patient"].get("biology", {}).items():
+            parameters.setdefault(key, {"Key": key, "Unit": measure.get("unit") or "", "Number of patients": 0})
+            parameters[key]["Number of patients"] += 1
+    if parameters:
+        with st.expander(f"Parameters present in the folder “{folder}” ({len(parameters)})"):
             st.dataframe(
-                pd.DataFrame(parametres.values()).sort_values("Nombre de patients", ascending=False),
+                pd.DataFrame(parameters.values()).sort_values("Number of patients", ascending=False),
                 hide_index=True, use_container_width=True,
             )
 
-    tableau_bio = pd.DataFrame(
-        [{"cle": cle, **norme} for cle, norme in charger_bio().items()],
-        columns=["cle", "libelle", "unite", "min", "max"],
+    ranges_table = pd.DataFrame(
+        [{"key": key, **reference} for key, reference in load_lab_ranges().items()],
+        columns=["key", "label", "unit", "min", "max"],
     )
-    modifie = st.data_editor(
-        tableau_bio,
+    edited = st.data_editor(
+        ranges_table,
         num_rows="dynamic",
         hide_index=True,
         use_container_width=True,
         column_config={
-            "cle": st.column_config.TextColumn("Clé", required=True),
-            "libelle": st.column_config.TextColumn("Libellé"),
-            "unite": st.column_config.TextColumn("Unité"),
-            "min": st.column_config.NumberColumn("Borne inférieure", required=True),
-            "max": st.column_config.NumberColumn("Borne supérieure", required=True),
+            "key": st.column_config.TextColumn("Key", required=True),
+            "label": st.column_config.TextColumn("Label"),
+            "unit": st.column_config.TextColumn("Unit"),
+            "min": st.column_config.NumberColumn("Lower bound", required=True),
+            "max": st.column_config.NumberColumn("Upper bound", required=True),
         },
-        key="editeur_bio",
+        key="ranges_editor",
     )
-    if st.button("Enregistrer les valeurs de référence", type="primary"):
-        modifie = modifie.dropna(how="all")
-        lignes_bio = modifie.astype(object).where(modifie.notna(), None).to_dict("records")
-        erreurs = sauver_bio(lignes_bio)
-        if erreurs:
-            for erreur in erreurs:
-                st.error(erreur)
+    if st.button("Save the reference ranges", type="primary"):
+        edited = edited.dropna(how="all")
+        rows = edited.astype(object).where(edited.notna(), None).to_dict("records")
+        errors = save_lab_ranges(rows)
+        if errors:
+            for error in errors:
+                st.error(error)
         else:
-            st.success("Valeurs de référence enregistrées.")
+            st.success("Reference ranges saved.")

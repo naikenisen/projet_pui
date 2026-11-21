@@ -1,0 +1,122 @@
+{
+  "Créatinine (sang)": {
+    "label": "creatinine",
+    "unit": "µmol/L",
+    "min": 45,
+    "max": 110
+  },
+  "DFG estimé (CKD-EPI)": {
+    "label": "estimated GFR",
+    "unit": "mL/min/1,73 m²",
+    "min": 60,
+    "max": 200
+  },
+  "Potassium (sang)": {
+    "label": "potassium",
+    "unit": "mmol/L",
+    "min": 3.5,
+    "max": 5.0
+  },
+  "Sodium (sang)": {
+    "label": "sodium",
+    "unit": "mmol/L",
+    "min": 135,
+    "max": 145
+  },
+  "Hémoglobine": {
+    "label": "haemoglobin",
+    "unit": "g/dL",
+    "min": 12,
+    "max": 17
+  },
+  "Plaquettes": {
+    "label": "platelets",
+    "unit": "10^3/mm³",
+    "min": 150,
+    "max": 400
+  },
+  "Leucocytes": {
+    "label": "leukocytes",
+    "unit": "10^3/mm³",
+    "min": 4,
+    "max": 10
+  },
+  "Polynucléaires neutrophiles (valeur absolue)": {
+    "label": "neutrophils",
+    "unit": "10^3/mm³",
+    "min": 1.5,
+    "max": 7.5
+  },
+  "ALAT (sang)": {
+    "label": "ALT",
+    "unit": "UI/L",
+    "min": 0,
+    "max": 40
+  },
+  "ASAT (sang)": {
+    "label": "AST",
+    "unit": "UI/L",
+    "min": 0,
+    "max": 40
+  },
+  "Bilirubine totale (sang)": {
+    "label": "total bilirubin",
+    "unit": "µmol/L",
+    "min": 0,
+    "max": 21
+  },
+  "Albumine (sang)": {
+    "label": "albumin",
+    "unit": "g/L",
+    "min": 35,
+    "max": 50
+  },
+  "CRP (sang)": {
+    "label": "CRP",
+    "unit": "mg/L",
+    "min": 0,
+    "max": 5
+  },
+  "Glycémie (sang)": {
+    "label": "blood glucose",
+    "unit": "mmol/L",
+    "min": 3.9,
+    "max": 6.1
+  },
+  "Hémoglobine glyquée (HbA1c)": {
+    "label": "HbA1c",
+    "unit": "%",
+    "min": 4,
+    "max": 6
+  },
+  "Calcium corrigé selon l'albumine": {
+    "label": "corrected calcium",
+    "unit": "mmol/L",
+    "min": 2.2,
+    "max": 2.6
+  },
+  "Magnésium (sang)": {
+    "label": "magnesium",
+    "unit": "mmol/L",
+    "min": 0.7,
+    "max": 1.05
+  },
+  "TSH (sang)": {
+    "label": "TSH",
+    "unit": "mUI/L",
+    "min": 0.4,
+    "max": 4.0
+  },
+  "Taux de prothrombine (TP)": {
+    "label": "prothrombin time ratio",
+    "unit": "%",
+    "min": 70,
+    "max": 130
+  },
+  "INR": {
+    "label": "INR",
+    "unit": "",
+    "min": 0.8,
+    "max": 1.2
+  }
+}

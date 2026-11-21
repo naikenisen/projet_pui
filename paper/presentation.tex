@@ -9,7 +9,7 @@
 \graphicspath{{figures_en/}}
 
 
-\title{Analyse pharmaceutique assistée par IA}
+\title{AI-assisted pharmaceutical analysis}
 \author{Isen Naiken}
 \institute{CHU Dijon Bourgogne}
 \date{\today}
@@ -23,119 +23,119 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{Personnel et collaborateurs impliqués dans le projet}
+\begin{frame}{Staff and collaborators involved in the project}
   \centering
   \scriptsize
   \renewcommand{\arraystretch}{1.0}
   \setlength{\tabcolsep}{4pt}
   \begin{tabular}{>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{5.0cm}}
     \toprule
-    \textbf{Nom \& Prénom} & \textbf{Fonction / Statut} & \textbf{Rattachements \& Équipes} \\
+    \textbf{Last \& first name} & \textbf{Position / Status} & \textbf{Affiliations \& Teams} \\
     \midrule
-    AWAIS Muhammad & Stagiaire M2R ingénierie biomédicale & INSERM 1231 -- Équipe HSP-pathies \\
-    BOULIN Mathieu & PUPH & PUI -- pôle pharmacie \\
+    AWAIS Muhammad & M2R biomedical engineering intern & INSERM 1231 -- HSP-pathies team \\
+    BOULIN Mathieu & PUPH & PUI -- pharmacy department \\
     BRICQ Stéphanie & PU & ICube -- CNRS -- Strasbourg \\
-    BRIOTTET Lucie & Stagiaire Ingénieur & École des Mines -- Saint-Étienne \newline Équipe D.I.A.D -- pôle biologie \\
-    CALLEGARIN Davide & PH & Équipe D.I.A.D -- pôle biologie \\
-    CALLIER Patrick & PUPH -- chef de service & Équipe D.I.A.D -- pôle biologie \\
-    FOUQUIER Bastian & PH & PUI -- pôle pharmacie \\
-    GOBBO Jessica & Chercheuse-clinicienne & UPP -- CGFL \newline INSERM 1231 -- Équipe HSP-pathies \\
-    GUENFOUDI Marie-Pierre & PH -- cheffe de service & PUI -- pôle pharmacie \\
-    NAIKEN Isen & Interne -- Doctorant Informatique & PUI -- pôle pharmacie \newline Équipe D.I.A.D -- pôle biologie \newline INSERM 1231 -- Équipe HSP-pathies \newline UBE -- ImVIA \\
-    OPALE Mélodie & Ingénieur IA -- Data & Équipe D.I.A.D -- pôle biologie \\
+    BRIOTTET Lucie & Engineering intern & École des Mines -- Saint-Étienne \newline D.I.A.D team -- biology department \\
+    CALLEGARIN Davide & PH & D.I.A.D team -- biology department \\
+    CALLIER Patrick & PUPH -- head of department & D.I.A.D team -- biology department \\
+    FOUQUIER Bastian & PH & PUI -- pharmacy department \\
+    GOBBO Jessica & Clinician-researcher & UPP -- CGFL \newline INSERM 1231 -- HSP-pathies team \\
+    GUENFOUDI Marie-Pierre & PH -- head of department & PUI -- pharmacy department \\
+    NAIKEN Isen & Resident -- Computer science PhD student & PUI -- pharmacy department \newline D.I.A.D team -- biology department \newline INSERM 1231 -- HSP-pathies team \newline UBE -- ImVIA \\
+    OPALE Mélodie & AI -- Data engineer & D.I.A.D team -- biology department \\
     \bottomrule
   \end{tabular}
 
   \vspace{0.3em}
   \raggedright
   \tiny
-  * D.I.A.D : Développement de l'Intelligence Artificielle \\
-  * ImVIA : laboratoire Imagerie et Vision Artificielle
+  * D.I.A.D: Développement de l'Intelligence Artificielle (Artificial Intelligence Development) \\
+  * ImVIA: Imagerie et Vision Artificielle (Imaging and Computer Vision) laboratory
 \end{frame}
 
-\begin{frame}{Contexte}
+\begin{frame}{Context}
   \begin{itemize}
-    \item Développer un modèle d'intelligence artificielle capable d'évaluer :
+    \item Develop an artificial intelligence model able to assess:
       \begin{itemize}
-        \item le niveau de risque iatrogène ;
-        \item la nécessité d'ajustement de la prise en charge d'un patient.
+        \item the level of iatrogenic risk;
+        \item the need to adjust a patient's care.
       \end{itemize}
-    \item À partir des prescriptions et de l'ensemble des données du Dossier Patient Informatisé (DPI).
-    \item Finalité : optimiser le ciblage des interventions pharmaceutiques (IP).
-    \item Objectifs opérationnels :
+    \item From the prescriptions and all the data of the Electronic Health Record (EHR).
+    \item Purpose: improve the targeting of pharmaceutical interventions (PI).
+    \item Operational objectives:
       \begin{itemize}
-        \item collecter et structurer les données nécessaires ;
-        \item concevoir et valider un pipeline prédictif performant ;
-        \item valoriser les travaux : publications scientifiques et contributions open source ;
-        \item amorcer une dynamique de co-développement d'outils logiciels adaptés à la pratique clinique au sein du pôle Pharmacie.
+        \item collect and structure the necessary data;
+        \item design and validate an effective predictive pipeline;
+        \item promote the work: scientific publications and open source contributions;
+        \item initiate the co-development of software tools suited to clinical practice within the Pharmacy department.
       \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Phase 1 : Constitution et anonymisation de la base de données}
+\begin{frame}{Phase 1: Building and anonymising the database}
   \begin{itemize}
-    \item Extraction des données clinico-biologiques :
+    \item Extraction of clinical and laboratory data:
       \begin{itemize}
-        \item résultats biologiques ;
-        \item prescriptions ;
-        \item antécédents médicaux ;
-        \item interventions pharmaceutiques.
+        \item laboratory results;
+        \item prescriptions;
+        \item medical history;
+        \item pharmaceutical interventions.
       \end{itemize}
-    \item Requêtes SAP BusinessObjects (SAP/BO) et jointure des tables relationnelles.
-    \item Anonymisation rigoureuse du jeu de données consolidé.
-    \item Validation par le contrôle de métriques statistiques d'anonymat.
+    \item SAP BusinessObjects (SAP/BO) queries and joining of the relational tables.
+    \item Rigorous anonymisation of the consolidated dataset.
+    \item Validation by checking statistical anonymity metrics.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Phase 2 : Conception de l'architecture algorithmique}
+\begin{frame}{Phase 2: Design of the algorithmic architecture}
   \begin{itemize}
-    \item Développement d'un pipeline d'intelligence artificielle.
-    \item Appui sur une revue de la littérature.
-    \item Intégration de méthodologies à l'état de l'art (\textit{State-of-the-Art}, SOTA).
-    \item Combinées à des briques algorithmiques spécifiquement conçues pour répondre aux contraintes du projet.
+    \item Development of an artificial intelligence pipeline.
+    \item Based on a literature review.
+    \item Integration of state-of-the-art (SOTA) methods.
+    \item Combined with algorithmic building blocks specifically designed to meet the constraints of the project.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Phase 3 : Entraînement, validation et prototypage}
+\begin{frame}{Phase 3: Training, validation and prototyping}
   \begin{itemize}
-    \item Entraînement du modèle prédictif.
-    \item Évaluation robuste de ses performances sur les données rétrospectives.
-    \item En parallèle : développement d'une interface graphique (GUI).
-    \item Objectif : permettre la prise en main et l'évaluation du prototype logiciel en conditions de test.
+    \item Training of the predictive model.
+    \item Robust evaluation of its performance on retrospective data.
+    \item In parallel: development of a graphical user interface (GUI).
+    \item Objective: allow the software prototype to be used and evaluated under test conditions.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Phase 4 : Valorisation scientifique et déploiement stratégique}
+\begin{frame}{Phase 4: Scientific promotion and strategic deployment}
   \small
   \begin{itemize}
-    \item Publication d'un article original dans une revue internationale à comité de lecture de rang A :
+    \item Publication of an original article in a rank A international peer-reviewed journal:
       \begin{itemize}
-        \item architecture, méthodologie et performances.
+        \item architecture, methodology and performance.
       \end{itemize}
-    \item Diffusion du modèle sous licence open source à l'issue de la publication.
-    \item Validation empirique des choix algorithmiques (fin de Phase 3) :
+    \item Release of the model under an open source licence after publication.
+    \item Empirical validation of the algorithmic choices (end of Phase 3):
       \begin{itemize}
-        \item lever les réserves émises quant à la maturité technologique du projet ;
-        \item nouvelle soumission en Dialogue Stratégique.
+        \item address the reservations expressed about the technological maturity of the project;
+        \item new submission to the Strategic Dialogue.
       \end{itemize}
-    \item Soumissions à des appels à projets nationaux pour financer le passage à l'échelle :
+    \item Submissions to national calls for projects to fund scaling up:
       \begin{itemize}
-        \item évaluation en vie réelle ;
-        \item validation multicentrique ;
-        \item déploiement clinique ;
-        \item démarches de certification réglementaire du dispositif.
+        \item real-world evaluation;
+        \item multicentre validation;
+        \item clinical deployment;
+        \item regulatory certification of the device.
       \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Retombées attendues}
+\begin{frame}{Expected benefits}
   \small
   \begin{itemize}
-    \item \textbf{Création d'une base de données réutilisable} : mise à disposition d'une base de données riche, propre et structurée, qui pourra directement servir à d'autres projets de recherche au sein de la PUI.
-    \item \textbf{Valorisation scientifique} : publication des travaux et des résultats du modèle dans une revue internationale de rang A.
-    \item \textbf{Partage méthodologique à l'échelle nationale} : diffusion en libre accès d'une méthodologie et d'un pipeline éprouvés, reproductibles par d'autres équipes hospitalières.
-    \item \textbf{Amorçage de l'intégration dans la pratique courante} : amorçage du déploiement et du test de l'outil en conditions réelles pour aider les pharmaciens dans le ciblage des interventions.
-    \item \textbf{Structuration d'une cellule IA à la PUI} : mise en place d'un pôle de compétences en IA au sein de la pharmacie, pensé pour faciliter les collaborations avec d'autres services cliniques et instituts de recherche sur des projets similaires.
+    \item \textbf{Creation of a reusable database}: a rich, clean and structured database, directly usable by other research projects within the PUI.
+    \item \textbf{Scientific promotion}: publication of the work and of the model's results in a rank A international journal.
+    \item \textbf{Methodological sharing at national level}: open access release of a proven methodology and pipeline, reproducible by other hospital teams.
+    \item \textbf{First steps towards routine practice}: start of the deployment and testing of the tool in real conditions to help pharmacists target interventions.
+    \item \textbf{Setting up an AI unit at the PUI}: creation of an AI competence centre within the pharmacy, designed to ease collaborations with other clinical departments and research institutes on similar projects.
   \end{itemize}
 \end{frame}
 

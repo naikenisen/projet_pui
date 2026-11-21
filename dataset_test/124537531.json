@@ -1,65 +1,65 @@
 {
   "patient": {
     "id": "124537531",
-    "jour_reference": "2024-03-03",
+    "reference_date": "2024-03-03",
     "age": 86,
-    "taille_cm": 170,
-    "poids_kg": null,
-    "surface_corporelle_m2": null,
-    "imc_kg_m2": null,
-    "biologie": {}
+    "height_cm": 170,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "MELATONINE LP 2 MG (CIRCADIN), CPR LP",
-      "date_debut": "2024-02-15",
-      "date_fin": "2024-03-16",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Coucher",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "MELATONINE LP 2 MG (CIRCADIN), CPR LP",
+      "start_date": "2024-02-15",
+      "end_date": "2024-03-16",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Coucher",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 2,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — coucher — tous les jours"
+      "dosage_regimen": "1 comprimé(s) per day — coucher — every day"
     },
     {
-      "libelle_medicament": "PALMIER DE FLORIDE FRUIT EXTRAIT 160 MG (PERMIXON), GÉLU",
-      "date_debut": "2024-02-16",
-      "date_fin": "2024-03-17",
-      "unite_prise": "gélule(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Matin",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "PALMIER DE FLORIDE FRUIT EXTRAIT 160 MG (PERMIXON), GÉLU",
+      "start_date": "2024-02-16",
+      "end_date": "2024-03-17",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 160,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 gélule(s) par jour — matin — tous les jours"
+      "dosage_regimen": "1 gélule(s) per day — matin — every day"
     },
     {
-      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANEORODOZ), CPR ORODISP",
-      "date_debut": "2024-02-15",
-      "date_fin": "2024-03-16",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": null,
-      "frequence_jours": "TLJ",
-      "moments_prise": "Specifique",
-      "si_besoin": true,
-      "principes_actifs": [
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANEORODOZ), CPR ORODISP",
+      "start_date": "2024-02-15",
+      "end_date": "2024-03-16",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
         {
           "dosage": 500,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+      "dosage_regimen": "comprimé(s) as needed — specific times — every day"
     }
   ]
 }

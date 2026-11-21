@@ -1,47 +1,47 @@
 {
   "patient": {
     "id": "108656548",
-    "jour_reference": "2026-10-08",
+    "reference_date": "2026-10-08",
     "age": 79,
-    "taille_cm": 167,
-    "poids_kg": 43.1,
-    "surface_corporelle_m2": 1.454,
-    "imc_kg_m2": 15.5,
-    "biologie": {}
+    "height_cm": 167,
+    "weight_kg": 43.1,
+    "body_surface_area_m2": 1.454,
+    "bmi_kg_m2": 15.5,
+    "biology": {}
   },
-  "traitements": [
+  "treatments": [
     {
-      "libelle_medicament": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
-      "date_debut": "2026-10-08",
-      "date_fin": "2026-10-09",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 1,
-      "frequence_jours": "1",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [
+      "drug_label": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
+      "start_date": "2026-10-08",
+      "end_date": "2026-10-09",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
         {
           "dosage": 50,
-          "unite": "mg"
+          "unit": "mg"
         },
         {
           "dosage": 200,
-          "unite": "mg"
+          "unit": "mg"
         }
       ],
-      "posologie": "1 comprimé(s) par jour — soir — fréquence 1"
+      "dosage_regimen": "1 comprimé(s) per day — soir — frequency 1"
     },
     {
-      "libelle_medicament": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
-      "date_debut": "2026-10-08",
-      "date_fin": "2026-10-09",
-      "unite_prise": "comprimé(s)",
-      "quantite_par_jour": 2,
-      "frequence_jours": "1",
-      "moments_prise": "Soir",
-      "si_besoin": false,
-      "principes_actifs": [],
-      "posologie": "2 comprimé(s) par jour — soir — fréquence 1"
+      "drug_label": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
+      "start_date": "2026-10-08",
+      "end_date": "2026-10-09",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "1",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "2 comprimé(s) per day — soir — frequency 1"
     }
   ]
 }
