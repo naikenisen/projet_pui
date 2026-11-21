@@ -9,7 +9,7 @@ import json
 import math
 import os
 
-# The default inference folder (dataset_test) is relative to the project root.
+# The default inference folder (dataset) is relative to the project root.
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import pandas as pd

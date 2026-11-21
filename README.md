@@ -18,8 +18,8 @@ All commands below are run from the project root.
 
 | File | Role |
 |---|---|
-| `dataset/` | Inference folder: one JSON file per patient (`<id>.json`), with laboratory values and treatments |
-| `dataset_test/` | Smaller inference folder (80 patients), loaded by default in the interface |
+| `dataset/` | Inference folder (80 patients), loaded by default in the interface: one JSON file per patient (`<id>.json`), with laboratory values and treatments |
+| `full_dataset/` | Full inference folder (1919 patients, not versioned), same format |
 | `app.py` | Streamlit interface (analysis, RAG documents, KBS rules, laboratory reference ranges) |
 | `main.py` | Analyses every patient with the LLM, the RAG and the KBS |
 | `generation.py` | Analyses a patient with the LLM |
@@ -83,7 +83,7 @@ The message submitted to the model (Qwen3.6-35B-A3B, temperature 0, constrained 
 streamlit run app.py
 ```
 
-The inference folder (`dataset_test` by default) is chosen in the sidebar.
+The inference folder (`dataset` by default, or `full_dataset`) is chosen in the sidebar.
 
 Analysis results are saved in `src/front/inference_results.json`.
 
@@ -100,6 +100,8 @@ Analysis results are saved in `src/front/inference_results.json`.
 ```bash
 python3 main.py --folder dataset
 ```
+
+Use `--folder full_dataset` to analyse the full dataset.
 
 Prints for each patient: its identifier, the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the justification and the sources cited by the model.
 

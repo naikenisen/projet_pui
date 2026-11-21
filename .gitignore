@@ -10,6 +10,7 @@ venv/
 # Logs / outputs
 *.out
 
-dataset
-RCP
+/full_dataset/
+preprocessing/dataset/
+src/kbs/KBS_Docs/RCP/
 preprocessing/original_dataset/

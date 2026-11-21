@@ -1,4 +1,4 @@
-"""How many patients does filter 1 extract (= number of patients in dataset/)?
+"""How many patients does filter 1 extract (= number of patients in preprocessing/dataset/ and full_dataset/)?
 
 Uses exactly the same functions and the same seed as preprocessing.py.
 """

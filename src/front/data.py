@@ -7,7 +7,7 @@ import os
 
 from generation import LAB_RANGES_FILE
 
-PATIENTS_FOLDER = "dataset_test"  # default folder: one JSON file per patient
+PATIENTS_FOLDER = "dataset"  # default folder: one JSON file per patient
 RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "inference_results.json")
 
 
