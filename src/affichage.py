@@ -1,7 +1,6 @@
 """Mise en forme HTML des résultats, des alertes et des règles, sans dépendance à Streamlit ni au LLM.
 
-Utilisé par app.py (interface Streamlit) et par export_vitrine.py (vitrine HTML statique) : les deux affichent
-les mêmes cartes, alertes et tableaux.
+Utilisé par app.py (interface Streamlit) pour afficher les cartes, alertes et tableaux.
 """
 
 import html
