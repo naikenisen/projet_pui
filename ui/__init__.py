@@ -1,8 +1,10 @@
 """Streamlit interface (entry point: app.py at the project root), one module per page of the application.
 
-- analysis_results.py: “Résultats d'analyse” page (indicators, patient list, record, pharmaceutical opinion);
-- KBS_rules.py: “Règles du KBS” page (rules drafted by the LLM assistant, list, deletion);
-- RAG_documents.py: “Documents du RAG” page (indexed guidelines, indexing, upload) and PDF viewer;
+- page_analysis_results.py: “Résultats d'analyse” page (indicators, analysis button, patient list);
+- page_patient_result.py: record opened by clicking a patient of the list (laboratory values, prescription,
+  pharmaceutical opinion, KBS alerts);
+- page_kbs_rules.py: “Règles du KBS” page (rules drafted by the LLM assistant, list, deletion);
+- page_rag_documents.py: “Documents du RAG” page (indexed guidelines, indexing, upload) and PDF viewer;
 - common.py: what the three pages share (page frame, patient records, small helpers);
 - style.css: style of the whole interface, injected in every page.
 

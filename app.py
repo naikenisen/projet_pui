@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 
-from ui import KBS_rules, RAG_documents, analysis_results, common
+from ui import common, page_analysis_results, page_kbs_rules, page_rag_documents
 
 common.configure_page()
 common.inject_style()
@@ -27,9 +27,9 @@ for key in ("filter", "search"):
 
 page = st.navigation(
     [
-        st.Page(analysis_results.render_page, title="Résultats d'analyse", default=True),  # served at the root URL
-        st.Page(KBS_rules.render_page, title="Règles du KBS", url_path="regles"),
-        st.Page(RAG_documents.render_page, title="Documents du RAG", url_path="documents"),
+        st.Page(page_analysis_results.render_page, title="Résultats d'analyse", default=True),  # served at the root URL
+        st.Page(page_kbs_rules.render_page, title="Règles du KBS", url_path="regles"),
+        st.Page(page_rag_documents.render_page, title="Documents du RAG", url_path="documents"),
     ],
     position="top",
 )

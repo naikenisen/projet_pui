@@ -145,20 +145,23 @@ The interface is in French and has three pages. On the “Résultats d'analyse�
 ### Code
 
 `app.py` holds what is common to every page (configuration, style, application bar) and declares the pages with
-`st.navigation`. The interface code is in `ui/`, with one module per page of the application: each page loads
-its own data and calls the backend scripts of the project root for any processing (analysis, rules, indexing).
+`st.navigation`. The interface code is in `ui/`, with one `page_*.py` module per page of the application (the
+patient record opened from the list included): each page loads its own data and calls the backend scripts of the
+project root for any processing (analysis, rules, indexing).
 
 ```
-app.py                    entry point: page configuration, application bar, list of the pages
-inference_results.json    analysis results saved by main.py
+app.py                         entry point: page configuration, application bar, list of the pages
+inference_results.json         analysis results saved by main.py
 ui/
-├── analysis_results.py   “Résultats d'analyse” page: indicators, “Lancer l'analyse” (main.py --remaining),
-│                         patient list, open record, pharmaceutical opinion and KBS alerts
-├── KBS_rules.py          “Règles du KBS” page: LLM assistant (kbs.propose_rule), proposed rule, rule list
-├── RAG_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
-│                         PDF viewer also opened from the sources of the opinion
-├── common.py             shared by the pages: page frame, patient records of dataset/, small helpers
-└── style.css             style of the whole interface
+├── page_analysis_results.py   “Résultats d'analyse” page: indicators, “Lancer l'analyse” (main.py --remaining),
+│                              patient list
+├── page_patient_result.py     record opened from the list: laboratory values, prescription, pharmaceutical
+│                              opinion and KBS alerts
+├── page_kbs_rules.py          “Règles du KBS” page: LLM assistant (kbs.propose_rule), proposed rule, rule list
+├── page_rag_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
+│                              PDF viewer also opened from the sources of the opinion
+├── common.py                  shared by the pages: page frame, patient records of dataset/, small helpers
+└── style.css                  style of the whole interface
 ```
 
 ---
