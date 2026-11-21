@@ -1,15 +1,9 @@
-# Secrets / credentials
 .env
-
-# Python
 __pycache__/
 *.pyc
 venv/
 .venv/
-
-# Logs / outputs
 *.out
-
 /full_dataset/
 preprocessing/dataset/
 src/kbs/KBS_Docs/RCP/
