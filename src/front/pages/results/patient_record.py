@@ -4,13 +4,13 @@ import html
 
 import streamlit as st
 
+from generation import read_lab_ranges
 from src.front.components.widgets import label, table
+from src.front.pages.results.opinion import render_opinion
+from src.front.pages.results.state import close_patient, open_patient, open_patient_id
 from src.front.rendering.opinion import STATUS_COLORS, status
 from src.front.rendering.record import biology_table, lines_to_modify, patient_profile, prescription_table
 from src.front.services.analysis import analyse_and_save
-from src.front.services.data import load_lab_ranges
-from src.front.pages.results.state import close_patient, open_patient, open_patient_id
-from src.front.pages.results.opinion import render_opinion
 
 
 def render_record(state, shown):
@@ -20,7 +20,7 @@ def render_record(state, shown):
     position = next(i for i, r in enumerate(records) if r["patient"]["id"] == patient_id)
     record = records[position]
     _navigation_bar(state, records, position)
-    _patient_record(record, state.results.get(patient_id), load_lab_ranges())
+    _patient_record(record, state.results.get(patient_id), read_lab_ranges())
 
 
 def _navigation_bar(state, records, position):

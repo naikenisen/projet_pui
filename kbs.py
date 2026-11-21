@@ -295,6 +295,15 @@ Examples:
 If the request cannot be expressed with this format, reply {{"error": "short explanation"}}."""
 
 
+def biology_parameters(records):
+    """{laboratory parameter: unit} of the patient records: the LLM must use their exact name in conditions."""
+    parameters = {}
+    for record in records:
+        for name, measure in record["patient"]["biology"].items():
+            parameters.setdefault(name, measure.get("unit") or "")
+    return parameters
+
+
 def unknown_variables(rule, biology_parameters):
     """Condition variables that match no known data: the rule would never be triggered."""
     known = set(PATIENT_FIELDS) | set(biology_parameters)
@@ -375,11 +384,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.new_rule:
-        parameters = {}
-        for file_name in sorted(os.listdir(args.folder)):
-            if file_name.endswith(".json"):
-                for name, measure in load_patient(args.folder, file_name[:-5])["patient"]["biology"].items():
-                    parameters.setdefault(name, measure.get("unit") or "")
+        records = [load_patient(args.folder, name[:-5]) for name in sorted(os.listdir(args.folder)) if name.endswith(".json")]
+        parameters = biology_parameters(records)
         rule = propose_rule(args.new_rule, parameters)
         print(json.dumps(rule, ensure_ascii=False, indent=2))
         for name in unknown_variables(rule, parameters):

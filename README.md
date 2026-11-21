@@ -159,7 +159,7 @@ src/front/
 │   ├── style.css         style of the whole interface
 │   └── list_height.html  script giving the patient list the remaining screen height
 ├── services/             data access and backend calls, no Streamlit
-│   ├── data.py           patient files, laboratory reference ranges
+│   ├── data.py           patient files of dataset/
 │   ├── analysis.py       runs main.py --remaining, re-analysis of one patient
 │   └── documents.py      RAG documents: list, upload, page rendering (indexing by indexing.py)
 ├── rendering/            HTML generation, no Streamlit

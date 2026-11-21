@@ -2,21 +2,18 @@
 
 import re
 
-from kbs import normalize
+from generation import DECISION_INTERVENTION, DECISION_MONITORING, DECISION_VALIDATED, DECISION_VERIFICATION
 
-# Category of each decision, recognised by a keyword (tolerates small variations in the LLM wording).
-# The most severe ones are searched first.
-CATEGORIES = (("intervention", "intervention"), ("verif", "verification"), ("monitor", "monitoring"),
-              ("surveill", "monitoring"), ("valid", "validated"))
+# Category of each decision written by generation.py
+CATEGORIES = {DECISION_INTERVENTION: "intervention", DECISION_VERIFICATION: "verification",
+              DECISION_MONITORING: "monitoring", DECISION_VALIDATED: "validated"}
 
 
 def category(decision):
-    """Category code of a decision: validated, monitoring, verification or intervention (default)."""
-    text = normalize(decision)
-    for keyword, code in CATEGORIES:
-        if keyword in text:
-            return code
-    return "intervention"
+    """Category code of a decision: validated, monitoring, verification or intervention.
+
+    An unknown decision is shown as an intervention, so that the record is checked first."""
+    return CATEGORIES.get(decision, "intervention")
 
 
 # Recognises for instance "reco_sfd.pdf, page 12", "reco_sfd.pdf p. 12" or "reco_sfd.pdf"
@@ -61,13 +58,3 @@ def status(result):
     else:
         code = category(result["decision"])
     return code, STATUS_LABELS[code]
-
-
-def inferred_type(text, decision_category):
-    """Type of a point from an analysis made before typed points, from its wording and the decision."""
-    start = normalize(text)[:60]
-    if "verif" in start:
-        return "verification"
-    if "monitor" in start or "surveill" in start:
-        return "monitoring"
-    return "validation" if decision_category == "validated" else decision_category

@@ -5,7 +5,7 @@ import html
 import streamlit as st
 
 from src.front.components.dialogs import alert_link, source_button, source_links
-from src.front.rendering.opinion import DECISION_LABELS, category, inferred_type, read_source
+from src.front.rendering.opinion import DECISION_LABELS, category, read_source
 
 
 def render_opinion(result, patient_id):
@@ -27,19 +27,19 @@ def render_opinion(result, patient_id):
     )
     if "points" in result:
         for number, point in enumerate(result["points"]):
-            _point(point, key=f"point-{patient_id}-{number}", decision_category=css_class)
+            _point(point, key=f"point-{patient_id}-{number}")
     else:  # analysis made before points were introduced: justification in one paragraph
         _legacy_opinion(result, patient_id)
     st.markdown(f'<div class="muted">Analysé le {result["date"]}</div>', unsafe_allow_html=True)
 
 
-def _point(point, key, decision_category=""):
+def _point(point, key):
     """One proposal of the pharmaceutical opinion in a frame, with its sources at the bottom of the same frame.
 
     Intervention: bold text, orange frame. KBS alerts are only visible through these links (no separate list).
     The frames are st.container(key="frame-<type>-..."), styled by the CSS classes st-key-frame-<type>.
     """
-    type_ = point.get("type") or inferred_type(point["text"], decision_category)
+    type_ = point["type"]
     with st.container(key=f"frame-{type_}-{key}"):
         st.markdown(f'<p class="point {type_}">{html.escape(point["text"])}</p>', unsafe_allow_html=True)
         with st.container(horizontal=True, gap="small", vertical_alignment="center"):

@@ -9,6 +9,7 @@ import streamlit as st
 from kbs import (
     add_personalized_rule,
     apply_rules,
+    biology_parameters,
     load_personalized_rules,
     propose_rule,
     save_personalized_rules,
@@ -27,19 +28,10 @@ def render_rules_page():
         "de l'analyse."
     )
     patients = load_patients()
-    biology_parameters = _biology_parameters(patients)
-    _assistant(biology_parameters)
-    _proposed_rule(patients, biology_parameters)
-    _rule_list(load_personalized_rules(), biology_parameters)
-
-
-def _biology_parameters(patients):
-    """{laboratory parameter: unit} of the patient records (the LLM must use their exact name in rules)."""
-    parameters = {}
-    for record in patients:
-        for key, measure in record["patient"].get("biology", {}).items():
-            parameters.setdefault(key, measure.get("unit") or "")
-    return parameters
+    parameters = biology_parameters(patients)
+    _assistant(parameters)
+    _proposed_rule(patients, parameters)
+    _rule_list(load_personalized_rules(), parameters)
 
 
 # ---------------------------------------------------------------------------

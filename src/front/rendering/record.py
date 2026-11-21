@@ -2,6 +2,8 @@
 
 import html
 
+from generation import lab_interpretation
+
 # Interpretation of a laboratory value, as displayed
 LOW, HIGH, NORMAL = "Bas", "Élevé", "Normal"
 
@@ -19,14 +21,10 @@ def patient_profile(patient):
 
 
 def interpretation(name, value, ranges):
-    reference = ranges.get(name)
-    if reference is None or not isinstance(value, (int, float)):
+    """Same interpretation as the one sent to the LLM (generation.lab_interpretation); "" without reference range."""
+    if name not in ranges or not isinstance(value, (int, float)):
         return ""
-    if value < reference["min"]:
-        return LOW
-    if value > reference["max"]:
-        return HIGH
-    return NORMAL
+    return {"low": LOW, "high": HIGH}.get(lab_interpretation(name, value, ranges), NORMAL)
 
 
 def biology_table(biology, ranges):
