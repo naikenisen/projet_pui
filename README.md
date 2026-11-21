@@ -50,7 +50,7 @@ python3 main.py --all         # all patients: the results file is overwritten
 
 The folder is `dataset` by default; use `--folder full_dataset` to analyse the full dataset.
 
-Each result is saved in `src/results/inference_results.json` as soon as the patient is analysed: the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the typed points with their sources, the KBS alerts and the date. An error is stored in the result of the patient instead of stopping the run.
+Each result is saved in `src/inference_results.json` as soon as the patient is analysed: the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the typed points with their sources, the KBS alerts and the date. An error is stored in the result of the patient instead of stopping the run.
 
 ### Indexing
 
@@ -130,7 +130,7 @@ streamlit run app.py
 ```
 
 The interface always works on the patients of `dataset/`; `full_dataset/` is analysed from the command line only (`python3 main.py --remaining --folder full_dataset`).
-The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `src/results/inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
+The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `src/inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
 
 ![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 
@@ -145,44 +145,25 @@ The interface is in French and has three pages. On the “Résultats d'analyse�
 ### Code
 
 `app.py` holds what is common to every page (configuration, style, application bar) and declares the pages with
-`st.navigation`. The interface code is in `src/front/`, split by responsibility: each page is a module of
-`src/front/pages/` that loads its own data, so that it can be changed without reading the rest. The backend scripts are only called through
-`src/front/services/`.
+`st.navigation`. The interface code is in `src/ui/`, with one module per page of the application: each page loads
+its own data and calls the backend scripts of the project root for any processing (analysis, rules, indexing).
 
 ```
 app.py                    entry point: page configuration, application bar, list of the pages
-src/results/
-└── inference_results.json  analysis results saved by main.py
-src/front/
-├── theme.py              page configuration, style injection, application bar
-├── assets/
-│   ├── style.css         style of the whole interface
-│   └── list_height.html  script giving the patient list the remaining screen height
-├── services/             data access and backend calls, no Streamlit
-│   ├── data.py           patient files of dataset/
-│   ├── analysis.py       runs main.py --remaining, re-analysis of one patient
-│   └── documents.py      RAG documents: list, upload, page rendering (indexing by indexing.py)
-├── rendering/            HTML generation, no Streamlit
-│   ├── opinion.py        record status, decision category, sources
-│   ├── record.py         patient profile, laboratory and prescription tables
-│   ├── alerts.py         KBS alerts and Thesaurus level badges
-│   └── rules.py          personalized KBS rule card
-├── components/           reusable Streamlit widgets
-│   ├── widgets.py        titles, labels, tables, alerts, error messages
-│   └── dialogs.py        document viewer and KBS alert dialogs, source links
-└── pages/                one module (or package) per page
-    ├── results/          “Résultats d’analyse” page
-    │   ├── page.py           indicators and list, or the open record
-    │   ├── state.py          data of the page (records, results, statuses) and patient navigation
-    │   ├── overview.py       title, analysis button, indicators
-    │   ├── patient_list.py   filters, search, list of the records
-    │   ├── patient_record.py open record: profile, laboratory values, prescription
-    │   └── opinion.py        pharmaceutical opinion and its sources
-    ├── rules.py          “Règles du KBS” page: LLM assistant, proposed rule, rule list with deletion
-    └── documents.py      “Documents du RAG” page: indexed guidelines, indexing, upload of new PDFs
+src/
+├── inference_results.json    analysis results saved by main.py
+├── lab_reference_ranges.json reference ranges of laboratory values
+└── ui/
+    ├── analysis_results.py   “Résultats d'analyse” page: indicators, “Lancer l'analyse” (main.py --remaining),
+    │                         patient list, open record, pharmaceutical opinion and KBS alerts
+    ├── KBS_rules.py          “Règles du KBS” page: LLM assistant (kbs.propose_rule), proposed rule, rule list
+    ├── RAG_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
+    │                         PDF viewer also opened from the sources of the opinion
+    ├── common.py             shared by the pages: page frame, patient records of dataset/, small helpers
+    └── assets/
+        ├── style.css         style of the whole interface
+        └── list_height.html  script giving the patient list the remaining screen height
 ```
-
-`services/` and `rendering/` do not import Streamlit: they can be tested without running the interface.
 
 ---
 
@@ -197,7 +178,7 @@ src/front/
 | `src/kbs/KBS_Docs/` | Reference documents from which the generic KBS rules were extracted (ANSM Thesaurus, DDI-Predictor) |
 | `src/rag/RAG_Docs/` | Guidelines (PDF) used by the RAG |
 | `src/rag/chroma_db/` | Vector database created by `indexing.py` |
-| `src/biology/lab_reference_ranges.json` | Reference ranges of laboratory values, used by `retrieval.py` and `generation.py` |
+| `src/lab_reference_ranges.json` | Reference ranges of laboratory values, used by `retrieval.py` and `generation.py` |
 | `preprocessing/` | Builds the patient JSON files from the anonymised CSV extractions (`preprocessing/original_dataset/`, not versioned) |
 | `paper/` | Article, presentation and figures (`paper/figures_en/`) |
 

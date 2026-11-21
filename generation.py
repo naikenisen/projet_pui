@@ -110,7 +110,7 @@ Rules for the points:
 # Record preparation: whatever can be computed is computed by the code, not by the LLM
 # ---------------------------------------------------------------------------
 
-LAB_RANGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "biology", "lab_reference_ranges.json")
+LAB_RANGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "lab_reference_ranges.json")
 
 # Intake units that are already an amount of active ingredient (values as found in the data)
 QUANTITY_UNITS = {"milligramme(s)": (1, "mg"), "gramme(s)": (1000, "mg"), "microgramme(s)": (1, "µg"),
@@ -166,7 +166,7 @@ def read_lab_ranges():
 
 
 def lab_interpretation(name, value, ranges):
-    """“low”, “high” or "" according to the reference ranges of src/biology/lab_reference_ranges.json."""
+    """“low”, “high” or "" according to the reference ranges of src/lab_reference_ranges.json."""
     reference = ranges.get(name)
     if reference is None or not isinstance(value, (int, float)) or isinstance(value, bool):
         return ""

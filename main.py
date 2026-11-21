@@ -1,7 +1,7 @@
 """Analyses the patients of a folder with the KBS, the RAG and the LLM, and saves the results.
 
 Run from the project root:
-    python3 main.py --remaining   # patients without a result in src/results/inference_results.json
+    python3 main.py --remaining   # patients without a result in src/inference_results.json
     python3 main.py --all         # all patients, the results file is overwritten
 """
 
@@ -14,7 +14,7 @@ from generation import analyse_patient
 from kbs import check_rules
 from retrieval import retrieve_context
 
-RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "results", "inference_results.json")
+RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "inference_results.json")
 
 
 def load_results():
