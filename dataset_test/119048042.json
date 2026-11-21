@@ -1,0 +1,326 @@
+{
+  "patient": {
+    "id": "119048042",
+    "jour_reference": "2026-07-13",
+    "age": 90,
+    "taille_cm": 185,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "ALAT (sang)": {
+        "valeur": 33,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 53,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 28,
+        "unite": "g/L",
+        "date_heure_examen": "2026-06-17 07:00:00",
+        "date_demande": "2026-06-17 07:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 6,
+        "unite": "µmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 28,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "CRP (sang)": {
+        "valeur": 83.7,
+        "unite": "mg/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.62,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.82,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-17 07:00:00",
+        "date_demande": "2026-06-17 07:00:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 106,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 31.9,
+        "unite": "g/dL",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 294,
+        "unite": "µmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 17,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 523,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 6.67,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-18 07:00:00",
+        "date_demande": "2026-06-18 07:00:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "valeur": 1.2,
+        "unite": "g/L",
+        "date_heure_examen": "2026-06-18 07:00:00",
+        "date_demande": "2026-06-18 07:00:00"
+      },
+      "Haptoglobine (sang)": {
+        "valeur": 3.18,
+        "unite": "g/L",
+        "date_heure_examen": "2026-06-10 08:00:00",
+        "date_demande": "2026-06-10 08:00:00"
+      },
+      "Hématies": {
+        "valeur": 3.42,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Hématocrite": {
+        "valeur": 33.5,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Hémoglobine": {
+        "valeur": 10.7,
+        "unite": "g/dL",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Hémoglobine glyquée (HbA1c)": {
+        "valeur": 5.5,
+        "unite": "%",
+        "date_heure_examen": "2026-06-10 08:00:00",
+        "date_demande": "2026-06-10 08:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 14.9,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Leucocytes": {
+        "valeur": 10.6,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 10.2,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 1.1,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 7.2,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.76,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "NT-proBNP (sang)": {
+        "valeur": 9014,
+        "unite": "pg/mL",
+        "date_heure_examen": "2026-06-18 07:00:00",
+        "date_demande": "2026-06-18 07:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 630,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Plaquettes": {
+        "valeur": 172,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.9,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.1,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 78.5,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 8.32,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 3.2,
+        "unite": "%",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.34,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 83,
+        "unite": "g/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Préalbumine (sang)": {
+        "valeur": 0.1,
+        "unite": "g/L",
+        "date_heure_examen": "2026-06-09 08:00:00",
+        "date_demande": "2026-06-09 08:00:00"
+      },
+      "Réticulocytes (%)": {
+        "valeur": 2.53,
+        "unite": "%",
+        "date_heure_examen": "2026-06-10 08:00:00",
+        "date_demande": "2026-06-10 08:00:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "valeur": 89.3,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-06-10 08:00:00",
+        "date_demande": "2026-06-10 08:00:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 150,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "TCA patient": {
+        "valeur": 63.9,
+        "unite": "s",
+        "date_heure_examen": "2026-06-15 12:00:00",
+        "date_demande": "2026-06-15 12:00:00"
+      },
+      "TCA ratio patient/témoin": {
+        "valeur": 2.06,
+        "unite": "[ratio]",
+        "date_heure_examen": "2026-06-15 12:00:00",
+        "date_demande": "2026-06-15 12:00:00"
+      },
+      "TCA témoin": {
+        "valeur": 31,
+        "unite": "s",
+        "date_heure_examen": "2026-06-15 12:00:00",
+        "date_demande": "2026-06-15 12:00:00"
+      },
+      "TSH (sang)": {
+        "valeur": 2.34,
+        "unite": "mUI/L",
+        "date_heure_examen": "2026-06-10 08:00:00",
+        "date_demande": "2026-06-10 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 31.3,
+        "unite": "pg",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Urée (sang)": {
+        "valeur": 37.9,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-06-18 07:00:00",
+        "date_demande": "2026-06-18 07:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 98,
+        "unite": "fL",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 12.6,
+        "unite": "fL",
+        "date_heure_examen": "2026-06-19 08:00:00",
+        "date_demande": "2026-06-19 08:00:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "MORPHINE 10 MG/1 ML (LABO AGUETTANT), SOL INJ, AMP",
+      "date_debut": "2026-06-22",
+      "date_fin": "2026-07-22",
+      "unite_prise": "milligramme(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "milligramme(s) si besoin — horaires spécifiques — tous les jours"
+    }
+  ]
+}

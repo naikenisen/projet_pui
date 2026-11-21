@@ -1,0 +1,149 @@
+{
+  "patient": {
+    "id": "127330097",
+    "jour_reference": "2025-06-18",
+    "age": 88,
+    "taille_cm": 150,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {}
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "CANDESARTAN 8 MG (LABO ARROW LAB), CPR SÉC",
+      "date_debut": "2025-06-04",
+      "date_fin": "2025-07-04",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 8,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "AMLODIPINE 10 MG ARROW GENERIQUES, GÉLULE",
+      "date_debut": "2025-06-04",
+      "date_fin": "2025-07-04",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 gélule(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "date_debut": "2025-06-05",
+      "date_fin": "2025-07-05",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2025-06-04",
+      "date_fin": "2025-07-04",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
+      "date_debut": "2025-06-05",
+      "date_fin": "2025-07-05",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 25,
+          "unite": "mg"
+        },
+        {
+          "dosage": 15,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "MIANSERINE 30 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2025-06-04",
+      "date_fin": "2025-07-04",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 30,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ATENOLOL 50 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2025-06-05",
+      "date_fin": "2025-07-05",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 50,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "SPIRONOLACTONE+ALTIZIDE 25 MG+15 MG (ALDACTAZINE), CPR SÉC",
+      "date_debut": "2025-06-05",
+      "date_fin": "2025-07-05",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    }
+  ]
+}

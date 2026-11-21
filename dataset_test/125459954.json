@@ -1,0 +1,466 @@
+{
+  "patient": {
+    "id": "125459954",
+    "jour_reference": "2024-03-31",
+    "age": 82,
+    "taille_cm": 182,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "ALAT (sang)": {
+        "valeur": 16,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 27,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Acide urique (sang)": {
+        "valeur": 381,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Bilirubine directe (sang)": {
+        "valeur": 9,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Bilirubine indirecte (sang)": {
+        "valeur": 13,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 22,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 30,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "CRP (sang)": {
+        "valeur": 36,
+        "unite": "mg/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 103,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Cholestérol HDL (sang)": {
+        "valeur": 1.51,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Cholestérol LDL (sang)": {
+        "valeur": 1.4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Cholestérol non HDL (sang)": {
+        "valeur": 1.86,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Cholestérol total (sang)": {
+        "valeur": 3.37,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 34.7,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 83,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 81,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 72,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 5.4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Hématies": {
+        "valeur": 3.7,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Hématocrite": {
+        "valeur": 35.4,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Hémoglobine": {
+        "valeur": 12.3,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 12.8,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Leucocytes": {
+        "valeur": 5.9,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 21.8,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 1.28,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 11.5,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.67,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "NT-proBNP (sang)": {
+        "valeur": 3183,
+        "unite": "pg/mL",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 97,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Plaquettes": {
+        "valeur": 216,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.5,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.02,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 65.2,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 3.84,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 1,
+        "unite": "%",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.05,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.1,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 57,
+        "unite": "g/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 140,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 33.2,
+        "unite": "pg",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Triglycérides (sang)": {
+        "valeur": 1.02,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-27 08:00:00",
+        "date_demande": "2024-03-27 08:00:00"
+      },
+      "Urée (sang)": {
+        "valeur": 7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 95.7,
+        "unite": "fL",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 8.6,
+        "unite": "fL",
+        "date_heure_examen": "2024-03-29 04:45:00",
+        "date_demande": "2024-03-29 04:45:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "BISOPROLOL 5 MG (LABO VIATRIS), CPR SÉC",
+      "date_debut": "2024-03-28",
+      "date_fin": "2024-04-27",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "CLOMIPRAMINE 25 MG (LABO VIATRIS), CPR",
+      "date_debut": "2024-03-26",
+      "date_fin": "2024-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 25,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "ATORVASTATINE 20 MG (LABO EG LABO), CPR",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "APIXABAN 5 MG (ELIQUIS), CPR",
+      "date_debut": "2024-03-26",
+      "date_fin": "2024-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — matin, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "ZOPICLONE 7.5 MG (LABO ARROW LAB), CPR SÉC",
+      "date_debut": "2024-03-26",
+      "date_fin": "2024-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Coucher",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 7.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 comprimé(s) par jour — coucher — tous les jours"
+    },
+    {
+      "libelle_medicament": "ALLOPURINOL 100 MG (ZYLORIC), CPR",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 100,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "SILODOSINE 4 MG (LABO ARROW), GÉLU",
+      "date_debut": "2024-03-26",
+      "date_fin": "2024-04-25",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 4,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 gélule(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "EMPAGLIFLOZINE 10 MG (JARDIANCE), CPR",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "EZETIMIBE 10 MG (LABO TEVA), CPR",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "CLOPIDOGREL 75 MG (LABO ARROW), CPR",
+      "date_debut": "2024-03-27",
+      "date_fin": "2024-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 75,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    }
+  ]
+}

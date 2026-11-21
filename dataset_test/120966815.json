@@ -1,0 +1,415 @@
+{
+  "patient": {
+    "id": "120966815",
+    "jour_reference": "2024-02-16",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "ALAT (sang)": {
+        "valeur": 40,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 39,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 27,
+        "unite": "g/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Bicarbonates réels (gaz du sang)": {
+        "valeur": 26.4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Bicarbonates standards (gaz du sang)": {
+        "valeur": 26.3,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 16,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "CO2 total (gaz du sang)": {
+        "valeur": 27.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 30,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "CRP (sang)": {
+        "valeur": 5.8,
+        "unite": "mg/L",
+        "date_heure_examen": "2024-02-02 08:00:00",
+        "date_demande": "2024-02-02 08:00:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.28,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.6,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Carboxyhémoglobine (gaz du sang)": {
+        "valeur": 1.1,
+        "unite": "%",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 108,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 32.8,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Contenu en O2 (sang artériel)": {
+        "valeur": 18.7,
+        "unite": "mL/dL",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 91,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 69,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Déoxyhémoglobine (gaz du sang)": {
+        "valeur": 5.4,
+        "unite": "%",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Excès de base (gaz du sang)": {
+        "valeur": 2.3,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 25,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 4.68,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Hématies": {
+        "valeur": 4.35,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Hématocrite": {
+        "valeur": 39,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Hémoglobine": {
+        "valeur": 12.8,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Hémoglobine (gaz du sang)": {
+        "valeur": 14.5,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 13.2,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Lactate (sang artériel)": {
+        "valeur": 1.3,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Leucocytes": {
+        "valeur": 6.2,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 47.3,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 2.93,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 9.9,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.61,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Méthémoglobine (gaz du sang)": {
+        "valeur": 1.8,
+        "unite": "%",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Oxyhémoglobine (gaz du sang)": {
+        "valeur": 91.7,
+        "unite": "%",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 97,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-01-29 08:00:00",
+        "date_demande": "2024-01-29 08:00:00"
+      },
+      "Plaquettes": {
+        "valeur": 310,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.6,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.03,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 39.9,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 2.47,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 2.3,
+        "unite": "%",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.14,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 4.6,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 63,
+        "unite": "g/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Saturation en O2 (sang artériel)": {
+        "valeur": 94.4,
+        "unite": "%",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 140,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "TCA patient": {
+        "valeur": 37,
+        "unite": "s",
+        "date_heure_examen": "2024-01-26 08:00:00",
+        "date_demande": "2024-01-26 08:00:00"
+      },
+      "TCA témoin": {
+        "valeur": 32,
+        "unite": "s",
+        "date_heure_examen": "2024-01-26 08:00:00",
+        "date_demande": "2024-01-26 08:00:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "valeur": 100,
+        "unite": "%",
+        "date_heure_examen": "2024-01-26 08:00:00",
+        "date_demande": "2024-01-26 08:00:00"
+      },
+      "Temps de Quick patient": {
+        "valeur": 12.3,
+        "unite": "s",
+        "date_heure_examen": "2024-01-26 08:00:00",
+        "date_demande": "2024-01-26 08:00:00"
+      },
+      "Temps de Quick témoin": {
+        "valeur": 13.1,
+        "unite": "s",
+        "date_heure_examen": "2024-01-26 08:00:00",
+        "date_demande": "2024-01-26 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 29.4,
+        "unite": "pg",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Troponine I ultrasensible (sang)": {
+        "valeur": 14,
+        "unite": "ng/L",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "Urée (sang)": {
+        "valeur": 11.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 89.7,
+        "unite": "fL",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 9.9,
+        "unite": "fL",
+        "date_heure_examen": "2024-02-06 08:00:00",
+        "date_demande": "2024-02-06 08:00:00"
+      },
+      "p50 (gaz du sang)": {
+        "valeur": 26.6,
+        "unite": "mmHg",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "pCO2 (sang artériel)": {
+        "valeur": 41.3,
+        "unite": "mmHg",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      },
+      "pO2 (sang artériel)": {
+        "valeur": 73,
+        "unite": "mmHg",
+        "date_heure_examen": "2024-01-25 00:09:00",
+        "date_demande": "2024-01-25 00:09:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2024-01-24",
+      "date_fin": "2024-02-23",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (LOVENOX), SOL INJ, SRG",
+      "date_debut": "2024-01-24",
+      "date_fin": "2024-02-23",
+      "unite_prise": "seringue(s) pré-remplie(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 seringue(s) pré-remplie(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "MELATONINE 5 mg, gélule",
+      "date_debut": "2024-01-24",
+      "date_fin": "2024-02-23",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "1 gélule(s) par jour — horaires spécifiques — tous les jours"
+    }
+  ]
+}

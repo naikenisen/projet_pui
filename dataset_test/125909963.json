@@ -1,0 +1,356 @@
+{
+  "patient": {
+    "id": "125909963",
+    "jour_reference": "2024-11-16",
+    "age": 75,
+    "taille_cm": 176,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "25-OH-Vitamine D": {
+        "valeur": 87.9,
+        "unite": "nmol/L",
+        "date_heure_examen": "2024-10-18 07:00:00",
+        "date_demande": "2024-10-18 07:00:00"
+      },
+      "ALAT (sang)": {
+        "valeur": 109,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 66,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 35,
+        "unite": "g/L",
+        "date_heure_examen": "2024-10-18 07:00:00",
+        "date_demande": "2024-10-18 07:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 12,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 27,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 106,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 36,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 102,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 66,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 16,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Hématies": {
+        "valeur": 3.63,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Hématocrite": {
+        "valeur": 33.1,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Hémoglobine": {
+        "valeur": 11.9,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Hémoglobine glyquée (HbA1c)": {
+        "valeur": 5.6,
+        "unite": "%",
+        "date_heure_examen": "2024-10-18 07:00:00",
+        "date_demande": "2024-10-18 07:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 14.3,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Leucocytes": {
+        "valeur": 4.7,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 25.8,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 1.2,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 6,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.28,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 64,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Plaquettes": {
+        "valeur": 214,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.4,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.02,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 64.6,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 3.04,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 3.2,
+        "unite": "%",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.15,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.6,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 58,
+        "unite": "g/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 140,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "TSH (sang)": {
+        "valeur": 3.15,
+        "unite": "mUI/L",
+        "date_heure_examen": "2024-10-18 07:00:00",
+        "date_demande": "2024-10-18 07:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 32.8,
+        "unite": "pg",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Urée (sang)": {
+        "valeur": 7.5,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 91.2,
+        "unite": "fL",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 10.1,
+        "unite": "fL",
+        "date_heure_examen": "2024-10-21 07:00:00",
+        "date_demande": "2024-10-21 07:00:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "ESOMEPRAZOLE 40 MG (LABO GNR), GÉLU GASTRO-RÉSISTANTE",
+      "date_debut": "2024-10-17",
+      "date_fin": "2024-11-16",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 gélule(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "AMLODIPINE 5 MG (LABO ARROW), GÉLU",
+      "date_debut": "2024-10-17",
+      "date_fin": "2024-11-16",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 gélule(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "DAPAGLIFLOZINE 10 MG (FORXIGA), CPR",
+      "date_debut": "2024-10-17",
+      "date_fin": "2024-11-16",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ACETYLSALICYLIQUE ACIDE 250 MG (ASPEGIC), ENF, PDR PR SOL BUV, SACHET",
+      "date_debut": "2024-10-17",
+      "date_fin": "2024-11-16",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 250,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 sachet(s) par jour — midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2024-10-17",
+      "date_fin": "2024-11-16",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "FOLIQUE ACIDE 5 MG (LABO ARROW), CPR",
+      "date_debut": "2024-10-20",
+      "date_fin": "2024-11-18",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "Autre",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — rythme particulier"
+    },
+    {
+      "libelle_medicament": "METHOTREXATE 2.5 MG (METOTAB), CPR",
+      "date_debut": "2024-10-18",
+      "date_fin": "2024-11-16",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 5,
+      "frequence_jours": "Autre",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 2.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "5 comprimé(s) par jour — matin — rythme particulier"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "patient": {
+    "id": "127325592",
+    "jour_reference": "2024-01-09",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "CO2 total (sang)": {
+        "valeur": 26,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "CRP (sang)": {
+        "valeur": 90.6,
+        "unite": "mg/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 105,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 32.9,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 123,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 48,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 4.51,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Hématies": {
+        "valeur": 3.59,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Hématocrite": {
+        "valeur": 33.4,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Hémoglobine": {
+        "valeur": 11,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 14.3,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Leucocytes": {
+        "valeur": 5.3,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 8.7,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 0.46,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 6.6,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.34,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Plaquettes": {
+        "valeur": 244,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.4,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.02,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 83.5,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 4.42,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 0.8,
+        "unite": "%",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.04,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 61,
+        "unite": "g/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 141,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 30.6,
+        "unite": "pg",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Urée (sang)": {
+        "valeur": 13.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 93,
+        "unite": "fL",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 10.4,
+        "unite": "fL",
+        "date_heure_examen": "2024-01-08 04:30:00",
+        "date_demande": "2024-01-08 04:30:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "LEVODOPA+BENSERAZIDE 50 MG+12.5 MG (MODOPAR 62.5), GÉLU",
+      "date_debut": "2024-01-05",
+      "date_fin": "2024-01-15",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 3,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 50,
+          "unite": "mg"
+        },
+        {
+          "dosage": 12.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "3 gélule(s) par jour — matin, midi, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "RAMIPRIL 2.5 MG (LABO VIATRIS), CPR SÉC",
+      "date_debut": "2024-01-04",
+      "date_fin": "2024-02-03",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 2.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "LEVODOPA+BENSERAZIDE 50 MG+12.5 MG (MODOPAR 62.5), GÉLU",
+      "date_debut": "2024-01-05",
+      "date_fin": "2024-01-15",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 6,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi.Soir",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "6 gélule(s) par jour — matin, midi, soir — tous les jours"
+    }
+  ]
+}

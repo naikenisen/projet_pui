@@ -1,0 +1,485 @@
+{
+  "patient": {
+    "id": "114913220",
+    "jour_reference": "2024-06-17",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "25-OH-Vitamine D": {
+        "valeur": 30.2,
+        "unite": "nmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "ALAT (sang)": {
+        "valeur": 15,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 14,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 35,
+        "unite": "g/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 8,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 25,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.35,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.47,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 108,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 33.6,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 77,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 63,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 17,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 5.51,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Hématies": {
+        "valeur": 4.47,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Hématocrite": {
+        "valeur": 40.5,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Hémoglobine": {
+        "valeur": 13.6,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 13.5,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Leucocytes": {
+        "valeur": 13.3,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 7.3,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 0.97,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 3.6,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.47,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Parathormone intacte (PTH 1-84)": {
+        "valeur": 88.5,
+        "unite": "ng/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 103,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Phosphore (sang)": {
+        "valeur": 0.98,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Plaquettes": {
+        "valeur": 298,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.3,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.03,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 88.7,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 11.79,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 0.1,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.01,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.6,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 69,
+        "unite": "g/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 143,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "TSH (sang)": {
+        "valeur": 1.01,
+        "unite": "mUI/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "valeur": 100,
+        "unite": "%",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Temps de Quick patient": {
+        "valeur": 12.7,
+        "unite": "s",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Temps de Quick témoin": {
+        "valeur": 13.1,
+        "unite": "s",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 30.4,
+        "unite": "pg",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Urée (sang)": {
+        "valeur": 8.3,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 90.6,
+        "unite": "fL",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 11.2,
+        "unite": "fL",
+        "date_heure_examen": "2024-06-04 18:20:00",
+        "date_demande": "2024-06-04 18:20:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "PARAFFINE 78.23% (LANSOYL FRAMBOISE), GEL ORAL, RÉCIPIENT UNIDOSE 15 G",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-07-06",
+      "unite_prise": "récipient(s) unidose(s)",
+      "quantite_par_jour": 3,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 11.734,
+          "unite": "g"
+        }
+      ],
+      "posologie": "3 récipient(s) unidose(s) par jour — matin, midi, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "COLECALCIFEROL 50 000 IU/2 ML (ZYMAD), SOL BUV, AMP",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-08-02",
+      "unite_prise": "ampoule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "Autre",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 50000,
+          "unite": "iu"
+        }
+      ],
+      "posologie": "1 ampoule(s) par jour — matin — rythme particulier"
+    },
+    {
+      "libelle_medicament": "SORBITOL+SODIUM CITRATE+SODIUM LAURILSULFOACETATE 4.465 G+0.45 G+0.0645 G/5 ML (MICROLAX), SOL RECT, RÉCIPIENT UNIDOSE",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-07-06",
+      "unite_prise": "lavement(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 0.0645,
+          "unite": "g"
+        },
+        {
+          "dosage": 0.45,
+          "unite": "g"
+        },
+        {
+          "dosage": 4.465,
+          "unite": "g"
+        }
+      ],
+      "posologie": "lavement(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2024-06-05",
+      "date_fin": "2024-07-05",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2024-06-04",
+      "date_fin": "2024-07-04",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "date_debut": "2024-06-07",
+      "date_fin": "2024-07-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 4,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 350.7,
+          "unite": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unite": "g"
+        },
+        {
+          "dosage": 178.5,
+          "unite": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "4 sachet(s) par jour — matin, midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "RISPERIDONE 1 MG/ML (RISPERDAL), SOL BUV, FLAC 60 ML",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-07-06",
+      "unite_prise": "milligramme(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 60,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 milligramme(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ESCITALOPRAM 10 MG (LABO ARROW LAB), CPR SÉC",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-07-06",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "date_debut": "2024-06-07",
+      "date_fin": "2024-07-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 16,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "16 sachet(s) par jour — matin, midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "NORMACOL LAVEMENT, AD, SOL RECT, RÉCIPIENT UNIDOSE 130 ML",
+      "date_debut": "2024-06-06",
+      "date_fin": "2024-07-06",
+      "unite_prise": "lavement(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 23.66,
+          "unite": "g"
+        },
+        {
+          "dosage": 10.4,
+          "unite": "g"
+        }
+      ],
+      "posologie": "lavement(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (LOVENOX), SOL INJ, SRG",
+      "date_debut": "2024-06-05",
+      "date_fin": "2024-07-05",
+      "unite_prise": "seringue(s) pré-remplie(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 seringue(s) pré-remplie(s) par jour — soir — tous les jours"
+    }
+  ]
+}

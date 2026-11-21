@@ -1,0 +1,514 @@
+{
+  "patient": {
+    "id": "103610559",
+    "jour_reference": "2025-09-28",
+    "age": 82,
+    "taille_cm": 165,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "25-OH-Vitamine D": {
+        "valeur": 66,
+        "unite": "nmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "ALAT (sang)": {
+        "valeur": 13,
+        "unite": "UI/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 20,
+        "unite": "UI/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 36,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Apolipoprotéine A1 (sang)": {
+        "valeur": 1.18,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Apolipoprotéine B (sang)": {
+        "valeur": 0.51,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 20,
+        "unite": "µmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 26,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "CRP (sang)": {
+        "valeur": 6.5,
+        "unite": "mg/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.36,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.46,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Capacité totale de fixation de la transferrine (sang)": {
+        "valeur": 46.2,
+        "unite": "µmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 107,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol HDL (sang)": {
+        "valeur": 1.31,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol HDL (sang) [g/L]": {
+        "valeur": 0.51,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol LDL (sang)": {
+        "valeur": 1.66,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol LDL (sang) [g/L]": {
+        "valeur": 0.64,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol non HDL (sang)": {
+        "valeur": 2,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol non HDL (sang) [g/L]": {
+        "valeur": 0.77,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol total (sang)": {
+        "valeur": 3.31,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Cholestérol total (sang) [g/L]": {
+        "valeur": 1.28,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Coefficient de saturation de la transferrine (sang)": {
+        "valeur": 21,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 35.1,
+        "unite": "g/dL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 65,
+        "unite": "µmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 90,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Fer (sang)": {
+        "valeur": 9.6,
+        "unite": "µmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Ferritine (sang)": {
+        "valeur": 61,
+        "unite": "µg/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Folates - vitamine B9 (sang)": {
+        "valeur": 22.8,
+        "unite": "ng/mL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 27,
+        "unite": "UI/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 5.46,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "valeur": 0.98,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Hématies": {
+        "valeur": 2.87,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Hématocrite": {
+        "valeur": 29.1,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Hémoglobine": {
+        "valeur": 10.2,
+        "unite": "g/dL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 13.9,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Leucocytes": {
+        "valeur": 6.3,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 16.3,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 1,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 8.6,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.54,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 65,
+        "unite": "UI/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Phosphore (sang)": {
+        "valeur": 1.24,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Plaquettes": {
+        "valeur": 192,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.3,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.02,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 74,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 4.66,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 0.8,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.05,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.5,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 69,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Réticulocytes (%)": {
+        "valeur": 0.98,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "valeur": 28.1,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 144,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "TCA patient": {
+        "valeur": 29.8,
+        "unite": "s",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "TCA ratio patient/témoin": {
+        "valeur": 0.96,
+        "unite": "[ratio]",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "TCA témoin": {
+        "valeur": 31,
+        "unite": "s",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "TSH (sang)": {
+        "valeur": 1.03,
+        "unite": "mUI/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "valeur": 62,
+        "unite": "%",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Temps de Quick patient": {
+        "valeur": 18,
+        "unite": "s",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Temps de Quick témoin": {
+        "valeur": 13.3,
+        "unite": "s",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 35.5,
+        "unite": "pg",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Transferrine (sang)": {
+        "valeur": 1.85,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Triglycérides (sang)": {
+        "valeur": 0.75,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Triglycérides (sang) [g/L]": {
+        "valeur": 0.66,
+        "unite": "g/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Urée (sang)": {
+        "valeur": 8.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Vitamine B12 (sang)": {
+        "valeur": 404,
+        "unite": "pg/mL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 101.4,
+        "unite": "fL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 11.3,
+        "unite": "fL",
+        "date_heure_examen": "2025-09-26 07:30:00",
+        "date_demande": "2025-09-26 07:30:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP",
+      "date_debut": "2025-09-25",
+      "date_fin": "2025-10-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 15,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET",
+      "date_debut": "2025-09-26",
+      "date_fin": "2025-10-26",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 75,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 sachet(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "BISOPROLOL 2.5 MG (LABO VIATRIS), CPR SÉC",
+      "date_debut": "2025-09-26",
+      "date_fin": "2025-10-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 2.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "PAROXETINE 20 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2025-09-26",
+      "date_fin": "2025-10-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2025-09-25",
+      "date_fin": "2025-10-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+{
+  "patient": {
+    "id": "120627171",
+    "jour_reference": "2024-03-15",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "25-OH-Vitamine D": {
+        "valeur": 68.2,
+        "unite": "nmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "ALAT (sang)": {
+        "valeur": 20,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 28,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 27,
+        "unite": "g/L",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 6,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 23,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "CRP (sang)": {
+        "valeur": 29.5,
+        "unite": "mg/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.22,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.54,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 111,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 33.1,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 45,
+        "unite": "µmol/L",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 89,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 15,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 4.12,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Hématies": {
+        "valeur": 3.71,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Hématocrite": {
+        "valeur": 32.6,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Hémoglobine": {
+        "valeur": 10.8,
+        "unite": "g/dL",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 13.6,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Leucocytes": {
+        "valeur": 4.2,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 20.4,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 0.85,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 8.8,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.36,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 45,
+        "unite": "UI/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Plaquettes": {
+        "valeur": 244,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.5,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.02,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 59.4,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 2.49,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 10.9,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.45,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.8,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 53,
+        "unite": "g/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Réticulocytes (%)": {
+        "valeur": 1.32,
+        "unite": "%",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "valeur": 48.9,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 145,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "TSH (sang)": {
+        "valeur": 4.34,
+        "unite": "mUI/L",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 29.1,
+        "unite": "pg",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Urée (sang)": {
+        "valeur": 7.9,
+        "unite": "mmol/L",
+        "date_heure_examen": "2024-02-20 08:00:00",
+        "date_demande": "2024-02-20 08:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 87.9,
+        "unite": "fL",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 11,
+        "unite": "fL",
+        "date_heure_examen": "2024-02-22 08:00:00",
+        "date_demande": "2024-02-22 08:00:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "CANDESARTAN 8 MG (LABO ARROW LAB), CPR SÉC",
+      "date_debut": "2024-02-17",
+      "date_fin": "2024-03-18",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 8,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "date_debut": "2024-02-16",
+      "date_fin": "2024-03-17",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 350.7,
+          "unite": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unite": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unite": "g"
+        },
+        {
+          "dosage": 178.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "sachet(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2024-02-18",
+      "date_fin": "2024-03-19",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2024-02-21",
+      "date_fin": "2024-03-22",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "SIMVASTATINE 20 MG (LABO ACCORD HEALTHCARE), CPR",
+      "date_debut": "2024-02-16",
+      "date_fin": "2024-03-17",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "FORTIMEL PROTEIN NUTRIMENT 125ML  (LPPR 1145730)",
+      "date_debut": "2024-02-17",
+      "date_fin": "2024-03-18",
+      "unite_prise": "bouteille(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "1 bouteille(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "NEBIVOLOL 5 MG (LABO VIATRIS), CPR QUADRISÉC",
+      "date_debut": "2024-02-17",
+      "date_fin": "2024-03-18",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "DOLIPRANE 500 MG, GÉLULE",
+      "date_debut": "2024-02-16",
+      "date_fin": "2024-03-17",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "RIVAROXABAN 20 MG (XARELTO), CPR",
+      "date_debut": "2024-02-17",
+      "date_fin": "2024-03-18",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "MIANSERINE 30 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2024-02-16",
+      "date_fin": "2024-03-17",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 30,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    }
+  ]
+}

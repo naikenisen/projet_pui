@@ -1,0 +1,195 @@
+{
+  "patient": {
+    "id": "126922113",
+    "jour_reference": "2025-01-13",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {}
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "PROPRANOLOL 40 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML",
+      "date_debut": "2025-01-08",
+      "date_fin": "2025-02-05",
+      "unite_prise": "goutte(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 400,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 goutte(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "SODIUM ALGINATE+SODIUM BICARBONATE 500 MG+267 MG/10 ML (GAVISCON), SUSP BUV, SACHET",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "2 sachet(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 0.5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "0,5 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "AMITRIPTYLINE 40 MG/ML (LAROXYL), SOL BUV, FLAC 20 ML",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "goutte(s)",
+      "quantite_par_jour": 10,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "10 goutte(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "SODIUM ALGINATE+SODIUM BICARBONATE 500 MG+267 MG/10 ML (GAVISCON), SUSP BUV, SACHET",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 267,
+          "unite": "mg"
+        },
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 sachet(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "AMITRIPTYLINE 40 MG/ML (LAROXYL), SOL BUV, FLAC 20 ML",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "goutte(s)",
+      "quantite_par_jour": 5,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 800,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "5 goutte(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "MACROGOL 4000, 4 G (LABO ARROW), PDR PR SOL BUV, SACHET",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 4,
+          "unite": "g"
+        }
+      ],
+      "posologie": "2 sachet(s) par jour — matin, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 3,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin.Midi.Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "3 gélule(s) par jour — matin, midi, soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PHLOROGLUCINOL 80 MG (LABO ARROW), CPR ORODISP",
+      "date_debut": "2025-01-07",
+      "date_fin": "2025-04-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 80,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — midi — tous les jours"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "patient": {
+    "id": "108656548",
+    "jour_reference": "2026-10-08",
+    "age": 79,
+    "taille_cm": 167,
+    "poids_kg": 43.1,
+    "surface_corporelle_m2": 1.454,
+    "imc_kg_m2": 15.5,
+    "biologie": {}
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
+      "date_debut": "2026-10-08",
+      "date_fin": "2026-10-09",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "1",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 50,
+          "unite": "mg"
+        },
+        {
+          "dosage": 200,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — fréquence 1"
+    },
+    {
+      "libelle_medicament": "LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP",
+      "date_debut": "2026-10-08",
+      "date_fin": "2026-10-09",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "1",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [],
+      "posologie": "2 comprimé(s) par jour — soir — fréquence 1"
+    }
+  ]
+}

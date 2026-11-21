@@ -1,0 +1,162 @@
+{
+  "patient": {
+    "id": "112389631",
+    "jour_reference": "2026-07-19",
+    "age": null,
+    "taille_cm": null,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {}
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 13.125,
+          "unite": "g"
+        },
+        {
+          "dosage": 350.7,
+          "unite": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unite": "mg"
+        },
+        {
+          "dosage": 178.5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "sachet(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "IRBESARTAN 150 MG (LABO ARROW), CPR",
+      "date_debut": "2026-07-09",
+      "date_fin": "2026-08-08",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 150,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANEORODOZ), CPR ORODISP",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "comprimé(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET",
+      "date_debut": "2026-07-09",
+      "date_fin": "2026-08-08",
+      "unite_prise": "sachet(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 75,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 sachet(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "EZETIMIBE 10 MG (LABO ARROW), CPR",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "AMLODIPINE 5 MG (LABO ARROW), GÉLU",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 gélule(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ATORVASTATINE 20 MG (LABO ARROW GENERIQUES), CPR",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "FINASTERIDE 5 MG (LABO ARROW LAB), CPR",
+      "date_debut": "2026-07-08",
+      "date_fin": "2026-08-07",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    }
+  ]
+}

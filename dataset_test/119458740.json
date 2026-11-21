@@ -1,0 +1,851 @@
+{
+  "patient": {
+    "id": "119458740",
+    "jour_reference": "2026-03-31",
+    "age": 83,
+    "taille_cm": 155,
+    "poids_kg": null,
+    "surface_corporelle_m2": null,
+    "imc_kg_m2": null,
+    "biologie": {
+      "25-OH-Vitamine D": {
+        "valeur": 74.2,
+        "unite": "nmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "ALAT (sang)": {
+        "valeur": 10,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "ASAT (sang)": {
+        "valeur": 12,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Albumine (sang)": {
+        "valeur": 35,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Albumine (urines)": {
+        "valeur": 9,
+        "unite": "mg/L",
+        "date_heure_examen": "2026-03-27 14:30:00",
+        "date_demande": "2026-03-27 14:30:00"
+      },
+      "Albumine - électrophorèse (%)": {
+        "valeur": 53.7,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Albumine - électrophorèse (g/L)": {
+        "valeur": 37.1,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Alpha-1 globulines (%)": {
+        "valeur": 2.7,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Alpha-1 globulines (g/L)": {
+        "valeur": 1.9,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Alpha-2 globulines (%)": {
+        "valeur": 13.9,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Alpha-2 globulines (g/L)": {
+        "valeur": 9.6,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Bicarbonates réels (sang artériel)": {
+        "valeur": 28.9,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Bicarbonates standards (sang artériel)": {
+        "valeur": 27.2,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Bilirubine totale (sang)": {
+        "valeur": 6,
+        "unite": "µmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Bêta-1 globulines (%)": {
+        "valeur": 6.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Bêta-1 globulines (g/L)": {
+        "valeur": 4.7,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Bêta-2 globulines (%)": {
+        "valeur": 6.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Bêta-2 globulines (g/L)": {
+        "valeur": 4.7,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "CO2 total (sang artériel)": {
+        "valeur": 30.4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "CO2 total (sang)": {
+        "valeur": 27,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "CRP (sang)": {
+        "valeur": 0.5,
+        "unite": "mg/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Calcium (sang)": {
+        "valeur": 2.51,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "valeur": 2.63,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Calcium ionisé (sang artériel)": {
+        "valeur": 1.23,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 17:00:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Calcium ionisé ajusté à pH 7,4 (sang artériel)": {
+        "valeur": 1.24,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 17:00:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Carboxyhémoglobine (sang artériel)": {
+        "valeur": 1.1,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Chlore (sang)": {
+        "valeur": 103,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Cholestérol HDL (sang)": {
+        "valeur": 0.98,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol HDL (sang) [g/L]": {
+        "valeur": 0.38,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol LDL (sang)": {
+        "valeur": 1.21,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol LDL (sang) [g/L]": {
+        "valeur": 0.47,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol non HDL (sang)": {
+        "valeur": 1.98,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol non HDL (sang) [g/L]": {
+        "valeur": 0.77,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol total (sang)": {
+        "valeur": 2.96,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Cholestérol total (sang) [g/L]": {
+        "valeur": 1.15,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "valeur": 32.1,
+        "unite": "g/dL",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Contenu en O2 (sang artériel)": {
+        "valeur": 9.8,
+        "unite": "mL/dL",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Créatinine (sang)": {
+        "valeur": 86,
+        "unite": "µmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Créatinine (urines)": {
+        "valeur": 9032,
+        "unite": "µmol/L",
+        "date_heure_examen": "2026-03-27 14:30:00",
+        "date_demande": "2026-03-27 14:30:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "valeur": 58,
+        "unite": "mL/min/1,73 m²",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Déoxyhémoglobine (sang artériel)": {
+        "valeur": 35.9,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Excès de base (sang artériel)": {
+        "valeur": 3.9,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Fibrinogène": {
+        "valeur": 4.35,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Gamma globulines (%)": {
+        "valeur": 16.1,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Gamma globulines (g/L)": {
+        "valeur": 11.1,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Gamma-GT (sang)": {
+        "valeur": 22,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Glycémie (sang)": {
+        "valeur": 8.22,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "valeur": 1.48,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Hématies": {
+        "valeur": 3.96,
+        "unite": "10^6/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Hématies [/mL]": {
+        "valeur": 3000,
+        "unite": "/mL",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Hématocrite": {
+        "valeur": 35.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Hématocrite (sang artériel)": {
+        "valeur": 34.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Hémoglobine": {
+        "valeur": 11.5,
+        "unite": "g/dL",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Hémoglobine (sang artériel)": {
+        "valeur": 11.3,
+        "unite": "g/dL",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Hémoglobine glyquée (HbA1c)": {
+        "valeur": 7.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "valeur": 12.8,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Lactate (sang artériel)": {
+        "valeur": 1.4,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 17:00:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Leucocytes": {
+        "valeur": 8.1,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Leucocytes [/mL]": {
+        "valeur": 35000,
+        "unite": "/mL",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Lymphocytes (%)": {
+        "valeur": 34.5,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "valeur": 2.8,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Magnésium (sang)": {
+        "valeur": 0.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Methémoglobine (sang artériel)": {
+        "valeur": 1.3,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Monocytes (%)": {
+        "valeur": 7.5,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "valeur": 0.61,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "NT-proBNP (sang)": {
+        "valeur": 380,
+        "unite": "pg/mL",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Oxyhémoglobine (sang artériel)": {
+        "valeur": 61.7,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "valeur": 71,
+        "unite": "UI/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Phosphore (sang)": {
+        "valeur": 1.03,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Plaquettes": {
+        "valeur": 326,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "valeur": 0.7,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "valeur": 0.06,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "valeur": 53.6,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "valeur": 4.34,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "valeur": 3.7,
+        "unite": "%",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "valeur": 0.3,
+        "unite": "10^3/mm³",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Potassium (sang)": {
+        "valeur": 3.9,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Protéines totales (sang)": {
+        "valeur": 69,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Rapport albumine/créatinine (urines)": {
+        "valeur": 1,
+        "unite": "mg/mmol",
+        "date_heure_examen": "2026-03-27 14:30:00",
+        "date_demande": "2026-03-27 14:30:00"
+      },
+      "Saturation en O2 (sang artériel)": {
+        "valeur": 63.2,
+        "unite": "%",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "Sodium (sang)": {
+        "valeur": 144,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "TCA patient": {
+        "valeur": 28.9,
+        "unite": "s",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "TCA ratio patient/témoin": {
+        "valeur": 0.93,
+        "unite": "[ratio]",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "TCA témoin": {
+        "valeur": 31,
+        "unite": "s",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "TSH (sang)": {
+        "valeur": 0.5,
+        "unite": "mUI/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "valeur": 93,
+        "unite": "%",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Temps de Quick patient": {
+        "valeur": 14.2,
+        "unite": "s",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Temps de Quick témoin": {
+        "valeur": 13.6,
+        "unite": "s",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "valeur": 29,
+        "unite": "pg",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Triglycérides (sang)": {
+        "valeur": 1.7,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Triglycérides (sang) [g/L]": {
+        "valeur": 1.5,
+        "unite": "g/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Troponine I ultrasensible (sang)": {
+        "valeur": 6,
+        "unite": "ng/L",
+        "date_heure_examen": "2026-03-26 16:30:00",
+        "date_demande": "2026-03-26 16:30:00"
+      },
+      "Urée (sang)": {
+        "valeur": 8.6,
+        "unite": "mmol/L",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "valeur": 90.4,
+        "unite": "fL",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "valeur": 10.5,
+        "unite": "fL",
+        "date_heure_examen": "2026-03-30 07:46:00",
+        "date_demande": "2026-03-30 07:46:00"
+      },
+      "p50 (sang artériel)": {
+        "valeur": 27.2,
+        "unite": "mmHg",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "pCO2 (sang artériel)": {
+        "valeur": 47.8,
+        "unite": "mmHg",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "pH (sang artériel)": {
+        "valeur": 7.399,
+        "unite": "[upH]",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      },
+      "pO2 (sang artériel)": {
+        "valeur": 33.2,
+        "unite": "mmHg",
+        "date_heure_examen": "2026-03-27 14:52:00",
+        "date_demande": "2026-03-27 14:52:00"
+      }
+    }
+  },
+  "traitements": [
+    {
+      "libelle_medicament": "FUROSEMIDE 20 MG (LABO ARROW), CPR SÉC",
+      "date_debut": "2026-03-27",
+      "date_fin": "2026-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "REPAGLINIDE 1 MG (LABO ARROW LAB), CPR",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 1,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 10,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ATORVASTATINE 20 MG (LABO EG LABO), CPR",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 20,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": null,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": true,
+      "principes_actifs": [
+        {
+          "dosage": 500,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "gélule(s) si besoin — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "DULOXETINE 30 MG (LABO ARROW), GÉLU GASTRO-RÉSISTANTE",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "gélule(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 30,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 gélule(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "INSULINE DEGLUDEC+LIRAGLUTIDE 100 U+3.6 MG/ML (XULTOPHY), SOL INJ, STYLO 3 ML",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "unité(s)",
+      "quantite_par_jour": 20,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Soir",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 300,
+          "unite": "u"
+        },
+        {
+          "dosage": 10.8,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "20 unité(s) par jour — soir — tous les jours"
+    },
+    {
+      "libelle_medicament": "BISOPROLOL 5 MG (LABO VIATRIS), CPR SÉC",
+      "date_debut": "2026-03-27",
+      "date_fin": "2026-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Matin",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — matin — tous les jours"
+    },
+    {
+      "libelle_medicament": "INSULINE ASPARTE 100 U/ML (LABO SANOFI), SOL INJ, FLAC 10 ML",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "unité(s) internationale(s)",
+      "quantite_par_jour": 0,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 1000,
+          "unite": "u"
+        }
+      ],
+      "posologie": "0 unité(s) internationale(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ACETYLSALICYLIQUE ACIDE 100 MG (ASPIRINE PROTECT), CPR GASTRO-RÉSISTANT",
+      "date_debut": "2026-03-27",
+      "date_fin": "2026-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Midi",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 100,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — midi — tous les jours"
+    },
+    {
+      "libelle_medicament": "DESLORATADINE 5 MG (LABO ARROW), CPR",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 1,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 5,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "1 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (LOVENOX), SOL INJ, SRG",
+      "date_debut": "2026-03-26",
+      "date_fin": "2026-04-25",
+      "unite_prise": "unité(s) internationale(s) anti-Xa",
+      "quantite_par_jour": 4000,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 40,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "4000 unité(s) internationale(s) anti-Xa par jour — horaires spécifiques — tous les jours"
+    },
+    {
+      "libelle_medicament": "REPAGLINIDE 2 MG (LABO ARROW LAB), CPR",
+      "date_debut": "2026-03-27",
+      "date_fin": "2026-04-26",
+      "unite_prise": "comprimé(s)",
+      "quantite_par_jour": 2,
+      "frequence_jours": "TLJ",
+      "moments_prise": "Specifique",
+      "si_besoin": false,
+      "principes_actifs": [
+        {
+          "dosage": 2,
+          "unite": "mg"
+        }
+      ],
+      "posologie": "2 comprimé(s) par jour — horaires spécifiques — tous les jours"
+    }
+  ]
+}
