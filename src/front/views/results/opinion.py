@@ -5,17 +5,17 @@ import html
 import streamlit as st
 
 from src.front.components.dialogs import alert_link, source_button, source_links
-from src.front.rendering.opinion import category, inferred_type, read_source
+from src.front.rendering.opinion import DECISION_LABELS, category, inferred_type, read_source
 
 
 def render_opinion(result, patient_id):
     """Decision and points of the pharmaceutical opinion."""
     if result is None:
-        st.info("Record not analysed.")
+        st.info("Dossier non analysé.")
         return
     if "error" in result:
         st.markdown(
-            f'<div class="decision error">Analysis failed ({result["date"]})</div>',
+            f'<div class="decision error">Échec de l’analyse ({result["date"]})</div>',
             unsafe_allow_html=True,
         )
         st.code(result["error"], language=None)
@@ -23,14 +23,14 @@ def render_opinion(result, patient_id):
 
     css_class = category(result["decision"])
     st.markdown(
-        f'<div class="decision {css_class}">{html.escape(result["decision"])}</div>', unsafe_allow_html=True
+        f'<div class="decision {css_class}">{html.escape(DECISION_LABELS[css_class])}</div>', unsafe_allow_html=True
     )
     if "points" in result:
         for number, point in enumerate(result["points"]):
             _point(point, key=f"point-{patient_id}-{number}", decision_category=css_class)
     else:  # analysis made before points were introduced: justification in one paragraph
         _legacy_opinion(result, patient_id)
-    st.markdown(f'<div class="muted">Analysed on {result["date"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="muted">Analysé le {result["date"]}</div>', unsafe_allow_html=True)
 
 
 def _point(point, key, decision_category=""):
@@ -45,7 +45,7 @@ def _point(point, key, decision_category=""):
         with st.container(horizontal=True, gap="small", vertical_alignment="center"):
             st.markdown('<span class="sources-title">Sources</span>', unsafe_allow_html=True)
             if not point["sources"]:
-                st.markdown('<span class="llm-source">model knowledge only: no alert or guideline</span>',
+                st.markdown('<span class="llm-source">connaissances du modèle uniquement : aucune alerte ni référentiel</span>',
                             unsafe_allow_html=True)
             source_links(point["sources"], key)
 

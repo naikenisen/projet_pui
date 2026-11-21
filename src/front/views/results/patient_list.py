@@ -11,12 +11,12 @@ from src.front.theme import read_asset
 
 # Filter code: (label, status codes shown; None = all)
 FILTERS = {
-    "all": ("All", None),
+    "all": ("Tous", None),
     "intervention": ("Interventions", {"intervention"}),
-    "verification": ("Verifications", {"verification"}),
-    "monitoring": ("Monitoring", {"monitoring"}),
-    "validated": ("Validated", {"validated"}),
-    "others": ("Not analysed / errors", {"not_analysed", "error"}),
+    "verification": ("Vérifications", {"verification"}),
+    "monitoring": ("Surveillances", {"monitoring"}),
+    "validated": ("Validés", {"validated"}),
+    "others": ("Non analysés / erreurs", {"not_analysed", "error"}),
 }
 
 # The height of the header (titles and filters on one or two lines) depends on the screen width: this script
@@ -46,28 +46,28 @@ def render_filters(state):
         return name if codes is None else f"{name} ({sum(state.counts[c] for c in codes)})"
 
     filter_column, search_column = st.columns([3, 1], vertical_alignment="bottom")
-    filter_column.radio("Filter", list(FILTERS), format_func=filter_label, horizontal=True,
+    filter_column.radio("Filtre", list(FILTERS), format_func=filter_label, horizontal=True,
                         label_visibility="collapsed", key="filter")
-    search_column.text_input("Search", placeholder="Identifier or drug",
+    search_column.text_input("Recherche", placeholder="Identifiant ou médicament",
                              label_visibility="collapsed", key="search")
 
 
 def render_list(state, shown):
     """Patient list, one clickable row per patient, in a scrolling area (CSS .st-key-patient-list)."""
     if not shown:
-        st.caption("No record matches the selection.")
+        st.caption("Aucun dossier ne correspond à la sélection.")
         return
 
     with st.container(key="patient-list", gap=None):
         st.markdown(
-            '<div class="patient-row header-row"><span>Patient</span><span>Status</span><span>Age</span>'
-            '<span>Treatment lines</span><span>Alerts</span><span>Analysed on</span></div>',
+            '<div class="patient-row header-row"><span>Patient</span><span>Statut</span><span>Âge</span>'
+            '<span>Lignes de traitement</span><span>Alertes</span><span>Analysé le</span></div>',
             unsafe_allow_html=True,
         )
         for record in shown:
             _patient_row(state, record)
 
-    st.caption(f"{len(shown)} record{'s' if len(shown) > 1 else ''} shown")
+    st.caption(f"{len(shown)} dossier{'s' if len(shown) > 1 else ''} affiché{'s' if len(shown) > 1 else ''}")
     with st.container(key="adjust-list"):
         components.html(LIST_HEIGHT_SCRIPT, height=0)
 
@@ -80,7 +80,7 @@ def _patient_row(state, record):
     cells = [
         f"<b>{html.escape(patient_id)}</b>",
         f'<span class="status {code}">{html.escape(state_label)}</span>',
-        f"{patient['age']} years" if patient.get("age") is not None else "—",
+        f"{patient['age']} ans" if patient.get("age") is not None else "—",
         str(len(record["treatments"])),
         str(len(result.get("alerts", []))) if result.get("alerts") else "—",
         html.escape(result.get("date", "")) or "—",
@@ -89,5 +89,5 @@ def _patient_row(state, record):
     with st.container(key=f"row-{patient_id}", gap=None):
         st.markdown('<div class="patient-row">' + "".join(f"<span>{c}</span>" for c in cells) + "</div>",
                     unsafe_allow_html=True)
-        st.button(f"Open record {patient_id}", key=f"open-{patient_id}", on_click=open_patient,
+        st.button(f"Ouvrir le dossier {patient_id}", key=f"open-{patient_id}", on_click=open_patient,
                   args=(patient_id,), use_container_width=True)

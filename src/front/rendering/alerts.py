@@ -15,12 +15,12 @@ def format_text(text):
 
 
 # ANSM Thesaurus levels: code, displayed label, from most to least severe
-LEVELS = {"CI": "Contraindication", "ASDEC": "Not recommended", "PE": "Precaution for use",
-          "APEC": "To be taken into account"}
+LEVELS = {"CI": "Contre-indication", "ASDEC": "Association déconseillée", "PE": "Précaution d'emploi",
+          "APEC": "À prendre en compte"}
 # Full level names as written in the Thesaurus (French)
 FULL_LEVELS = {"CONTRE-INDICATION": "CI", "Association DECONSEILLEE": "ASDEC", "Précaution d'emploi": "PE",
                "A prendre en compte": "APEC"}
-PHARMACOKINETIC = "Pharmacokinetic"
+PHARMACOKINETIC = "Pharmacocinétique"
 # “Interaction A + B (level) : ...” (Thesaurus) and “Interaction pharmacocinétique A + B : ...” (DDI-Predictor),
 # as written in src/kbs/generic_rules.json
 _CODE = "(?:CI|ASDEC|PE|APEC)"
@@ -57,7 +57,7 @@ def html_alert(alert):
     content = f'<div class="alert-header">{header}</div>' if header else ""
     content += format_text(message)
     if management:
-        content += f'<div class="complement"><b>Recommended action:</b><br>{format_text(management)}</div>'
+        content += f'<div class="complement"><b>Conduite à tenir :</b><br>{format_text(management)}</div>'
     if prescription:
-        content += f'<div class="prescription">Prescription: {html.escape(prescription.rstrip("]"))}</div>'
+        content += f'<div class="prescription">Prescription : {html.escape(prescription.rstrip("]"))}</div>'
     return f'<div class="alert">{content}</div>'

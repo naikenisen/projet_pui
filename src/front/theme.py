@@ -6,7 +6,7 @@ import os
 import streamlit as st
 
 HOSPITAL_NAME = "CHU Dijon Bourgogne"
-SOFTWARE_NAME = "AI-assisted pharmaceutical analysis software"
+SOFTWARE_NAME = "Logiciel d'analyse pharmaceutique assistée par IA"
 
 ASSETS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 
@@ -18,7 +18,7 @@ def read_asset(name):
 
 def configure_page():
     """Must be the first Streamlit call of the script."""
-    st.set_page_config(page_title=f"{HOSPITAL_NAME} - Pharmaceutical analysis", layout="wide")
+    st.set_page_config(page_title=f"{HOSPITAL_NAME} - Analyse pharmaceutique", layout="wide")
 
 
 def inject_style():
@@ -37,9 +37,9 @@ def render_app_bar(state):
     <span class="software">{html.escape(SOFTWARE_NAME)}</span>
   </div>
   <div class="context">
-    <span>Folder <b>{html.escape(state.folder)}</b></span>
-    <span><b>{len(state.patients)}</b> records</span>
-    <span><b>{len(state.indexed)}</b> indexed guidelines</span>
+    <span>Dossier <b>{html.escape(state.folder)}</b></span>
+    <span><b>{len(state.patients)}</b> dossiers</span>
+    <span><b>{len(state.indexed)}</b> référentiels indexés</span>
   </div>
 </div>
 """,

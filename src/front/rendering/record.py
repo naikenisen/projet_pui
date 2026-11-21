@@ -2,16 +2,20 @@
 
 import html
 
+# Interpretation of a laboratory value, as displayed
+LOW, HIGH, NORMAL = "Bas", "Élevé", "Normal"
+
+
 def patient_profile(patient):
     """Readable summary of the patient characteristics (missing fields are omitted)."""
     parts = []
     if patient.get("age") is not None:
-        parts.append(f"{patient['age']} years")
-    for key, unit in (("weight_kg", "kg"), ("height_cm", "cm"), ("bmi_kg_m2", "kg/m² (BMI)"),
-                      ("body_surface_area_m2", "m² (BSA)")):
+        parts.append(f"{patient['age']} ans")
+    for key, unit in (("weight_kg", "kg"), ("height_cm", "cm"), ("bmi_kg_m2", "kg/m² (IMC)"),
+                      ("body_surface_area_m2", "m² (SC)")):
         if patient.get(key) is not None:
             parts.append(f"{patient[key]} {unit}")
-    return " · ".join(parts) or "Age, weight and height not available"
+    return " · ".join(parts) or "Âge, poids et taille non disponibles"
 
 
 def interpretation(name, value, ranges):
@@ -19,21 +23,21 @@ def interpretation(name, value, ranges):
     if reference is None or not isinstance(value, (int, float)):
         return ""
     if value < reference["min"]:
-        return "Low"
+        return LOW
     if value > reference["max"]:
-        return "High"
-    return "Normal"
+        return HIGH
+    return NORMAL
 
 
 def biology_table(biology, ranges):
     """(rows, classes) of the laboratory table: abnormal values first, in red."""
     measures = sorted(
         ((name, measure, interpretation(name, measure.get("value"), ranges)) for name, measure in biology.items()),
-        key=lambda m: {"Low": 0, "High": 0, "Normal": 1, "": 2}[m[2]],
+        key=lambda m: {LOW: 0, HIGH: 0, NORMAL: 1, "": 2}[m[2]],
     )
     rows = [[name, f"{measure.get('value', '')} {measure.get('unit') or ''}".strip(), state,
              (measure.get("test_datetime") or "")[:16]] for name, measure, state in measures]
-    classes = ["abnormal" if state in ("Low", "High") else "" for _, _, state in measures]
+    classes = ["abnormal" if state in (LOW, HIGH) else "" for _, _, state in measures]
     return rows, classes
 
 

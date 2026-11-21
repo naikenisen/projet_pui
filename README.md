@@ -139,7 +139,7 @@ Analysis results are saved in `src/results/inference_results.json`.
 
 *Viewing a source: clicking a reference opens the PDF at the page cited by the model.*
 
-The “KBS rules” tab separates the personalized rules (added by the LLM assistant or by hand, deletion) from the generic rules (viewing and search). The “Laboratory reference ranges” tab edits `src/biology/lab_reference_ranges.json`.
+The interface is in French. In the “Règles du KBS” tab, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. Any other change (generic rules, manual editing of `src/kbs/personalized_rules.json`, laboratory reference ranges in `src/biology/lab_reference_ranges.json`) is made directly in the files, outside the interface.
 
 ### Code
 
@@ -165,24 +165,19 @@ src/front/
 │   ├── opinion.py        record status, decision category, sources
 │   ├── record.py         patient profile, laboratory and prescription tables
 │   ├── alerts.py         KBS alerts and Thesaurus level badges
-│   └── rules.py          KBS rule cards
+│   └── rules.py          personalized KBS rule card
 ├── components/           reusable Streamlit widgets
 │   ├── widgets.py        titles, labels, tables, alerts, error messages
 │   └── dialogs.py        document viewer and KBS alert dialogs, source links
 └── views/                one module per area of the screen
     ├── sidebar.py        patient folder, RAG documents, guideline upload
     ├── overview.py       title, analysis buttons, indicators
-    ├── results/          “Analysis results” tab
+    ├── results/          “Résultats d’analyse” tab
     │   ├── tab.py
     │   ├── patient_list.py
     │   ├── patient_record.py
     │   └── opinion.py
-    ├── rules/            “KBS rules” tab
-    │   ├── tab.py
-    │   ├── personalized.py   LLM assistant, rule list, manual entry, JSON editing
-    │   ├── generic.py        search and pagination of the generic rules
-    │   └── check.py          alerts of all rules for one record
-    └── biology.py        “Laboratory reference ranges” tab
+    └── rules.py          “Règles du KBS” tab: LLM assistant, proposed rule, rule list with deletion
 ```
 
 `services/` and `rendering/` do not import Streamlit: they can be tested without running the interface.

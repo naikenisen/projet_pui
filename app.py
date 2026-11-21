@@ -1,4 +1,4 @@
-"""Streamlit interface: patient analysis, RAG documents, KBS rules and laboratory reference ranges.
+"""Streamlit interface: patient analysis, RAG documents and personalized KBS rules.
 
 Run from the project root:  streamlit run app.py
 
@@ -15,10 +15,9 @@ import streamlit as st
 
 from src.front import theme
 from src.front.state import build_state
-from src.front.views.biology import render_biology_tab
 from src.front.views.overview import render_overview
 from src.front.views.results.tab import render_results_tab
-from src.front.views.rules.tab import render_rules_tab
+from src.front.views.rules import render_rules_tab
 from src.front.views.sidebar import render_sidebar
 
 theme.configure_page()
@@ -30,10 +29,8 @@ state = build_state(folder, patients, indexed)
 theme.render_app_bar(state)
 render_overview(state)
 
-results_tab, rules_tab, biology_tab = st.tabs(["Analysis results", "KBS rules", "Laboratory reference ranges"])
+results_tab, rules_tab = st.tabs(["Résultats d'analyse", "Règles du KBS"])
 with results_tab:
     render_results_tab(state)
 with rules_tab:
     render_rules_tab(state)
-with biology_tab:
-    render_biology_tab(state)

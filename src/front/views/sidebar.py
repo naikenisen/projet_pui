@@ -20,69 +20,69 @@ def render_sidebar():
 
 
 def _patient_base():
-    section_title("Patient base")
+    section_title("Base patients")
     folder = st.text_input(
-        "Inference folder", value=PATIENTS_FOLDER, key="patients_folder",
-        help="Folder containing one JSON file per patient (path relative to the project root, or absolute).",
+        "Dossier d'inférence", value=PATIENTS_FOLDER, key="patients_folder",
+        help="Dossier contenant un fichier JSON par patient (chemin relatif à la racine du projet ou absolu).",
     ).strip()
     if os.path.isdir(folder):
         try:
             patients = load_patients(folder)
         except Exception as error:
             patients = []
-            st.error(f"Unable to read the patient records: {error}")
+            st.error(f"Lecture des dossiers patients impossible : {error}")
     else:
         patients = []
-        st.error(f"The folder “{folder}” does not exist.")
-    st.metric("Patient records", len(patients))
+        st.error(f"Le dossier « {folder} » n'existe pas.")
+    st.metric("Dossiers patients", len(patients))
     return folder, patients
 
 
 def _rag_documents():
     """Indexed documents (click to view) and documents of the folder waiting to be indexed."""
-    section_title("RAG documents")
+    section_title("Documents du RAG")
     try:
         indexed = indexed_documents()
     except Exception as error:
         indexed = {}
-        st.error(f"Unable to read the vector database: {error}")
+        st.error(f"Lecture de la base vectorielle impossible : {error}")
 
     if indexed:
-        st.caption("Indexed guidelines. Click to view.")
+        st.caption("Référentiels indexés. Cliquer pour consulter.")
         for name, passage_count in indexed.items():
             if st.button(f"{name}  ·  {passage_count} passages", key=f"doc-{name}", use_container_width=True):
                 open_document(name)
     else:
-        st.info("No indexed guideline.")
+        st.info("Aucun référentiel indexé.")
 
     not_indexed = [name for name in folder_documents() if name not in indexed]
     if not_indexed:
-        st.caption("Documents waiting to be indexed")
+        st.caption("Documents en attente d'indexation")
         for name in not_indexed:
             name_column, button_column = st.columns([3, 2], vertical_alignment="center")
             name_column.markdown(f"`{name}`")
-            if button_column.button("Index", key=f"index-{name}", use_container_width=True):
-                with st.spinner(f"Indexing {name}..."):
+            if button_column.button("Indexer", key=f"index-{name}", use_container_width=True):
+                with st.spinner(f"Indexation de {name} en cours..."):
                     count = index_pdf(document_path(name))
-                st.toast(f"{name}: {count} passages indexed")
+                st.toast(f"{name} : {count} passages indexés")
                 st.rerun()
     return indexed
 
 
 def _add_guideline():
-    section_title("Add a guideline")
+    section_title("Ajouter un référentiel")
     with st.form("add_document", clear_on_submit=True, border=False):
         files = st.file_uploader(
-            "PDF documents", type="pdf", accept_multiple_files=True, label_visibility="collapsed",
-            help="The document is saved in the RAG documents, then indexed.",
+            "Documents PDF", type="pdf", accept_multiple_files=True, label_visibility="collapsed",
+            help="Le document est enregistré dans les documents du RAG, puis indexé.",
         )
-        submitted = st.form_submit_button("Index the documents", use_container_width=True)
+        submitted = st.form_submit_button("Indexer les documents", use_container_width=True)
     if submitted and files:
         for file in files:
-            with st.spinner(f"Indexing {file.name}..."):
+            with st.spinner(f"Indexation de {file.name} en cours..."):
                 try:
                     count = index_pdf(save_pdf(file.name, file.getvalue()))
-                    st.toast(f"{file.name}: {count} passages indexed")
+                    st.toast(f"{file.name} : {count} passages indexés")
                 except Exception as error:
-                    st.error(f"{file.name}: {error}")
+                    st.error(f"{file.name} : {error}")
         st.rerun()

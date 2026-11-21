@@ -7,7 +7,7 @@ from kbs import normalize
 # Category of each decision, recognised by a keyword (tolerates small variations in the LLM wording).
 # The most severe ones are searched first.
 CATEGORIES = (("intervention", "intervention"), ("verif", "verification"), ("monitor", "monitoring"),
-              ("valid", "validated"))
+              ("surveill", "monitoring"), ("valid", "validated"))
 
 
 def category(decision):
@@ -32,12 +32,19 @@ def read_source(source):
 
 
 STATUS_LABELS = {
-    "intervention": "Intervention proposed",
-    "verification": "Verification proposed",
-    "monitoring": "Monitoring proposed",
-    "validated": "Validated",
-    "error": "Analysis error",
-    "not_analysed": "Not analysed",
+    "intervention": "Intervention proposée",
+    "verification": "Vérification proposée",
+    "monitoring": "Surveillance proposée",
+    "validated": "Validé",
+    "error": "Erreur d'analyse",
+    "not_analysed": "Non analysé",
+}
+# Decision shown in the opinion, by category (the LLM writes it in English, see generation.py)
+DECISION_LABELS = {
+    "intervention": "INTERVENTION PHARMACEUTIQUE PROPOSÉE",
+    "verification": "VÉRIFICATION PROPOSÉE",
+    "monitoring": "SURVEILLANCE PROPOSÉE",
+    "validated": "PATIENT VALIDÉ",
 }
 # Records requiring an action are listed first
 STATUS_ORDER = {"intervention": 0, "verification": 1, "monitoring": 2, "error": 3, "not_analysed": 4, "validated": 5}
@@ -61,6 +68,6 @@ def inferred_type(text, decision_category):
     start = normalize(text)[:60]
     if "verif" in start:
         return "verification"
-    if "monitor" in start:
+    if "monitor" in start or "surveill" in start:
         return "monitoring"
     return "validation" if decision_category == "validated" else decision_category
