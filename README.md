@@ -158,9 +158,7 @@ ui/
 ├── RAG_documents.py      “Documents du RAG” page: indexed guidelines, indexing (indexing.index_pdf), upload;
 │                         PDF viewer also opened from the sources of the opinion
 ├── common.py             shared by the pages: page frame, patient records of dataset/, small helpers
-└── assets/
-    ├── style.css         style of the whole interface
-    └── list_height.html  script giving the patient list the remaining screen height
+└── style.css             style of the whole interface
 ```
 
 ---

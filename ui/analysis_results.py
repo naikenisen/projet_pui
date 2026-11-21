@@ -14,7 +14,6 @@ import sys
 from dataclasses import dataclass, field
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 import main
 from generation import (
@@ -26,7 +25,7 @@ from generation import (
     read_lab_ranges,
 )
 from ui.RAG_documents import open_document
-from ui.common import PATIENTS_FOLDER, badge, label, load_patients, read_asset
+from ui.common import PATIENTS_FOLDER, badge, label, load_patients
 
 
 def render_page():
@@ -221,11 +220,6 @@ FILTERS = {
     "others": ("Non analysés / erreurs", {"not_analysed", "error"}),
 }
 
-# The height of the header (titles and filters on one or two lines) depends on the screen width: this script
-# (in an invisible frame) gives the list all the remaining height, so that the page itself does not scroll.
-# Without it, the height is the one from the CSS (.st-key-patient-list).
-LIST_HEIGHT_SCRIPT = read_asset("list_height.html")
-
 
 def filtered_patients(state):
     """Records matching the selected filter and the search (identifier or drug), records needing action first."""
@@ -268,9 +262,6 @@ def _render_list(state, shown):
         )
         for record in shown:
             _patient_row(state, record)
-
-    with st.container(key="adjust-list"):
-        components.html(LIST_HEIGHT_SCRIPT, height=0)
 
 
 def _patient_row(state, record):

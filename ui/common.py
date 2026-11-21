@@ -9,7 +9,7 @@ from kbs import load_patient
 
 HOSPITAL_NAME = "CHU Dijon Bourgogne"
 SOFTWARE_NAME = "Logiciel d'analyse pharmaceutique assistée par IA"
-ASSETS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+STYLE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "style.css")
 PATIENTS_FOLDER = "dataset"  # patient records of the interface (one JSON file per patient), relative to the root
 
 
@@ -17,19 +17,15 @@ PATIENTS_FOLDER = "dataset"  # patient records of the interface (one JSON file p
 # Page frame
 # ---------------------------------------------------------------------------
 
-def read_asset(name):
-    with open(os.path.join(ASSETS_FOLDER, name), encoding="utf-8") as file:
-        return file.read()
-
-
 def configure_page():
     """Must be the first Streamlit call of the script."""
     st.set_page_config(page_title=f"{HOSPITAL_NAME} - Analyse pharmaceutique", layout="wide")
 
 
 def inject_style():
-    """Style of the whole interface (assets/style.css). The light theme is in .streamlit/config.toml."""
-    st.markdown(f"<style>\n{read_asset('style.css')}</style>", unsafe_allow_html=True)
+    """Style of the whole interface (ui/style.css). The light theme is in .streamlit/config.toml."""
+    with open(STYLE_FILE, encoding="utf-8") as file:
+        st.markdown(f"<style>\n{file.read()}</style>", unsafe_allow_html=True)
 
 
 def render_app_bar():

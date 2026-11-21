@@ -140,12 +140,12 @@ div.st-key-zone-opinion { height: calc((100vh - 360px) * 0.5) !important; min-he
 .data-table th { position: sticky; top: 0; z-index: 1; }
 
 /* Patient list: aligned columns (grid), each row covered by an invisible button.
-   The list scrolls on its own in a screen-high area (the page does not); the column header stays visible. */
+   The list scrolls on its own in a screen-high area (the page does not); the column header stays visible.
+   360px: approximate height of what is above the list (application bar, pages, title, indicators, filters). */
 div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; background: var(--surface);
     margin-top: 0.4rem; overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
-    max-height: calc(100vh - 400px) !important; min-height: 200px; }
+    max-height: calc(100vh - 360px) !important; min-height: 200px; }
 .st-key-patient-list > div:first-child { position: sticky; top: 0; z-index: 3; }
-.st-key-adjust-list { display: none; }
 .st-key-patient-list [data-testid="stMarkdownContainer"] { margin-bottom: 0 !important; }
 .patient-row {
     display: grid; grid-template-columns: 9rem 13rem 6rem 10rem 6rem 1fr; align-items: center;
