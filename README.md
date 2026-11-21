@@ -35,7 +35,7 @@ The indexing must be run before the first analysis (see [Indexing](#indexing)).
 
 | Script | Role |
 |---|---|
-| `main.py` | Analyses every patient of a folder with the KBS, the RAG and the LLM |
+| `main.py` | Analyses the patients of a folder with the KBS, the RAG and the LLM, and saves the results |
 | `indexing.py` | Indexes the guidelines (PDF) in a vector database (ChromaDB) |
 | `retrieval.py` | Searches the vector database for the passages useful for a patient |
 | `kbs.py` | Knowledge-Based System (KBS): applies the deterministic rules; has the LLM draft a new rule |
@@ -44,12 +44,13 @@ The indexing must be run before the first analysis (see [Indexing](#indexing)).
 ### Full pipeline
 
 ```bash
-python3 main.py --folder dataset
+python3 main.py --remaining   # patients without a result (or whose analysis failed)
+python3 main.py --all         # all patients: the results file is overwritten
 ```
 
-Use `--folder full_dataset` to analyse the full dataset.
+The folder is `dataset` by default; use `--folder full_dataset` to analyse the full dataset.
 
-Prints for each patient: its identifier, the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the justification and the sources cited by the model.
+Each result is saved in `src/results/inference_results.json` as soon as the patient is analysed: the decision (`PATIENT VALIDATED`, `MONITORING PROPOSED`, `VERIFICATION PROPOSED` or `PHARMACEUTICAL INTERVENTION PROPOSED`), the typed points with their sources, the KBS alerts and the date. An error is stored in the result of the patient instead of stopping the run.
 
 ### Indexing
 
@@ -129,7 +130,7 @@ streamlit run app.py
 ```
 
 The inference folder (`dataset` by default, or `full_dataset`) is chosen in the sidebar.
-Analysis results are saved in `src/results/inference_results.json`.
+The two analysis buttons run `main.py --remaining` and `main.py --all`; results are read from `src/results/inference_results.json`.
 
 ![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 
@@ -150,7 +151,7 @@ area of the screen can be changed without reading the rest. The backend scripts 
 ```
 app.py                    entry point: page configuration, sidebar, overview, tabs
 src/results/
-└── inference_results.json  analysis results saved by the interface
+└── inference_results.json  analysis results saved by main.py
 src/front/
 ├── theme.py              page configuration, style injection, application bar
 ├── state.py              AppState (data shared by the views during one run) and patient navigation
@@ -158,8 +159,8 @@ src/front/
 │   ├── style.css         style of the whole interface
 │   └── list_height.html  script giving the patient list the remaining screen height
 ├── services/             data access and backend calls, no Streamlit
-│   ├── data.py           patient files, laboratory reference ranges, inference results
-│   ├── analysis.py       analysis of one patient (KBS + RAG + LLM) and saving of the result
+│   ├── data.py           patient files, laboratory reference ranges
+│   ├── analysis.py       runs main.py (--all / --remaining), re-analysis of one patient
 │   └── documents.py      RAG documents: list, indexing, page rendering
 ├── rendering/            HTML generation, no Streamlit
 │   ├── opinion.py        record status, decision category, sources

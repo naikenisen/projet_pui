@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 import streamlit as st
 
 from src.front.rendering.opinion import STATUS_LABELS, STATUS_ORDER, status
-from src.front.services.data import load_results
+from src.front.services.analysis import load_results
 
 
 @dataclass

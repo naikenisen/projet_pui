@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from src.front.services.analysis import analyse_and_save
+from src.front.services.analysis import run_main
 from src.front.state import open_patient_id
 
 
@@ -33,7 +33,7 @@ def render_overview(state):
     _indicators(state)
 
     if run or rerun_all:
-        _run_analysis(state, state.patients if rerun_all else state.to_analyse)
+        _run_analysis(state, all_patients=rerun_all)
 
 
 def _indicators(state):
@@ -55,12 +55,16 @@ def _indicators(state):
     )
 
 
-def _run_analysis(state, selection):
-    """Analyses the selected records one by one with a progress bar; results are saved as we go."""
+def _run_analysis(state, all_patients):
+    """Runs main.py (--all or --remaining) with a progress bar; main.py saves each result as it goes."""
+    total = len(state.patients if all_patients else state.to_analyse)
     bar = st.progress(0.0, text="Analyse en cours...")
-    for number, record in enumerate(selection, start=1):
-        patient_id = record["patient"]["id"]
-        bar.progress((number - 1) / len(selection), text=f"Analyse du dossier {patient_id} ({number}/{len(selection)})")
-        analyse_and_save(state.results, record)
+    try:
+        for number, patient_id in enumerate(run_main(state.folder, all_patients), start=1):
+            bar.progress(min(number / total, 1.0), text=f"Dossier {patient_id} analysé ({number}/{total})")
+    except Exception as error:
+        bar.empty()
+        st.error(f"Échec de main.py : {error}")
+        return
     bar.empty()
     st.rerun()

@@ -1,6 +1,6 @@
-"""Reading and writing of the project's JSON files (patients, laboratory ranges, inference results).
+"""Reading of the patient files and of the laboratory reference ranges.
 
-KBS rules are handled by kbs.py (src/kbs/)."""
+Inference results are read and written by main.py, KBS rules by kbs.py (src/kbs/)."""
 
 import json
 import os
@@ -8,8 +8,6 @@ import os
 from generation import LAB_RANGES_FILE
 
 PATIENTS_FOLDER = "dataset"  # default folder: one JSON file per patient
-SRC_FOLDER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-RESULTS_FILE = os.path.join(SRC_FOLDER, "results", "inference_results.json")
 
 
 def read_json(path, default=None):
@@ -17,12 +15,6 @@ def read_json(path, default=None):
         return default
     with open(path, encoding="utf-8") as file:
         return json.load(file)
-
-
-def write_json(path, data):
-    with open(path, "w", encoding="utf-8") as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
-        file.write("\n")
 
 
 def patient_files(folder):
@@ -38,12 +30,3 @@ def load_patients(folder=PATIENTS_FOLDER):
 
 def load_lab_ranges():
     return read_json(LAB_RANGES_FILE, {})
-
-
-def load_results():
-    return read_json(RESULTS_FILE, {})
-
-
-def save_results(results):
-    write_json(RESULTS_FILE, results)
-
