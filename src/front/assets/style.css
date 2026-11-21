@@ -26,8 +26,6 @@ html { font-size: 15.5px; }
 .app-bar .hospital { font-weight: 700; letter-spacing: 0.02em; }
 .app-bar .separator { width: 1px; height: 22px; background: rgba(255,255,255,0.35); }
 .app-bar .software { color: rgba(255,255,255,0.85); font-weight: 400; }
-.app-bar .context { font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.25rem; }
-.app-bar .context b { color: #FFFFFF; font-weight: 600; }
 [data-testid="stHeader"] { top: var(--bar-height); background: transparent; height: 2.5rem; }
 .block-container { padding-top: calc(var(--bar-height) + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }
 

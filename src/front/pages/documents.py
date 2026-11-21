@@ -1,19 +1,20 @@
-"""“RAG documents” tab: indexed guidelines (viewing), PDFs waiting to be indexed and upload of new guidelines."""
+"""“Documents du RAG” page: indexed guidelines (viewing), PDFs waiting to be indexed and upload of new guidelines."""
 
 import streamlit as st
 
 from src.front.components.dialogs import open_document
 from src.front.components.widgets import label
-from src.front.services.documents import document_path, folder_documents, index_pdf, save_pdf
+from src.front.services.documents import document_path, folder_documents, index_pdf, indexed_documents, save_pdf
 
 
-def render_documents_tab(state):
+def render_documents_page():
     st.caption(
         "Référentiels (PDF) dans lesquels le RAG recherche les passages utiles à l'analyse de chaque patient. "
         "Les documents sont enregistrés dans src/rag/RAG_Docs/ et indexés dans la base vectorielle."
     )
-    _indexed(state.indexed)
-    _not_indexed(state.indexed)
+    indexed = indexed_documents()
+    _indexed(indexed)
+    _not_indexed(indexed)
     _add_guideline()
 
 

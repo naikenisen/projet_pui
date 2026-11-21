@@ -6,7 +6,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from src.front.rendering.opinion import status
-from src.front.state import open_patient
+from src.front.pages.results.state import open_patient
 from src.front.theme import read_asset
 
 # Filter code: (label, status codes shown; None = all)

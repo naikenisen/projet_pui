@@ -9,8 +9,8 @@ from src.front.rendering.opinion import STATUS_COLORS, status
 from src.front.rendering.record import biology_table, lines_to_modify, patient_profile, prescription_table
 from src.front.services.analysis import analyse_and_save
 from src.front.services.data import load_lab_ranges
-from src.front.state import close_patient, open_patient, open_patient_id
-from src.front.views.results.opinion import render_opinion
+from src.front.pages.results.state import close_patient, open_patient, open_patient_id
+from src.front.pages.results.opinion import render_opinion
 
 
 def render_record(state, shown):

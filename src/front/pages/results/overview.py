@@ -1,16 +1,11 @@
-"""Top of the page: title, analysis button and indicator strip. Hidden when a patient record is open."""
+"""Top of the “Résultats d'analyse” page: title, analysis button and indicator strip."""
 
 import streamlit as st
 
 from src.front.services.analysis import run_main
-from src.front.state import open_patient_id
 
 
 def render_overview(state):
-    # Open record: header and indicators hidden so that the record fits on the screen without scrolling
-    if open_patient_id():
-        return
-
     title_column, action_column = st.columns([3, 1], vertical_alignment="center")
     title_column.markdown(
         '<p class="page-title">Analyse des prescriptions</p>'

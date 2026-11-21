@@ -1,4 +1,4 @@
-"""“KBS rules” tab: personalized rules drafted by the LLM assistant, review before saving, list with deletion.
+"""“Règles du KBS” page: personalized rules drafted by the LLM assistant, review before saving, list with deletion.
 
 The generic rules (src/kbs/generic_rules.json) are not shown: they are applied during the analysis only.
 Personalized rules are edited by hand in src/kbs/personalized_rules.json, outside the interface.
@@ -16,19 +16,30 @@ from kbs import (
 )
 from src.front.components.widgets import label, show_errors
 from src.front.rendering.rules import personalized_rule_card
+from src.front.services.data import load_patients
 
 
-def render_rules_tab(state):
+def render_rules_page():
     st.caption(
         "Une règle personnalisée du Knowledge-Based System (KBS) se déclenche lorsque l'ensemble de ses critères "
         "est vérifié. Elle est rédigée par l'assistant à partir d'une demande en langage naturel, puis vérifiée "
         "avant enregistrement. Les règles génériques (Thésaurus ANSM, DDI-Predictor) sont aussi appliquées lors "
         "de l'analyse."
     )
-    biology_parameters = state.biology_parameters()
+    patients = load_patients()
+    biology_parameters = _biology_parameters(patients)
     _assistant(biology_parameters)
-    _proposed_rule(state, biology_parameters)
+    _proposed_rule(patients, biology_parameters)
     _rule_list(load_personalized_rules(), biology_parameters)
+
+
+def _biology_parameters(patients):
+    """{laboratory parameter: unit} of the patient records (the LLM must use their exact name in rules)."""
+    parameters = {}
+    for record in patients:
+        for key, measure in record["patient"].get("biology", {}).items():
+            parameters.setdefault(key, measure.get("unit") or "")
+    return parameters
 
 
 # ---------------------------------------------------------------------------
@@ -54,7 +65,7 @@ def _assistant(biology_parameters):
                 st.error(f"Le modèle n'a pas pu rédiger de règle : {error}")
 
 
-def _proposed_rule(state, biology_parameters):
+def _proposed_rule(patients, biology_parameters):
     """Card, warnings and number of records that would trigger it, then Save / Cancel."""
     proposed = st.session_state.get("proposed_rule")
     if not proposed:
@@ -63,8 +74,8 @@ def _proposed_rule(state, biology_parameters):
     st.markdown(personalized_rule_card(proposed, biology_parameters), unsafe_allow_html=True)
     for name in unknown_variables(proposed, biology_parameters):
         st.warning(f"La donnée « {name} » n'existe pas dans les dossiers : cette condition sera toujours fausse.")
-    triggers = sum(1 for r in state.patients if apply_rules(r, [proposed]))
-    st.caption(f"Se déclencherait pour {triggers} dossier(s) sur {len(state.patients)}.")
+    triggers = sum(1 for r in patients if apply_rules(r, [proposed]))
+    st.caption(f"Se déclencherait pour {triggers} dossier(s) sur {len(patients)}.")
     with st.expander("JSON de la règle"):
         st.json(proposed)
     save_column, cancel_column, _ = st.columns([1, 1, 3])
