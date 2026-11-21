@@ -80,11 +80,11 @@ Le dossier d'inférence (par défaut `dataset`) se choisit dans la barre latéra
 
 Les résultats des analyses sont enregistrés dans `resultats.json`.
 
-![Liste des dossiers analysés : indicateurs, filtres, avis pharmaceutique, alertes du système expert et sources citées](interface_screenshot_1.png)
+![Liste des dossiers analysés : indicateurs, filtres, avis pharmaceutique, alertes du système expert et sources citées](paper/interface_screenshot_1.png)
 
 *Résultats d'analyse : pour chaque patient, profil, biologie, prescription, avis pharmaceutique, alertes du système expert et sources cliquables.*
 
-![Consultation d'une source citée : le PDF s'ouvre directement à la page référencée](interface_screenshot_2.png)
+![Consultation d'une source citée : le PDF s'ouvre directement à la page référencée](paper/interface_screenshot_2.png)
 
 *Consultation d'une source : un clic sur une référence ouvre le PDF à la page citée par le modèle.*
 
