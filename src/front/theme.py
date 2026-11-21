@@ -27,7 +27,7 @@ def inject_style():
 
 
 def render_app_bar(state):
-    """Dark bar fixed at the top of the page: hospital, software, current folder and counts."""
+    """Dark bar fixed at the top of the page: hospital, software, number of records and indexed guidelines."""
     st.markdown(
         f"""
 <div class="app-bar">
@@ -37,7 +37,6 @@ def render_app_bar(state):
     <span class="software">{html.escape(SOFTWARE_NAME)}</span>
   </div>
   <div class="context">
-    <span>Dossier <b>{html.escape(state.folder)}</b></span>
     <span><b>{len(state.patients)}</b> dossiers</span>
     <span><b>{len(state.indexed)}</b> référentiels indexés</span>
   </div>

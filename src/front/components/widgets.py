@@ -8,11 +8,6 @@ from src.front.rendering.alerts import html_alert
 from src.front.rendering.record import html_table
 
 
-def section_title(text):
-    """Uppercase title of a sidebar section."""
-    st.markdown(f'<div class="section-title">{html.escape(text)}</div>', unsafe_allow_html=True)
-
-
 def label(text):
     """Uppercase label above a block of the page."""
     st.markdown(f'<div class="label">{html.escape(text)}</div>', unsafe_allow_html=True)

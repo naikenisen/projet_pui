@@ -5,14 +5,17 @@ import subprocess
 import sys
 
 import main
+from src.front.services.data import PATIENTS_FOLDER
 
 MAIN_SCRIPT = os.path.abspath(main.__file__)
 load_results = main.load_results
 
 
-def run_main(folder, all_patients):
-    """Runs `main.py --all` or `main.py --remaining` on the folder; yields the id of each analysed patient."""
-    command = [sys.executable, "-u", MAIN_SCRIPT, "--all" if all_patients else "--remaining", "--folder", folder]
+def run_main():
+    """Runs `main.py --remaining` on dataset/; yields the id of each analysed patient.
+
+    `main.py --all` (re-analysis of all the patients) is run by hand, not from the interface."""
+    command = [sys.executable, "-u", MAIN_SCRIPT, "--remaining", "--folder", PATIENTS_FOLDER]
     other_lines = []
     with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
                           cwd=os.path.dirname(MAIN_SCRIPT)) as process:

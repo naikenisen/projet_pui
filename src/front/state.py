@@ -10,12 +10,13 @@ import streamlit as st
 
 from src.front.rendering.opinion import STATUS_LABELS, STATUS_ORDER, status
 from src.front.services.analysis import load_results
+from src.front.services.data import load_patients
+from src.front.services.documents import indexed_documents
 
 
 @dataclass
 class AppState:
-    folder: str  # inference folder chosen in the sidebar
-    patients: list  # patient records of the folder
+    patients: list  # patient records of dataset/
     indexed: dict  # {pdf name: passage count} of the RAG documents
     results: dict = field(default_factory=dict)  # {patient id: analysis result}
     statuses: dict = field(default_factory=dict)  # {patient id: status code}
@@ -24,7 +25,7 @@ class AppState:
 
     @property
     def to_analyse(self):
-        """Records analysed by “Run the analysis”: never analysed or failed."""
+        """Records analysed by “Lancer l'analyse”: never analysed or failed."""
         return [r for r in self.patients if self.statuses[r["patient"]["id"]] in ("not_analysed", "error")]
 
     def biology_parameters(self):
@@ -36,12 +37,15 @@ class AppState:
         return parameters
 
 
-def build_state(folder, patients, indexed):
+def build_state():
+    """Reads the patient records of dataset/, the indexed RAG documents and the inference results."""
+    patients = load_patients()
+    indexed = indexed_documents()
     results = load_results()
     statuses = {r["patient"]["id"]: status(results.get(r["patient"]["id"]))[0] for r in patients}
     counts = {code: list(statuses.values()).count(code) for code in STATUS_LABELS}
     sorted_patients = sorted(patients, key=lambda r: STATUS_ORDER[statuses[r["patient"]["id"]]])
-    return AppState(folder, patients, indexed, results, statuses, counts, sorted_patients)
+    return AppState(patients, indexed, results, statuses, counts, sorted_patients)
 
 
 # ---------------------------------------------------------------------------

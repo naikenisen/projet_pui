@@ -1,4 +1,4 @@
-"""Top of the page: title, analysis buttons and indicator strip. Hidden when a patient record is open."""
+"""Top of the page: title, analysis button and indicator strip. Hidden when a patient record is open."""
 
 import streamlit as st
 
@@ -11,29 +11,24 @@ def render_overview(state):
     if open_patient_id():
         return
 
-    title_column, action_column, rerun_column = st.columns([2, 1, 1], vertical_alignment="center")
+    title_column, action_column = st.columns([3, 1], vertical_alignment="center")
     title_column.markdown(
         '<p class="page-title">Analyse des prescriptions</p>'
         '<p class="page-subtitle">Knowledge-Based System (KBS), référentiels et modèle de langage</p>',
         unsafe_allow_html=True,
     )
     run = action_column.button(
-        f"Lancer l'analyse ({len(state.to_analyse)} dossiers)",
+        f"Lancer l'analyse ({len(state.to_analyse)} dossiers)" if state.to_analyse
+        else "Tous les patients ont été analysés",
         type="primary",
         disabled=not state.to_analyse,
         use_container_width=True,
         help="Analyse uniquement les dossiers non analysés ou en erreur",
     )
-    rerun_all = rerun_column.button(
-        "Relancer l'analyse de tous les patients",
-        disabled=not state.patients,
-        use_container_width=True,
-        help="Analyse à nouveau tous les dossiers, y compris ceux déjà analysés",
-    )
     _indicators(state)
 
-    if run or rerun_all:
-        _run_analysis(state, all_patients=rerun_all)
+    if run:
+        _run_analysis(state)
 
 
 def _indicators(state):
@@ -55,12 +50,12 @@ def _indicators(state):
     )
 
 
-def _run_analysis(state, all_patients):
-    """Runs main.py (--all or --remaining) with a progress bar; main.py saves each result as it goes."""
-    total = len(state.patients if all_patients else state.to_analyse)
+def _run_analysis(state):
+    """Runs main.py --remaining with a progress bar; main.py saves each result as it goes."""
+    total = len(state.to_analyse)
     bar = st.progress(0.0, text="Analyse en cours...")
     try:
-        for number, patient_id in enumerate(run_main(state.folder, all_patients), start=1):
+        for number, patient_id in enumerate(run_main(), start=1):
             bar.progress(min(number / total, 1.0), text=f"Dossier {patient_id} analysé ({number}/{total})")
     except Exception as error:
         bar.empty()

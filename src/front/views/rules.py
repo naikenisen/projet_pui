@@ -64,7 +64,7 @@ def _proposed_rule(state, biology_parameters):
     for name in unknown_variables(proposed, biology_parameters):
         st.warning(f"La donnée « {name} » n'existe pas dans les dossiers : cette condition sera toujours fausse.")
     triggers = sum(1 for r in state.patients if apply_rules(r, [proposed]))
-    st.caption(f"Se déclencherait pour {triggers} dossier(s) sur {len(state.patients)} du dossier « {state.folder} ».")
+    st.caption(f"Se déclencherait pour {triggers} dossier(s) sur {len(state.patients)}.")
     with st.expander("JSON de la règle"):
         st.json(proposed)
     save_column, cancel_column, _ = st.columns([1, 1, 3])

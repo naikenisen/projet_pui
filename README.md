@@ -129,8 +129,8 @@ Prints the decision and the justification (without KBS alerts or guideline excer
 streamlit run app.py
 ```
 
-The inference folder (`dataset` by default, or `full_dataset`) is chosen in the sidebar.
-The two analysis buttons run `main.py --remaining` and `main.py --all`; results are read from `src/results/inference_results.json`.
+The interface always works on the patients of `dataset/`; `full_dataset/` is analysed from the command line only (`python3 main.py --remaining --folder full_dataset`).
+The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `src/results/inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
 
 ![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
 
@@ -140,7 +140,7 @@ The two analysis buttons run `main.py --remaining` and `main.py --all`; results 
 
 *Viewing a source: clicking a reference opens the PDF at the page cited by the model.*
 
-The interface is in French. In the “Règles du KBS” tab, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. Any other change (generic rules, manual editing of `src/kbs/personalized_rules.json`, laboratory reference ranges in `src/biology/lab_reference_ranges.json`) is made directly in the files, outside the interface.
+The interface is in French. In the “Règles du KBS” tab, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. The “Documents du RAG” tab lists the indexed guidelines (click to view), indexes the PDFs added to `src/rag/RAG_Docs/` and uploads new ones. Any other change (generic rules, manual editing of `src/kbs/personalized_rules.json`, laboratory reference ranges in `src/biology/lab_reference_ranges.json`) is made directly in the files, outside the interface.
 
 ### Code
 
@@ -149,7 +149,7 @@ area of the screen can be changed without reading the rest. The backend scripts 
 `src/front/services/`.
 
 ```
-app.py                    entry point: page configuration, sidebar, overview, tabs
+app.py                    entry point: page configuration, overview, tabs
 src/results/
 └── inference_results.json  analysis results saved by main.py
 src/front/
@@ -160,7 +160,7 @@ src/front/
 │   └── list_height.html  script giving the patient list the remaining screen height
 ├── services/             data access and backend calls, no Streamlit
 │   ├── data.py           patient files, laboratory reference ranges
-│   ├── analysis.py       runs main.py (--all / --remaining), re-analysis of one patient
+│   ├── analysis.py       runs main.py --remaining, re-analysis of one patient
 │   └── documents.py      RAG documents: list, indexing, page rendering
 ├── rendering/            HTML generation, no Streamlit
 │   ├── opinion.py        record status, decision category, sources
@@ -171,14 +171,14 @@ src/front/
 │   ├── widgets.py        titles, labels, tables, alerts, error messages
 │   └── dialogs.py        document viewer and KBS alert dialogs, source links
 └── views/                one module per area of the screen
-    ├── sidebar.py        patient folder, RAG documents, guideline upload
-    ├── overview.py       title, analysis buttons, indicators
+    ├── overview.py       title, analysis button, indicators
     ├── results/          “Résultats d’analyse” tab
     │   ├── tab.py
     │   ├── patient_list.py
     │   ├── patient_record.py
     │   └── opinion.py
-    └── rules.py          “Règles du KBS” tab: LLM assistant, proposed rule, rule list with deletion
+    ├── rules.py          “Règles du KBS” tab: LLM assistant, proposed rule, rule list with deletion
+    └── documents.py      “Documents du RAG” tab: indexed guidelines, indexing, upload of new PDFs
 ```
 
 `services/` and `rendering/` do not import Streamlit: they can be tested without running the interface.

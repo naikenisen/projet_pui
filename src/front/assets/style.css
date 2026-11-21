@@ -29,16 +29,7 @@ html { font-size: 15.5px; }
 .app-bar .context { font-size: 0.85rem; color: rgba(255,255,255,0.75); display: flex; gap: 1.25rem; }
 .app-bar .context b { color: #FFFFFF; font-weight: 600; }
 [data-testid="stHeader"] { top: var(--bar-height); background: transparent; height: 2.5rem; }
-[data-testid="stSidebar"] { top: var(--bar-height); height: calc(100vh - var(--bar-height)); }
 .block-container { padding-top: calc(var(--bar-height) + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }
-
-/* Sidebar */
-[data-testid="stSidebar"] { background: var(--surface); border-right: 1px solid var(--border); }
-[data-testid="stSidebar"] .stButton > button { justify-content: flex-start; text-align: left; }
-.section-title {
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-3); margin: 1rem 0 0.4rem 0; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border);
-}
 
 /* Page header and indicator strip */
 .page-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 0; }
@@ -56,9 +47,6 @@ html { font-size: 15.5px; }
 .indicator.red .value { color: var(--red); }
 .indicator.purple .value { color: var(--purple); }
 .indicator.blue .value { color: var(--blue); }
-[data-testid="stMetric"] { padding: 0; }
-[data-testid="stMetricLabel"] p { color: var(--text-3); font-size: 0.75rem; }
-[data-testid="stMetricValue"] { font-size: 1.4rem; font-weight: 600; }
 
 /* Components: plain corners, thin borders */
 .stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] > button {

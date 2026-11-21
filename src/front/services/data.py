@@ -7,7 +7,7 @@ import os
 
 from generation import LAB_RANGES_FILE
 
-PATIENTS_FOLDER = "dataset"  # default folder: one JSON file per patient
+PATIENTS_FOLDER = "dataset"  # patient records of the interface (one JSON file per patient), relative to the root
 
 
 def read_json(path, default=None):
