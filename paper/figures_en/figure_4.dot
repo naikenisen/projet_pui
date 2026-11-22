@@ -12,27 +12,30 @@ digraph generation {
     { rank=same; record; alerts; context; }
 
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4"];
-    message [label=<<B>1. User message construction</B><BR/>patient record JSON<BR/>+ “KBS alerts” (if A ≠ ∅)<BR/>+ “Guideline excerpts” (if context not empty)>];
+    message [label=<<B>1. User message construction</B><BR/>summarized record: lab values with (low) / (high) and date,<BR/>lines L<SUB>1</SUB>, …, L<SUB>n</SUB> with status on the reference date and computed daily dose<BR/>+ same drug on several ongoing lines (total dose)<BR/>+ KBS alerts [A1], [A2], … (if A ≠ ∅)<BR/>+ guideline excerpts [R1], [R2], … (if context not empty)>];
 
     prompt [shape=note, style=filled, fillcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="1">
         <TR><TD ALIGN="LEFT"><B>System prompt</B></TD></TR>
-        <TR><TD ALIGN="LEFT">role: hospital clinical pharmacist</TD></TR>
-        <TR><TD ALIGN="LEFT">criteria: clinical profile (age, weight, laboratory values),</TD></TR>
-        <TR><TD ALIGN="LEFT">dosages, contraindications, interactions, French guidelines</TD></TR>
-        <TR><TD ALIGN="LEFT">priority given to the provided alerts and excerpts</TD></TR>
-        <TR><TD ALIGN="LEFT">mandatory JSON response format, source citation</TD></TR>
+        <TR><TD ALIGN="LEFT">role: French hospital clinical pharmacist</TD></TR>
+        <TR><TD ALIGN="LEFT">no diagnosis in the record: each point relies on a fact,</TD></TR>
+        <TR><TD ALIGN="LEFT">an alert or an excerpt</TD></TR>
+        <TR><TD ALIGN="LEFT">ANSM alert levels (CI, ASDEC, PE, APEC):</TD></TR>
+        <TR><TD ALIGN="LEFT">an alert never justifies an intervention on its own</TD></TR>
+        <TR><TD ALIGN="LEFT">consistency checks with laboratory values and dates</TD></TR>
+        <TR><TD ALIGN="LEFT">4 point types · JSON response format</TD></TR>
         </TABLE>>];
 
-    llm [label=<<B>2. Language model inference</B><BR/>Qwen3.6-35B-A3B (via OpenRouter)<BR/><FONT POINT-SIZE="8.5">temperature 0 · ≤ 1,024 tokens · constrained JSON output · reasoning disabled</FONT>>];
+    llm [label=<<B>2. Language model inference</B><BR/>Qwen3.6-35B-A3B (via OpenRouter)<BR/><FONT POINT-SIZE="8.5">temperature 0 · reasoning enabled · ≤ 12,000 tokens · JSON output</FONT>>];
     { rank=same; llm; prompt; }
 
-    post [label=<<B>3. Post-processing</B><BR/>extraction of the { … } substring<BR/>JSON parsing>];
+    post [label=<<B>3. Post-processing</B><BR/>JSON parsing · [A] / [R] identifiers → alerts and documents<BR/>[L] identifiers → lines to modify (interventions only)<BR/>decision = most severe point>];
 
     output [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#3A3A3A" BGCOLOR="#FFFFFF">
         <TR><TD COLSPAN="2" ALIGN="LEFT" BGCOLOR="#F2F2F2"><B>Pharmaceutical opinion</B></TD></TR>
-        <TR><TD ALIGN="LEFT"><I>decision</I></TD><TD ALIGN="LEFT">PATIENT VALIDATED  |  PHARMACEUTICAL INTERVENTION PROPOSED</TD></TR>
-        <TR><TD ALIGN="LEFT"><I>justification</I></TD><TD ALIGN="LEFT">3 to 5 sentences; in case of intervention:<BR ALIGN="LEFT"/>drug(s) involved, issue, proposed adjustment<BR ALIGN="LEFT"/></TD></TR>
-        <TR><TD ALIGN="LEFT"><I>sources</I></TD><TD ALIGN="LEFT">“file.pdf, page p”, “KBS”,<BR ALIGN="LEFT"/>or empty list (model knowledge only)<BR ALIGN="LEFT"/></TD></TR>
+        <TR><TD ALIGN="LEFT"><I>decision</I></TD><TD ALIGN="LEFT">PHARMACEUTICAL INTERVENTION  &gt;  VERIFICATION  &gt;<BR ALIGN="LEFT"/>MONITORING PROPOSED  &gt;  PATIENT VALIDATED<BR ALIGN="LEFT"/></TD></TR>
+        <TR><TD ALIGN="LEFT"><I>reasoning</I></TD><TD ALIGN="LEFT">3 to 6 sentences</TD></TR>
+        <TR><TD ALIGN="LEFT"><I>points</I></TD><TD ALIGN="LEFT">1 to 4, each with a type, a short proposal (≤ 40 words),<BR ALIGN="LEFT"/>its sources and the lines to modify<BR ALIGN="LEFT"/></TD></TR>
+        <TR><TD ALIGN="LEFT"><I>sources</I></TD><TD ALIGN="LEFT">KBS alerts and “file.pdf, page p”,<BR ALIGN="LEFT"/>or empty (model knowledge only)<BR ALIGN="LEFT"/></TD></TR>
         </TABLE>>];
 
     record -> message;

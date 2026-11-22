@@ -8,7 +8,7 @@ digraph architecture {
     base     [label=<<B>RAG_Docs/</B><BR/><FONT POINT-SIZE="8.5">guidelines (PDF)</FONT>>];
     patients [shape=note, label=<<B>dataset/</B><BR/><FONT POINT-SIZE="8.5">one JSON file per patient</FONT>>];
     chroma   [shape=cylinder, label=<<B>chroma_db/</B><BR/><FONT POINT-SIZE="8.5">vector index</FONT>>];
-    decision [shape=note, label=<<B>LLM decision</B><BR/><FONT POINT-SIZE="8.5">opinion, justification, sources</FONT>>];
+    decision [shape=note, label=<<B>LLM decision</B><BR/><FONT POINT-SIZE="8.5">decision, points, sources</FONT>>];
     base_clp           [shape=note, label=<<B>base.clp</B><BR/><FONT POINT-SIZE="8.5">fact model, dose rules</FONT>>];
     generic_rules      [shape=note, label=<<B>generic_rules.clp</B><BR/><FONT POINT-SIZE="8.5">interactions (ANSM, DDI-Predictor)</FONT>>];
     personalized_rules [shape=note, label=<<B>personalized_rules.clp</B><BR/><FONT POINT-SIZE="8.5">hospital rules</FONT>>];
