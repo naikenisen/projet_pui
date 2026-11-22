@@ -1,14 +1,4 @@
-"""Builds dataset/: one <patient_id>.json file per patient, from the CSV files of original_dataset/.
-
-1. TREATMENTS: a day on which the patient has at least one active prescription is drawn at random,
-   and the prescriptions active on that day are kept.
-2. BIOLOGY: for each test, the most recent result strictly before that day.
-3. CLINICAL: all the columns of dictionary.json, as numbers.
-
-Files, columns, filters and rounding: dictionary.json.
-Laboratory labels and units: biology_dictionary.json.
-CSV shape specifics: csv_helpers.py.
-"""
+# Construit dataset/ (un JSON par patient) à partir des CSV de original_dataset/.
 
 import json
 from pathlib import Path
@@ -44,7 +34,6 @@ def read_csv(source):
     return df[list(cfg["columns"])].rename(columns=cfg["columns"])
 
 
-# --- TREATMENTS ----------------------------------------------------------------
 def load_treatments():
     t = read_csv("treatments")
     key = [c for c in t.columns if c not in ACTIVE_INGREDIENT]
@@ -53,10 +42,11 @@ def load_treatments():
     lines["ai"] = lines["ai"].apply(lambda x: x if isinstance(x, list) else [])
     lines["start"] = pd.to_datetime(lines["start_date"]).dt.normalize()
     lines["end"] = pd.to_datetime(lines["end_date"], errors="coerce").dt.normalize()
-    lines["end"] = lines["end"].fillna(lines["start"])  # no end date: active on the first day
+    lines["end"] = lines["end"].fillna(lines["start"])
     return lines.reset_index(drop=True), [c for c in key if c != "patient_id"]
 
 
+# Tire au hasard, pour chaque patient, un jour avec au moins une prescription active
 def choose_days(lines):
     days = lines[["patient_id", "start", "end"]].copy()
     days["day"] = [pd.date_range(s, e, freq="D") for s, e in zip(days["start"], days["end"])]
@@ -87,7 +77,7 @@ def treatment_json(r, columns):
     return d
 
 
-# --- BIOLOGY ---------------------------------------------------------------------
+# Un même test dans une unité minoritaire est suffixé « [unité] »
 def load_biology():
     b = read_csv("biology")
     columns = [c for c in b.columns if c not in ("patient_id", "test")]
@@ -98,7 +88,6 @@ def load_biology():
     b["name"] = b["test"].map(lambda e: BIOLOGY_DICTIONARY["tests"].get(e, e))
     b["unit"] = b["unit"].map(lambda u: BIOLOGY_DICTIONARY["units"].get(u, u))
 
-    # Same test in several units: the majority unit keeps the name, the others get “[unit]”
     majority = b.groupby("name")["unit"].agg(lambda s: s.value_counts().index[0])
     b["key"] = np.where(b["unit"] == b["name"].map(majority), b["name"], b["name"] + " [" + b["unit"] + "]")
 
@@ -107,6 +96,7 @@ def load_biology():
     return b, columns
 
 
+# Résultat le plus récent de chaque test avant le jour de référence
 def biology_before_day(biology, days):
     b = biology.join(days, on="patient_id", how="inner")
     limit = b["reference_date"] + pd.Timedelta(days=1 if INCLUDE_SAME_DAY_BIOLOGY else 0)
@@ -126,7 +116,6 @@ def load_clinical():
     return read_csv("clinical").set_index("patient_id").apply(to_number)
 
 
-# --- Assembly ----------------------------------------------------------------------
 def build_dataset():
     lines, treatment_columns = load_treatments()
     days = choose_days(lines)

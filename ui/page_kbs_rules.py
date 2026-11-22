@@ -1,8 +1,4 @@
-"""“Règles du KBS” page: personalized rules drafted by the LLM assistant, review before saving, list with deletion.
-
-The generic rules (ressources/kbs/generic_rules.json) are not shown: they are applied during the analysis only.
-Personalized rules are edited by hand in ressources/kbs/personalized_rules.json, outside the interface.
-"""
+# Page « Règles du KBS » : rédaction de règles personnalisées par le LLM, vérification et liste.
 
 import html
 
@@ -29,12 +25,8 @@ def render_page():
     _rule_list(load_personalized_rules(), parameters)
 
 
-# ---------------------------------------------------------------------------
-# Rule drafted by the LLM: request, then review before saving
-# ---------------------------------------------------------------------------
-
+# La règle proposée par le LLM est gardée dans st.session_state["proposed_rule"]
 def _assistant(biology_parameters):
-    """Natural-language request; the rule proposed by the LLM is kept in st.session_state["proposed_rule"]."""
     label("Ajouter une règle avec l'assistant")
     with st.form("rule_request", border=False):
         request = st.text_area(
@@ -52,8 +44,8 @@ def _assistant(biology_parameters):
                 st.error(f"Le modèle n'a pas pu rédiger de règle : {error}")
 
 
+# Carte, avertissements et nombre de dossiers déclenchés, puis Enregistrer / Annuler
 def _proposed_rule(patients, biology_parameters):
-    """Card, warnings and number of records that would trigger it, then Save / Cancel."""
     proposed = st.session_state.get("proposed_rule")
     if not proposed:
         return
@@ -79,10 +71,6 @@ def _proposed_rule(patients, biology_parameters):
         st.rerun()
 
 
-# ---------------------------------------------------------------------------
-# Saved rules
-# ---------------------------------------------------------------------------
-
 def _rule_list(rules, biology_parameters):
     label(f"Règles personnalisées ({len(rules)})")
     if not rules:
@@ -95,18 +83,15 @@ def _rule_list(rules, biology_parameters):
             st.rerun()
 
 
-# ---------------------------------------------------------------------------
-# Rule card: alert message, then triggering criteria in plain language
-# ---------------------------------------------------------------------------
-
 SYMBOLS = {">=": "≥", "<=": "≤", "!=": "≠", "==": "=", ">": ">", "<": "<"}
+# Variable patient : (libellé, unité)
 PATIENT_DATA = {"age": ("âge", "ans"), "weight_kg": ("poids", "kg"), "height_cm": ("taille", "cm"),
                 "bmi_kg_m2": ("IMC", "kg/m²"), "body_surface_area_m2": ("surface corporelle", "m²")}
 
 
+# « dose_per_kg_daptomycine < 10 » -> « dose de daptomycine < 10 mg/kg/j »
 def condition_sentence(condition, units):
-    """“dose_per_kg_daptomycine < 10” -> “dose de daptomycine < 10 mg/kg/j”."""
-    for symbol in OPERATORS:  # same search order as kbs.condition_true
+    for symbol in OPERATORS:
         if symbol in condition:
             name, threshold = (part.strip() for part in condition.split(symbol, 1))
             break
@@ -129,8 +114,8 @@ def condition_sentence(condition, units):
     return f"{variable} {SYMBOLS[symbol]} {threshold} {unit}".strip()
 
 
+# Carte HTML d'une règle ; units : {paramètre biologique: unité}
 def rule_card(rule, units):
-    """HTML card of a personalized rule. units: {laboratory parameter: unit}."""
     drugs = rule.get("drugs", [])
     names = [d if isinstance(d, str) else " ou ".join(d) for d in drugs]
     title = " + ".join(n[:1].upper() + n[1:] for n in names) or "Tous les patients"

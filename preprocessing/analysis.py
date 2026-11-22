@@ -1,7 +1,4 @@
-"""How many patients does filter 1 extract (= number of patients in preprocessing/dataset/ and full_dataset/)?
-
-Uses exactly the same functions and the same seed as preprocessing.py.
-"""
+# Compte les patients extraits par le filtre 1 (mêmes fonctions et graine que preprocessing.py).
 
 from preprocessing import (
     DICTIONARY, SEED, biology_before_day, choose_days, load_biology, load_clinical,

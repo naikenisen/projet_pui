@@ -1,13 +1,4 @@
-"""Knowledge-Based System (KBS): deterministic rules applied to a patient, and rule drafting by the LLM.
-
-Rules are split across two files:
-- ressources/kbs/generic_rules.json: ANSM Thesaurus of drug interactions and DDI-Predictor AUC ratios (ressources/kbs/KBS_Docs/),
-  not editable from the interface;
-- ressources/kbs/personalized_rules.json: hospital-specific rules (e.g. apixaban dose, daptomycin 10 mg/kg),
-  written by hand or drafted by the LLM at a pharmacist's request.
-In "drugs", each item is either a name ("ramipril") or a list of equivalent names
-(the members of a Thesaurus class, e.g. all oral anticoagulants).
-"""
+# Système à base de connaissances (KBS) : application des règles aux patients et rédaction de règles par le LLM.
 
 import argparse
 import functools
@@ -18,20 +9,18 @@ import re
 import unicodedata
 
 KBS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "kbs")
+# Thésaurus ANSM et ratios d'AUC DDI-Predictor, non modifiables depuis l'interface
 GENERIC_RULES_FILE = os.path.join(KBS_FOLDER, "generic_rules.json")
+# Règles propres à l'hôpital, écrites à la main ou par le LLM
 PERSONALIZED_RULES_FILE = os.path.join(KBS_FOLDER, "personalized_rules.json")
 
 OPERATORS = {">=": operator.ge, "<=": operator.le, "!=": operator.ne, "==": operator.eq, ">": operator.gt, "<": operator.lt}
 PATIENT_FIELDS = ("age", "weight_kg", "height_cm", "bmi_kg_m2", "body_surface_area_m2")
 
-# Conversion to mg of the intake unit and of the active ingredient dosage unit (values as found in the data)
+# Conversion en mg des unités de prise et de dosage du principe actif
 INTAKE_UNITS_TO_MG = {"milligramme(s)": 1, "gramme(s)": 1000, "microgramme(s)": 0.001}
 DOSAGE_UNITS_TO_MG = {"mg": 1, "g": 1000, "ug": 0.001}
 
-
-# ---------------------------------------------------------------------------
-# Reading and writing rules
-# ---------------------------------------------------------------------------
 
 def read_rules(path):
     if not os.path.exists(path):
@@ -48,14 +37,14 @@ def load_personalized_rules():
     return read_rules(PERSONALIZED_RULES_FILE)
 
 
+# Personnalisées d'abord, pour que leurs alertes soient listées en premier
 def load_rules():
-    """All rules: personalized first (their alerts are listed first), then generic."""
     return load_personalized_rules() + load_generic_rules()
 
 
+# Message d'erreur si condition_true ne peut pas lire la condition, sinon None
 def condition_error(condition):
-    """Returns an error message if the condition cannot be read by condition_true, otherwise None."""
-    for symbol in OPERATORS:  # same search order as condition_true
+    for symbol in OPERATORS:
         if symbol in condition:
             parts = condition.split(symbol)
             if len(parts) != 2 or not parts[0].strip():
@@ -93,8 +82,8 @@ def rule_errors(rule):
     return errors
 
 
+# N'enregistre que si toutes les règles sont valides ; renvoie la liste des erreurs
 def save_personalized_rules(rules):
-    """Saves the personalized rules if they are all valid. Returns the list of errors (empty if OK)."""
     if not isinstance(rules, list):
         return ["the file must contain a list of rules"]
     errors = []
@@ -111,32 +100,27 @@ def add_personalized_rule(rule):
     return save_personalized_rules(load_personalized_rules() + [rule])
 
 
-# ---------------------------------------------------------------------------
-# Applying the rules to a patient
-# ---------------------------------------------------------------------------
-
+# Minuscules sans accents : « Paracétamol » == « PARACETAMOL »
 def normalize(text):
-    """Lowercase without accents, so that “Paracétamol” and “PARACETAMOL” compare equal."""
     text = unicodedata.normalize("NFD", str(text).lower())
     return "".join(c for c in text if not unicodedata.combining(c))
 
 
+# Recherche le nom comme mot entier
 @functools.lru_cache(maxsize=None)
 def pattern(name):
-    """Regular expression that searches for the name as a whole word."""
     return re.compile(r"\b" + re.escape(normalize(name)) + r"\b")
 
 
+# Lignes de traitement du patient, avec mémorisation des recherches
 class Prescription:
-    """Treatment lines of the patient, with memoized searches (one rule per interaction pair)."""
-
     def __init__(self, treatments):
         self.treatments = treatments
         self.labels = [normalize(t["drug_label"]) for t in treatments]
         self.cache = {}
 
+    # Indices des lignes contenant le médicament (ou l'un des noms équivalents s'il s'agit d'une liste)
     def lines(self, drug):
-        """Indices of the lines whose label contains the drug (or one of the names if it is a list)."""
         names = [drug] if isinstance(drug, str) else drug
         found = set()
         for name in names:
@@ -146,13 +130,8 @@ class Prescription:
         return found
 
 
+# Une ligne distincte par médicament, sinon None : une association fixe sur une seule ligne ne déclenche rien
 def match_lines(line_sets, taken=()):
-    """Picks a different line for each drug of the rule, or returns None if this is impossible.
-
-    Two distinct lines are required: a fixed-dose combination (e.g. PERINDOPRIL+AMLODIPINE on a single
-    line) does not trigger an interaction, and a drug does not interact with itself in
-    “ORAL ANTICOAGULANTS + OTHER ORAL ANTICOAGULANTS”.
-    """
     if not line_sets:
         return list(taken)
     for line in sorted(line_sets[0]):
@@ -167,28 +146,22 @@ def is_number(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool)
 
 
+# Dose en mg par jour d'administration, ou None si incalculable
 def daily_dose_mg(treatment):
-    """Dose in mg per administration day (quantity per day × dosage), or None if it cannot be computed."""
     quantity = treatment.get("quantity_per_day")
     if not is_number(quantity) or quantity <= 0:
         return None
     unit = treatment.get("intake_unit")
-    if unit in INTAKE_UNITS_TO_MG:  # “700 milligramme(s) per day”
+    if unit in INTAKE_UNITS_TO_MG:
         return quantity * INTAKE_UNITS_TO_MG[unit]
-    ingredients = treatment["active_ingredients"]  # “2 flacon(s) per day” of a 350 mg vial
+    ingredients = treatment["active_ingredients"]
     if len(ingredients) == 1 and ingredients[0].get("unit") in DOSAGE_UNITS_TO_MG and is_number(ingredients[0].get("dosage")):
         return quantity * ingredients[0]["dosage"] * DOSAGE_UNITS_TO_MG[ingredients[0]["unit"]]
     return None
 
 
+# Variables des conditions : champs patient, biologie, et dose_, daily_dose_, dose_per_kg_<médicament>
 def read_variables(record, rules, prescription):
-    """Variables usable in conditions: patient fields, laboratory values and doses of the drugs in the rules.
-
-    For each drug named alone in a rule with conditions:
-    - dose_<drug>: dosage of the active ingredient (if there is only one, otherwise we cannot tell which);
-    - daily_dose_<drug>: prescribed dose in mg per administration day;
-    - dose_per_kg_<drug>: prescribed dose in mg/kg per administration day (if the weight is known).
-    """
     patient = record["patient"]
     variables = {key: value for key, value in patient.items() if is_number(value)}
     for name, measure in patient["biology"].items():
@@ -224,8 +197,8 @@ def condition_true(condition, variables):
     raise ValueError(f"Invalid condition: {condition}")
 
 
+# Lignes concernées si la règle se déclenche, sinon None
 def rule_triggered(rule, variables, prescription):
-    """Returns the prescription lines involved if the rule is triggered, otherwise None."""
     line_sets = [prescription.lines(drug) for drug in rule.get("drugs", [])]
     lines = match_lines(line_sets)
     if lines is None:
@@ -258,13 +231,8 @@ def apply_rules(record, rules):
 
 
 def check_rules(record):
-    """KBS alerts of all the rules (personalized and generic) for a patient."""
     return apply_rules(record, load_rules())
 
-
-# ---------------------------------------------------------------------------
-# Drafting of a personalized rule by the LLM, at a pharmacist's request
-# ---------------------------------------------------------------------------
 
 RULE_PROMPT = """You are a hospital clinical pharmacist. A pharmacist asks you to add a rule to the Knowledge-Based
 System (KBS) that analyses prescriptions. Translate the request into a JSON rule. Reply only with a JSON object.
@@ -295,8 +263,8 @@ Examples:
 If the request cannot be expressed with this format, reply {{"error": "short explanation"}}."""
 
 
+# {paramètre biologique: unité} des dossiers, dont le LLM doit reprendre le nom exact
 def biology_parameters(records):
-    """{laboratory parameter: unit} of the patient records: the LLM must use their exact name in conditions."""
     parameters = {}
     for record in records:
         for name, measure in record["patient"]["biology"].items():
@@ -304,8 +272,8 @@ def biology_parameters(records):
     return parameters
 
 
+# Variables inconnues des conditions : la règle ne se déclencherait jamais
 def unknown_variables(rule, biology_parameters):
-    """Condition variables that match no known data: the rule would never be triggered."""
     known = set(PATIENT_FIELDS) | set(biology_parameters)
     for drug in rule.get("drugs", []):
         if isinstance(drug, str):
@@ -321,13 +289,10 @@ def unknown_variables(rule, biology_parameters):
     return unknown
 
 
+# Traduit la demande en règle validée, sans l'enregistrer ; ValueError si impossible
+# Import local de generation, qui importe lui-même ce module
 def propose_rule(request, biology_parameters):
-    """Asks the LLM (the same one used to analyse patients) to translate the request into a rule.
-
-    biology_parameters: {exact parameter name: unit}. Returns the validated rule, without saving it.
-    Raises ValueError if the LLM cannot draft a valid rule.
-    """
-    from generation import MODEL, client  # imported here: generation imports this module
+    from generation import MODEL, client
 
     biology = "\n".join(f"  {name} ({unit})" for name, unit in sorted(biology_parameters.items()))
     completion = client.chat.completions.create(
@@ -350,7 +315,7 @@ def propose_rule(request, biology_parameters):
             if response.get(field) not in (None, "", [])}
     if "any_of" not in rule:
         rule.pop("minimum", None)
-    if isinstance(rule.get("drugs"), list):  # names are searched in lowercase without accents
+    if isinstance(rule.get("drugs"), list):
         rule["drugs"] = [
             d.strip().lower() if isinstance(d, str)
             else [n.strip().lower() if isinstance(n, str) else n for n in d] if isinstance(d, list)
@@ -365,8 +330,6 @@ def propose_rule(request, biology_parameters):
         raise ValueError("invalid proposed rule: " + " ; ".join(errors))
     return rule
 
-
-# ---------------------------------------------------------------------------
 
 def load_patient(folder, patient_id):
     path = os.path.join(folder, f"{patient_id}.json")

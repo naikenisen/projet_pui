@@ -1,11 +1,4 @@
-"""“Résultats d'analyse” page: indicators and analysis button, patient list.
-
-Clicking a patient opens its record (page_patient_result.py) in place of the list.
-The analysis is done by main.py: the “Lancer l'analyse” button runs `main.py --remaining`.
-Results are stored in inference_results.json (project root).
-Streamlit re-runs the page from the top after each interaction: ResultsState is rebuilt at each run from the files,
-while st.session_state keeps what must survive between runs (open patient, filter, search).
-"""
+# Page « Résultats d'analyse » : indicateurs, lancement de l'analyse et liste des patients.
 
 import html
 import os
@@ -28,8 +21,6 @@ def render_page():
     shown = filtered_patients(state)
     patient_id = st.session_state.open_patient
     if patient_id in state.statuses:
-        # Open record: indicators hidden so that the record fits on the screen without scrolling.
-        # Previous/next go through the filtered list, or through all the records if the patient is not in it.
         records = shown if any(r["patient"]["id"] == patient_id for r in shown) else state.sorted_patients
         page_patient_result.render_page(records, state.results)
     else:
@@ -39,30 +30,30 @@ def render_page():
         _render_list(state, shown)
 
 
-# Records requiring an action are listed first
+# Dossiers nécessitant une action en premier
 STATUS_ORDER = {"intervention": 0, "verification": 1, "monitoring": 2, "error": 3, "not_analysed": 4, "validated": 5}
 
 
-# ---------------------------------------------------------------------------
-# Data of the page
-# ---------------------------------------------------------------------------
-
+# État de la page, reconstruit à chaque exécution à partir des fichiers
 @dataclass
 class ResultsState:
-    patients: list  # patient records of dataset/
-    results: dict = field(default_factory=dict)  # {patient id: analysis result}
-    statuses: dict = field(default_factory=dict)  # {patient id: status code}
-    counts: dict = field(default_factory=dict)  # {status code: number of records}
-    sorted_patients: list = field(default_factory=list)  # records needing an action first
+    patients: list
+    # {id patient: résultat d'analyse}
+    results: dict = field(default_factory=dict)
+    # {id patient: code de statut}
+    statuses: dict = field(default_factory=dict)
+    # {code de statut: nombre de dossiers}
+    counts: dict = field(default_factory=dict)
+    # Dossiers nécessitant une action en premier
+    sorted_patients: list = field(default_factory=list)
 
+    # Dossiers jamais analysés ou en erreur
     @property
     def to_analyse(self):
-        """Records analysed by “Lancer l'analyse”: never analysed or failed."""
         return [r for r in self.patients if self.statuses[r["patient"]["id"]] in ("not_analysed", "error")]
 
 
 def build_state():
-    """Reads the patient records of dataset/ and their inference results."""
     patients = load_patients()
     results = main.load_results()
     statuses = {r["patient"]["id"]: status(results.get(r["patient"]["id"]))[0] for r in patients}
@@ -71,14 +62,8 @@ def build_state():
     return ResultsState(patients, results, statuses, counts, sorted_patients)
 
 
-# ---------------------------------------------------------------------------
-# Analysis by main.py
-# ---------------------------------------------------------------------------
-
+# Lance `main.py --remaining` et renvoie au fil de l'eau l'id de chaque patient analysé
 def run_main():
-    """Runs `main.py --remaining` on dataset/; yields the id of each analysed patient.
-
-    `main.py --all` (re-analysis of all the patients) is run by hand, not from the interface."""
     script = os.path.abspath(main.__file__)
     command = [sys.executable, "-u", script, "--remaining", "--folder", PATIENTS_FOLDER]
     other_lines = []
@@ -92,10 +77,6 @@ def run_main():
     if process.returncode:
         raise RuntimeError("\n".join(other_lines[-5:]) or f"main.py exited with code {process.returncode}")
 
-
-# ---------------------------------------------------------------------------
-# Top of the page: title, analysis button and indicator strip
-# ---------------------------------------------------------------------------
 
 def _render_overview(state):
     title_column, action_column = st.columns([3, 1], vertical_alignment="center")
@@ -138,7 +119,6 @@ def _indicators(state):
 
 
 def _run_analysis(state):
-    """Runs main.py --remaining with a progress bar; main.py saves each result as it goes."""
     total = len(state.to_analyse)
     bar = st.progress(0.0, text="Analyse en cours...")
     try:
@@ -152,11 +132,7 @@ def _run_analysis(state):
     st.rerun()
 
 
-# ---------------------------------------------------------------------------
-# Patient list: status filters, search, one clickable row per patient
-# ---------------------------------------------------------------------------
-
-# Filter code: (label, status codes shown; None = all)
+# Code du filtre : (libellé, statuts affichés ; None = tous)
 FILTERS = {
     "all": ("Tous", None),
     "intervention": ("Interventions", {"intervention"}),
@@ -167,8 +143,8 @@ FILTERS = {
 }
 
 
+# Dossiers correspondant au filtre et à la recherche (identifiant ou médicament)
 def filtered_patients(state):
-    """Records matching the selected filter and the search (identifier or drug), records needing action first."""
     selected_filter = st.session_state.get("filter", "all")
     search = st.session_state.get("search", "").strip().lower()
     return [
@@ -194,8 +170,8 @@ def _render_filters(state):
                              label_visibility="collapsed", key="search")
 
 
+# Zone défilante (CSS .st-key-patient-list), une ligne cliquable par patient
 def _render_list(state, shown):
-    """Patient list, one clickable row per patient, in a scrolling area (CSS .st-key-patient-list)."""
     if not shown:
         st.caption("Aucun dossier ne correspond à la sélection.")
         return
@@ -210,6 +186,7 @@ def _render_list(state, shown):
             _patient_row(state, record)
 
 
+# Ligne HTML recouverte d'un bouton invisible qui ouvre le dossier
 def _patient_row(state, record):
     patient = record["patient"]
     patient_id = patient["id"]
@@ -223,7 +200,6 @@ def _patient_row(state, record):
         str(len(result.get("alerts", []))) if result.get("alerts") else "—",
         html.escape(result.get("date", "")) or "—",
     ]
-    # HTML row (aligned columns) covered by an invisible button that opens the record
     with st.container(key=f"row-{patient_id}", gap=None):
         st.markdown('<div class="patient-row">' + "".join(f"<span>{c}</span>" for c in cells) + "</div>",
                     unsafe_allow_html=True)

@@ -1,4 +1,4 @@
-"""Searches ChromaDB for the passages of the RAG documents that are useful to analyse a patient."""
+# Recherche dans ChromaDB les passages des référentiels utiles à l'analyse d'un patient.
 
 import argparse
 import json
@@ -18,7 +18,7 @@ client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPE
 RESULTS_PER_QUERY = 3
 MAX_PASSAGES = 8
 
-# Prefix recommended by Qwen3-Embedding for queries (documents have none).
+# Préfixe recommandé par Qwen3-Embedding pour les requêtes uniquement
 INSTRUCTION = "Instruct: Retrieve the medical guidelines useful to analyse this prescription\nQuery: "
 
 
@@ -40,6 +40,7 @@ def abnormal_biology(patient):
     return abnormalities
 
 
+# Une requête par ligne de traitement, complétée du profil patient et des anomalies biologiques
 def build_queries(record):
     patient = record["patient"]
     profile = []
@@ -54,13 +55,13 @@ def build_queries(record):
         query = f"{treatment['drug_label']}, {treatment['dosage_regimen']}"
         if profile:
             query += ", " + ", ".join(profile)
-        if query not in queries:  # the same line can be prescribed several times
+        if query not in queries:
             queries.append(query)
     return queries
 
 
+# Passages les plus proches de la prescription, sans doublons, triés par distance
 def retrieve_context(record):
-    """Passages closest to the prescription: list of {"text", "source", "page", "distance"}."""
     queries = build_queries(record)
     if not queries:
         return []
@@ -70,7 +71,6 @@ def retrieve_context(record):
     collection = chromadb.PersistentClient(path=CHROMA_DIR).get_collection(COLLECTION_NAME, embedding_function=None)
     results = collection.query(query_embeddings=vectors, n_results=RESULTS_PER_QUERY)
 
-    # The same passage can be found by several queries: it is kept only once.
     passages = {}
     for i in range(len(queries)):
         for passage_id, text, meta, distance in zip(

@@ -1,4 +1,4 @@
-"""Analyses a patient's prescription with the LLM."""
+# Analyse la prescription d'un patient avec le LLM.
 
 import argparse
 import json
@@ -14,8 +14,7 @@ load_dotenv()
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
 
 MODEL = "qwen/qwen3.6-35b-a3b"
-# Model reasoning mode: much more consistent opinions (alert exceptions, direction of laboratory abnormalities),
-# but about 40 s per patient instead of 10 s. Set to False for a fast analysis.
+# Raisonnement : avis bien plus cohérents, mais ~40 s par patient au lieu de 10 s
 REASONING = True
 
 DECISION_VALIDATED = "PATIENT VALIDATED"
@@ -106,26 +105,23 @@ Rules for the points:
   stop; empty list for the other types."""
 
 
-# ---------------------------------------------------------------------------
-# Record preparation: whatever can be computed is computed by the code, not by the LLM
-# ---------------------------------------------------------------------------
-
 LAB_RANGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "lab_reference_ranges.json")
 
-# Intake units that are already an amount of active ingredient (values as found in the data)
+# Unités de prise qui sont déjà une quantité de principe actif
 QUANTITY_UNITS = {"milligramme(s)": (1, "mg"), "gramme(s)": (1000, "mg"), "microgramme(s)": (1, "µg"),
                   "unité(s) internationale(s)": (1, "IU"), "unité(s) internationale(s) anti-Xa": (1, "anti-Xa IU")}
-# Unit dosage forms whose active ingredient dosage is the amount per unit (not a concentration)
+# Formes unitaires : le dosage du principe actif est la quantité par unité
 UNIT_FORMS = ("comprimé", "gélule", "sachet", "ampoule", "seringue", "capsule", "suppositoire", "stylo", "film")
 DOSAGE_UNITS = {"mg": (1, "mg"), "g": (1000, "mg"), "ug": (1, "µg"), "iu": (1, "IU"), "axa_iu": (1, "anti-Xa IU"), "u": (1, "U")}
 
 
+# Nombre sans zéros inutiles ni notation scientifique
 def number(value):
     return f"{value:g}" if value < 1e6 else f"{value:.0f}"
 
 
+# Dose de principe actif par jour d'administration, ex. (3000, "mg"), ou None si incalculable
 def dose_per_day(treatment):
-    """Active ingredient dose per administration day: (3000, "mg"), or None if it cannot be computed."""
     quantity = treatment.get("quantity_per_day")
     if not isinstance(quantity, (int, float)) or quantity <= 0:
         return None
@@ -142,7 +138,6 @@ def dose_per_day(treatment):
 
 
 def line_status(treatment, reference_date):
-    """“ongoing”, “ended” or “upcoming” on the reference date (dates in YYYY-MM-DD format)."""
     if not reference_date:
         return "ongoing"
     start, end = (treatment.get("start_date") or "")[:10], (treatment.get("end_date") or "")[:10]
@@ -153,8 +148,8 @@ def line_status(treatment, reference_date):
     return "ongoing"
 
 
+# « IRBESARTAN 150 MG (LABO ARROW), CPR » -> « IRBESARTAN »
 def drug_name(label):
-    """“IRBESARTAN 150 MG (LABO ARROW), CPR” -> “IRBESARTAN”: the name before the strength or the form."""
     return re.split(r"[\d,(]", label, maxsplit=1)[0].strip().upper()
 
 
@@ -166,7 +161,6 @@ def read_lab_ranges():
 
 
 def lab_interpretation(name, value, ranges):
-    """“low”, “high” or "" according to the reference ranges of ressources/lab_reference_ranges.json."""
     reference = ranges.get(name)
     if reference is None or not isinstance(value, (int, float)) or isinstance(value, bool):
         return ""
@@ -177,9 +171,8 @@ def lab_interpretation(name, value, ranges):
     return ""
 
 
+# Dossier envoyé au LLM : champs vides retirés, biologie interprétée, lignes L1, L2... avec statut et dose calculée
 def summarize_record(record):
-    """Version of the record sent to the LLM: empty fields removed, laboratory values interpreted, lines numbered
-    L1, L2... with their status on the reference date and the computed dose per administration day."""
     patient = record["patient"]
     summary = {key: value for key, value in patient.items() if key != "biology" and value is not None}
     ranges = read_lab_ranges()
@@ -204,10 +197,8 @@ def summarize_record(record):
     return {"patient": summary, "treatments": treatments}
 
 
+# Médicaments sur plusieurs lignes programmées en cours, ex. « IRBESARTAN: L11 (150 mg) + L19 (300 mg) = 450 mg per day »
 def multiple_lines(record):
-    """Drugs prescribed on several ongoing scheduled lines (excluding “as needed”): deliberate total dose or
-    forgotten line. Returns one sentence per drug, with the total dose when it can be computed:
-    “IRBESARTAN: L11 (150 mg) + L19 (300 mg) = 450 mg per day”."""
     reference_date = record["patient"].get("reference_date")
     groups = {}
     for number_, treatment in enumerate(record["treatments"], start=1):
@@ -228,18 +219,18 @@ def multiple_lines(record):
     return sentences
 
 
-# Identifier copied into the text despite the instruction: “(A1, A2)”, “(alert A1 level ...)”, “[R2]” (line numbers
-# such as L3 are kept: they are shown in the prescription table)
+# Identifiants A1, R2... recopiés dans le texte malgré la consigne (les L3 sont conservés)
 REFERENCE_IN_TEXT_PATTERN = re.compile(r"\s*(?:\([^()]*\b[AR]\d+\b[^()]*\)|\[[AR]\d+(?:\s*,\s*[AR]\d+)*\])")
 
 
-POINT_TYPES = ("intervention", "verification", "monitoring", "validation")  # from most to least severe
+# Du plus au moins grave
+POINT_TYPES = ("intervention", "verification", "monitoring", "validation")
 DECISION_BY_TYPE = {"intervention": DECISION_INTERVENTION, "verification": DECISION_VERIFICATION,
                     "monitoring": DECISION_MONITORING, "validation": DECISION_VALIDATED}
 
 
+# Tolère les variantes (« Verification », « PI »...) ; "verification" si inconnu
 def point_type(value):
-    """Type of a point, tolerant to variants (“Verification”, “PI”...); "verification" if unknown."""
     text = normalize(value).strip()
     if text in ("pi", "ip") or "interv" in text:
         return "intervention"
@@ -250,11 +241,8 @@ def point_type(value):
     return "verification"
 
 
+# Remplace les identifiants cités par le LLM par les alertes, extraits et lignes correspondants ; les inconnus sont ignorés
 def read_response(response, alerts, passages, line_count):
-    """Replaces the identifiers cited by the LLM with the corresponding alerts, excerpts and lines.
-
-    Unknown identifiers are ignored: the LLM cannot cite a source it was not given.
-    """
     references = {f"A{i}": {"type": "alert", "text": alert} for i, alert in enumerate(alerts, start=1)}
     references |= {
         f"R{i}": {"type": "document", "source": p["source"], "page": p["page"]} for i, p in enumerate(passages, start=1)
@@ -286,13 +274,8 @@ def source_label(source):
     return f"{source['source']}, page {source['page']}"
 
 
+# La décision est celle du point le plus grave, pour rester cohérente avec les points
 def analyse_patient(record, passages=(), alerts=()):
-    """passages: excerpts returned by retrieval.retrieve_context; alerts: KBS alerts.
-
-    Returns {"decision", "points": [{"type", "text", "sources", "lines_to_modify"}], "reasoning", "justification",
-    "sources"}. The decision is that of the most severe point, so that it is always consistent with the points.
-    "justification" and "sources" list the points flat, for a simple display (main.py).
-    """
     alerts, passages = list(alerts), list(passages)
     message = json.dumps(summarize_record(record), ensure_ascii=False, indent=1)
     if multiples := multiple_lines(record):
@@ -312,17 +295,15 @@ def analyse_patient(record, passages=(), alerts=()):
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": message},
         ],
-        max_tokens=12000 if REASONING else 2500,  # reasoning consumes tokens
+        max_tokens=12000 if REASONING else 2500,
         temperature=0,
         response_format={"type": "json_object"},
         extra_body={"reasoning": {"enabled": REASONING}},
     )
     response = completion.choices[0].message.content
 
-    # Keep only the JSON, in case the model adds text around it.
     response = json.loads(response[response.find("{"):response.rfind("}") + 1])
     points = read_response(response, alerts, passages, len(record["treatments"]))
-    # A "validation" point only makes sense on its own
     if any(point["type"] != "validation" for point in points):
         points = [point for point in points if point["type"] != "validation"]
     most_severe = min((POINT_TYPES.index(point["type"]) for point in points), default=POINT_TYPES.index("validation"))

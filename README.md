@@ -3,6 +3,9 @@
 Pipeline that analyses hospital prescriptions by combining a Knowledge-Based System (KBS), a retrieval module over
 clinical guidelines (RAG) and a large language model (LLM).
 
+**Demo:** https://projetpui.streamlit.app/ (Streamlit Community Cloud, fictitious patients). Changes made in the
+demo (analyses, rules, uploaded documents) are not kept when the app restarts.
+
 ## Installation
 
 ```bash

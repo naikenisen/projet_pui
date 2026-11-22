@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --bar-height: 52px;  /* height of the fixed application bar */
+    --bar-height: 52px;
     --blue: #0B4F8A; --blue-dark: #08355C; --blue-light: #E8F0F8;
     --text: #1A2433; --text-2: #4A5A6E; --text-3: #7A8899;
     --border: #D9E0E8; --background: #F3F5F8; --surface: #FFFFFF;
@@ -15,7 +15,7 @@ html, body, [class*="css"], .stMarkdown, button, input, textarea, select {
 html { font-size: 15.5px; }
 #MainMenu, footer, [data-testid="stDecoration"], [data-testid="stStatusWidget"] { display: none; }
 
-/* Fixed application bar at the top */
+/* Barre d'application fixe en haut */
 .app-bar {
     position: fixed; top: 0; left: 0; right: 0; height: var(--bar-height); z-index: 1000001;
     background: var(--blue-dark); color: #FFFFFF; display: flex; align-items: center;
@@ -29,7 +29,7 @@ html { font-size: 15.5px; }
 [data-testid="stHeader"] { top: var(--bar-height); background: transparent; height: 2.5rem; }
 .block-container { padding-top: calc(var(--bar-height) + 1.5rem); padding-bottom: 2rem; max-width: 1500px; }
 
-/* Page header and indicator strip */
+/* En-tête de page et bandeau d'indicateurs */
 .page-title { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 0; }
 .page-subtitle { font-size: 0.82rem; color: var(--text-3); margin: 0.1rem 0 0 0; }
 .indicators {
@@ -46,7 +46,7 @@ html { font-size: 15.5px; }
 .indicator.purple .value { color: var(--purple); }
 .indicator.blue .value { color: var(--blue); }
 
-/* Components: plain corners, thin borders */
+/* Composants : coins droits, bordures fines */
 .stButton > button, .stDownloadButton > button, [data-testid="stFormSubmitButton"] > button {
     border-radius: 4px; font-weight: 500; font-size: 0.85rem; min-height: 2.1rem; padding: 0.2rem 0.8rem;
 }
@@ -65,7 +65,7 @@ html { font-size: 15.5px; }
 .stTabs [data-baseweb="tab"] { padding: 0.55rem 1.1rem; font-weight: 500; font-size: 0.88rem; }
 .stTabs [aria-selected="true"] { color: var(--blue); }
 
-/* Record content */
+/* Contenu du dossier */
 .decision {
     border-radius: 3px; padding: 0.55rem 0.8rem; font-weight: 600; font-size: 0.88rem;
     border-left: 3px solid; margin-bottom: 0.6rem; letter-spacing: 0.01em;
@@ -87,7 +87,7 @@ html { font-size: 15.5px; }
 .alert .complement { margin-top: 0.25rem; }
 .alert .prescription { margin-top: 0.25rem; font-size: 0.78rem; color: var(--text-2); }
 
-/* Personalized KBS rules */
+/* Règles personnalisées du KBS */
 .rule {
     background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--blue);
     border-radius: 4px; padding: 0.65rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.86rem; color: var(--text);
@@ -113,8 +113,7 @@ html { font-size: 15.5px; }
 .profile { color: var(--text); font-weight: 500; }
 .muted { color: var(--text-3); font-size: 0.76rem; margin-top: 0.6rem; }
 
-/* Pharmaceutical opinion: each point is a frame containing the proposal then its sources.
-   The frames are st.container(key="frame-<type>-..."): Streamlit gives them the class st-key-<key>. */
+/* Avis pharmaceutique : un cadre par point (classe st-key-frame-<type>) */
 [class*="st-key-frame-"] {
     border: 1px solid var(--border); border-left: 3px solid var(--border); border-radius: 4px;
     background: var(--surface); padding: 0.5rem 0.75rem; margin: 0.35rem 0; gap: 0.35rem;
@@ -123,13 +122,12 @@ html { font-size: 15.5px; }
 [class*="st-key-frame-verification"] { border-left-color: var(--purple); }
 [class*="st-key-frame-monitoring"] { border-left-color: var(--blue); }
 [class*="st-key-frame-validation"] { border-left-color: var(--green); }
-/* Streamlit gives markdown blocks a negative bottom margin: without this fix, the sources overlap the text */
+/* Annule la marge négative de Streamlit qui superpose les sources au texte */
 [class*="st-key-frame-"] [data-testid="stMarkdownContainer"] { margin-bottom: 0 !important; }
 [class*="st-key-frame-"] [data-testid="stMarkdownContainer"] p { margin: 0 !important; }
 .point { font-size: 0.9rem; color: var(--text); line-height: 1.45; }
 p.point.intervention, .point.intervention { font-weight: 700 !important; }
-/* Open record: areas whose height is computed from the screen, each scrolls on its own (the page does not).
-   Available height ≈ 100vh minus application bar, tabs, navigation bar and labels. */
+/* Dossier ouvert : zones à hauteur d'écran défilant chacune seule */
 div.st-key-zone-biology, div.st-key-zone-prescription, div.st-key-zone-opinion {
     overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
 }
@@ -139,9 +137,7 @@ div.st-key-zone-opinion { height: calc((100vh - 360px) * 0.5) !important; min-he
 .st-key-zone-opinion > div { margin-bottom: 0.5rem; }
 .data-table th { position: sticky; top: 0; z-index: 1; }
 
-/* Patient list: aligned columns (grid), each row covered by an invisible button.
-   The list scrolls on its own in a screen-high area (the page does not); the column header stays visible.
-   360px: approximate height of what is above the list (application bar, pages, title, indicators, filters). */
+/* Liste patients : grille défilante, chaque ligne recouverte d'un bouton invisible ; 360px = hauteur au-dessus */
 div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; background: var(--surface);
     margin-top: 0.4rem; overflow-y: auto !important; overflow-x: hidden !important; flex: none !important;
     max-height: calc(100vh - 360px) !important; min-height: 200px; }
@@ -165,7 +161,7 @@ div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; b
 }
 .sources-title { font-size: 0.74rem; font-weight: 600; color: var(--text-3); text-transform: uppercase;
     letter-spacing: 0.05em; }
-/* Source links: pastel blue text on a very light blue background */
+/* Liens vers les sources : bleu pastel */
 .stButton > button[kind="tertiary"] {
     min-height: 1.4rem; padding: 0.05rem 0.5rem; background: #F0F6FD; border: 1px solid #C6DDF5; border-radius: 10px;
 }
@@ -179,7 +175,7 @@ div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; b
     border: 1px solid var(--border); border-radius: 10px; padding: 0.05rem 0.5rem;
 }
 
-/* Laboratory and prescription tables: all text visible, no horizontal scrolling */
+/* Tableaux de biologie et de prescription : tout le texte visible, sans défilement horizontal */
 .data-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; background: var(--surface);
     border: 1px solid var(--border); table-layout: auto; }
 .data-table th { text-align: left; font-weight: 600; color: var(--text-2); background: var(--background);

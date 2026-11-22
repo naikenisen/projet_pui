@@ -1,9 +1,4 @@
-"""Analyses the patients of a folder with the KBS, the RAG and the LLM, and saves the results.
-
-Run from the project root:
-    python3 main.py --remaining   # patients without a result in inference_results.json
-    python3 main.py --all         # all patients, the results file is overwritten
-"""
+# Analyse les patients d'un dossier (KBS, RAG, LLM) et enregistre les résultats dans inference_results.json.
 
 import argparse
 import json
@@ -29,8 +24,8 @@ def save_results(results):
         json.dump(results, file, ensure_ascii=False, indent=2)
 
 
+# Une erreur est enregistrée dans le résultat au lieu d'interrompre l'analyse
 def analyse(record):
-    """KBS + RAG + LLM for one patient. An error is stored in the result instead of stopping the run."""
     date = datetime.now().strftime("%d/%m/%Y %H:%M")
     try:
         alerts = check_rules(record)

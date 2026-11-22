@@ -1,8 +1,4 @@
-"""“Documents du RAG” page: indexed guidelines, PDFs waiting to be indexed, upload of new guidelines.
-
-Also holds the PDF viewer, opened from this page and from the sources of the pharmaceutical opinion.
-The indexing itself is done by indexing.py (index_pdf).
-"""
+# Page « Documents du RAG » : référentiels indexés, indexation, ajout de PDF et visionneuse.
 
 import os
 
@@ -20,12 +16,8 @@ def render_page():
     _add_guideline()
 
 
-# ---------------------------------------------------------------------------
-# PDF files and vector database
-# ---------------------------------------------------------------------------
-
+# {nom du PDF: nombre de passages} des documents présents dans ChromaDB
 def indexed_documents():
-    """Returns {pdf_name: passage_count} for the documents present in ChromaDB."""
     counts = {}
     for meta in get_collection().get(include=["metadatas"])["metadatas"]:
         counts[meta["source"]] = counts.get(meta["source"], 0) + 1
@@ -38,8 +30,8 @@ def folder_documents():
     return sorted(f for f in os.listdir(PDF_FOLDER) if f.lower().endswith(".pdf"))
 
 
+# basename empêche de sortir du dossier avec un nom comme « ../../fichier.pdf »
 def document_path(name):
-    # basename: prevents leaving the folder with a name such as "../../file.pdf"
     return os.path.join(PDF_FOLDER, os.path.basename(name))
 
 
@@ -56,16 +48,12 @@ def page_count(path):
         return document.page_count
 
 
+# Image PNG de la page demandée, numérotée à partir de 1
 def page_image(path, page, dpi=110):
-    """Returns the PNG image (bytes) of the requested page (numbered from 1)."""
     with pymupdf.open(path) as document:
         page = min(max(page, 1), document.page_count)
         return document[page - 1].get_pixmap(dpi=dpi).tobytes("png")
 
-
-# ---------------------------------------------------------------------------
-# PDF viewer
-# ---------------------------------------------------------------------------
 
 @st.dialog("Consultation du document", width="large")
 def open_document(name, page=1):
@@ -88,10 +76,6 @@ def open_document(name, page=1):
     st.image(page_image(path, page))
 
 
-# ---------------------------------------------------------------------------
-# Page sections
-# ---------------------------------------------------------------------------
-
 def _indexed(indexed):
     label(f"Référentiels indexés ({len(indexed)})")
     if not indexed:
@@ -103,8 +87,8 @@ def _indexed(indexed):
             open_document(name)
 
 
+# PDF présents dans le dossier mais absents de la base vectorielle
 def _not_indexed(indexed):
-    """PDFs present in ressources/rag/RAG_Docs/ but not in the vector database."""
     not_indexed = [name for name in folder_documents() if name not in indexed]
     if not not_indexed:
         return

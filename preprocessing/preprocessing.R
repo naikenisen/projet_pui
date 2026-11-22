@@ -1,3 +1,5 @@
+# Anonymise les CSV en remplaçant les NDA par des identifiants aléatoires à 9 chiffres.
+
 BIO <- read.csv("~/coding/dataset_projet_pui/BIO.csv")
 CLINIQUE <- read.csv("~/coding/dataset_projet_pui/CLINIQUE.csv")
 TRAITEMENTS <- read.csv("~/coding/dataset_projet_pui/TRAITEMENTS.csv")
@@ -15,7 +17,7 @@ anonymise_tables <- function(dir = "~/coding/dataset_projet_pui",
 
   all_nda <- unique(unlist(lapply(data, `[[`, "NDA")))
   if (!is.null(seed)) set.seed(seed)
-  new_ids <- sample.int(9e8, length(all_nda)) + 99999999 # unique, 9 digits
+  new_ids <- sample.int(9e8, length(all_nda)) + 99999999
   mapping <- setNames(as.character(new_ids), all_nda)
 
   for (t in tables) {
