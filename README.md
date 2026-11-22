@@ -64,14 +64,9 @@ python3 generation.py --folder dataset --patient-id 100133744
 
 ![Figure 2](paper/figures_en/figure_2.png)
 
-
 ### Figure 3. Knowledge-Based System (KBS)
 
 ![Figure 3](paper/figures_en/figure_3.png)
-
-The rules are in  : 
-- `ressources/kbs/generic_rules.json` (ANSM Thesaurus, DDI-Predictor)
--  `ressources/kbs/personalized_rules.json` (hospital rules).
 
 ### Figure 4. Generation (LLM)
 
