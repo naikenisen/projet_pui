@@ -9,6 +9,9 @@ digraph architecture {
     patients [shape=note, label=<<B>dataset/</B><BR/><FONT POINT-SIZE="8.5">one JSON file per patient</FONT>>];
     chroma   [shape=cylinder, label=<<B>chroma_db/</B><BR/><FONT POINT-SIZE="8.5">vector index</FONT>>];
     decision [shape=note, label=<<B>LLM decision</B><BR/><FONT POINT-SIZE="8.5">opinion, justification, sources</FONT>>];
+    base_clp           [shape=note, label=<<B>base.clp</B><BR/><FONT POINT-SIZE="8.5">fact model, dose rules</FONT>>];
+    generic_rules      [shape=note, label=<<B>generic_rules.clp</B><BR/><FONT POINT-SIZE="8.5">interactions (ANSM, DDI-Predictor)</FONT>>];
+    personalized_rules [shape=note, label=<<B>personalized_rules.clp</B><BR/><FONT POINT-SIZE="8.5">hospital rules</FONT>>];
 
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.18,0.08"];
     indexing [label=<<B>indexing.py</B>>];
@@ -18,9 +21,16 @@ digraph architecture {
     generation [label=<<B>generation.py</B>>];
     create_rule [label=<<B>create_rule.py</B><BR/><FONT POINT-SIZE="8.5">new KBS rules (LLM)</FONT>>];
 
-    { rank=same; base; patients; }
-    { rank=same; indexing; main; create_rule; }
+    { rank=same; base; patients; create_rule; }
+    { rank=same; indexing; main; base_clp; generic_rules; personalized_rules; }
     { rank=same; chroma; retrieval; kbs; }
+
+    // Invisible edges keep the vertical order: RAG on top, rules at the bottom
+    edge [style=invis];
+    base -> patients -> create_rule;
+    indexing -> main -> base_clp -> generic_rules -> personalized_rules;
+    chroma -> retrieval -> kbs;
+    edge [style=solid];
 
     base -> indexing -> chroma;
     chroma -> retrieval [style=dashed, label="read"];
@@ -31,6 +41,9 @@ digraph architecture {
     main -> kbs;
     retrieval -> generation;
     kbs -> generation;
-    create_rule -> kbs [style=dashed, label="personalized rules"];
+    create_rule -> personalized_rules [label="new rule"];
+    base_clp -> kbs [style=dashed];
+    generic_rules -> kbs [style=dashed];
+    personalized_rules -> kbs [style=dashed, label="read"];
     generation -> decision;
 }
