@@ -1,4 +1,4 @@
-# Particularités des CSV : formats numériques, codes, lignes à interpréter selon leur contexte.
+# CSV quirks: number formats, codes, rows to interpret from their context.
 
 import numpy as np
 import pandas as pd
@@ -15,7 +15,7 @@ def clean(x, decimals=None):
     return int(x) if x.is_integer() else x
 
 
-# Le CSV a une ligne par principe actif : les regroupe en une liste par prescription
+# The CSV has one row per active ingredient: groups them into one list per prescription
 def group_active_ingredients(t, key):
     ai = t[t["active_ingredient_dosage"] != ""].copy()
     ai["unit_lower"] = ai["active_ingredient_unit"].str.lower()
@@ -25,12 +25,12 @@ def group_active_ingredients(t, key):
     return ai.groupby(key, sort=False)["ai"].agg(list)
 
 
-# « gel - gélule(s) » -> « gélule(s) »
+# "gel - gélule(s)" -> "gélule(s)"
 def intake_unit(text):
     return text.split(" - ", 1)[-1]
 
 
-# Posologie lisible, ex. « 2 comprimé(s) per day — matin, soir — every day »
+# Readable dosage regimen, e.g. "2 comprimé(s) per day — matin, soir — every day"
 def dosage_regimen_text(r):
     unit = intake_unit(r.get("intake_unit", ""))
     quantity = r.get("quantity_per_day", "")
@@ -60,7 +60,7 @@ def dosage_regimen_text(r):
     return " — ".join(parts)
 
 
-# Renomme les lignes « soit », « Soit » et « Temps du patient/témoin » d'après leur bloc d'analyses
+# Renames the "soit", "Soit" and "Temps du patient/témoin" rows from their test block
 def rename_contextual_rows(b, leukocyte_formula):
     block = ["patient_id", "test_datetime"]
     test = b["test"]

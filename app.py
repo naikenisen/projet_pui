@@ -1,8 +1,8 @@
-# Point d'entrée de l'interface Streamlit : streamlit run app.py
+# Entry point of the Streamlit interface: streamlit run app.py
 
 import os
 
-# Le dossier patients est relatif à la racine du projet
+# The patients folder is relative to the project root
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
@@ -13,7 +13,7 @@ common.configure_page()
 common.inject_style()
 common.render_app_bar()
 
-# Conserve le filtre et la recherche de la liste patients lors d'un changement de page
+# Keeps the patient list filter and search when switching pages
 for key in ("filter", "search"):
     if key in st.session_state:
         st.session_state[key] = st.session_state[key]

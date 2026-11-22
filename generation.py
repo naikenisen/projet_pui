@@ -1,4 +1,4 @@
-# Analyse la prescription d'un patient avec le LLM.
+# Analyses a patient's prescription with the LLM.
 
 import argparse
 import json
@@ -14,7 +14,7 @@ load_dotenv()
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
 
 MODEL = "qwen/qwen3.6-35b-a3b"
-# Raisonnement : avis bien plus cohérents, mais ~40 s par patient au lieu de 10 s
+# Reasoning: much more consistent opinions, but ~40 s per patient instead of 10 s
 REASONING = True
 
 DECISION_VALIDATED = "PATIENT VALIDATED"
@@ -107,20 +107,20 @@ Rules for the points:
 
 LAB_RANGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "lab_reference_ranges.json")
 
-# Unités de prise qui sont déjà une quantité de principe actif
+# Intake units that are already an amount of active ingredient
 QUANTITY_UNITS = {"milligramme(s)": (1, "mg"), "gramme(s)": (1000, "mg"), "microgramme(s)": (1, "µg"),
                   "unité(s) internationale(s)": (1, "IU"), "unité(s) internationale(s) anti-Xa": (1, "anti-Xa IU")}
-# Formes unitaires : le dosage du principe actif est la quantité par unité
+# Unit forms: the active ingredient dosage is the amount per unit
 UNIT_FORMS = ("comprimé", "gélule", "sachet", "ampoule", "seringue", "capsule", "suppositoire", "stylo", "film")
 DOSAGE_UNITS = {"mg": (1, "mg"), "g": (1000, "mg"), "ug": (1, "µg"), "iu": (1, "IU"), "axa_iu": (1, "anti-Xa IU"), "u": (1, "U")}
 
 
-# Nombre sans zéros inutiles ni notation scientifique
+# Number without useless zeros or scientific notation
 def number(value):
     return f"{value:g}" if value < 1e6 else f"{value:.0f}"
 
 
-# Dose de principe actif par jour d'administration, ex. (3000, "mg"), ou None si incalculable
+# Active ingredient dose per administration day, e.g. (3000, "mg"), or None if it cannot be computed
 def dose_per_day(treatment):
     quantity = treatment.get("quantity_per_day")
     if not isinstance(quantity, (int, float)) or quantity <= 0:
@@ -148,7 +148,7 @@ def line_status(treatment, reference_date):
     return "ongoing"
 
 
-# « IRBESARTAN 150 MG (LABO ARROW), CPR » -> « IRBESARTAN »
+# "IRBESARTAN 150 MG (LABO ARROW), CPR" -> "IRBESARTAN"
 def drug_name(label):
     return re.split(r"[\d,(]", label, maxsplit=1)[0].strip().upper()
 
@@ -171,7 +171,7 @@ def lab_interpretation(name, value, ranges):
     return ""
 
 
-# Dossier envoyé au LLM : champs vides retirés, biologie interprétée, lignes L1, L2... avec statut et dose calculée
+# Record sent to the LLM: empty fields removed, lab values interpreted, lines L1, L2... with status and computed dose
 def summarize_record(record):
     patient = record["patient"]
     summary = {key: value for key, value in patient.items() if key != "biology" and value is not None}
@@ -197,7 +197,7 @@ def summarize_record(record):
     return {"patient": summary, "treatments": treatments}
 
 
-# Médicaments sur plusieurs lignes programmées en cours, ex. « IRBESARTAN: L11 (150 mg) + L19 (300 mg) = 450 mg per day »
+# Drugs on several ongoing scheduled lines, e.g. "IRBESARTAN: L11 (150 mg) + L19 (300 mg) = 450 mg per day"
 def multiple_lines(record):
     reference_date = record["patient"].get("reference_date")
     groups = {}
@@ -219,17 +219,17 @@ def multiple_lines(record):
     return sentences
 
 
-# Identifiants A1, R2... recopiés dans le texte malgré la consigne (les L3 sont conservés)
+# A1, R2... identifiers copied into the text despite the prompt (L3 identifiers are kept)
 REFERENCE_IN_TEXT_PATTERN = re.compile(r"\s*(?:\([^()]*\b[AR]\d+\b[^()]*\)|\[[AR]\d+(?:\s*,\s*[AR]\d+)*\])")
 
 
-# Du plus au moins grave
+# From most to least severe
 POINT_TYPES = ("intervention", "verification", "monitoring", "validation")
 DECISION_BY_TYPE = {"intervention": DECISION_INTERVENTION, "verification": DECISION_VERIFICATION,
                     "monitoring": DECISION_MONITORING, "validation": DECISION_VALIDATED}
 
 
-# Tolère les variantes (« Verification », « PI »...) ; "verification" si inconnu
+# Accepts variants ("Verification", "PI"...); "verification" if unknown
 def point_type(value):
     text = normalize(value).strip()
     if text in ("pi", "ip") or "interv" in text:
@@ -241,7 +241,7 @@ def point_type(value):
     return "verification"
 
 
-# Remplace les identifiants cités par le LLM par les alertes, extraits et lignes correspondants ; les inconnus sont ignorés
+# Replaces the identifiers cited by the LLM with the matching alerts, excerpts and lines; unknown ones are ignored
 def read_response(response, alerts, passages, line_count):
     references = {f"A{i}": {"type": "alert", "text": alert} for i, alert in enumerate(alerts, start=1)}
     references |= {
@@ -274,7 +274,7 @@ def source_label(source):
     return f"{source['source']}, page {source['page']}"
 
 
-# La décision est celle du point le plus grave, pour rester cohérente avec les points
+# The decision is the one of the most severe point, to stay consistent with the points
 def analyse_patient(record, passages=(), alerts=()):
     alerts, passages = list(alerts), list(passages)
     message = json.dumps(summarize_record(record), ensure_ascii=False, indent=1)

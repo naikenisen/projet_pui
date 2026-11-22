@@ -1,4 +1,4 @@
-# Construit dataset/ (un JSON par patient) à partir des CSV de original_dataset/.
+# Builds dataset/ (one JSON per patient) from the CSV files of original_dataset/.
 
 import json
 from pathlib import Path
@@ -46,7 +46,7 @@ def load_treatments():
     return lines.reset_index(drop=True), [c for c in key if c != "patient_id"]
 
 
-# Tire au hasard, pour chaque patient, un jour avec au moins une prescription active
+# Randomly picks, for each patient, a day with at least one active prescription
 def choose_days(lines):
     days = lines[["patient_id", "start", "end"]].copy()
     days["day"] = [pd.date_range(s, e, freq="D") for s, e in zip(days["start"], days["end"])]
@@ -77,7 +77,7 @@ def treatment_json(r, columns):
     return d
 
 
-# Un même test dans une unité minoritaire est suffixé « [unité] »
+# A test in a minority unit gets a "[unit]" suffix
 def load_biology():
     b = read_csv("biology")
     columns = [c for c in b.columns if c not in ("patient_id", "test")]
@@ -96,7 +96,7 @@ def load_biology():
     return b, columns
 
 
-# Résultat le plus récent de chaque test avant le jour de référence
+# Most recent result of each test before the reference day
 def biology_before_day(biology, days):
     b = biology.join(days, on="patient_id", how="inner")
     limit = b["reference_date"] + pd.Timedelta(days=1 if INCLUDE_SAME_DAY_BIOLOGY else 0)

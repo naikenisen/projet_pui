@@ -1,4 +1,4 @@
-# Compte les patients extraits par le filtre 1 (mêmes fonctions et graine que preprocessing.py).
+# Counts the patients extracted by filter 1 (same functions and seed as preprocessing.py).
 
 from preprocessing import (
     DICTIONARY, SEED, biology_before_day, choose_days, load_biology, load_clinical,

@@ -1,4 +1,4 @@
-# Analyse les patients d'un dossier (KBS, RAG, LLM) et enregistre les résultats dans inference_results.json.
+# Analyses the patients of a folder (KBS, RAG, LLM) and saves the results in inference_results.json.
 
 import argparse
 import json
@@ -24,7 +24,7 @@ def save_results(results):
         json.dump(results, file, ensure_ascii=False, indent=2)
 
 
-# main analysis function and dealing with errors
+# Full analysis of one patient; on failure, the error is saved instead of a result
 def analyse(record):
     date = datetime.now().strftime("%d/%m/%Y %H:%M")
     try:

@@ -1,4 +1,4 @@
-# Anonymise les CSV en remplaçant les NDA par des identifiants aléatoires à 9 chiffres.
+# Anonymises the CSV files by replacing the NDA with random 9-digit identifiers.
 
 BIO <- read.csv("~/coding/dataset_projet_pui/BIO.csv")
 CLINIQUE <- read.csv("~/coding/dataset_projet_pui/CLINIQUE.csv")

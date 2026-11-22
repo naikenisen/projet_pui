@@ -7,8 +7,9 @@ the way the search is done must be reworked
 [] add everything needed to the RAG documents (src/rag/RAG_Docs/)
 [] add all the necessary rules to the KBS
 [] speed up inference
-[] check how the KBS is implemented in the code
 [] build a prioritisation system for pharmaceutical interventions (PI) based on what had an impact at the hospital, from the pharmacy extractions
 [] rework the list of guidelines used by the RAG
-[] move to a true KBS
-[] erase by hand unecessary mecanics and functions et changer les commentaires en fr (à faire ce soir avec de la musique sur grand écran)
+[] erase by hand unecessary mecanics and functions
+[] read kbs.py and remove unecessary functions
+[] read generation.py and remove unecessary functions
+[] make a documentation on the clip language and how it is used here in the paper

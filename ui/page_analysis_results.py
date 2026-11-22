@@ -1,4 +1,4 @@
-# Page « Résultats d'analyse » : indicateurs, lancement de l'analyse et liste des patients.
+# "Résultats d'analyse" page: indicators, analysis launch and patient list.
 
 import html
 import os
@@ -30,24 +30,24 @@ def render_page():
         _render_list(state, shown)
 
 
-# Dossiers nécessitant une action en premier
+# Records needing an action come first
 STATUS_ORDER = {"intervention": 0, "verification": 1, "monitoring": 2, "error": 3, "not_analysed": 4, "validated": 5}
 
 
-# État de la page, reconstruit à chaque exécution à partir des fichiers
+# Page state, rebuilt from the files on every run
 @dataclass
 class ResultsState:
     patients: list
-    # {id patient: résultat d'analyse}
+    # {patient id: analysis result}
     results: dict = field(default_factory=dict)
-    # {id patient: code de statut}
+    # {patient id: status code}
     statuses: dict = field(default_factory=dict)
-    # {code de statut: nombre de dossiers}
+    # {status code: number of records}
     counts: dict = field(default_factory=dict)
-    # Dossiers nécessitant une action en premier
+    # Records needing an action come first
     sorted_patients: list = field(default_factory=list)
 
-    # Dossiers jamais analysés ou en erreur
+    # Records never analysed or in error
     @property
     def to_analyse(self):
         return [r for r in self.patients if self.statuses[r["patient"]["id"]] in ("not_analysed", "error")]
@@ -62,7 +62,7 @@ def build_state():
     return ResultsState(patients, results, statuses, counts, sorted_patients)
 
 
-# Lance `main.py --remaining` et renvoie au fil de l'eau l'id de chaque patient analysé
+# Runs `main.py --remaining` and yields the id of each patient as soon as it is analysed
 def run_main():
     script = os.path.abspath(main.__file__)
     command = [sys.executable, "-u", script, "--remaining", "--folder", PATIENTS_FOLDER]
@@ -132,7 +132,7 @@ def _run_analysis(state):
     st.rerun()
 
 
-# Code du filtre : (libellé, statuts affichés ; None = tous)
+# Filter code: (label, statuses shown; None = all)
 FILTERS = {
     "all": ("Tous", None),
     "intervention": ("Interventions", {"intervention"}),
@@ -143,7 +143,7 @@ FILTERS = {
 }
 
 
-# Dossiers correspondant au filtre et à la recherche (identifiant ou médicament)
+# Records matching the filter and the search (id or drug)
 def filtered_patients(state):
     selected_filter = st.session_state.get("filter", "all")
     search = st.session_state.get("search", "").strip().lower()
@@ -170,7 +170,7 @@ def _render_filters(state):
                              label_visibility="collapsed", key="search")
 
 
-# Zone défilante (CSS .st-key-patient-list), une ligne cliquable par patient
+# Scrollable area (CSS .st-key-patient-list), one clickable row per patient
 def _render_list(state, shown):
     if not shown:
         st.caption("Aucun dossier ne correspond à la sélection.")
@@ -186,7 +186,7 @@ def _render_list(state, shown):
             _patient_row(state, record)
 
 
-# Ligne HTML recouverte d'un bouton invisible qui ouvre le dossier
+# HTML row covered by an invisible button that opens the record
 def _patient_row(state, record):
     patient = record["patient"]
     patient_id = patient["id"]

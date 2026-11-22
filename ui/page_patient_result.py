@@ -1,4 +1,4 @@
-# Dossier d'un patient ouvert depuis la liste, et statut des dossiers.
+# Patient record opened from the list, and status of the records.
 
 import html
 import re
@@ -17,7 +17,7 @@ from ui.common import badge, label
 from ui.page_rag_documents import open_document
 
 
-# records : liste parcourue par les boutons précédent / suivant
+# records: list browsed by the previous / next buttons
 def render_page(records, results):
     patient_id = st.session_state.open_patient
     position = next(i for i, r in enumerate(records) if r["patient"]["id"] == patient_id)
@@ -33,10 +33,10 @@ def close_patient():
     st.session_state.open_patient = None
 
 
-# Catégorie de chaque décision écrite par generation.py
+# Category of each decision written by generation.py
 CATEGORIES = {DECISION_INTERVENTION: "intervention", DECISION_VERIFICATION: "verification",
               DECISION_MONITORING: "monitoring", DECISION_VALIDATED: "validated"}
-# Décision affichée dans l'avis, par catégorie
+# Decision shown in the opinion, per category
 DECISION_LABELS = {
     "intervention": "INTERVENTION PHARMACEUTIQUE PROPOSÉE",
     "verification": "VÉRIFICATION PROPOSÉE",
@@ -53,12 +53,12 @@ STATUS_LABELS = {
 }
 
 
-# Une décision inconnue est traitée comme une intervention, pour être vérifiée en premier
+# An unknown decision is treated as an intervention, so it is checked first
 def category(decision):
     return CATEGORIES.get(decision, "intervention")
 
 
-# (code, libellé) du statut d'un dossier
+# (code, label) of a record status
 def status(result):
     if result is None:
         code = "not_analysed"
@@ -92,7 +92,7 @@ def _navigation_bar(records, position, result):
                            use_container_width=True)
 
 
-# Biologie à gauche, prescription et avis à droite ; chaque zone défile seule (CSS .st-key-zone-*)
+# Lab values on the left, prescription and opinion on the right; each zone scrolls on its own (CSS .st-key-zone-*)
 def _patient_record(record, result, ranges):
     patient = record["patient"]
     treatments = record["treatments"]
@@ -124,7 +124,7 @@ def _patient_record(record, result, ranges):
             _render_opinion(result, patient["id"])
 
 
-# Interprétation affichée d'une valeur biologique
+# Displayed interpretation of a lab value
 LOW, HIGH, NORMAL = "Bas", "Élevé", "Normal"
 
 
@@ -139,14 +139,14 @@ def patient_profile(patient):
     return " · ".join(parts) or "Âge, poids et taille non disponibles"
 
 
-# Même interprétation que celle envoyée au LLM ; "" sans valeurs de référence
+# Same interpretation as the one sent to the LLM; "" without reference range
 def interpretation(name, value, ranges):
     if name not in ranges or not isinstance(value, (int, float)):
         return ""
     return {"low": LOW, "high": HIGH}.get(lab_interpretation(name, value, ranges), NORMAL)
 
 
-# (lignes, classes) du tableau de biologie : valeurs anormales en premier, en rouge
+# (rows, classes) of the lab table: abnormal values first, in red
 def biology_table(biology, ranges):
     measures = sorted(
         ((name, measure, interpretation(name, measure.get("value"), ranges)) for name, measure in biology.items()),
@@ -158,12 +158,12 @@ def biology_table(biology, ranges):
     return rows, classes
 
 
-# Numéros des lignes que le LLM propose de modifier
+# Numbers of the lines the LLM proposes to modify
 def lines_to_modify(result):
     return {n for point in (result or {}).get("points", []) for n in point.get("lines_to_modify", [])}
 
 
-# (lignes, classes) du tableau de prescription : lignes à modifier en rouge
+# (rows, classes) of the prescription table: lines to modify in red
 def prescription_table(treatments, to_modify):
     rows = [[f"L{number}", t.get("drug_label", ""), t.get("dosage_regimen", ""), t.get("start_date") or "",
              t.get("end_date") or ""] for number, t in enumerate(treatments, start=1)]
@@ -171,7 +171,7 @@ def prescription_table(treatments, to_modify):
     return rows, classes
 
 
-# Tableau HTML ajusté à la largeur ; short_columns : colonnes sans retour à la ligne
+# HTML table fitted to the width; short_columns: columns without line wrapping
 def _table(columns, rows, row_classes=(), short_columns=()):
     header = "".join(f"<th>{html.escape(c)}</th>" for c in columns)
     body = ""
@@ -210,7 +210,7 @@ def _render_opinion(result, patient_id):
     st.markdown(f'<div class="muted">Analysé le {result["date"]}</div>', unsafe_allow_html=True)
 
 
-# Proposition de l'avis dans un cadre (CSS st-key-frame-<type>), avec ses sources en bas
+# Opinion point in a frame (CSS st-key-frame-<type>), with its sources at the bottom
 def _point(point, key):
     type_ = point["type"]
     with st.container(key=f"frame-{type_}-{key}"):
@@ -228,11 +228,11 @@ def _point(point, key):
                     open_document(source["source"], source["page"])
 
 
-# Reconnaît « reco_sfd.pdf, page 12 », « reco_sfd.pdf p. 12 » ou « reco_sfd.pdf »
+# Matches "reco_sfd.pdf, page 12", "reco_sfd.pdf p. 12" or "reco_sfd.pdf"
 SOURCE_PATTERN = re.compile(r"([^,;\[\]()]+?\.pdf)\s*(?:[,\-–:]?\s*(?:pages?|p\.?)\s*(\d+))?", re.IGNORECASE)
 
 
-# Avis des analyses antérieures aux points typés : justification, sources PDF en texte, alertes KBS
+# Opinion of analyses made before typed points: justification, PDF sources as text, KBS alerts
 def _legacy_opinion(result, patient_id):
     st.write(result["justification"])
     for number, source in enumerate(result.get("sources", [])):
@@ -250,20 +250,20 @@ def _open_alert(alert):
     st.markdown(html_alert(alert), unsafe_allow_html=True)
 
 
-# Le survol affiche l'alerte, le clic l'ouvre en détail
+# Hovering shows the alert, clicking opens its details
 def _alert_link(alert, key):
     if st.button("Alerte KBS", key=key, type="tertiary", help=alert):
         _open_alert(alert)
 
 
-# Niveaux du Thésaurus ANSM, du plus au moins grave
+# ANSM Thesaurus levels, from most to least severe
 LEVELS = {"CI": "Contre-indication", "ASDEC": "Association déconseillée", "PE": "Précaution d'emploi",
           "APEC": "À prendre en compte"}
-# Noms complets des niveaux tels qu'écrits dans le Thésaurus
+# Full level names as written in the Thesaurus
 FULL_LEVELS = {"CONTRE-INDICATION": "CI", "Association DECONSEILLEE": "ASDEC", "Précaution d'emploi": "PE",
                "A prendre en compte": "APEC"}
 PHARMACOKINETIC = "Pharmacocinétique"
-# « Interaction A + B (niveau) : ... » (Thésaurus) et « Interaction pharmacocinétique A + B : ... » (DDI-Predictor)
+# "Interaction A + B (level) : ..." (Thesaurus) and "Interaction pharmacocinétique A + B : ..." (DDI-Predictor)
 _CODE = "(?:CI|ASDEC|PE|APEC)"
 THESAURUS_ALERT_PATTERN = re.compile(
     rf"^Interaction (.+?) \(({_CODE}(?: - {_CODE})*|{'|'.join(map(re.escape, FULL_LEVELS))})\) : (.*)$", re.DOTALL
@@ -271,7 +271,7 @@ THESAURUS_ALERT_PATTERN = re.compile(
 DDI_ALERT_PATTERN = re.compile(r"^Interaction pharmacocinétique (.+?) : (.*)$", re.DOTALL)
 
 
-# Texte du Thésaurus en HTML : un retour à la ligne par niveau et par tiret
+# Thesaurus text as HTML: one line break per level and per dash
 def format_text(text):
     text = html.escape(text, quote=False)
     text = re.sub(
@@ -282,14 +282,14 @@ def format_text(text):
     return text.removeprefix("<br>")
 
 
-# « CI - ASDEC - APEC » -> ["CI", "ASDEC", "APEC"] ; noms complets -> leur code
+# "CI - ASDEC - APEC" -> ["CI", "ASDEC", "APEC"]; full names -> their code
 def level_codes(level):
     if level in FULL_LEVELS:
         return [FULL_LEVELS[level]]
     return [code.strip() for code in level.split("-") if code.strip() in LEVELS]
 
 
-# Alerte KBS en HTML : niveau et titre, message, conduite à tenir et lignes de prescription
+# KBS alert as HTML: level and title, message, recommended action and prescription lines
 def html_alert(alert):
     alert, _, prescription = alert.partition(" [Prescription: ")
     header = ""

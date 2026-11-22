@@ -1,4 +1,4 @@
-# Page « Règles du KBS » : rédaction de règles CLIPS personnalisées par le LLM, vérification et liste.
+# "Règles du KBS" page: personalized CLIPS rules drafted by the LLM, checked and listed.
 
 import html
 import re
@@ -19,7 +19,7 @@ from kbs import (
 )
 from ui.common import badge, label, load_patients
 
-# Texte des alertes : (message "...") dans le code CLIPS
+# Alert text: (message "...") in the CLIPS code
 ALERT_MESSAGE = re.compile(r'\(message\s+"((?:[^"\\]|\\.)*)"')
 
 
@@ -31,7 +31,7 @@ def render_page():
     _rule_list(load_personalized_rules())
 
 
-# La règle proposée par le LLM est gardée dans st.session_state["proposed_rule"]
+# The rule proposed by the LLM is kept in st.session_state["proposed_rule"]
 def _assistant(biology_parameters):
     label("Ajouter une règle avec l'assistant")
     with st.form("rule_request", border=False):
@@ -50,7 +50,7 @@ def _assistant(biology_parameters):
                 st.error(f"Le modèle n'a pas pu rédiger de règle : {error}")
 
 
-# Carte, avertissements et nombre de dossiers déclenchés, puis Enregistrer / Annuler
+# Card, warnings and number of triggered records, then Save / Cancel
 def _proposed_rule(patients, biology_parameters):
     proposed = st.session_state.get("proposed_rule")
     if not proposed:
@@ -98,7 +98,7 @@ def show_rule(rule):
         st.code(rule, language="lisp")
 
 
-# Titre : premier commentaire de la règle (hors demande du pharmacien), sinon nom de la première defrule
+# Title: first comment of the rule (except the pharmacist request), else name of the first defrule
 def rule_title(rule):
     for line in rule.splitlines():
         if line.startswith(";") and not line.startswith(REQUEST_PREFIX):
@@ -107,7 +107,7 @@ def rule_title(rule):
     return names[0] if names else "Règle"
 
 
-# Carte HTML d'une règle : titre, alertes et demande du pharmacien
+# HTML card of a rule: title, alerts and pharmacist request
 def rule_card(rule):
     request = next((line[len(REQUEST_PREFIX):] for line in rule.splitlines() if line.startswith(REQUEST_PREFIX)), "")
     origin = "Rédigée par l'assistant" if request else "Règle personnalisée"

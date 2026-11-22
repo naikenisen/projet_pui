@@ -1,1 +1,1 @@
-# Interface Streamlit : un module par page, point d'entrée app.py.
+# Streamlit interface: one module per page, entry point app.py.

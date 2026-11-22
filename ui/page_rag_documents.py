@@ -1,4 +1,4 @@
-# Page « Documents du RAG » : référentiels indexés, indexation, ajout de PDF et visionneuse.
+# "Documents du RAG" page: indexed guidelines, indexing, PDF upload and viewer.
 
 import os
 
@@ -16,7 +16,7 @@ def render_page():
     _add_guideline()
 
 
-# {nom du PDF: nombre de passages} des documents présents dans ChromaDB
+# {PDF name: number of passages} of the documents stored in ChromaDB
 def indexed_documents():
     counts = {}
     for meta in get_collection().get(include=["metadatas"])["metadatas"]:
@@ -30,7 +30,7 @@ def folder_documents():
     return sorted(f for f in os.listdir(PDF_FOLDER) if f.lower().endswith(".pdf"))
 
 
-# basename empêche de sortir du dossier avec un nom comme « ../../fichier.pdf »
+# basename prevents leaving the folder with a name like "../../file.pdf"
 def document_path(name):
     return os.path.join(PDF_FOLDER, os.path.basename(name))
 
@@ -48,7 +48,7 @@ def page_count(path):
         return document.page_count
 
 
-# Image PNG de la page demandée, numérotée à partir de 1
+# PNG image of the requested page, numbered from 1
 def page_image(path, page, dpi=110):
     with pymupdf.open(path) as document:
         page = min(max(page, 1), document.page_count)
@@ -87,7 +87,7 @@ def _indexed(indexed):
             open_document(name)
 
 
-# PDF présents dans le dossier mais absents de la base vectorielle
+# PDFs in the folder but missing from the vector database
 def _not_indexed(indexed):
     not_indexed = [name for name in folder_documents() if name not in indexed]
     if not not_indexed:

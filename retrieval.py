@@ -1,4 +1,4 @@
-# Recherche dans ChromaDB les passages des référentiels utiles à l'analyse d'un patient.
+# Searches ChromaDB for the guideline passages useful to analyse a patient.
 
 import argparse
 import json
@@ -18,7 +18,7 @@ client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPE
 RESULTS_PER_QUERY = 3
 MAX_PASSAGES = 8
 
-# Préfixe recommandé par Qwen3-Embedding pour les requêtes uniquement
+# Prefix recommended by Qwen3-Embedding, for queries only
 INSTRUCTION = "Instruct: Retrieve the medical guidelines useful to analyse this prescription\nQuery: "
 
 
@@ -40,7 +40,7 @@ def abnormal_biology(patient):
     return abnormalities
 
 
-# Une requête par ligne de traitement, complétée du profil patient et des anomalies biologiques
+# One query per treatment line, completed with the patient profile and the lab abnormalities
 def build_queries(record):
     patient = record["patient"]
     profile = []
@@ -60,7 +60,7 @@ def build_queries(record):
     return queries
 
 
-# Passages les plus proches de la prescription, sans doublons, triés par distance
+# Passages closest to the prescription, without duplicates, sorted by distance
 def retrieve_context(record):
     queries = build_queries(record)
     if not queries:

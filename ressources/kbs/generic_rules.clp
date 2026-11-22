@@ -1,8 +1,8 @@
-; Règles génériques : interactions médicamenteuses du Thésaurus ANSM et de DDI-Predictor.
-; Chaque fait interaction est lu par la règle drug-interaction de base.clp.
-; Fichier non modifiable depuis l'interface.
+; Generic rules: drug interactions from the ANSM Thesaurus and DDI-Predictor.
+; Each interaction fact is read by the drug-interaction rule of base.clp.
+; This file cannot be edited from the interface.
 
-; Thésaurus ANSM des interactions médicamenteuses (septembre 2023)
+; ANSM Thesaurus of drug interactions (September 2023)
 (deffacts ansm-thesaurus
   (interaction
     (title "ABATACEPT + ANTI-TNF ALPHA")
@@ -8213,7 +8213,7 @@
     (drugs-b "verapamil")
     (alert "Interaction VÉNÉTOCLAX + VERAPAMIL (Précaution d'emploi) : Risque d’augmentation des effets indésirables du vénétoclax par diminution de son métabolisme hépatique. Conduite à tenir : Surveillance clinique et biologique régulière, notamment hématologique, et adaptation de la posologie du vénétoclax.")))
 
-; DDI-Predictor (ratios d'AUC observés)
+; DDI-Predictor (observed AUC ratios)
 (deffacts ddi-predictor
   (interaction
     (title "ABROCITINIB + FLUCONAZOLE")

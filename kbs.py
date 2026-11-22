@@ -1,5 +1,5 @@
-# Système à base de connaissances (KBS) sur le moteur d'inférence CLIPS : le dossier patient est traduit en faits,
-# les règles des fichiers .clp produisent les alertes ; le LLM peut rédiger de nouvelles règles.
+# Knowledge-Based System (KBS) on the CLIPS inference engine: the patient record becomes facts,
+# the rules of the .clp files raise the alerts, and the LLM can draft new rules.
 
 import argparse
 import functools
@@ -12,16 +12,16 @@ import unicodedata
 import clips
 
 KBS_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "kbs")
-# Modèle des faits, calculs de dose et règle générique d'interaction
+# Fact templates, dose computations and generic interaction rule
 BASE_FILE = os.path.join(KBS_FOLDER, "base.clp")
-# Interactions du Thésaurus ANSM et de DDI-Predictor, non modifiables depuis l'interface
+# ANSM Thesaurus and DDI-Predictor interactions, read-only from the interface
 GENERIC_RULES_FILE = os.path.join(KBS_FOLDER, "generic_rules.clp")
-# Règles propres à l'hôpital, écrites à la main ou par le LLM : un bloc par règle, séparé par une ligne vide
+# Hospital-specific rules, written by hand or by the LLM: one block per rule, separated by an empty line
 PERSONALIZED_RULES_FILE = os.path.join(KBS_FOLDER, "personalized_rules.clp")
 
 PATIENT_FIELDS = ("age", "weight_kg", "height_cm", "bmi_kg_m2", "body_surface_area_m2")
 REQUEST_PREFIX = "; Demande du pharmacien : "
-# Fonctions CLIPS refusées dans les règles personnalisées : accès aux fichiers et au système
+# CLIPS functions forbidden in personalized rules: file and system access
 FORBIDDEN_FUNCTIONS = ("system", "open", "remove", "rename", "load", "batch", "save", "bsave", "bload", "eval", "build", "exit")
 
 
@@ -32,7 +32,7 @@ def read_file(path):
         return file.read()
 
 
-# Minuscules sans accents : « Paracétamol » == « PARACETAMOL »
+# Lowercase without accents: "Paracétamol" == "PARACETAMOL"
 def normalize(text):
     text = unicodedata.normalize("NFD", str(text).lower())
     return "".join(c for c in text if not unicodedata.combining(c))
@@ -42,14 +42,14 @@ def is_number(value):
     return isinstance(value, (int, float)) and not isinstance(value, bool)
 
 
-# Toutes les suites de mots du libellé : une règle trouve ainsi « apixaban » dans « APIXABAN 5 MG (ELIQUIS), CPR »
+# All word sequences of the label, so a rule finds "apixaban" in "APIXABAN 5 MG (ELIQUIS), CPR"
 def word_sequences(label):
     label = normalize(label)
     words = list(re.finditer(r"\w+", label))
     return {label[first.start():last.end()] for i, first in enumerate(words) for last in words[i:]}
 
 
-# Traduit le dossier patient en faits (modèle décrit dans base.clp)
+# Translates the patient record into facts (templates described in base.clp)
 def assert_patient(env, record):
     data = env.find_template("data")
     patient = record["patient"]
@@ -79,8 +79,8 @@ def assert_patient(env, record):
             env.find_template("prescribed").assert_fact(line=line, drug=words)
 
 
-# Environnement CLIPS avec base.clp puis les règles données en texte
-# CLIPS ne charge que des fichiers : le texte passe par un fichier temporaire
+# CLIPS environment with base.clp, then the rules given as text
+# CLIPS only loads files, so the text goes through a temporary file
 def create_environment(rules=""):
     env = clips.Environment()
     env.load(BASE_FILE)
@@ -94,7 +94,7 @@ def create_environment(rules=""):
     return env
 
 
-# Gardé en mémoire car generic_rules.clp est long à charger ; vidé quand les règles personnalisées changent
+# Cached because generic_rules.clp is slow to load; cleared when the personalized rules change
 @functools.lru_cache(maxsize=None)
 def kbs_environment():
     env = create_environment(read_file(PERSONALIZED_RULES_FILE))
@@ -102,7 +102,7 @@ def kbs_environment():
     return env
 
 
-# Alertes du dossier, une seule par message, suivies des libellés des lignes concernées
+# Alerts of the record, one per message, followed by the labels of the lines involved
 def apply_rules(record, env):
     env.reset()
     assert_patient(env, record)
@@ -128,7 +128,7 @@ def rule_names(rule):
     return re.findall(r"\(defrule\s+([^\s()]+)", rule)
 
 
-# Sans ligne vide, pour qu'une règle reste un seul bloc du fichier
+# Without empty lines, so a rule stays a single block of the file
 def compact(rule):
     return "\n".join(line.rstrip() for line in rule.strip().splitlines() if line.strip())
 
@@ -137,7 +137,7 @@ def load_personalized_rules():
     return [block.strip() for block in read_file(PERSONALIZED_RULES_FILE).split("\n\n") if block.strip()]
 
 
-# Liste vide si la règle (texte CLIPS) est sûre et se charge dans CLIPS
+# Empty list if the rule (CLIPS text) is safe and loads in CLIPS
 def rule_errors(rule):
     if not rule_names(rule):
         return ["the rule must contain at least one defrule"]
@@ -154,7 +154,7 @@ def rule_errors(rule):
     return []
 
 
-# N'enregistre que si toutes les règles sont valides ; renvoie la liste des erreurs
+# Saves only if all the rules are valid; returns the list of errors
 def save_personalized_rules(rules):
     errors = []
     names = []
@@ -175,7 +175,7 @@ def add_personalized_rule(rule):
     return save_personalized_rules(load_personalized_rules() + [rule])
 
 
-# {paramètre biologique: unité} des dossiers, dont le LLM doit reprendre le nom exact
+# {lab parameter: unit} of the records; the LLM must reuse their exact names
 def biology_parameters(records):
     parameters = {}
     for record in records:
@@ -184,7 +184,7 @@ def biology_parameters(records):
     return parameters
 
 
-# Données (data (name "...")) absentes des dossiers : les conditions sur elles seront toujours fausses
+# Data (data (name "...")) missing from the records: conditions on them will always be false
 def unknown_data(rule, biology_parameters):
     names = re.findall(r'\(data\s+\(name\s+"([^"]+)"\)', rule)
     return sorted(set(names) - set(PATIENT_FIELDS) - set(biology_parameters))
@@ -248,8 +248,8 @@ Examples:
   (assert (alert (message "Daptomycine : la posologie recommandée est de 10 mg/kg/jour") (lines ?l))))"""
 
 
-# Traduit la demande en règle CLIPS validée, sans l'enregistrer ; ValueError si impossible
-# Import local de generation, qui importe lui-même ce module
+# Translates the request into a validated CLIPS rule, without saving it; ValueError if impossible
+# Local import because generation itself imports this module
 def propose_rule(request, biology_parameters):
     from generation import MODEL, client
 

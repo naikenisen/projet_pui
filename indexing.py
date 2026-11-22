@@ -1,4 +1,4 @@
-# Découpe les PDF du RAG en passages, calcule leurs embeddings et les stocke dans ChromaDB.
+# Splits the RAG PDFs into passages, computes their embeddings and stores them in ChromaDB.
 
 import os
 
@@ -16,7 +16,7 @@ CHROMA_DIR = os.path.join(RAG_FOLDER, "chroma_db")
 COLLECTION_NAME = "rag_docs"
 EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"
 
-# En caractères
+# In characters
 PASSAGE_SIZE = 1500
 OVERLAP = 200
 
@@ -60,7 +60,7 @@ def get_collection():
     return chroma.get_or_create_collection(COLLECTION_NAME, embedding_function=None, metadata={"hnsw:space": "cosine"})
 
 
-# Remplace les passages du PDF dans ChromaDB et renvoie leur nombre
+# Replaces the PDF passages in ChromaDB and returns their count
 def index_pdf(pdf_path):
     passages = extract_passages(pdf_path)
     texts = [p["text"] for p in passages]

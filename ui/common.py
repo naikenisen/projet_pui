@@ -1,4 +1,4 @@
-# Éléments partagés par les pages : cadre de page, dossiers patients, petits utilitaires.
+# Elements shared by the pages: page frame, patient records, small helpers.
 
 import html
 import os
@@ -10,11 +10,11 @@ from kbs import load_patient
 HOSPITAL_NAME = "CHU Dijon Bourgogne"
 SOFTWARE_NAME = "Logiciel d'analyse pharmaceutique assistée par IA"
 STYLE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "style.css")
-# Un fichier JSON par patient, relatif à la racine
+# One JSON file per patient, relative to the project root
 PATIENTS_FOLDER = "dataset"
 
 
-# Doit être le premier appel Streamlit du script
+# Must be the first Streamlit call of the script
 def configure_page():
     st.set_page_config(page_title=f"{HOSPITAL_NAME} - Analyse pharmaceutique", layout="wide")
 
@@ -45,7 +45,7 @@ def load_patients(folder=PATIENTS_FOLDER):
     return [load_patient(folder, name[:-5]) for name in sorted(os.listdir(folder)) if name.endswith(".json")]
 
 
-# Étiquette en majuscules au-dessus d'un bloc
+# Uppercase label above a block
 def label(text):
     st.markdown(f'<div class="label">{html.escape(text)}</div>', unsafe_allow_html=True)
 
