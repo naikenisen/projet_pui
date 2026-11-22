@@ -7,7 +7,8 @@ digraph kbs {
 
     record [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Patient record</B><BR/>characteristics, laboratory values<BR/>prescription lines {L<SUB>1</SUB>, …, L<SUB>n</SUB>}>];
     rules [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Knowledge base (CLIPS)</B><BR/><FONT POINT-SIZE="8.5">base.clp: fact model, unit conversions, dose rules<BR/>generic_rules.clp: 1,877 interaction facts (ANSM, DDI-Predictor)<BR/>personalized_rules.clp: hospital rules</FONT>>];
-    { rank=same; record; rules; }
+    create_rule [label=<<B>create_rule.py</B><BR/><FONT POINT-SIZE="8.5">pharmacist request → LLM<BR/>→ checked CLIPS rule</FONT>>];
+    { rank=same; record; rules; create_rule; }
 
     facts [label=<<B>1. Translation into facts</B> (kbs.py)<BR/>(data name value): age, weight_kg, …, Créatinine (sang), …<BR/>(treatment line quantity unit) · (ingredient line dosage unit)<BR/>(prescribed line drug): word sequences of each label>];
 
@@ -42,6 +43,7 @@ digraph kbs {
     record -> facts;
     facts -> memory [label=" assert"];
     rules -> memory [label=" load"];
+    create_rule -> rules [style=dashed, label=" save"];
     example -> match [style=dotted, arrowhead=none];
     alert -> output;
 }

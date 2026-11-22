@@ -21,6 +21,7 @@ OPENROUTER_API_KEY=your_key
 | `indexing.py` | Indexes the guidelines (PDF) in a vector database (ChromaDB) |
 | `retrieval.py` | Searches the vector database for the passages useful for a patient |
 | `kbs.py` | Knowledge-Based System (KBS): turns a patient into facts and runs the CLIPS rules on them |
+| `create_rule.py` | Drafts a personalized CLIPS rule with the LLM from a pharmacist request, checks it and saves it |
 | `generation.py` | Analyses a patient with the LLM along with retrieved passages and KBS results |
 | `main.py` | Launch retrieval then KBS then generation|
 
@@ -43,7 +44,7 @@ python3 generation.py --folder dataset --patient-id 100133744   # decision + jus
 To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
 
 ```bash
-python3 kbs.py --folder dataset --new-rule "Alert if metformin with an eGFR < 30 mL/min"
+python3 create_rule.py --folder dataset --request "Alert if metformin with an eGFR < 30 mL/min"
 ```
 
 ### Details of the pipeline
@@ -78,7 +79,7 @@ ressources/
 ├── kbs/
 │   ├── base.clp                 CLIPS fact model, unit conversions, dose calculations, generic interaction rule
 │   ├── generic_rules.clp        drug interactions from the ANSM Thesaurus and DDI-Predictor (CLIPS facts)
-│   ├── personalized_rules.clp   hospital-specific CLIPS rules (e.g. apixaban dose, daptomycin 10 mg/kg)
+│   ├── personalized_rules.clp   hospital-specific CLIPS rules, written by create_rule.py (e.g. apixaban dose)
 │   └── KBS_Docs/                source documents of the generic rules (ANSM Thesaurus, DDI-Predictor)
 ├── rag/
 │   ├── RAG_Docs/                guidelines (PDF) used by the RAG

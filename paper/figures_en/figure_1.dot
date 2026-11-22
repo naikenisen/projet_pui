@@ -16,9 +16,10 @@ digraph architecture {
     retrieval      [label=<<B>retrieval.py</B><BR/><FONT POINT-SIZE="8.5">guideline passages</FONT>>];
     kbs        [label=<<B>kbs.py</B><BR/><FONT POINT-SIZE="8.5">KBS alerts</FONT>>];
     generation [label=<<B>generation.py</B>>];
+    create_rule [label=<<B>create_rule.py</B><BR/><FONT POINT-SIZE="8.5">new KBS rules (LLM)</FONT>>];
 
     { rank=same; base; patients; }
-    { rank=same; indexing; main; }
+    { rank=same; indexing; main; create_rule; }
     { rank=same; chroma; retrieval; kbs; }
 
     base -> indexing -> chroma;
@@ -30,5 +31,6 @@ digraph architecture {
     main -> kbs;
     retrieval -> generation;
     kbs -> generation;
+    create_rule -> kbs [style=dashed, label="personalized rules"];
     generation -> decision;
 }

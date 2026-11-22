@@ -99,7 +99,6 @@ html { font-size: 15.5px; }
 .rule .field-label { font-weight: 600; color: var(--text-2); }
 .rule ul { margin: 0.15rem 0 0 0; padding-left: 1.2rem; }
 .rule li { margin: 0.05rem 0; }
-.rule .footer { margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-3); }
 .badge {
     font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
     padding: 0.1rem 0.45rem; border-radius: 3px; white-space: nowrap;

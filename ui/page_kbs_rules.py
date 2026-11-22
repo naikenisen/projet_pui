@@ -5,18 +5,15 @@ import re
 
 import streamlit as st
 
-from kbs import (
-    REQUEST_PREFIX,
+from create_rule import (
     add_personalized_rule,
-    apply_rules,
     biology_parameters,
-    create_environment,
     load_personalized_rules,
     propose_rule,
     rule_names,
     save_personalized_rules,
-    unknown_data,
 )
+from kbs import apply_rules, create_environment
 from ui.common import badge, label, load_patients
 
 # Alert text: (message "...") in the CLIPS code
@@ -27,7 +24,7 @@ def render_page():
     patients = load_patients()
     parameters = biology_parameters(patients)
     _assistant(parameters)
-    _proposed_rule(patients, parameters)
+    _proposed_rule(patients)
     _rule_list(load_personalized_rules())
 
 
@@ -51,14 +48,12 @@ def _assistant(biology_parameters):
 
 
 # Card, warnings and number of triggered records, then Save / Cancel
-def _proposed_rule(patients, biology_parameters):
+def _proposed_rule(patients):
     proposed = st.session_state.get("proposed_rule")
     if not proposed:
         return
     label("Règle proposée : à vérifier avant enregistrement")
     show_rule(proposed)
-    for name in unknown_data(proposed, biology_parameters):
-        st.warning(f"La donnée « {name} » n'existe pas dans les dossiers : les conditions sur elle seront toujours fausses.")
     env = create_environment(proposed)
     triggers = sum(1 for record in patients if apply_rules(record, env))
     st.caption(f"Se déclencherait pour {triggers} dossier(s) sur {len(patients)}.")
@@ -98,25 +93,21 @@ def show_rule(rule):
         st.code(rule, language="lisp")
 
 
-# Title: first comment of the rule (except the pharmacist request), else name of the first defrule
+# Title: first comment of the rule, else name of the first defrule
 def rule_title(rule):
     for line in rule.splitlines():
-        if line.startswith(";") and not line.startswith(REQUEST_PREFIX):
+        if line.startswith(";"):
             return line.lstrip("; ")
     names = rule_names(rule)
     return names[0] if names else "Règle"
 
 
-# HTML card of a rule: title, alerts and pharmacist request
+# HTML card of a rule: title and alerts
 def rule_card(rule):
-    request = next((line[len(REQUEST_PREFIX):] for line in rule.splitlines() if line.startswith(REQUEST_PREFIX)), "")
-    origin = "Rédigée par l'assistant" if request else "Règle personnalisée"
     alerts = "".join(f"<li>{html.escape(message)}</li>" for message in ALERT_MESSAGE.findall(rule))
-
     content = (
-        f'<div class="header">{badge(origin, "custom")}<span class="title">{html.escape(rule_title(rule))}</span></div>'
+        f'<div class="header">{badge("Règle personnalisée", "custom")}'
+        f'<span class="title">{html.escape(rule_title(rule))}</span></div>'
         f'<div class="block"><span class="field-label">Alerte :</span><ul>{alerts}</ul></div>'
     )
-    if request:
-        content += f'<div class="footer">Demande du pharmacien : « {html.escape(request)} »</div>'
     return f'<div class="rule custom">{content}</div>'
