@@ -24,7 +24,7 @@ def save_results(results):
         json.dump(results, file, ensure_ascii=False, indent=2)
 
 
-# Une erreur est enregistrée dans le résultat au lieu d'interrompre l'analyse
+# main analysis function and dealing with errors
 def analyse(record):
     date = datetime.now().strftime("%d/%m/%Y %H:%M")
     try:
@@ -46,8 +46,6 @@ if __name__ == "__main__":
 
     results = {} if args.all else load_results()
     for file_name in sorted(os.listdir(args.folder)):
-        if not file_name.endswith(".json"):
-            continue
         with open(os.path.join(args.folder, file_name), encoding="utf-8") as file:
             record = json.load(file)
         patient_id = record["patient"]["id"]

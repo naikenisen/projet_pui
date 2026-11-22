@@ -11,4 +11,4 @@ the way the search is done must be reworked
 [] build a prioritisation system for pharmaceutical interventions (PI) based on what had an impact at the hospital, from the pharmacy extractions
 [] rework the list of guidelines used by the RAG
 [] move to a true KBS
-[] refactor the code and make it minimal, cut UI files in sub files relative to visual components again
+[] erase by hand unecessary mecanics and functions et changer les commentaires en fr (à faire ce soir avec de la musique sur grand écran)
