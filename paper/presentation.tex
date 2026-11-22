@@ -10,7 +10,7 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{pgfgantt}
-\usetikzlibrary{arrows.meta, positioning}
+\usetikzlibrary{arrows.meta, positioning, fit}
 
 \graphicspath{{figures_en/}}
 
@@ -43,11 +43,35 @@
 % Palette based on the blue of the application
 \definecolor{puiblue}{RGB}{11,79,138}
 \definecolor{puigreen}{RGB}{30,122,90}
+% Colors of the Graphviz diagrams, reused in the TikZ diagrams
+\definecolor{nodeblue}{HTML}{E9EEF4}
+\definecolor{nodeline}{HTML}{3A3A3A}
 \usecolortheme[named=puiblue]{structure}
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \setbeamercolor{block title example}{bg=puigreen,fg=white}
 \setbeamercolor{block body example}{bg=puigreen!8,fg=black}
 \setbeamerfont{block title}{series=\bfseries}
+
+% Code listings for the CLIPS, Python and JSON excerpts
+\usepackage{listings}
+\lstdefinelanguage{CLIPS}{
+  morekeywords={defrule, deffacts, deftemplate, assert, not, declare, salience, slot, multislot},
+  sensitive=true, morecomment=[l]{;}, morestring=[b]"}
+\lstdefinelanguage{json}{morestring=[b]"}
+\lstset{
+  basicstyle=\ttfamily\scriptsize, columns=fullflexible, keepspaces=true,
+  keywordstyle=\color{puiblue}\bfseries, commentstyle=\color{gray}\itshape,
+  stringstyle=\color{puigreen}, showstringspaces=false,
+  backgroundcolor=\color{puiblue!4}, frame=single, rulecolor=\color{puiblue!25},
+  framesep=3pt, xleftmargin=3pt, xrightmargin=3pt, aboveskip=4pt, belowskip=4pt,
+  literate={é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {à}{{\`a}}1 {ç}{{\c{c}}}1
+           {É}{{\'E}}1 {µ}{{$\mu$}}1 {—}{{---}}1 {≥}{{$\geq$}}1 {ô}{{\^o}}1
+}
+
+% CLIPS keyword in a table cell
+\newcommand{\clipskw}[1]{\textcolor{puiblue}{\textbf{#1}}}
+% CLIPS fact in a table cell
+\newcommand{\clipsfact}[1]{{\tiny\texttt{#1}}}
 
 % Small heading in the theme color, used instead of a box
 \newcommand{\heading}[1]{\par\medskip\structure{\textbf{#1}}\par\smallskip}
@@ -97,10 +121,20 @@
   \end{itemize}
   \smallskip
   À partir des prescriptions et des données du Dossier Patient Informatisé (DPI).
-  \vspace{1.5em}
+  \vspace{0.6em}
   \begin{exampleblock}{Finalité}
     \centering Optimiser le ciblage des interventions pharmaceutiques (IP).
   \end{exampleblock}
+
+  \heading{Liens du projet}
+  \scriptsize
+  \urlstyle{same}
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}{@{}ll@{}}
+    \structure{\textbf{Code source (GitHub)}} & \url{https://github.com/naikenisen/projet_pui} \\
+    \structure{\textbf{Démonstration (Streamlit)}} & \url{https://projetpui.streamlit.app/} \\
+    \structure{\textbf{Manuscrit (Overleaf)}} & \url{https://www.overleaf.com/project/6afa1a238e5e3d2a0436ffc8} \\
+  \end{tabular}
 \end{frame}
 
 \begin{frame}{Calendrier du projet}
@@ -461,276 +495,186 @@ digraph retrieval_search {
   \end{columns}
 \end{frame}
 
-\begin{frame}{Principe du langage CLIPS (1/3)}
-  \small
-  Le système expert déduit les alertes d'une base de connaissances $\mathcal{K}$ et des faits du dossier :
-  \begin{equation}
-    \text{Alertes} = \text{Inférence}\big(\mathcal{K},\ \Phi(\text{dossier})\big), \qquad \mathcal{K} = \mathcal{R} \,\cup\, \mathcal{F}_{\text{fixes}}
-  \end{equation}
-  $\mathcal{R}$ : règles. $\mathcal{F}_{\text{fixes}}$ : conversions d'unités et 1\,877 interactions (ANSM, DDI-Predictor).
-
-  \medskip
-  Un fait est un type $\tau$ avec des champs nommés :
-  \begin{equation}
-    f = \tau(s_1{:}\, v_1,\ \dots,\ s_k{:}\, v_k)
-  \end{equation}
-  \textit{Exemples de faits créés à partir d'un dossier :}
-  \begin{center}
-    \footnotesize
-    \texttt{(data (name "age") (value 95))} \\
-    \texttt{(data (name "Créatinine (sang)") (value 155))} \\
-    \texttt{(ingredient (line 2) (number 1) (dosage 5) (unit "mg"))} \\
-    \texttt{(prescribed (line 2) (drug "apixaban"))}
-  \end{center}
-\end{frame}
-
-\begin{frame}[fragile]{Principe du langage CLIPS (2/3)}
-  \small
-  Pour reconnaître un médicament, chaque libellé donne toutes ses suites de mots :
-  \begin{equation}
-    W(w_1 \dots w_n) = \{\, w_i \dots w_j \;:\; 1 \le i \le j \le n \,\}, \qquad |W| = \frac{n(n+1)}{2}
-  \end{equation}
-  \textit{Exemple : « APIXABAN 5 MG (ELIQUIS), CPR » : 5 mots $\rightarrow$ 15 faits, dont « apixaban » et « eliquis ».}
-
-  \medskip
-  Une règle relie des conditions à une action :
-  \begin{equation}
-    r \;:\; P_1 \wedge \dots \wedge P_m \;\Rightarrow\; \text{assert}(f')
-  \end{equation}
-  \textit{Exemple : la règle de la daptomycine}
-  \begin{equation}
-    \text{presc}(l, \text{daptomycine}) \,\wedge\, \text{dose\_kg}(l) < 10 \;\Rightarrow\; \text{alert}(m, \{l\})
-  \end{equation}
-\begin{semiverbatim}
-\scriptsize
-(defrule daptomycine-dose
-  (prescribed (line ?l) (drug "daptomycine"))
-  (dose-per-kg (line ?l) (mg ?mg&:(< ?mg 10)))
-  =>
-  (assert (alert (message "Daptomycine : ...") (lines ?l))))
-\end{semiverbatim}
-\end{frame}
-
-\begin{frame}{Principe du langage CLIPS (3/3)}
-  \small
-  Une seule règle générique applique les 1\,877 interactions. Chaque interaction donne deux groupes de médicaments $A$ et $B$ et un message $m$ :
-  \begin{equation}
-    \begin{split}
-      & \text{inter}(A, B, m) \,\wedge\, \text{presc}(l_a, a) \,\wedge\, \text{presc}(l_b, b) \\
-      & \wedge\, a \in A \,\wedge\, b \in B \,\wedge\, l_a \neq l_b \;\Rightarrow\; \text{alert}(m, \{l_a, l_b\})
-    \end{split}
-  \end{equation}
-  La condition $l_a \neq l_b$ ignore les associations fixes sur une seule ligne.
-
-  \medskip
-  \textit{Exemple :}
-  \begin{align*}
-    A &= \{\text{acetylsalicylique}\}, \qquad B = \{\text{enoxaparine},\ \text{tinzaparine},\ \dots\} \\
-    l_a &= \text{ASPEGIC 100 MG}, \qquad l_b = \text{ENOXAPARINE 4\,000 UI}
-  \end{align*}
-  $\Rightarrow$ alerte « ACIDE ACETYLSALICYLIQUE + HÉPARINES (ASDEC -- APEC) : augmentation du risque hémorragique \dots »
-\end{frame}
-
-\begin{frame}{Principe d'une inférence en langage CLIPS (1/3)}
-  \small
-  Au départ, la mémoire contient les faits du dossier et les faits fixes :
-  \begin{equation}
-    \mathcal{F}_0 = \Phi(\text{dossier}) \,\cup\, \mathcal{F}_{\text{fixes}}
-  \end{equation}
-  À chaque étape $t$, l'agenda contient les règles dont les conditions sont vraies (algorithme Rete) :
-  \begin{equation}
-    \mathcal{A}_t = \{\, (r, \sigma) \;:\; \mathcal{F}_t \models \sigma(\text{LHS}_r) \,\}
-  \end{equation}
-  $\sigma$ donne une valeur aux variables de la règle, par exemple $\sigma = \{\, ?l \mapsto 2 \,\}$.
-
-  \medskip
-  La règle la plus prioritaire se déclenche et ajoute ses faits (chaînage avant) :
-  \begin{equation}
-    (r^*, \sigma^*) = \operatorname*{arg\,max}_{(r, \sigma) \in \mathcal{A}_t} \text{salience}(r), \qquad
-    \mathcal{F}_{t+1} = \mathcal{F}_t \,\cup\, \sigma^*(\text{RHS}_{r^*})
-  \end{equation}
-  Quand plus aucune règle ne s'applique, on lit les alertes :
-  \begin{equation}
-    \mathcal{A}_t = \emptyset \;\Rightarrow\; \text{Alertes} = \{\, \text{alert}(m, L) \in \mathcal{F}_t \,\}
-  \end{equation}
-\end{frame}
-
-\begin{frame}{Principe d'une inférence en langage CLIPS (2/3)}
-  \small
-  \textit{Exemple : daptomycine 0,7 g par jour (ligne 0), patient de 80 kg.}
-  Chaque règle déclenchée crée un fait qui en déclenche une autre :
-  \begin{align}
-    \text{treatment}(0,\ 0{,}7\ \text{g}) &\;\Rightarrow\; \text{dose}(0) = 0{,}7 \times 1000 = 700\ \text{mg} \\
-    \text{dose}(0) \,\wedge\, \text{poids} = 80 &\;\Rightarrow\; \text{dose\_kg}(0) = 700 / 80 = 8{,}75 \\
-    \text{presc}(0, \text{daptomycine}) \,\wedge\, 8{,}75 < 10 &\;\Rightarrow\; \text{alert}(m, \{0\})
-  \end{align}
-  Ensuite $\mathcal{A}_t = \emptyset$ : l'inférence s'arrête avec 1 alerte.
-
-  \medskip
-  \textit{Résultat,} $m$ = « Daptomycine : la posologie recommandée est désormais de 10 mg/kg/jour ; la dose prescrite est inférieure, à réévaluer et adapter au poids du patient. »
-\end{frame}
-
-\begin{frame}{Principe d'une inférence en langage CLIPS (3/3)}
-  \small
-  \textit{Exemple : apixaban 5 mg, patient de 95 ans, 48 kg, créatinine 155 $\mu$mol/L.}
-  Trois règles déduisent les critères, une quatrième les compte :
-  \begin{align}
-    \text{data}(\text{age}, 95) \,\wedge\, 95 \ge 80 &\;\Rightarrow\; \text{critère}(\text{âge}) \\
-    \text{data}(\text{weight\_kg}, 48) \,\wedge\, 48 \le 60 &\;\Rightarrow\; \text{critère}(\text{poids}) \\
-    \text{data}(\text{créatinine}, 155) \,\wedge\, 155 \ge 133 &\;\Rightarrow\; \text{critère}(\text{créatinine}) \\
-    \text{presc}(l, \text{apixaban}) \,\wedge\, 5 \neq 2{,}5 \,\wedge\, |\text{critères}| \ge 2 &\;\Rightarrow\; \text{alert}(m, \{l\})
-  \end{align}
-
-  \medskip
-  {\footnotesize $m$ = « Apixaban : la dose recommandée est 2,5 mg deux fois par jour »}
-
-  \medskip
-  Les règles de l'hôpital ont une priorité plus haute que la règle d'interaction :
-  \begin{equation}
-    \text{salience}(\text{interaction}) = -10 \;<\; 0 = \text{salience}(\text{règles de l'hôpital})
-  \end{equation}
-  Leurs alertes sont donc listées en premier.
-\end{frame}
-
 \begin{filecontents*}[overwrite]{presentation_figure_3a.dot}
-// Figure 3a : KBS, patient facts and knowledge base
-digraph kbs_inputs {
+// Figure 3a : KBS, the three steps from the patient JSON to the alerts
+digraph kbs_steps {
     graph [rankdir=TB, fontname="Helvetica", fontsize=12, nodesep=0.25, ranksep=0.3, pad=0.05, newrank=true];
     node  [fontname="Helvetica", fontsize=12, color="#3A3A3A", penwidth=0.8,
            shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.1,0.05"];
     edge  [fontname="Helvetica", fontsize=10, color="#3A3A3A", arrowsize=0.7, penwidth=0.8];
 
-    record [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Patient record</B>>];
-    create_rule [label=<<B>create_rule.py</B><BR/>request → LLM>];
-    { rank=same; record; create_rule; }
+    record [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Patient JSON</B>>];
+    rules [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>.clp files</B><BR/><FONT POINT-SIZE="10.5">templates + rules</FONT>>];
+    { rank=same; record; rules; }
 
-    facts [label=<<B>1. Facts</B><BR/>(data …)<BR/>(treatment …)<BR/>(prescribed …)>];
-    rules [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>CLIPS rules</B><BR/><FONT POINT-SIZE="10.5">base.clp<BR/>generic_rules.clp<BR/>personalized_rules.clp</FONT>>];
-    { rank=same; facts; rules; }
-
+    facts [label=<<B>1. assert_patient()</B><BR/>JSON  →  facts>];
     memory [fillcolor="#FFFFFF", label=<<B>Working memory</B>>];
+    run [label=<<B>2. env.run()</B><BR/>rules fire, new facts>];
+    read [label=<<B>3. apply_rules()</B><BR/>reads the alert facts>];
+    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Alert list</B><BR/>text  →  LLM>];
 
     record -> facts;
-    create_rule -> rules [style=dashed, label=<  save>];
     facts -> memory [label=<  assert>];
     rules -> memory [label=<  load>];
+    memory -> run;
+    run -> memory [style=dashed, label=<  new facts>];
+    run -> read;
+    read -> output;
 }
 \end{filecontents*}
 \compiledot{presentation_figure_3a}
 
-\begin{frame}{Système à base de connaissances (KBS) (1/3)}
-  \framesubtitle{Faits du patient et base de connaissances}
+\begin{frame}{Système à base de connaissances (KBS)}
+  \framesubtitle{Du dossier JSON aux alertes, en trois étapes}
   \begin{columns}[c]
-    \begin{column}{0.58\textwidth}
+    \begin{column}{0.52\textwidth}
       \centering
       \dotdiagram{presentation_figure_3a}
     \end{column}
-    \begin{column}{0.40\textwidth}
-      \footnotesize
-      \begin{itemize}
-        \setlength{\itemsep}{0.6em}
-        \item Le dossier est traduit en faits CLIPS : biologie, traitements, médicaments prescrits.
-        \item \texttt{base.clp} : modèle de faits, conversions d'unités, règles de dose.
-        \item \texttt{generic\_rules.clp} : 1\,877 interactions (ANSM, DDI-Predictor).
-        \item \texttt{personalized\_rules.clp} : règles de l'hôpital, créées par \texttt{create\_rule.py} à la demande du pharmacien.
-      \end{itemize}
+    \begin{column}{0.46\textwidth}
+      \small
+      \begin{enumerate}
+        \setlength{\itemsep}{0.8em}
+        \item \structure{\textbf{Faits}} : \texttt{kbs.py} traduit le JSON en faits CLIPS.
+        \item \structure{\textbf{Inférence}} : CLIPS applique les règles des fichiers \texttt{.clp}.
+        \item \structure{\textbf{Sortie}} : \texttt{kbs.py} relit les faits \texttt{alert}.
+      \end{enumerate}
+      \bigskip
+      \footnotesize\textit{Exemple suivi : daptomycine 0,7 g par jour, patient de 80 kg.}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{filecontents*}[overwrite]{presentation_figure_3b.dot}
-// Figure 3b : KBS, CLIPS inference loop
-digraph kbs_engine {
-    graph [rankdir=TB, fontname="Helvetica", fontsize=12, nodesep=0.25, ranksep=0.3, pad=0.05, newrank=true];
-    node  [fontname="Helvetica", fontsize=12, color="#3A3A3A", penwidth=0.8,
-           shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.1,0.05"];
-    edge  [fontname="Helvetica", fontsize=10, color="#3A3A3A", arrowsize=0.7, penwidth=0.8];
+\begin{frame}[fragile]{Étape 1 : du JSON aux faits}
+  \heading{Un fait = un modèle (\texttt{deftemplate}) + des champs (\texttt{slot})}
+\begin{lstlisting}[language=CLIPS]
+(deftemplate treatment (slot line) (slot quantity) (slot unit) ...)
+\end{lstlisting}
+  \heading{\texttt{kbs.py} crée les faits à partir du JSON}
+  \centering
+  \scriptsize
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{>{\ttfamily\raggedright\arraybackslash}p{4cm} c >{\ttfamily\raggedright\arraybackslash}p{5.2cm}}
+    \toprule
+    \normalfont\textbf{JSON} & & \normalfont\textbf{Fait CLIPS} \\
+    \midrule
+    "weight\_kg": 80 & $\rightarrow$ & (data (name "weight\_kg") (value 80)) \\
+    "quantity\_per\_day": 0.7 \newline "intake\_unit": "gramme(s)" & $\rightarrow$ & (treatment (line 0) (quantity 0.7) \newline \ \ (unit "gramme(s)")) \\
+    "drug\_label": \newline "DAPTOMYCINE 350 MG\dots" & $\rightarrow$ & (prescribed (line 0) (drug "daptomycine")) \\
+    \bottomrule
+  \end{tabular}
 
-    subgraph cluster_engine {
-        label=<<B>2. CLIPS inference engine</B>>;
-        labeljust=l; fontsize=12; style="dashed,rounded"; color="#6A6A6A"; margin=10;
+  \medskip
+  \raggedright
+  \scriptsize
+  \texttt{line 0} : première ligne de prescription. Le libellé donne un fait \texttt{prescribed} par suite de mots (« daptomycine », « 350 mg »\dots) : une règle reconnaît le médicament par simple égalité.
+\end{frame}
 
-        memory [fillcolor="#FFFFFF", label=<<B>Working</B><BR/><B>memory</B>>];
-        match [shape=diamond, style=filled, fillcolor="#FFFFFF", margin="0.02,0.02", fontsize=11, label=<matched?<BR/>(Rete)>];
-        { rank=same; memory; match; }
+\begin{frame}{Lire une règle CLIPS}
+  \framesubtitle{La règle de la daptomycine, ligne par ligne}
+  \centering
+  \footnotesize
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{>{\ttfamily}l>{\raggedright\arraybackslash}p{4.1cm}}
+    \toprule
+    \normalfont\textbf{Code CLIPS} & \textbf{Signification} \\
+    \midrule
+    (\clipskw{defrule} daptomycine-dose & une règle, et son nom \\
+    \ \ (prescribed (line ?l) (drug \textcolor{puigreen}{"daptomycine"})) & \textbf{SI} la ligne \texttt{?l} contient « daptomycine » \\
+    \ \ (dose-per-kg (line ?l) (mg ?mg\&:(< ?mg 10))) & \textbf{ET} sa dose par kg \texttt{?mg} est $<$ 10 \\
+    \ \ \clipskw{=>} & \textbf{ALORS} \\
+    \ \ (\clipskw{assert} (alert (message \textcolor{puigreen}{"\dots"}) (lines ?l)))) & ajouter un fait \texttt{alert} pour la ligne \texttt{?l} \\
+    \bottomrule
+  \end{tabular}
 
-        derived [fillcolor="#F2F2F2", label=<<B>Deduced facts</B><BR/>daily-dose,<BR/>dose-per-kg>];
-        agenda [label=<<B>Agenda</B><BR/>by salience>];
-        { rank=same; derived; agenda; }
+  \vspace{0.6em}
+  \raggedright
+  \footnotesize
+  \begin{itemize}
+    \setlength{\itemsep}{0.2em}
+    \item \texttt{?l}, \texttt{?mg} : \structure{\textbf{variables}}, remplies avec les valeurs des faits trouvés.
+    \item Le même \texttt{?l} dans les deux conditions : les deux faits doivent concerner la même ligne.
+    \item \texttt{\&:( \dots )} ajoute un test sur la valeur.
+  \end{itemize}
+\end{frame}
 
-        fire [label=<<B>Rule fired</B><BR/>asserts facts>];
+\begin{frame}[fragile]{Les règles de calcul de \texttt{base.clp}}
+  \framesubtitle{Le JSON ne contient pas de dose par kg : deux règles la calculent}
+  \begin{columns}[T]
+    \begin{column}{0.62\textwidth}
+\begin{lstlisting}[language=CLIPS]
+(deffacts units
+  (unit-to-mg (unit "gramme(s)") (factor 1000))
+  ...)
 
-        memory -> match;
-        match -> agenda [label=<  yes>];
-        agenda -> fire;
-        fire -> derived [constraint=false];
-        derived -> memory [style=dashed, label=<  chaining>];
+(defrule daily-dose-from-intake-unit
+  (treatment (line ?l) (quantity ?q) (unit ?u))
+  (unit-to-mg (unit ?u) (factor ?f))
+  =>
+  (assert (daily-dose (line ?l) (mg (* ?q ?f)))))
+
+(defrule dose-per-kg
+  (daily-dose (line ?l) (mg ?mg))
+  (data (name "weight_kg") (value ?w))
+  =>
+  (assert (dose-per-kg (line ?l) (mg (/ ?mg ?w)))))
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.36\textwidth}
+      \small
+      \vspace{0.3em}
+      \structure{\textbf{Faits fixes}} \\
+      {\footnotesize 1 g = 1\,000 mg}
+
+      \vspace{2.2em}
+      \structure{\textbf{Dose par jour}} \\
+      {\footnotesize 0,7 $\times$ 1\,000 = 700 mg}
+
+      \vspace{3.2em}
+      \structure{\textbf{Dose par kg}} \\
+      {\footnotesize 700 / 80 = 8,75 mg/kg}
+    \end{column}
+  \end{columns}
+  \scriptsize
+  \textit{Conditions simplifiées : le fichier vérifie aussi que la quantité et le poids sont positifs.}
+\end{frame}
+
+\begin{frame}{Étape 2 : le chaînage des règles}
+  \framesubtitle{Chaque fait ajouté déclenche la règle suivante}
+  \centering
+  \begin{tikzpicture}[
+      font=\tiny,
+      facts/.style={draw=nodeline, fill=white, align=left, font=\tiny\ttfamily, text width=4.6cm, inner sep=3pt},
+      rule/.style={draw=nodeline, rounded corners=3pt, fill=nodeblue, align=center, font=\scriptsize\ttfamily, minimum height=0.8cm, text width=2.3cm},
+      new/.style={draw=puigreen, thick, fill=puigreen!12, align=left, font=\tiny\ttfamily, text width=2.9cm, inner sep=3pt},
+      arrow/.style={-{Latex}, thick, nodeline}
+    ]
+    \node[facts] (in1) at (0, 0) {(treatment (line 0) (quantity 0.7)\\\ \ (unit "gramme(s)"))\\(unit-to-mg (unit "gramme(s)")\\\ \ (factor 1000))};
+    \node[rule] (r1) at (4.35, 0) {daily-dose-\\from-intake-unit\\{\tiny\rmfamily\color{gray} 0,7 $\times$ 1000}};
+    \node[new] (out1) at (8.05, 0) {(daily-dose (line 0)\\\ \ (mg 700))};
+
+    \node[facts] (in2) at (0, -1.55) {\textcolor{puigreen}{\textbf{(daily-dose (line 0) (mg 700))}}\\(data (name "weight\_kg") (value 80))};
+    \node[rule] (r2) at (4.35, -1.55) {dose-per-kg\\{\tiny\rmfamily\color{gray} 700 / 80}};
+    \node[new] (out2) at (8.05, -1.55) {(dose-per-kg (line 0)\\\ \ (mg 8.75))};
+
+    \node[facts] (in3) at (0, -3.1) {\textcolor{puigreen}{\textbf{(dose-per-kg (line 0) (mg 8.75))}}\\(prescribed (line 0) (drug "daptomycine"))};
+    \node[rule] (r3) at (4.35, -3.1) {daptomycine-dose\\{\tiny\rmfamily\color{gray} 8,75 $<$ 10}};
+    \node[new, draw=orange!80!black, fill=orange!12, text width=6.6cm, anchor=north] (out3) at (5.9, -3.85)
+      {(alert (message "Daptomycine : la posologie recommandée\\\ \ est désormais de 10 mg/kg/jour ; la dose prescrite est\\\ \ inférieure (ex : 8 mg/kg/jour), à réévaluer et adapter au\\\ \ poids du patient")\\\ \ (lines 0))};
+
+    \foreach \k in {1,2} {
+      \draw[arrow] (in\k) -- (r\k);
+      \draw[arrow] (r\k) -- (out\k);
     }
-}
-\end{filecontents*}
-\compiledot{presentation_figure_3b}
+    \draw[arrow] (in3) -- (r3);
+    \draw[arrow] (r3.south) -- (r3.south |- out3.north);
+    \draw[arrow, dashed, puigreen] (out1.south) -- ++(0, -0.3) -| ([xshift=6pt]in2.north east);
+    \draw[arrow, dashed, puigreen] (out2.south) -- ++(0, -0.3) -| ([xshift=6pt]in3.north east);
+  \end{tikzpicture}
 
-\begin{frame}{Système à base de connaissances (KBS) (2/3)}
-  \framesubtitle{Boucle d'inférence du moteur CLIPS}
-  \begin{columns}[c]
-    \begin{column}{0.58\textwidth}
-      \centering
-      \dotdiagram{presentation_figure_3b}
-    \end{column}
-    \begin{column}{0.40\textwidth}
-      \footnotesize
-      \begin{itemize}
-        \setlength{\itemsep}{0.6em}
-        \item L'algorithme Rete trouve les règles dont les conditions sont vraies dans la mémoire.
-        \item L'agenda les trie par priorité (\textit{salience}) : règles de l'hôpital avant les interactions.
-        \item Une règle déclenchée ajoute des faits déduits (dose journalière, dose par kg, critères\dots).
-        \item Ces faits peuvent déclencher d'autres règles : c'est le chaînage avant.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{filecontents*}[overwrite]{presentation_figure_3c.dot}
-// Figure 3c : KBS, from fired rules to the alert list
-digraph kbs_alerts {
-    graph [rankdir=TB, fontname="Helvetica", fontsize=12, nodesep=0.25, ranksep=0.3, pad=0.05, newrank=true];
-    node  [fontname="Helvetica", fontsize=12, color="#3A3A3A", penwidth=0.8,
-           shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.1,0.05"];
-    edge  [fontname="Helvetica", fontsize=10, color="#3A3A3A", arrowsize=0.7, penwidth=0.8];
-
-    fire [label=<<B>Rule fired</B>>];
-    alert [fillcolor="#FCEBD7", label=<<B>alert facts</B><BR/>message + lines>];
-    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Alert list A</B><BR/>→ LLM>];
-
-    example [shape=plain, fontsize=10.5, label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#9A9A9A">
-        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Example (daptomycin, 80 kg)</I><BR ALIGN="LEFT"/>0.7 g per day<BR ALIGN="LEFT"/>→ daily-dose 700 mg<BR ALIGN="LEFT"/>→ dose-per-kg 8.75<BR ALIGN="LEFT"/>→ alert: &lt; 10 mg/kg/day<BR ALIGN="LEFT"/></TD></TR>
-        </TABLE>>];
-    { rank=same; alert; example; }
-
-    fire -> alert;
-    alert -> output;
-    example -> alert [style=dotted, arrowhead=none];
-}
-\end{filecontents*}
-\compiledot{presentation_figure_3c}
-
-\begin{frame}{Système à base de connaissances (KBS) (3/3)}
-  \framesubtitle{Des règles déclenchées à la liste d'alertes}
-  \begin{columns}[c]
-    \begin{column}{0.58\textwidth}
-      \centering
-      \dotdiagram{presentation_figure_3c}
-    \end{column}
-    \begin{column}{0.40\textwidth}
-      \footnotesize
-      \begin{itemize}
-        \setlength{\itemsep}{0.6em}
-        \item L'inférence s'arrête quand plus aucune règle ne s'applique.
-        \item Chaque fait \texttt{alert} donne un message et les lignes de prescription concernées.
-        \item Les alertes forment la liste $A$ (éventuellement vide), envoyée au LLM avec les passages du RAG.
-      \end{itemize}
-    \end{column}
-  \end{columns}
+  \vspace{0.3em}
+  \footnotesize
+  Ensuite, plus aucune règle ne s'applique : l'inférence s'arrête avec 1 alerte.
 \end{frame}
 
 \begin{filecontents*}[overwrite]{presentation_figure_4.dot}
@@ -748,7 +692,6 @@ digraph generation {
     { rank=same; record; alerts; context; }
 
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4"];
-    message [label=<<B>1. User message construction</B><BR/>summarized record: lab values with (low) / (high) and date,<BR/>lines L<SUB>1</SUB>, …, L<SUB>n</SUB> with status on the reference date and computed daily dose<BR/>+ same drug on several ongoing lines (total dose)<BR/>+ KBS alerts [A1], [A2], … (if A ≠ ∅)<BR/>+ guideline excerpts [R1], [R2], … (if context not empty)>];
 
     prompt [shape=note, style=filled, fillcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="1">
         <TR><TD ALIGN="LEFT"><B>System prompt</B></TD></TR>
@@ -761,10 +704,10 @@ digraph generation {
         <TR><TD ALIGN="LEFT">4 point types · JSON response format</TD></TR>
         </TABLE>>];
 
-    llm [label=<<B>2. Language model inference</B><BR/>Qwen3.6-35B-A3B (via OpenRouter)<BR/><FONT POINT-SIZE="8.5">temperature 0 · reasoning enabled · ≤ 12,000 tokens · JSON output</FONT>>];
+    llm [label=<<B>1. Language model inference</B><BR/>Qwen3.6-35B-A3B (via OpenRouter)<BR/><FONT POINT-SIZE="8.5">temperature 0 · reasoning enabled · ≤ 12,000 tokens · JSON output</FONT>>];
     { rank=same; llm; prompt; }
 
-    post [label=<<B>3. Post-processing</B><BR/>JSON parsing · [A] / [R] identifiers → alerts and documents<BR/>[L] identifiers → lines to modify (interventions only)<BR/>decision = most severe point>];
+    post [label=<<B>2. Post-processing</B><BR/>JSON parsing · [A] / [R] identifiers → alerts and documents<BR/>[L] identifiers → lines to modify (interventions only)<BR/>decision = most severe point>];
 
     output [shape=plain, label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#3A3A3A" BGCOLOR="#FFFFFF">
         <TR><TD COLSPAN="2" ALIGN="LEFT" BGCOLOR="#F2F2F2"><B>Pharmaceutical opinion</B></TD></TR>
@@ -774,10 +717,9 @@ digraph generation {
         <TR><TD ALIGN="LEFT"><I>sources</I></TD><TD ALIGN="LEFT">KBS alerts and “file.pdf, page p”,<BR ALIGN="LEFT"/>or empty (model knowledge only)<BR ALIGN="LEFT"/></TD></TR>
         </TABLE>>];
 
-    record -> message;
-    alerts -> message;
-    context -> message;
-    message -> llm [label=" user role"];
+    record -> llm;
+    alerts -> llm [label=" user role"];
+    context -> llm;
     prompt -> llm [label="system role"];
     llm -> post;
     post -> output;
@@ -789,7 +731,62 @@ digraph generation {
   \centering
   \dotfigure{presentation_figure_4}{figure_4.pdf}
 \end{frame}
+\begin{frame}{MoE}
+  \framesubtitle{\textit{Mixture of Experts} : chaque token n'utilise qu'une petite partie du modèle}
+  \centering
+  \begin{tikzpicture}[
+      font=\scriptsize,
+      token/.style={draw=nodeline, circle, fill=white, inner sep=1.5pt},
+      box/.style={draw=nodeline, rounded corners=3pt, fill=nodeblue, align=center},
+      arrow/.style={-{Latex}, thick, nodeline}
+    ]
+    % Dense model: every block computes
+    \node[font=\footnotesize\bfseries, text=puiblue] at (1.9, 1.75) {Modèle dense};
+    \node[token] (xd) at (0, 0) {$x$};
+    \begin{scope}[shift={(0.6, 1.2)}]
+      \foreach \i in {0,...,15} {
+        \foreach \j in {0,...,15} {
+          \fill[puiblue!55] (\i*0.15, -\j*0.15) rectangle ++(0.12, -0.12);
+        }
+      }
+    \end{scope}
+    \node[token] (yd) at (3.75, 0) {$y$};
+    \draw[arrow] (xd) -- (0.55, 0);
+    \draw[arrow] (3.05, 0) -- (yd);
+    \node[align=center] at (1.8, -1.55) {\textbf{tous} les paramètres\\calculent pour chaque token};
 
+    % MoE model: the router picks 8 experts out of 256, plus the shared expert
+    \node[font=\footnotesize\bfseries, text=puigreen] at (8.1, 1.75) {Modèle MoE (Qwen3.6-35B-A3B)};
+    \node[token] (xm) at (5, 0) {$x$};
+    \node[box, minimum height=0.9cm] (router) at (6.25, 0) {\textbf{Routeur}\\{\tiny choisit 8}\\[-2pt]{\tiny experts}};
+    \begin{scope}[shift={(7.35, 1.2)}]
+      \foreach \i in {0,...,15} {
+        \foreach \j in {0,...,15} {
+          \draw[draw=gray!40, fill=white] (\i*0.15, -\j*0.15) rectangle ++(0.12, -0.12);
+        }
+      }
+      \foreach \i/\j in {2/1, 7/3, 12/2, 4/8, 9/9, 14/11, 1/13, 10/14} {
+        \fill[puigreen] (\i*0.15, -\j*0.15) rectangle ++(0.12, -0.12);
+      }
+    \end{scope}
+    \node[box, fill=puiblue!20, draw=puiblue, font=\tiny] (shared) at (8.55, -1.35) {+ 1 expert partagé, toujours utilisé};
+    \node[token] (ym) at (10.5, 0) {$y$};
+    \draw[arrow] (xm) -- (router);
+    \draw[arrow] (router) -- (7.3, 0);
+    \draw[arrow] (9.8, 0) -- (ym);
+    \node[align=center] at (8.55, -1.85) {\textbf{8 experts sur 256} calculent, les autres attendent};
+  \end{tikzpicture}
+
+  \vspace{0.5em}
+  \raggedright
+  \footnotesize
+  \begin{itemize}
+    \setlength{\itemsep}{0.35em}
+    \item Le réseau de chaque couche est découpé en 256 petits réseaux, les \structure{\textbf{experts}}.
+    \item Pour chaque token, le \structure{\textbf{routeur}} note les 256 experts et garde les 8 meilleurs. Leurs sorties, plus celle de l'expert partagé, sont additionnées.
+    \item Le choix change à chaque token et dans chacune des 40 couches : « apixaban » et « créatinine » n'utilisent pas les mêmes experts.
+  \end{itemize}
+\end{frame}
 \begin{frame}
   \centering
   \includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{interface_screenshot_1.png}
@@ -808,5 +805,7 @@ digraph generation {
     \item \structure{\textbf{Manuscrit de l'article (Overleaf)}} \\ {\small \url{https://www.overleaf.com/project/6afa1a238e5e3d2a0436ffc8}}
   \end{itemize}
 \end{frame}
+
+
 
 \end{document}
