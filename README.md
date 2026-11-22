@@ -10,11 +10,9 @@ To run locally, a  `.env` file at the project root including you API key for Ope
 OPENROUTER_API_KEY=your_key
 ```
 
----
-
 ## BACKEND
 
-### Figure 1. Overall architecture
+### Overall architecture
 
 ![Figure 1](paper/figures_en/figure_1.png)
 
@@ -42,14 +40,18 @@ python3 retrieval.py  --folder dataset --patient-id 100133744   # retreive relev
 python3 kbs.py        --folder dataset --patient-id 100133744   # detected alerts
 python3 generation.py --folder dataset --patient-id 100133744   # decision + justification (no KBS/RAG)
 ```
+To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
 
-## Details of the pipeline
+```bash
+python3 kbs.py --folder dataset --new-rule "Alert if metformin with an eGFR < 30 mL/min"
+```
+
+### Details of the pipeline
 
 - 📄 [Figure 2 – RAG](paper/figures_en/figure_2.pdf)
 - 📄 [Figure 3 – Knowledge-Based System (KBS)](paper/figures_en/figure_3.pdf)
 - 📄 [Figure 4 – Generation (LLM)](paper/figures_en/figure_4.pdf)
 
----
 
 ## FRONTEND
 
@@ -66,14 +68,8 @@ ui/
 ├── common.py                  code shared by the pages
 └── style.css                  style of the whole interface
 ```
-To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
 
-```bash
-python3 kbs.py --folder dataset --new-rule "Alert if metformin with an eGFR < 30 mL/min"
-```
----
-
-## Data and other files
+## DATA AND OTHER FILES
 
 ```
 dataset/                         80 patients, one JSON per patient (<id>.json): lab values and treatments
