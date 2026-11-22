@@ -60,40 +60,13 @@ python3 generation.py --folder dataset --patient-id 100133744
 
 ## Details of the pipeline
 
-### Figure 2. (RAG)
-
-![Figure 2](paper/figures_en/figure_2.png)
-
-### Figure 3. Knowledge-Based System (KBS)
-
-![Figure 3](paper/figures_en/figure_3.png)
-
-### Figure 4. Generation (LLM)
-
-![Figure 4](paper/figures_en/figure_4.png)
+- 📄 [Figure 2 – RAG](paper/figures_en/figure_2.pdf)
+- 📄 [Figure 3 – Knowledge-Based System (KBS)](paper/figures_en/figure_3.pdf)
+- 📄 [Figure 4 – Generation (LLM)](paper/figures_en/figure_4.pdf)
 
 ---
 
-## Frontend: Streamlit interface
-
-### Usage
-
-```bash
-streamlit run app.py
-```
-
-The interface always works on the patients of `dataset/`; `full_dataset/` is analysed from the command line only (`python3 main.py --remaining --folder full_dataset`).
-The “Lancer l'analyse” button runs `main.py --remaining` (patients without a result); results are read from `inference_results.json`. Re-analysing all the patients (`main.py --all`) is done from the command line only.
-
-![List of the analysed records: indicators, filters, pharmaceutical opinion, KBS alerts and cited sources](paper/interface_screenshot_1.png)
-
-*Analysis results: for each patient, profile, laboratory values, prescription, pharmaceutical opinion, KBS alerts and clickable sources.*
-
-![Viewing a cited source: the PDF opens directly at the referenced page](paper/interface_screenshot_2.png)
-
-*Viewing a source: clicking a reference opens the PDF at the page cited by the model.*
-
-The interface is in French and has three pages. On the “Résultats d'analyse” page, the indicators and the “Lancer l'analyse” button are above the patient list. On the “Règles du KBS” page, the pharmacist has the LLM assistant draft a personalized rule from a natural-language request, checks it before saving, and can delete the saved rules. The “Documents du RAG” page lists the indexed guidelines (click to view), indexes the PDFs added to `ressources/rag/RAG_Docs/` and uploads new ones. Any other change (generic rules, manual editing of `ressources/kbs/personalized_rules.json`, laboratory reference ranges in `ressources/lab_reference_ranges.json`) is made directly in the files, outside the interface.
+## FRONTEND
 
 ### Code
 
