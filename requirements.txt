@@ -3,3 +3,4 @@ python-dotenv
 pymupdf4llm
 chromadb
 streamlit
+clipspy

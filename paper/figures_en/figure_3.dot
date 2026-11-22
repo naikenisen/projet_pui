@@ -1,4 +1,4 @@
-// Figure 3 : système à base de connaissances (kbs.py) ; export : dot -Tpdf figure_3.dot -o figure_3.pdf
+// Figure 3 : système à base de connaissances (kbs.py, moteur CLIPS) ; export : dot -Tpdf figure_3.dot -o figure_3.pdf
 digraph kbs {
     graph [rankdir=TB, fontname="Helvetica", fontsize=10, nodesep=0.45, ranksep=0.35, pad=0.15, newrank=true];
     node  [fontname="Helvetica", fontsize=9.5, color="#3A3A3A", penwidth=0.8,
@@ -6,44 +6,42 @@ digraph kbs {
     edge  [fontname="Helvetica", fontsize=8.5, color="#3A3A3A", arrowsize=0.7, penwidth=0.8];
 
     record [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Patient record</B><BR/>characteristics, laboratory values<BR/>prescription lines {L<SUB>1</SUB>, …, L<SUB>n</SUB>}>];
-    rules [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Rule base</B><BR/><FONT POINT-SIZE="8.5">generic_rules.json + personalized_rules.json</FONT><BR/>{r<SUB>1</SUB>, …, r<SUB>R</SUB>}>];
+    rules [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Knowledge base (CLIPS)</B><BR/><FONT POINT-SIZE="8.5">base.clp: fact model, unit conversions, dose rules<BR/>generic_rules.clp: 1,877 interaction facts (ANSM, DDI-Predictor)<BR/>personalized_rules.clp: hospital rules</FONT>>];
     { rank=same; record; rules; }
 
-    variables [label=<<B>1. Variable extraction</B><BR/>patient: age, weight_kg, height_cm, bmi_kg_m2, …<BR/>laboratory: Créatinine (sang), DFG estimé (CKD-EPI), …<BR/>dose_<I>INN</I> = dose of each line L<SUB>i</SUB><BR/>D = set of prescribed INNs>];
+    facts [label=<<B>1. Translation into facts</B> (kbs.py)<BR/>(data name value): age, weight_kg, …, Créatinine (sang), …<BR/>(treatment line quantity unit) · (ingredient line dosage unit)<BR/>(prescribed line drug): word sequences of each label>];
 
-    subgraph cluster_rules {
-        label=<<B>2. For each rule r  (r = 1, …, R)</B>>;
+    subgraph cluster_engine {
+        label=<<B>2. CLIPS inference engine (forward chaining)</B>>;
         labeljust=l; fontsize=9.5; style="dashed,rounded"; color="#6A6A6A"; margin=12;
 
-        node [shape=diamond, style=filled, fillcolor="#FFFFFF", margin="0.02,0.02", fontsize=9];
-        t1 [label=<drugs(r) ⊆ D ?>];
-        t2 [label=<all<BR/>conditions(r)<BR/>satisfied?>];
-        t3 [label=<no. of criteria<BR/>any_of(r) satisfied<BR/>≥ minimum(r)?>];
+        memory [fillcolor="#FFFFFF", label=<<B>Working memory</B><BR/>patient facts + interaction facts>];
+        match [shape=diamond, style=filled, fillcolor="#FFFFFF", margin="0.02,0.02", fontsize=9, label=<rule patterns<BR/>matched?<BR/>(Rete)>];
+        agenda [label=<<B>Agenda</B><BR/>activations ordered by salience<BR/><FONT POINT-SIZE="8.5">personalized rules before interactions</FONT>>];
+        fire [label=<<B>Rule fired</B><BR/>asserts new facts>];
+        derived [fillcolor="#F2F2F2", label=<<B>Deduced facts</B><BR/>daily-dose, dose-per-kg,<BR/>criteria, …>];
+        alert [fillcolor="#FCEBD7", label=<<B>alert facts</B><BR/>message + prescription lines>];
 
-        node [shape=box, style="rounded,filled", margin="0.16,0.08", fontsize=9.5];
-        alert [fillcolor="#FCEBD7", label=<<B>Rule triggered</B><BR/>alert(r) added to A>];
-        rejected  [fillcolor="#F2F2F2", label=<<B>Rule not triggered</B>>];
-
-        t1 -> t2 [label=" yes"];
-        t2 -> t3 [label=" yes"];
-        t3 -> alert [label=" yes"];
-        t1 -> rejected [label="no"];
-        t2 -> rejected [label="no"];
-        t3 -> rejected [label="no"];
-        { rank=same; t2; rejected; }
+        memory -> match;
+        match -> agenda [label=" yes"];
+        agenda -> fire;
+        fire -> derived;
+        fire -> alert;
+        derived -> memory [style=dashed, label=" chaining"];
+        { rank=same; derived; alert; }
     }
 
-    syntax [shape=plain, fontsize=8.5, label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#9A9A9A">
-        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Condition evaluation</I><BR ALIGN="LEFT"/>“variable operator threshold”<BR ALIGN="LEFT"/>operators: ≥  ≤  &gt;  &lt;  =  ≠<BR ALIGN="LEFT"/>variable missing from record → false<BR ALIGN="LEFT"/>field absent from rule → test passed<BR ALIGN="LEFT"/></TD></TR>
-        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Example rule (apixaban)</I><BR ALIGN="LEFT"/>drugs: apixaban<BR ALIGN="LEFT"/>conditions: dose_apixaban ≠ 2.5<BR ALIGN="LEFT"/>≥ 2 of any_of: age ≥ 80, weight_kg ≤ 60,<BR ALIGN="LEFT"/>Créatinine (sang) ≥ 133<BR ALIGN="LEFT"/></TD></TR>
+    example [shape=plain, fontsize=8.5, label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#9A9A9A">
+        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Example of chaining (daptomycin)</I><BR ALIGN="LEFT"/>(treatment quantity 0.7 unit gramme(s))<BR ALIGN="LEFT"/>→ daily-dose 700 mg<BR ALIGN="LEFT"/>→ dose-per-kg 8.75 mg/kg (weight 80 kg)<BR ALIGN="LEFT"/>→ alert: dose &lt; 10 mg/kg/day<BR ALIGN="LEFT"/></TD></TR>
+        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Example rule (apixaban)</I><BR ALIGN="LEFT"/>3 rules deduce the criteria:<BR ALIGN="LEFT"/>age ≥ 80, weight ≤ 60 kg, creatinine ≥ 133 µmol/L<BR ALIGN="LEFT"/>alert if dose ≠ 2.5 mg and ≥ 2 criteria<BR ALIGN="LEFT"/></TD></TR>
         </TABLE>>];
-    { rank=same; t1; syntax; }
+    { rank=same; match; example; }
 
-    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Alert list A</B><BR/>messages of triggered rules (possibly empty)<BR/><FONT POINT-SIZE="8.5">→ generation module (Figure 4)</FONT>>];
+    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Alert list A</B><BR/>one alert per message (possibly empty)<BR/><FONT POINT-SIZE="8.5">→ generation module (Figure 4)</FONT>>];
 
-    record -> variables;
-    variables -> t1 [label=" variables, D"];
-    rules -> t1 [label=" r"];
-    syntax -> t1 [style=dotted, arrowhead=none];
+    record -> facts;
+    facts -> memory [label=" assert"];
+    rules -> memory [label=" load"];
+    example -> match [style=dotted, arrowhead=none];
     alert -> output;
 }

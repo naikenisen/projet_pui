@@ -20,7 +20,7 @@ OPENROUTER_API_KEY=your_key
 |---|---|
 | `indexing.py` | Indexes the guidelines (PDF) in a vector database (ChromaDB) |
 | `retrieval.py` | Searches the vector database for the passages useful for a patient |
-| `kbs.py` | Knowledge-Based System (KBS): applies the deterministic rules for a patient|
+| `kbs.py` | Knowledge-Based System (KBS): turns a patient into facts and runs the CLIPS rules on them |
 | `generation.py` | Analyses a patient with the LLM along with retrieved passages and KBS results |
 | `main.py` | Launch retrieval then KBS then generation|
 
@@ -76,8 +76,9 @@ dataset/                         80 patients, one JSON per patient (<id>.json): 
 full_dataset/                    1919 patients (not versioned), same format
 ressources/
 ├── kbs/
-│   ├── generic_rules.json       KBS rules from the ANSM Thesaurus and DDI-Predictor
-│   ├── personalized_rules.json  hospital-specific KBS rules (e.g. apixaban dose, daptomycin 10 mg/kg)
+│   ├── base.clp                 CLIPS fact model, unit conversions, dose calculations, generic interaction rule
+│   ├── generic_rules.clp        drug interactions from the ANSM Thesaurus and DDI-Predictor (CLIPS facts)
+│   ├── personalized_rules.clp   hospital-specific CLIPS rules (e.g. apixaban dose, daptomycin 10 mg/kg)
 │   └── KBS_Docs/                source documents of the generic rules (ANSM Thesaurus, DDI-Predictor)
 ├── rag/
 │   ├── RAG_Docs/                guidelines (PDF) used by the RAG
