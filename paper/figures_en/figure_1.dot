@@ -12,6 +12,7 @@ digraph architecture {
     base_clp           [shape=note, label=<<B>base.clp</B><BR/><FONT POINT-SIZE="8.5">fact model, dose rules</FONT>>];
     generic_rules      [shape=note, label=<<B>generic_rules.clp</B><BR/><FONT POINT-SIZE="8.5">interactions (ANSM, DDI-Predictor)</FONT>>];
     personalized_rules [shape=note, label=<<B>personalized_rules.clp</B><BR/><FONT POINT-SIZE="8.5">hospital rules</FONT>>];
+    statistical_rules  [shape=note, label=<<B>statistical_rules.clp</B><BR/><FONT POINT-SIZE="8.5">frequent IP situations (“at-risk patient”)<BR/>from past pharmacist IPs</FONT>>];
 
     node [shape=box, style="rounded,filled", fillcolor="#E9EEF4", margin="0.18,0.08"];
     indexing [label=<<B>indexing.py</B>>];
@@ -22,13 +23,13 @@ digraph architecture {
     create_rule [label=<<B>create_rule.py</B><BR/><FONT POINT-SIZE="8.5">new KBS rules (LLM)</FONT>>];
 
     { rank=same; base; patients; create_rule; }
-    { rank=same; indexing; main; base_clp; generic_rules; personalized_rules; }
+    { rank=same; indexing; main; base_clp; generic_rules; personalized_rules; statistical_rules; }
     { rank=same; chroma; retrieval; kbs; }
 
     // Invisible edges keep the vertical order: RAG on top, rules at the bottom
     edge [style=invis];
     base -> patients -> create_rule;
-    indexing -> main -> base_clp -> generic_rules -> personalized_rules;
+    indexing -> main -> base_clp -> generic_rules -> personalized_rules -> statistical_rules;
     chroma -> retrieval -> kbs;
     edge [style=solid];
 
@@ -45,5 +46,6 @@ digraph architecture {
     base_clp -> kbs [style=dashed];
     generic_rules -> kbs [style=dashed];
     personalized_rules -> kbs [style=dashed, label="read"];
+    statistical_rules -> kbs [style=dashed];
     generation -> decision;
 }

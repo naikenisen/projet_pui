@@ -9,3 +9,4 @@
 [] read kbs.py and remove unecessary functions
 [] read generation.py and remove unecessary functions
 [] speed up inference
+[] utiliser un LLM pour faire cela tous les mois la création du fichier statistical_rules.clp

@@ -17,6 +17,8 @@ BASE_FILE = os.path.join(KBS_FOLDER, "base.clp")
 GENERIC_RULES_FILE = os.path.join(KBS_FOLDER, "generic_rules.clp")
 # Hospital-specific rules, written by the LLM
 PERSONALIZED_RULES_FILE = os.path.join(KBS_FOLDER, "personalized_rules.clp")
+# Situations in which the pharmacists often make an IP ("Patient à risque" alerts)
+STATISTICAL_RULES_FILE = os.path.join(KBS_FOLDER, "statistical_rules.clp")
 
 
 def read_file(path):
@@ -93,6 +95,7 @@ def create_environment(rules=""):
 def kbs_environment():
     env = create_environment(read_file(PERSONALIZED_RULES_FILE))
     env.load(GENERIC_RULES_FILE)
+    env.load(STATISTICAL_RULES_FILE)
     return env
 
 

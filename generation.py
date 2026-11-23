@@ -62,6 +62,9 @@ account”, not “not recommended”). Then rank the alerts:
   an intervention if, given this patient's data (age, renal function, laboratory values, doses), the risk is
   clinically critical. Otherwise, they call at most for monitoring, or are simply acceptable.
 An alert therefore never justifies an intervention on its own.
+Alerts starting with “Patient à risque” are statistical: they flag a situation in which the hospital pharmacists
+often make an intervention (e.g. oral anticoagulant). They report no problem. Examine the drugs involved more
+carefully, but never make a point only because of such an alert: if nothing is wrong, validate the prescription.
 
 Consistency with the patient (check for each point):
 - Read the recommended action of each alert in full. If it provides an exception that applies to the patient
