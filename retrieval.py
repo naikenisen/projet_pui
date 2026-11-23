@@ -21,6 +21,22 @@ MAX_PASSAGES = 8
 # Prefix recommended by Qwen3-Embedding, for queries only
 INSTRUCTION = "Instruct: Retrieve the medical guidelines useful to analyse this prescription\nQuery: "
 
+RENAL_TESTS = {
+    "DFG estimé (CKD-EPI)": "eGFR CKD-EPI",
+    "Clairance de la créatinine (Cockcroft)": "Cockcroft creatinine clearance",
+    "Créatinine (sang)": "creatinine",
+}
+
+
+# Renal values always added to the query when present
+def renal_function(patient):
+    values = []
+    for name, label in RENAL_TESTS.items():
+        measure = patient["biology"].get(name)
+        if measure and measure.get("value") is not None:
+            values.append(f"{label} {measure['value']} {measure.get('unit', '')}".strip())
+    return values
+
 
 def abnormal_biology(patient):
     with open(LAB_RANGES_FILE, encoding="utf-8") as file:
@@ -28,7 +44,7 @@ def abnormal_biology(patient):
 
     abnormalities = []
     for name, measure in patient["biology"].items():
-        if name not in ranges or not isinstance(measure.get("value"), (int, float)):
+        if name in RENAL_TESTS or name not in ranges or not isinstance(measure.get("value"), (int, float)):
             continue
         reference = ranges[name]
         value = measure["value"]
@@ -40,7 +56,7 @@ def abnormal_biology(patient):
     return abnormalities
 
 
-# One query per treatment line, completed with the patient profile and the lab abnormalities
+# One query per treatment line, completed with the patient profile, the renal function and the lab abnormalities
 def build_queries(record):
     patient = record["patient"]
     profile = []
@@ -48,6 +64,7 @@ def build_queries(record):
         profile.append(f"patient aged {patient['age']} years")
     if patient.get("weight_kg") is not None:
         profile.append(f"{patient['weight_kg']} kg")
+    profile += renal_function(patient)
     profile += abnormal_biology(patient)
 
     queries = []
