@@ -2,11 +2,8 @@
 [] add all the necessary rules to the KBS (jeux de règles expertes sur les associations fréquentes)
 [] complete the list of guidelines used by the RAG (download all guidelines)
 
-# mandatory - computer science work
-[] branch statistical_rules : ajouter un statistical_rules.clp avec les situations IP fréquentes (utiliser un LLM pour faire cela tous les mois)
-
 # optional
 [] read kbs.py and remove unecessary functions
 [] read generation.py and remove unecessary functions
 [] speed up inference
-[] utiliser un LLM pour faire cela tous les mois la création du fichier statistical_rules.clp
+[] utiliser un LLM pour faire tous les mois la création du fichier statistical_rules.clp
