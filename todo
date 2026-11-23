@@ -3,9 +3,7 @@
 [] complete the list of guidelines used by the RAG (download all guidelines)
 
 # mandatory - computer science work
-[] branch llm_enhance_retrieval : un llm pour avoir un contexte supplémentaire pour le retrieval en utilisant le json
 [] branch statistical_rules : ajouter un statistical_rules.clp avec les situations IP fréquentes (utiliser un LLM pour faire cela tous les mois)
-[] ajouter la fonction rénale de  manière systématique dans le retrieval
 
 # optional
 [] read kbs.py and remove unecessary functions
