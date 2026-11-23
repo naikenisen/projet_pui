@@ -8,7 +8,7 @@ import chromadb
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from generation import LAB_RANGES_FILE
+from generation import LAB_RANGES_FILE, MODEL, summarize_record
 from indexing import CHROMA_DIR, COLLECTION_NAME, EMBEDDING_MODEL
 from kbs import load_patient
 
@@ -17,9 +17,21 @@ client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPE
 
 RESULTS_PER_QUERY = 3
 MAX_PASSAGES = 8
+# Extra passages found from the LLM context, added after the main ones
+MAX_LLM_PASSAGES = 4
 
 # Prefix recommended by Qwen3-Embedding, for queries only
 INSTRUCTION = "Instruct: Retrieve the medical guidelines useful to analyse this prescription\nQuery: "
+
+LLM_CONTEXT_PROMPT = """You are a French hospital clinical pharmacist. You are given a patient and their prescription in JSON format.
+Write up to 8 short and simple context sentences to search the guidelines: the likely indication of the notable
+treatments, specific populations, drug combinations to check. Describe the situation, do not judge the prescription.
+The guidelines are in French and English: write each sentence in French, then the same sentence in English on the
+next line. One sentence per line, without numbering or bullet points.
+Example for a woman treated with silodosine:
+Silodosine chez la femme : traitement facilitant le désondage.
+Silodosin in women: treatment to help urinary catheter removal.
+"""
 
 RENAL_TESTS = {
     "DFG estimé (CKD-EPI)": "eGFR CKD-EPI",
@@ -77,9 +89,24 @@ def build_queries(record):
     return queries
 
 
-# Passages closest to the prescription, without duplicates, sorted by distance
-def retrieve_context(record):
-    queries = build_queries(record)
+# Short context sentences written by the LLM from the patient record, used as extra queries
+def llm_context(record):
+    completion = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": LLM_CONTEXT_PROMPT},
+            {"role": "user", "content": json.dumps(summarize_record(record), ensure_ascii=False)},
+        ],
+        max_tokens=1000,
+        temperature=0,
+        extra_body={"reasoning": {"enabled": False}},
+    )
+    text = completion.choices[0].message.content or ""
+    return [line.strip(" -•*") for line in text.splitlines() if line.strip(" -•*")]
+
+
+# Passages closest to the queries, without duplicates, sorted by distance
+def search(queries):
     if not queries:
         return []
     response = client.embeddings.create(model=EMBEDDING_MODEL, input=[INSTRUCTION + q for q in queries])
@@ -95,8 +122,15 @@ def retrieve_context(record):
         ):
             if passage_id not in passages or distance < passages[passage_id]["distance"]:
                 passages[passage_id] = {"text": text, "source": meta["source"], "page": meta["page"], "distance": distance}
+    return sorted(passages.values(), key=lambda p: p["distance"])
 
-    return sorted(passages.values(), key=lambda p: p["distance"])[:MAX_PASSAGES]
+
+# Passages from the code queries first, then the new passages found from the LLM context
+def retrieve_context(record):
+    passages = search(build_queries(record))[:MAX_PASSAGES]
+    known_texts = [p["text"] for p in passages]
+    llm_passages = [p for p in search(llm_context(record)) if p["text"] not in known_texts]
+    return passages + llm_passages[:MAX_LLM_PASSAGES]
 
 
 if __name__ == "__main__":

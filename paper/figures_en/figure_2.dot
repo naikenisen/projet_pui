@@ -9,8 +9,8 @@ digraph retrieval {
     ranges [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Reference ranges</B><BR/><FONT POINT-SIZE="8.5">lab_reference_ranges.json</FONT><BR/>[min, max], label, unit>];
     { rank=same; record; ranges; }
 
-    bio [label=<<B>1. Detection of abnormal laboratory values</B><BR/>for each referenced parameter b<SUB>j</SUB>:<BR/>value &lt; min  →  “low label (value unit)”<BR/>value &gt; max  →  “high label (value unit)”>];
-    profile [shape=box, style=filled, fillcolor="#FFFFFF", label=<<B>Clinical profile T</B><BR/>“patient aged <I>age</I> years, <I>weight</I> kg [, abnormalities]”>];
+    bio [label=<<B>1. Laboratory values</B><BR/>renal values, always added if present:<BR/>eGFR CKD-EPI, Cockcroft clearance, creatinine<BR/>other referenced parameters b<SUB>j</SUB>:<BR/>value &lt; min  →  “low label (value unit)”<BR/>value &gt; max  →  “high label (value unit)”>];
+    profile [shape=box, style=filled, fillcolor="#FFFFFF", label=<<B>Clinical profile T</B><BR/>“patient aged <I>age</I> years, <I>weight</I> kg [, renal values] [, abnormalities]”>];
 
     subgraph cluster_iteration {
         label=<<B>2. For each prescription line L<SUB>i</SUB>  (i = 1, …, n)</B>>;
@@ -32,7 +32,14 @@ digraph retrieval {
 
     fusion [label=<<B>3. Result merging</B><BR/>union of the P<SUB>i</SUB>  (≤ 3n passages)<BR/>deduplication (minimum distance kept)<BR/>sorting by increasing distance, top 8 selected>];
 
-    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Documentary context</B><BR/>≤ 8 excerpts “[source, page p] text”<BR/><FONT POINT-SIZE="8.5">→ generation module (Figure 4)</FONT>>];
+    llm [label=<<B>4. LLM context (lower priority)</B><BR/>summarised record  →  ≤ 8 short context sentences, FR + EN<BR/><FONT POINT-SIZE="8.5">Qwen3.6-35B-A3B, without reasoning</FONT>>];
+    llm_search [label=<<B>5. Search with the context sentences</B><BR/>same encoding and search as step 2<BR/>passages already selected removed<BR/>sorting by increasing distance, top 4 selected>];
+    llm_example [shape=plain, fontsize=8.5, label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5" COLOR="#9A9A9A">
+        <TR><TD ALIGN="LEFT" BGCOLOR="#FAFAFA"><I>Example (woman treated with silodosin):</I><BR ALIGN="LEFT"/>“Silodosin in women: treatment to help<BR ALIGN="LEFT"/>urinary catheter removal.”<BR ALIGN="LEFT"/></TD></TR>
+        </TABLE>>];
+    { rank=same; llm; llm_example; }
+
+    output [shape=note, style=filled, fillcolor="#FFFFFF", label=<<B>Documentary context</B><BR/>≤ 8 excerpts from step 3, then ≤ 4 excerpts from step 5<BR/>“[source, page p] text”<BR/><FONT POINT-SIZE="8.5">→ generation module (Figure 4)</FONT>>];
 
     record -> bio;
     ranges -> bio;
@@ -43,4 +50,10 @@ digraph retrieval {
     chroma -> knn [style=dashed];
     knn -> fusion;
     fusion -> output;
+    record -> llm;
+    llm -> llm_search;
+    llm_example -> llm [style=dotted, arrowhead=none];
+    chroma -> llm_search [style=dashed];
+    fusion -> llm_search [style=dashed, label=< already selected>];
+    llm_search -> output;
 }
