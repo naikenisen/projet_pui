@@ -10,7 +10,7 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{pgfgantt}
-\usetikzlibrary{arrows.meta, positioning, fit, backgrounds}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds, shapes.geometric, decorations.pathreplacing}
 
 \graphicspath{{figures_en/}}
 
@@ -347,6 +347,21 @@ digraph architecture {
 
 \begin{frame}{Récupération}
   \centering
+  \[ \mathbf{u} = (1,\ 2,\ 2) \qquad \mathbf{e}_k = (2,\ 1,\ 2) \qquad d = 3 \]
+  \vspace{0.5em}
+  \begin{align*}
+    \cos(\mathbf{u}, \mathbf{e}_k)
+      &= \frac{1 \times 2 \;+\; 2 \times 1 \;+\; 2 \times 2}{\sqrt{1^2 + 2^2 + 2^2}\ \sqrt{2^2 + 1^2 + 2^2}} \\[6pt]
+      &= \frac{2 + 2 + 4}{\sqrt{9}\ \sqrt{9}} \\[6pt]
+      &= \frac{8}{3 \times 3} \\[6pt]
+      &= \frac{8}{9} \;\approx\; 0{,}89
+  \end{align*}
+  \vspace{0.5em}
+  {\footnotesize Proche de 1 : le passage $c_k$ a un sens proche de la requête.}
+\end{frame}
+
+\begin{frame}{Récupération}
+  \centering
   \scriptsize
   \renewcommand{\arraystretch}{1.4}
   \begin{tabular}{>{\raggedright\arraybackslash}p{3.9cm}ll|c}
@@ -673,6 +688,80 @@ digraph kbs_steps {
   \vspace{0.4em}
   \footnotesize
   Ensuite, plus aucune règle ne s'applique : l'inférence s'arrête avec 1 alerte.
+\end{frame}
+
+\begin{frame}{Système à base de connaissances}
+  \heading{Le moteur RETE selon le guide CLIPS}
+  \small
+  \begin{enumerate}
+    \setlength{\itemsep}{0.8em}
+    \item Au chargement, un \structure{réseau des motifs} est construit avec tous les motifs des règles.
+    \item Chaque fait créé est \structure{filtré} dans ce réseau : s'il correspond à un motif, la règle est \structure{partiellement instanciée}.
+    \item Les \structure{variables} sont comparées d'un motif à l'autre, du premier au dernier.
+    \item Si elles sont cohérentes, la règle est \structure{activée} et placée dans l'\structure{agenda}.
+  \end{enumerate}
+
+  \vfill
+  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, annexe D.1.}
+\end{frame}
+
+\begin{frame}[fragile]{Système à base de connaissances}
+  \heading{Exemple du guide CLIPS : la commande \texttt{matches}}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+\begin{lstlisting}[language=CLIPS, basicstyle=\ttfamily\scriptsize]
+(defrule example-1
+   (a ?)
+   (b ?)
+   (c ?)
+   =>)
+
+CLIPS> (facts)
+f-1     (a 1)
+f-2     (b 1)
+f-3     (b 2)
+f-4     (c 1)
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+CLIPS> (matches example-1)
+Matches for Pattern 1
+f-1
+Matches for Pattern 2
+f-2
+f-3
+Matches for Pattern 3
+f-4
+Partial matches for CEs 1 - 2
+f-1,f-3
+f-1,f-2
+Partial matches for CEs 1 - 3
+f-1,f-2,f-4
+f-1,f-3,f-4
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+  \vfill
+  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, section 13.6.4.}
+\end{frame}
+
+\begin{frame}{Système à base de connaissances}
+  \small
+  \heading{Ce qui coûte, selon le guide CLIPS}
+  Filtrer un fait dans le réseau des motifs : temps à peu près constant. \\
+  Comparer les variables entre motifs : la partie lente.
+
+  \heading{Ordre des motifs dans une règle}
+  \begin{enumerate}
+    \setlength{\itemsep}{0.3em}
+    \item Du plus spécifique au plus général.
+    \item Les motifs les plus rares en premier.
+    \item Les motifs volatils (souvent ajoutés ou retirés) en dernier.
+  \end{enumerate}
+
+  \vfill
+  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, annexe D.1.}
 \end{frame}
 
 \begin{filecontents*}[overwrite]{presentation_figure_4.dot}
