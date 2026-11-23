@@ -1,15 +1,13 @@
-[] improve the retrieval.py script:
+# mandatory - pharmacy work
+[] add all the necessary rules to the KBS (jeux de règles expertes sur les associations fréquentes)
+[] complete the list of guidelines used by the RAG (download all guidelines)
 
-the retrieval is currently not of acceptable quality,
-both in its output and in the relevance of the searches;
-the way the search is done must be reworked
+# mandatory - computer science work
+[] branch llm_enhance_retrieval : un llm pour avoir un contexte supplémentaire pour le retrieval en utilisant le json
+[] branch statistical_rules : ajouter un statistical_rules.clp avec les situations IP fréquentes (utiliser un LLM pour faire cela tous les mois)
+[] ajouter la fonction rénale de  manière systématique dans le retrieval
 
-[] add everything needed to the RAG documents (src/rag/RAG_Docs/)
-[] add all the necessary rules to the KBS
-[] speed up inference
-[] build a prioritisation system for pharmaceutical interventions (PI) based on what had an impact at the hospital, from the pharmacy extractions
-[] rework the list of guidelines used by the RAG
+# optional
 [] read kbs.py and remove unecessary functions
 [] read generation.py and remove unecessary functions
-[] un llm pour avoir un contexte supplémentaire pour le retrieval
-[] jeux de règles expertes sur les associations fréquentes
+[] speed up inference
