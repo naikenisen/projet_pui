@@ -1,6 +1,8 @@
 # Patient record opened from the list, and status of the records.
 
 import html
+import json
+import os
 import re
 
 import streamlit as st
@@ -23,6 +25,40 @@ def render_page(records, results):
     position = next(i for i, r in enumerate(records) if r["patient"]["id"] == patient_id)
     _navigation_bar(records, position, results.get(patient_id))
     _patient_record(records[position], results.get(patient_id), read_lab_ranges())
+    if results.get(patient_id) and "error" not in results[patient_id]:
+        _score_bar(patient_id)
+
+
+# Pharmacist scores of the software opinion, keyed by the patient ID of inference_results.json
+LABEL_RESULTS_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "label_results.json")
+SCORES = [0, 1, 2, 3, 4, 5]
+
+
+def load_scores():
+    if not os.path.exists(LABEL_RESULTS_FILE):
+        return {}
+    with open(LABEL_RESULTS_FILE, encoding="utf-8") as file:
+        return json.load(file)
+
+
+# A new score replaces the previous one; unselecting the score removes it
+def save_score(patient_id):
+    scores = load_scores()
+    score = st.session_state[f"score-{patient_id}"]
+    if score is None:
+        scores.pop(patient_id, None)
+    else:
+        scores[patient_id] = score
+    with open(LABEL_RESULTS_FILE, "w", encoding="utf-8") as file:
+        json.dump(scores, file, ensure_ascii=False, indent=2)
+
+
+def _score_bar(patient_id):
+    label("Évaluation de l'avis du logiciel (0 = erreur ou non pertinent, 5 = très pertinent)")
+    st.segmented_control(
+        "Note", SCORES, default=load_scores().get(patient_id), key=f"score-{patient_id}",
+        on_change=save_score, args=(patient_id,), label_visibility="collapsed",
+    )
 
 
 def open_patient(patient_id):
