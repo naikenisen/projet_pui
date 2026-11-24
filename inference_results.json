@@ -1,10 +1,21 @@
 {
   "100133744": {
-    "decision": "MONITORING PROPOSED",
+    "decision": "VERIFICATION PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring for signs of bleeding given the concomitant use of acetylsalicylic acid (100 mg/day, L5) and enoxaparin (4000 IU/day, L6), as the combination is classified as precautionary for use.",
+        "text": "Nous proposons de surveiller la vigilance et la fonction respiratoire lors de l'association lorazépam (L2) et mirtazapine (L10), en raison d'un risque majoré de sédation centrale.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP ; LORAZEPAM 1 MG (TEMESTA), CPR SÉC]"
+          }
+        ],
+        "lines_to_modify": []
+      },
+      {
+        "type": "monitoring",
+        "text": "Nous suggérons de surveiller les signes hémorragiques (hémoglobine, plaquettes) lors de l'association acide acétylsalicylique 100 mg (L5) et énoxaparine 4000 UI (L6), compte tenu du risque hémorragique accru.",
         "sources": [
           {
             "type": "alert",
@@ -12,12 +23,25 @@
           }
         ],
         "lines_to_modify": []
+      },
+      {
+        "type": "verification",
+        "text": "Nous suggérons de vérifier avec le prescripteur la dose totale de Movicol (10 sachets/jour, L1+L4), qui dépasse habituellement la dose maximale journalière recommandée.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
+          }
+        ],
+        "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory results show a low creatinine level (44 µmol/L) but a normal estimated glomerular filtration rate (85 mL/min/1.73 m²), with all other parameters including potassium (3.9 mmol/L) and magnesium (0.85 mmol/L) within reference ranges. Alerts [A2] and [A3] regarding the lorazepam-mirtazapine and aspirin-enoxaparin combinations are classified as precautionary for use rather than contraindicated, specifically noting that the 100 mg daily aspirin dose falls within the acceptable antiplatelet range. Consequently, no laboratory values contradict the current prescriptions, and all administered doses remain within standard therapeutic limits. Therefore, no dose modifications or discontinuations are required, and routine clinical observation is sufficient.",
-    "justification": "- We suggest monitoring for signs of bleeding given the concomitant use of acetylsalicylic acid (100 mg/day, L5) and enoxaparin (4000 IU/day, L6), as the combination is classified as precautionary for use.",
+    "reasoning": "La seule anomalie biologique signalée est une créatinine basse à 44 µmol/L, mais le DFG estimé reste correct à 85 mL/min/1,73 m². Les alertes concernant l'association lorazépam-mirtazapine (A2) et acide acétylsalicylique-énoxaparine (A3) sont classées « A prendre en compte », justifiant une surveillance clinique plutôt qu'une modification immédiate. L'alerte sur le Movicol (A1) signale une dose totale de 10 sachets par jour nécessitant une vérification. Aucun problème critique ne nécessite une intervention urgente, d'où des propositions de surveillance et de vérification.",
+    "justification": "- Nous proposons de surveiller la vigilance et la fonction respiratoire lors de l'association lorazépam (L2) et mirtazapine (L10), en raison d'un risque majoré de sédation centrale.\n- Nous suggérons de surveiller les signes hémorragiques (hémoglobine, plaquettes) lors de l'association acide acétylsalicylique 100 mg (L5) et énoxaparine 4000 UI (L6), compte tenu du risque hémorragique accru.\n- Nous suggérons de vérifier avec le prescripteur la dose totale de Movicol (10 sachets/jour, L1+L4), qui dépasse habituellement la dose maximale journalière recommandée.",
     "sources": [
-      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + HÉPARINES (DOSES CURATIVES ET/OU SUJET ÂGÉ) (ASDEC - APEC) : Augmentation du risque hémorragique (inhibition de la fonction plaquettaire et agression de la muqueuse gastroduodénale par l’acide acétylsalicylique. Conduite à tenir : Association déconseillée avec : - des doses anti-inflammatoires d'acide acétylsalicylique (>=1g par prise et/ou >=3g par jour) - des doses antalgiques ou antipyrétiques (>=500 mg par prise et/ou <3g par jour) Utiliser un autre anti-inflammatoire ou un autre antalgique ou antipyrétique. A prendre en compte avec : - des doses antiagrégantes (de 50 mg à 375 mg par jour). [Prescription: ACETYLSALICYLIQUE ACIDE 100 MG (ASPEGIC), NOUR, PDR PR SOL BUV, SACHET ; ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (INHIXA), SOL INJ, SRG]"
+      "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP ; LORAZEPAM 1 MG (TEMESTA), CPR SÉC]",
+      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + HÉPARINES (DOSES CURATIVES ET/OU SUJET ÂGÉ) (ASDEC - APEC) : Augmentation du risque hémorragique (inhibition de la fonction plaquettaire et agression de la muqueuse gastroduodénale par l’acide acétylsalicylique. Conduite à tenir : Association déconseillée avec : - des doses anti-inflammatoires d'acide acétylsalicylique (>=1g par prise et/ou >=3g par jour) - des doses antalgiques ou antipyrétiques (>=500 mg par prise et/ou <3g par jour) Utiliser un autre anti-inflammatoire ou un autre antalgique ou antipyrétique. A prendre en compte avec : - des doses antiagrégantes (de 50 mg à 375 mg par jour). [Prescription: ACETYLSALICYLIQUE ACIDE 100 MG (ASPEGIC), NOUR, PDR PR SOL BUV, SACHET ; ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (INHIXA), SOL INJ, SRG]",
+      "KBS: MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
     ],
     "alerts": [
       "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]",
@@ -25,67 +49,67 @@
       "Interaction ACIDE ACETYLSALICYLIQUE + HÉPARINES (DOSES CURATIVES ET/OU SUJET ÂGÉ) (ASDEC - APEC) : Augmentation du risque hémorragique (inhibition de la fonction plaquettaire et agression de la muqueuse gastroduodénale par l’acide acétylsalicylique. Conduite à tenir : Association déconseillée avec : - des doses anti-inflammatoires d'acide acétylsalicylique (>=1g par prise et/ou >=3g par jour) - des doses antalgiques ou antipyrétiques (>=500 mg par prise et/ou <3g par jour) Utiliser un autre anti-inflammatoire ou un autre antalgique ou antipyrétique. A prendre en compte avec : - des doses antiagrégantes (de 50 mg à 375 mg par jour). [Prescription: ACETYLSALICYLIQUE ACIDE 100 MG (ASPEGIC), NOUR, PDR PR SOL BUV, SACHET ; ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (INHIXA), SOL INJ, SRG]",
       "Patient à risque : antidépresseur, situation fréquente d'IP (5 % des patients traités) [Prescription: MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP]"
     ],
-    "date": "24/11/2026 12:41"
+    "date": "24/11/2026 13:38"
   },
   "100227558": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The prescription is validated.",
+        "text": "Pas d'intervention proposée. La prescription est conforme aux posologies standards et aux recommandations, sans anomalie biologique ni interaction critique identifiée.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "No laboratory abnormalities are reported in the record. Alerts A1 and A2 are precautions for use but specifically warn of acute kidney injury at acetylsalicylic acid doses ≥500 mg/day; the patient receives only 75 mg, so this exception applies and the alert does not indicate a problem. Alerts A3 and A4 are statistical risk flags and do not require action. All prescribed doses are within standard therapeutic ranges and align with the provided guidelines. No problems retained.",
-    "justification": "- No intervention proposed. The prescription is validated.",
+    "reasoning": "Aucune valeur biologique n'est disponible pour évaluer la fonction rénale ou la tolérance musculaire. Les alertes [A1] et [A2] concernant l'association aspirine/irbésartan-hydrochlorothiazide ne s'appliquent pas car l'aspirine est prescrite à dose antiagrégante (75 mg/jour), en deçà des seuils de toxicité rénale mentionnés. Les alertes [A3] et [A4] sont statistiques et ne justifient pas d'intervention en l'absence de données cliniques ou biologiques défavorables. Les posologies de l'atorvastatine (40 mg/j), de l'aspirine (75 mg/j) et de la rilmenidine (1 mg/j) sont conformes aux recommandations et aux usages standards. Aucune anomalie ni interaction critique n'est identifiée.",
+    "justification": "- Pas d'intervention proposée. La prescription est conforme aux posologies standards et aux recommandations, sans anomalie biologique ni interaction critique identifiée.",
     "sources": [],
     "alerts": [
-      "Interaction ACIDE ACETYLSALICYLIQUE + DIURÉTIQUES (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN+HYDROCHLOROTHIAZIDE 150 MG+12.5 MG (LABO EG), CPR]",
       "Interaction ACIDE ACETYLSALICYLIQUE + ANTAGONISTES DES RÉCEPTEURS DE L'ANGIOTENSINE II (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN+HYDROCHLOROTHIAZIDE 150 MG+12.5 MG (LABO EG), CPR]",
+      "Interaction ACIDE ACETYLSALICYLIQUE + DIURÉTIQUES (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN+HYDROCHLOROTHIAZIDE 150 MG+12.5 MG (LABO EG), CPR]",
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 40 MG (LABO EG LABO), CPR]",
       "Patient à risque : lévothyroxine, situation fréquente d'IP (6 % des patients traités) [Prescription: LEVOTHYROXINE 100 UG (LEVOTHYROX), CPR SÉC]"
     ],
-    "date": "24/11/2026 12:42"
+    "date": "24/11/2026 13:41"
   },
   "100539781": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed.",
+        "text": "Pas d'intervention proposée. L'enoxaparine, le Spiolto et la supplémentation nutritionnelle sont adaptés à la fonction rénale préservée (DFG 93 mL/min) et à l'état nutritionnel du patient.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory results show low albumin (27 g/L) and elevated CRP (9.1 mg/L), alongside a high corrected calcium (2.65 mmol/L) that normalizes when considering ionized calcium (1.25 mmol/L), confirming an albumin-correction artifact rather than true hypercalcemia. Renal function is preserved (DFG 93 mL/min/1.73 m²), so the prophylactic enoxaparin dose does not require adjustment. All ongoing treatments, including nutritional support, paracetamol, monthly colecalciferol, and tiotropium/olodaterol, fall within standard dosing ranges and align appropriately with the available biological data. No provided alerts or excerpts indicate contraindications or clinically critical risks for this regimen. Consequently, the prescription is deemed appropriate without required modifications.",
-    "justification": "- No intervention proposed.",
+    "reasoning": "Les analyses biologiques révèlent une hypoalbuminémie (27 g/L) et une inflammation modérée (CRP 9,1 mg/L), avec un calcium corrigé élevé mais un calcium ionisé normal (1,25 mmol/L), ce qui est physiologique. La vitamine D est à 85 nmol/L, soit dans la plage de suffisance. La fonction rénale est préservée (DFG 93 mL/min). Aucun alerte n'est fourni et les posologies des traitements en cours sont conformes aux recommandations et aux données du patient. Aucune intervention n'est retenue.",
+    "justification": "- Pas d'intervention proposée. L'enoxaparine, le Spiolto et la supplémentation nutritionnelle sont adaptés à la fonction rénale préservée (DFG 93 mL/min) et à l'état nutritionnel du patient.",
     "sources": [],
     "alerts": [],
-    "date": "24/11/2026 12:43"
+    "date": "24/11/2026 13:41"
   },
   "100835833": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The as-needed morphine 10 mg dose is within standard ranges and does not require modification given the patient's renal function and laboratory profile.",
+        "text": "Pas d'intervention proposée. La prescription se limite à une morphine en cas de besoin, sans posologie précise ni autre traitement concomitant. Aucun dépassement de dose maximale ni contre-indication biologique n'est identifié.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with elevated ASAT, bilirubin, CRP, sodium, glucose, leukocytes, platelets, and neutrophils, alongside low albumin, hemoglobin, and eGFR. No clinical alerts were provided. The only ongoing treatment is as-needed morphine 10 mg, which remains within standard dosing limits and does not interact with the observed laboratory values. Consequently, no problems are retained and the prescription is validated.",
-    "justification": "- No intervention proposed. The as-needed morphine 10 mg dose is within standard ranges and does not require modification given the patient's renal function and laboratory profile.",
+    "reasoning": "Le bilan biologique révèle une hyperglycémie (2,33 g/L), une insuffisance rénale modérée (DFG 52 mL/min/1,73 m²), une hypoalbuminémie (24 g/L), une hypernatrémie (151 mmol/L) ainsi qu'une inflammation et une cytolyse hépatique. Aucun alerte ANSM n'est fourni et les extraits [R1] à [R7] concernent des antidiabétiques qui ne sont pas prescrits. La seule ligne active est une morphine en cas de besoin. En l'absence d'autres traitements, de dose maximale dépassée ou de contre-indication biologique confirmée, aucun problème n'est retenu.",
+    "justification": "- Pas d'intervention proposée. La prescription se limite à une morphine en cas de besoin, sans posologie précise ni autre traitement concomitant. Aucun dépassement de dose maximale ni contre-indication biologique n'est identifié.",
     "sources": [],
     "alerts": [],
-    "date": "24/11/2026 12:44"
+    "date": "24/11/2026 13:42"
   },
   "100888511": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring for excessive sedation and falls due to concurrent morphine and oxazepam use in this 86-year-old frail patient.",
+        "text": "Nous suggérons de surveiller attentivement la vigilance et la fonction respiratoire compte tenu de l'association morphine-oxazépam (L1 + L3) chez cette patiente âgée et fragile.",
         "sources": [
           {
             "type": "alert",
@@ -95,22 +119,22 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with low albumin (29 g/L), high CRP (165.8 mg/L), elevated leukocytes and neutrophils, and low creatinine (43 µmol/L) reflecting reduced muscle mass. Alert [A1] applies to the combination of morphine and oxazepam, classified as a precaution for use (APEC). Given the patient's advanced age (86 years) and frailty (BMI 15.8), this combination carries a clinically critical risk of central nervous system depression and falls. No other dosing or laboratory issues require action.",
-    "justification": "- We suggest monitoring for excessive sedation and falls due to concurrent morphine and oxazepam use in this 86-year-old frail patient.",
+    "reasoning": "Le patient présente une hypoalbuminémie (29 g/L) et des marqueurs inflammatoires élevés (CRP à 165,8 mg/L, polynucléaires neutrophiles à 8,65 10³/mm³), associés à une créatinine basse (43 µmol/L) reflétant une faible masse musculaire. L'alerte A1 classe l'association morphine-oxazépam en précaution d'emploi (APEC) en raison d'un risque de dépression centrale. Compte tenu de l'âge avancé et de la fragilité du patient, cette combinaison justifie une surveillance clinique rapprochée. Aucun autre élément ne nécessite d'intervention ou de vérification.",
+    "justification": "- Nous suggérons de surveiller attentivement la vigilance et la fonction respiratoire compte tenu de l'association morphine-oxazépam (L1 + L3) chez cette patiente âgée et fragile.",
     "sources": [
       "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: OXAZEPAM 10 MG (SERESTA), CPR ; MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML]"
     ],
     "alerts": [
       "Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: OXAZEPAM 10 MG (SERESTA), CPR ; MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML]"
     ],
-    "date": "24/11/2026 12:45"
+    "date": "24/11/2026 13:42"
   },
   "101881762": {
     "decision": "VERIFICATION PROPOSED",
     "points": [
       {
         "type": "verification",
-        "text": "We suggest verifying with the prescriber whether the total Movicol dose (20 sachets/day across L4 and L6) remains within the maximum authorized daily limit, given the concurrent hypokalemia and hypomagnesemia.",
+        "text": "Nous suggérons de vérifier avec le prescripteur la posologie totale de Movicol (20 sachets/jour, L4 et L6), qui dépasse la dose maximale usuelle recommandée.",
         "sources": [
           {
             "type": "alert",
@@ -121,15 +145,27 @@
       },
       {
         "type": "monitoring",
-        "text": "We propose monitoring serum potassium and magnesium levels closely, as the high-dose Movicol regimen (L4 + L6) may exacerbate the observed hypokalemia (3.2 mmol/L) and hypomagnesemia (0.77 mmol/L).",
+        "text": "Nous proposons de renforcer l'autosurveillance glycémique du patient compte tenu de l'association ramipril et insuline glargine (L1 et L2), afin de prévenir tout risque hypoglycémique.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + INSULINE (Précaution d'emploi) : L'utilisation des IEC peut entraîner une majoration de l'effet hypoglycémiant chez le diabétique traité par insuline. La survenue de malaises hypoglycémiques semble exceptionnelle (amélioration de la tolérance au glucose qui aurait pour conséquence une réduction des besoins en insuline). Conduite à tenir : Renforcer l'autosurveillance glycémique. [Prescription: RAMIPRIL 2.5 MG (LABO VIATRIS), CPR SÉC ; INSULINE GLARGINE 300 U/ML (TOUJEO), SOL INJ, STYLO 1.5 ML (SOLOSTAR)]"
+          }
+        ],
+        "lines_to_modify": []
+      },
+      {
+        "type": "monitoring",
+        "text": "Nous proposons de surveiller la kaliémie et d'adapter si besoin la supplémentation, l'hypokaliémie (3,2 mmol/L) pouvant être favorisée par les laxatifs osmotiques.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient exhibits moderate renal impairment (DFG 47 mL/min/1.73 m², low), poorly controlled diabetes (HbA1c 14%, high), and significant electrolyte deficits (potassium 3.2 mmol/L, low; magnesium 0.77 mmol/L, low). Alert [A1] flags the combined Movicol lines, noting that intervention is only warranted if the total dose exceeds maximum limits, while alert [A2] advises glycemic monitoring for the ramipril-insulin combination, which remains clinically acceptable given a stable glucose of 4.07 mmol/L. Consequently, we retain verification of the laxative total dose and routine electrolyte monitoring, as no absolute contraindications or marketing authorization breaches exist.",
-    "justification": "- We suggest verifying with the prescriber whether the total Movicol dose (20 sachets/day across L4 and L6) remains within the maximum authorized daily limit, given the concurrent hypokalemia and hypomagnesemia.\n- We propose monitoring serum potassium and magnesium levels closely, as the high-dose Movicol regimen (L4 + L6) may exacerbate the observed hypokalemia (3.2 mmol/L) and hypomagnesemia (0.77 mmol/L).",
+    "reasoning": "Le patient présente une hypokaliémie (3,2 mmol/L), une hypoalbuminémie sévère (23 g/L), une préalbumine basse (0,05 g/L), une inflammation marquée (CRP 39,7 mg/L, leucocytose) et une insuffisance rénale chronique modérée (DFG 47 mL/min). L'alerte [A1] signale une posologie totale de Movicol inhabituelle (20 sachets/jour), dépassant les recommandations usuelles. L'alerte [A2] rappelle la précaution d'emploi associant un IEC à l'insuline, nécessitant un renforcement de l'autosurveillance glycémique. Les problèmes retenus concernent la vérification de la posologie totale de Movicol et la surveillance glycémique et kaliémique.",
+    "justification": "- Nous suggérons de vérifier avec le prescripteur la posologie totale de Movicol (20 sachets/jour, L4 et L6), qui dépasse la dose maximale usuelle recommandée.\n- Nous proposons de renforcer l'autosurveillance glycémique du patient compte tenu de l'association ramipril et insuline glargine (L1 et L2), afin de prévenir tout risque hypoglycémique.\n- Nous proposons de surveiller la kaliémie et d'adapter si besoin la supplémentation, l'hypokaliémie (3,2 mmol/L) pouvant être favorisée par les laxatifs osmotiques.",
     "sources": [
-      "KBS: MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
+      "KBS: MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]",
+      "KBS: Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + INSULINE (Précaution d'emploi) : L'utilisation des IEC peut entraîner une majoration de l'effet hypoglycémiant chez le diabétique traité par insuline. La survenue de malaises hypoglycémiques semble exceptionnelle (amélioration de la tolérance au glucose qui aurait pour conséquence une réduction des besoins en insuline). Conduite à tenir : Renforcer l'autosurveillance glycémique. [Prescription: RAMIPRIL 2.5 MG (LABO VIATRIS), CPR SÉC ; INSULINE GLARGINE 300 U/ML (TOUJEO), SOL INJ, STYLO 1.5 ML (SOLOSTAR)]"
     ],
     "alerts": [
       "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]",
@@ -138,14 +174,14 @@
       "Patient à risque : antidiabétique, situation fréquente d'IP (5 % des patients traités) [Prescription: INSULINE GLARGINE 300 U/ML (TOUJEO), SOL INJ, STYLO 1.5 ML (SOLOSTAR)]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:45"
+    "date": "24/11/2026 13:43"
   },
   "103610559": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring for excessive sedation and fall risk due to the concomitant use of mirtazapine and oxazepam in this 82-year-old patient.",
+        "text": "Nous suggérons de surveiller la vigilance et le risque de chutes compte tenu de l'association mirtazapine et oxazépam chez cette patiente âgée de 82 ans.",
         "sources": [
           {
             "type": "alert",
@@ -155,8 +191,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient is 82 years old with normal renal function (eGFR 90 mL/min) and borderline low potassium (3.5 mmol/L). Laboratory values show mild anemia (Hb 10.2 g/dL), elevated CRP (6.5 mg/L), and low prothrombin time (62%), but no critical abnormalities requiring immediate drug modification. Alert [A1] flags a precaution (APEC) for combining sedatives (mirtazapine and oxazepam), which increases central nervous depression and fall risk in the elderly. Alerts [A2] and [A3] are statistical risk flags for paroxetine and low vitamin D, respectively, and do not justify intervention alone. Current doses of aspirin, bisoprolol, and paroxetine align with standard guidelines and renal function.",
-    "justification": "- We suggest monitoring for excessive sedation and fall risk due to the concomitant use of mirtazapine and oxazepam in this 82-year-old patient.",
+    "reasoning": "Les anomalies biologiques notables sont une CRP élevée (6,5 mg/L), une hémoglobine basse (10,2 g/dL), un TP bas (62 %) et une vitamine D insuffisante (66 nmol/L). L'alerte [A1] concernant l'association de sédatifs (mirtazapine et oxazépam) indique un niveau « A prendre en compte », ce qui est acceptable avec une surveillance adaptée chez cette patiente de 82 ans. Les alertes [A2] et [A3] sont de type statistique et ne justifient pas d'intervention isolée. Aucun surdosage ni contre-indication formelle n'est identifié, justifiant une surveillance clinique ciblée.",
+    "justification": "- Nous suggérons de surveiller la vigilance et le risque de chutes compte tenu de l'association mirtazapine et oxazépam chez cette patiente âgée de 82 ans.",
     "sources": [
       "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: OXAZEPAM 10 MG (SERESTA), CPR ; MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP]"
     ],
@@ -165,26 +201,31 @@
       "Patient à risque : antidépresseur, situation fréquente d'IP (5 % des patients traités) [Prescription: PAROXETINE 20 MG (LABO ARROW), CPR SÉC]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:47"
+    "date": "24/11/2026 13:44"
   },
   "104246548": {
-    "decision": "VERIFICATION PROPOSED",
+    "decision": "MONITORING PROPOSED",
     "points": [
       {
-        "type": "verification",
-        "text": "We suggest verifying the indication for calcium supplementation (L2, L8) given the corrected hypercalcemia (2.62 mmol/L).",
-        "sources": [],
+        "type": "monitoring",
+        "text": "Nous proposons de surveiller régulièrement la kaliémie, le magnésium et la fonction rénale chez cette patiente âgée traitée par furosémide et empagliflozine, compte tenu de l'hypomagnésémie actuelle (0,68 mmol/L) et de l'hypoalbuminémie.",
+        "sources": [
+          {
+            "type": "document",
+            "source": "recommandations_IC.pdf",
+            "page": 32
+          },
+          {
+            "type": "document",
+            "source": "reco_sfd.pdf",
+            "page": 15
+          }
+        ],
         "lines_to_modify": []
       },
       {
         "type": "monitoring",
-        "text": "We suggest monitoring serum magnesium and sodium levels, as furosemide (L3) may exacerbate the current hypomagnesemia (0.68 mmol/L) and hypernatremia (146 mmol/L).",
-        "sources": [],
-        "lines_to_modify": []
-      },
-      {
-        "type": "monitoring",
-        "text": "We suggest monitoring for excessive sedation or respiratory depression, considering the combined use of morphine (L11) and oxazepam (L9) in an 83-year-old patient.",
+        "text": "Nous suggérons de vérifier quotidiennement la vigilance et l'état de conscience de ce patient de 83 ans recevant simultanément une morphine, un oxazépam, une olanzapine, une carbamazépine et une mélatonine, en raison du risque majoré de sédation centrale.",
         "sources": [
           {
             "type": "alert",
@@ -192,24 +233,14 @@
           }
         ],
         "lines_to_modify": []
-      },
-      {
-        "type": "monitoring",
-        "text": "We suggest monitoring sodium levels and clinical status, as the combination of carbamazepine (L4) and furosemide (L3) increases the risk of symptomatic hyponatremia.",
-        "sources": [
-          {
-            "type": "alert",
-            "text": "Interaction CARBAMAZEPINE + DIURÉTIQUES HYPOKALIÉMIANTS (Précaution d'emploi) : Risque d'hyponatrémie symptomatique. Conduite à tenir : Surveillance clinique et biologique. Si possible, utiliser une autre classe de diurétiques. [Prescription: CARBAMAZEPINE LP 400 MG (LABO VIATRIS), CPR SÉC LP ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]"
-          }
-        ],
-        "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with corrected hypercalcemia (2.62 mmol/L), hypomagnesemia (0.68 mmol/L), hypernatremia (146 mmol/L), and anemia (9.8 g/dL). Alert A2 flags a potential CNS depression risk with morphine and oxazepam, which is acceptable with monitoring in the elderly. Alert A3 and A4 indicate pharmacokinetic and hyponatremia risks with carbamazepine combined with olanzapine and furosemide, respectively, but current sodium is high, so monitoring suffices. Alert A1 notes multiple calcium lines, but the total dose is within standard limits. We retained verification for calcium supplementation due to hypercalcemia, and monitoring for electrolyte disturbances and sedation risks.",
-    "justification": "- We suggest verifying the indication for calcium supplementation (L2, L8) given the corrected hypercalcemia (2.62 mmol/L).\n- We suggest monitoring serum magnesium and sodium levels, as furosemide (L3) may exacerbate the current hypomagnesemia (0.68 mmol/L) and hypernatremia (146 mmol/L).\n- We suggest monitoring for excessive sedation or respiratory depression, considering the combined use of morphine (L11) and oxazepam (L9) in an 83-year-old patient.\n- We suggest monitoring sodium levels and clinical status, as the combination of carbamazepine (L4) and furosemide (L3) increases the risk of symptomatic hyponatremia.",
+    "reasoning": "Le patient présente une hypoalbuminémie (26 g/L), une hypomagnésémie (0,68 mmol/L), une hypernatrémie (146 mmol/L) et une thrombopénie modérée (124 000/mm³). L'alerte A2 s'applique à l'association de sédatifs et indique une prise en compte nécessaire ; les extraits R3 et R10 soulignent les risques de déplétion volémique et de troubles électrolytiques avec l'association diurétique de l'anse/iSGLT2. Aucun traitement n'est formellement contre-indiqué par la biologie, mais nous retenons une surveillance clinique et biologique renforcée pour prévenir l'aggravation métabolique et la sédation centrale.",
+    "justification": "- Nous proposons de surveiller régulièrement la kaliémie, le magnésium et la fonction rénale chez cette patiente âgée traitée par furosémide et empagliflozine, compte tenu de l'hypomagnésémie actuelle (0,68 mmol/L) et de l'hypoalbuminémie.\n- Nous suggérons de vérifier quotidiennement la vigilance et l'état de conscience de ce patient de 83 ans recevant simultanément une morphine, un oxazépam, une olanzapine, une carbamazépine et une mélatonine, en raison du risque majoré de sédation centrale.",
     "sources": [
-      "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML ; OXAZEPAM 10 MG (SERESTA), CPR]",
-      "KBS: Interaction CARBAMAZEPINE + DIURÉTIQUES HYPOKALIÉMIANTS (Précaution d'emploi) : Risque d'hyponatrémie symptomatique. Conduite à tenir : Surveillance clinique et biologique. Si possible, utiliser une autre classe de diurétiques. [Prescription: CARBAMAZEPINE LP 400 MG (LABO VIATRIS), CPR SÉC LP ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]"
+      "recommandations_IC.pdf, page 32",
+      "reco_sfd.pdf, page 15",
+      "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML ; OXAZEPAM 10 MG (SERESTA), CPR]"
     ],
     "alerts": [
       "CALCIUM+COLECALCIFEROL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: CALCIUM+COLECALCIFEROL 500 MG+400 IU (CALCIDOSE VITAMINE D3), PDR PR SOL BUV, SACHET ; CALCIUM+COLECALCIFEROL 500 MG+400 IU (CALCIDOSE VITAMINE D3), PDR PR SOL BUV, SACHET]",
@@ -219,28 +250,25 @@
       "Patient à risque : antidiabétique, situation fréquente d'IP (5 % des patients traités) [Prescription: EMPAGLIFLOZINE 10 MG (JARDIANCE), CPR]",
       "Patient à risque : inhibiteur de la pompe à protons, situation fréquente d'IP (7 % des patients traités) [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT]"
     ],
-    "date": "24/11/2026 12:48"
+    "date": "24/11/2026 13:44"
   },
   "104304501": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
-        "type": "intervention",
-        "text": "We propose reducing the total daily irbesartan dose to 300 mg, as the current combined dose of 450 mg (L11 + L19) exceeds the maximum recommended dose.",
+        "type": "verification",
+        "text": "Nous suggérons de vérifier avec le prescripteur la dose totale d'irbéartan de 450 mg/jour (L11 + L19), correspondant à la dose maximale, compte tenu du DFG à 32 mL/min et de l'hyponatrémie.",
         "sources": [
           {
             "type": "alert",
             "text": "IRBESARTAN sur plusieurs lignes en cours, dose totale 450 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: IRBESARTAN 150 MG (LABO ARROW), CPR ; IRBESARTAN 150 MG (LABO ARROW), CPR]"
           }
         ],
-        "lines_to_modify": [
-          11,
-          19
-        ]
+        "lines_to_modify": []
       },
       {
         "type": "monitoring",
-        "text": "We suggest monitoring renal function and hydration status regularly, given the combination of aspirin and irbesartan in a 90-year-old patient with an eGFR of 32 mL/min/1.73 m².",
+        "text": "Nous proposons de surveiller régulièrement la fonction rénale et la kaliémie chez ce patient de 90 ans au DFG de 32 mL/min, sous association aspirine 75 mg/j (L7) et irbéartan (L11, L19), afin de dépister une insuffisance rénale aiguë.",
         "sources": [
           {
             "type": "alert",
@@ -248,13 +276,33 @@
           }
         ],
         "lines_to_modify": []
+      },
+      {
+        "type": "intervention",
+        "text": "Nous proposons d'espacer d'au moins deux heures la prise de levothyroxine (L17, L18) par rapport à celle du pantoprazole (L4) et du calcium (L13) pour optimiser son absorption.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "Interaction ANTISÉCRÉTOIRES INHIBITEURS DE LA POMPE À PROTONS + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution probable de l'absorption des hormones thyroïdiennes, par augmentation du pH intra-gastrique par l'antisécrétoire. Conduite à tenir : Contrôle clinique et biologique régulier, avec augmentation éventuelle de la posologie des hormones thyroïdiennes. [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]"
+          },
+          {
+            "type": "alert",
+            "text": "Interaction CALCIUM + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution de l’absorption digestive des hormones thyroïdiennes. Conduite à tenir : Prendre les sels de calcium à distance des hormones thyroïdiennes (plus de 2 heures, si possible). [Prescription: CALCIUM 500 MG (CALCIDOSE 500), PDR PR SUSP BUV, SACHET ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]"
+          }
+        ],
+        "lines_to_modify": [
+          17,
+          18
+        ]
       }
     ],
-    "reasoning": "The patient presents with reduced renal function (eGFR 32 mL/min/1.73 m², creatinine 135 µmol/L), mild hyponatremia, anemia, and elevated CRP. Alert [A2] identifies the total irbesartan dose of 450 mg/day (L11 + L19) as exceeding the maximum recommended dose, requiring reduction. Alert [A5] highlights a precaution for the aspirin-irbesartan combination in elderly patients with renal impairment, justifying renal monitoring. Other alerts regarding levothyroxine absorption and sedative combinations are clinically acceptable. We retained the irbesartan dose excess as an intervention and the aspirin-ARB combination as a monitoring point.",
-    "justification": "- We propose reducing the total daily irbesartan dose to 300 mg, as the current combined dose of 450 mg (L11 + L19) exceeds the maximum recommended dose.\n- We suggest monitoring renal function and hydration status regularly, given the combination of aspirin and irbesartan in a 90-year-old patient with an eGFR of 32 mL/min/1.73 m².",
+    "reasoning": "Le patient présente une insuffisance rénale chronique sévère (DFG 32 mL/min/1,73 m², créatinine élevée), une anémie (Hb 9,9 g/dL), une inflammation (CRP 52,5 mg/L) et une hyponatrémie (131 mmol/L). Les alertes [A2], [A5], [A6] et [A7] s'appliquent sans exception clinique contraire. Nous retenons trois points : une vérification de la dose maximale d'irbéartan compte tenu de la fonction rénale altérée, un monitoring de la fonction rénale lié à l'association aspirine-ARA II, et une intervention pour espacer les prises de levothyroxine des médicaments interférant avec son absorption.",
+    "justification": "- Nous suggérons de vérifier avec le prescripteur la dose totale d'irbéartan de 450 mg/jour (L11 + L19), correspondant à la dose maximale, compte tenu du DFG à 32 mL/min et de l'hyponatrémie.\n- Nous proposons de surveiller régulièrement la fonction rénale et la kaliémie chez ce patient de 90 ans au DFG de 32 mL/min, sous association aspirine 75 mg/j (L7) et irbéartan (L11, L19), afin de dépister une insuffisance rénale aiguë.\n- Nous proposons d'espacer d'au moins deux heures la prise de levothyroxine (L17, L18) par rapport à celle du pantoprazole (L4) et du calcium (L13) pour optimiser son absorption.",
     "sources": [
       "KBS: IRBESARTAN sur plusieurs lignes en cours, dose totale 450 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: IRBESARTAN 150 MG (LABO ARROW), CPR ; IRBESARTAN 150 MG (LABO ARROW), CPR]",
-      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + ANTAGONISTES DES RÉCEPTEURS DE L'ANGIOTENSINE II (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN 150 MG (LABO ARROW), CPR]"
+      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + ANTAGONISTES DES RÉCEPTEURS DE L'ANGIOTENSINE II (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN 150 MG (LABO ARROW), CPR]",
+      "KBS: Interaction ANTISÉCRÉTOIRES INHIBITEURS DE LA POMPE À PROTONS + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution probable de l'absorption des hormones thyroïdiennes, par augmentation du pH intra-gastrique par l'antisécrétoire. Conduite à tenir : Contrôle clinique et biologique régulier, avec augmentation éventuelle de la posologie des hormones thyroïdiennes. [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]",
+      "KBS: Interaction CALCIUM + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution de l’absorption digestive des hormones thyroïdiennes. Conduite à tenir : Prendre les sels de calcium à distance des hormones thyroïdiennes (plus de 2 heures, si possible). [Prescription: CALCIUM 500 MG (CALCIDOSE 500), PDR PR SUSP BUV, SACHET ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]"
     ],
     "alerts": [
       "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]",
@@ -268,54 +316,27 @@
       "Patient à risque : inhibiteur de la pompe à protons, situation fréquente d'IP (7 % des patients traités) [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT]",
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 10 MG (LABO ARROW GENERIQUES), CPR]"
     ],
-    "date": "24/11/2026 12:49"
+    "date": "24/11/2026 13:45"
   },
   "104994002": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring serum potassium closely given the total daily potassium chloride dose of 5400 mg combined with an ACE inhibitor and loop diuretic, despite current hypokalemia justifying supplementation.",
-        "sources": [
-          {
-            "type": "alert",
-            "text": "POTASSIUM CHLORURE sur plusieurs lignes en cours, dose totale 5400 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]"
-          },
-          {
-            "type": "alert",
-            "text": "Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + POTASSIUM (Association DECONSEILLEE) : Pour une quantité de potassium > à 1 mmol/prise, hyperkaliémie potentiellement létale, notamment chez l'insuffisant rénale ( addition des effets hyperkaliémiants). Conduite à tenir : Sauf s'il existe une hypokaliémie. [Prescription: PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]"
-          }
-        ],
-        "lines_to_modify": []
-      },
-      {
-        "type": "monitoring",
-        "text": "We suggest monitoring renal function regularly given the combination of loop diuretic, ACE inhibitor, and aspirin, as recommended by safety alerts for patients with a DFG of 86 mL/min.",
+        "text": "Nous suggérons de surveiller la kaliémie et la fonction rénale (créatininémie) compte tenu de l'association furosémide, périndopril et dapagliflozine, et de l'hypokaliémie actuelle (3,3 mmol/L).",
         "sources": [
           {
             "type": "alert",
             "text": "Interaction DIURÉTIQUES HYPOKALIÉMIANTS + INHIBITEURS DE L'ENZYME DE CONVERSION (Précaution d'emploi) : Risque d'hypotension artérielle brutale et/ou d'insuffisance rénale aiguë lors de l'instauration ou de l'augmentation de la posologie d'un traitement par un inhibiteur de l'enzyme de conversion en cas de déplétion hydrosodée préexistante. Conduite à tenir : Dans l'hypertension artérielle, lorsqu'un traitement diurétique préalable a pu entraîner une déplétion hydrosodée, il faut : - soit arrêter le diurétique avant de débuter le traitement par l'IEC, et réintroduire un diurétique hypokaliémiant si nécessaire ultérieurement ; - soit administrer des doses initiales réduites d'IEC et augmenter progressivement la posologie. Dans l'insuffisance cardiaque congestive traitée par diurétiques, commencer par une dose très faible d'IEC, éventuellement après réduction de la dose du diurétique hypokaliémient associé. Dans tous les cas : surveiller la fonction rénale (créatininémie) dans les premières semaines du traitement par l'IEC. [Prescription: FUROSEMIDE 20 MG/2 ML (LABO KALCEKS), SOL INJ OU PR PERF, AMP ; PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR]"
-          },
-          {
-            "type": "alert",
-            "text": "Interaction ACIDE ACETYLSALICYLIQUE + DIURÉTIQUES (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 160 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; FUROSEMIDE 20 MG/2 ML (LABO KALCEKS), SOL INJ OU PR PERF, AMP]"
-          },
-          {
-            "type": "alert",
-            "text": "Interaction ACIDE ACETYLSALICYLIQUE + INHIBITEURS DE L'ENZYME DE CONVERSION (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 160 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR]"
           }
         ],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory results show hypokalemia (3.3 mmol/L), mild transaminitis, severely low vitamin D, and elevated glucose, while renal function remains preserved (DFG 86 mL/min). Alerts regarding potassium chloride plus an ACE inhibitor and loop diuretic carry a 'not recommended' level but explicitly exclude cases with hypokalemia, making the 5400 mg/day supplementation clinically justified. Interactions between aspirin, loop diuretics, and ACE inhibitors carry a precaution level requiring renal monitoring rather than cessation. Consequently, no dose reductions or discontinuations are proposed, but close electrolyte and renal monitoring is advised.",
-    "justification": "- We suggest monitoring serum potassium closely given the total daily potassium chloride dose of 5400 mg combined with an ACE inhibitor and loop diuretic, despite current hypokalemia justifying supplementation.\n- We suggest monitoring renal function regularly given the combination of loop diuretic, ACE inhibitor, and aspirin, as recommended by safety alerts for patients with a DFG of 86 mL/min.",
+    "reasoning": "Les anomalies biologiques notables sont une hypokaliémie (3,3 mmol/L), une carence en vitamine D (15 nmol/L), une élévation modérée des transaminases et de la CRP, ainsi qu'une hypalbuminémie. L'alerte [A5] concernant l'association IEC et potassium ne s'applique pas en raison de l'hypokaliémie, et l'alerte [A7] sur l'aspirine et l'héparine est classée « à prendre en compte » pour cette dose antiagrégante. Les doses totales de chlorure de potassium (5400 mg/j) et de furosémide (120 mg/j) sont justifiées par l'hypokaliémie et la décongestion, et restent dans les limites usuelles. L'association furosémide, périndopril et dapagliflozine expose à un risque de déplétion volémique et d'insuffisance rénale aiguë, nécessitant un suivi biologique rapproché.",
+    "justification": "- Nous suggérons de surveiller la kaliémie et la fonction rénale (créatininémie) compte tenu de l'association furosémide, périndopril et dapagliflozine, et de l'hypokaliémie actuelle (3,3 mmol/L).",
     "sources": [
-      "KBS: POTASSIUM CHLORURE sur plusieurs lignes en cours, dose totale 5400 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]",
-      "KBS: Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + POTASSIUM (Association DECONSEILLEE) : Pour une quantité de potassium > à 1 mmol/prise, hyperkaliémie potentiellement létale, notamment chez l'insuffisant rénale ( addition des effets hyperkaliémiants). Conduite à tenir : Sauf s'il existe une hypokaliémie. [Prescription: PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]",
-      "KBS: Interaction DIURÉTIQUES HYPOKALIÉMIANTS + INHIBITEURS DE L'ENZYME DE CONVERSION (Précaution d'emploi) : Risque d'hypotension artérielle brutale et/ou d'insuffisance rénale aiguë lors de l'instauration ou de l'augmentation de la posologie d'un traitement par un inhibiteur de l'enzyme de conversion en cas de déplétion hydrosodée préexistante. Conduite à tenir : Dans l'hypertension artérielle, lorsqu'un traitement diurétique préalable a pu entraîner une déplétion hydrosodée, il faut : - soit arrêter le diurétique avant de débuter le traitement par l'IEC, et réintroduire un diurétique hypokaliémiant si nécessaire ultérieurement ; - soit administrer des doses initiales réduites d'IEC et augmenter progressivement la posologie. Dans l'insuffisance cardiaque congestive traitée par diurétiques, commencer par une dose très faible d'IEC, éventuellement après réduction de la dose du diurétique hypokaliémient associé. Dans tous les cas : surveiller la fonction rénale (créatininémie) dans les premières semaines du traitement par l'IEC. [Prescription: FUROSEMIDE 20 MG/2 ML (LABO KALCEKS), SOL INJ OU PR PERF, AMP ; PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR]",
-      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + DIURÉTIQUES (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 160 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; FUROSEMIDE 20 MG/2 ML (LABO KALCEKS), SOL INJ OU PR PERF, AMP]",
-      "KBS: Interaction ACIDE ACETYLSALICYLIQUE + INHIBITEURS DE L'ENZYME DE CONVERSION (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 160 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR]"
+      "KBS: Interaction DIURÉTIQUES HYPOKALIÉMIANTS + INHIBITEURS DE L'ENZYME DE CONVERSION (Précaution d'emploi) : Risque d'hypotension artérielle brutale et/ou d'insuffisance rénale aiguë lors de l'instauration ou de l'augmentation de la posologie d'un traitement par un inhibiteur de l'enzyme de conversion en cas de déplétion hydrosodée préexistante. Conduite à tenir : Dans l'hypertension artérielle, lorsqu'un traitement diurétique préalable a pu entraîner une déplétion hydrosodée, il faut : - soit arrêter le diurétique avant de débuter le traitement par l'IEC, et réintroduire un diurétique hypokaliémiant si nécessaire ultérieurement ; - soit administrer des doses initiales réduites d'IEC et augmenter progressivement la posologie. Dans l'insuffisance cardiaque congestive traitée par diurétiques, commencer par une dose très faible d'IEC, éventuellement après réduction de la dose du diurétique hypokaliémient associé. Dans tous les cas : surveiller la fonction rénale (créatininémie) dans les premières semaines du traitement par l'IEC. [Prescription: FUROSEMIDE 20 MG/2 ML (LABO KALCEKS), SOL INJ OU PR PERF, AMP ; PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR]"
     ],
     "alerts": [
       "POTASSIUM CHLORURE sur plusieurs lignes en cours, dose totale 5400 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]",
@@ -330,102 +351,109 @@
       "Patient à risque : traitement urologique (alpha-bloquant, inhibiteur de la 5-alpha-réductase), situation fréquente d'IP (5 % des patients traités) [Prescription: SILODOSINE 4 MG (LABO ARROW), GÉLU]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:49"
+    "date": "24/11/2026 13:47"
   },
   "106012068": {
-    "decision": "PATIENT VALIDATED",
+    "decision": "VERIFICATION PROPOSED",
     "points": [
       {
-        "type": "validation",
-        "text": "No intervention proposed.",
-        "sources": [],
+        "type": "verification",
+        "text": "Nous suggérons de vérifier avec le prescripteur la dose totale de Movicol à 5 sachets par jour, qui dépasse la dose maximale recommandée.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
+          }
+        ],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The laboratory results show moderate renal impairment (eGFR 53 mL/min/1.73 m²), mild hyperglycemia, hypoalbuminemia, and iron deficiency (ferritin 9 µg/L, TSAT 14%). Alert [A1] clarifies that multiple Movicol lines are often intentional, and the total dose of 5 sachets daily does not exceed standard maximums. Ruxolitinib is prescribed at a standard 10 mg/day dose with no contraindications from the provided biology. No critical interactions, dosing errors, or laboratory values necessitate a prescription change. The current regimen is clinically acceptable.",
-    "justification": "- No intervention proposed.",
-    "sources": [],
+    "reasoning": "Le patient présente une albuminémie basse (34 g/L), un DFG estimé bas (53 mL/min/1,73 m²), une glycémie élevée (6,8 mmol/L) et des marqueurs de carence martiale bas (ferritine 9 µg/L, CST 14 %). L'alerte [A1] s'applique car l'association de Movicol sur les lignes L1 et L3 aboutit à une dose totale de 5 sachets par jour, dépassant la dose maximale recommandée. Le problème retenu est cette posologie excessive nécessitant une vérification.",
+    "justification": "- Nous suggérons de vérifier avec le prescripteur la dose totale de Movicol à 5 sachets par jour, qui dépasse la dose maximale recommandée.",
+    "sources": [
+      "KBS: MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
+    ],
     "alerts": [
       "MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]"
     ],
-    "date": "24/11/2026 12:50"
+    "date": "24/11/2026 13:47"
   },
   "107399035": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The colecalciferol dose is appropriate for the documented vitamin D deficiency, and no other treatments require review.",
+        "text": "Pas d'intervention proposée.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with a low 25-OH-vitamin D level (48.4 nmol/L), which justifies the ongoing colecalciferol prescription. Alert [A1] is a statistical flag for vitamin D deficiency and does not indicate a prescribing error. The prescribed regimen of 50,000 IU once weekly is a standard and safe dose for correcting deficiency, with no contraindications or maximum dose limits exceeded. Given the absence of other medications and the appropriate use of vitamin D, the prescription is fully compliant.",
-    "justification": "- No intervention proposed. The colecalciferol dose is appropriate for the documented vitamin D deficiency, and no other treatments require review.",
+    "reasoning": "Le patient présente une insuffisance rénale modérée (DFG 51 mL/min/1,73 m²), une anémie (hémoglobine 8,6 g/dL), une inflammation (CRP 19 mg/L) et une glycémie élevée (9,32 mmol/L). Sa vitamine D est insuffisante (48,4 nmol/L), ce que pointe l'alerte statistique [A1] sans constituer un dysfonctionnement. Le L1 (colecalciférol 50 000 IU, 1 fois/semaine) correspond à une posologie standard de recharge adaptée à ce taux. Aucun autre traitement n'est associé, ce qui exclut les risques d'interactions ou de surdosages. La prescription est donc validée sans modification.",
+    "justification": "- Pas d'intervention proposée.",
     "sources": [],
     "alerts": [
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:51"
+    "date": "24/11/2026 13:48"
   },
   "107770878": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The current prescription aligns with standard dosing guidelines and the patient's available clinical data.",
+        "text": "Pas d'intervention proposée. La prescription est cohérente avec les données biologiques et les posologies recommandées.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory values show low hemoglobin (9.9 g/dL), low albumin (28 g/L), and elevated CRP (10.5 mg/L) with high ferritin and low iron, indicating anemia and inflammation. The provided alert [A1] is a statistical risk flag for PPI use, and the clinical excerpts focus on ACS/PCI anticoagulation and CKD management, none of which apply to this regimen or indicate a problem. All ongoing treatments are within standard dosing ranges for the patient's weight (39.3 kg) and renal function (eGFR 86 mL/min/1.73 m²). No clinically critical issues or obvious dosing errors are retained.",
-    "justification": "- No intervention proposed. The current prescription aligns with standard dosing guidelines and the patient's available clinical data.",
+    "reasoning": "Le patient présente une anémie (Hb 9,9 g/dL, basse), une hypoalbuminémie (28 g/L, basse) et une inflammation modérée (CRP 10,5 mg/L, haute), sans altération de la fonction rénale (DFG 86 mL/min). L'alerte [A1] concernant l'IPP est statistique et ne signale pas d'interaction critique ni de surdosage. Aucune valeur biologique ne contre-indique les médicaments prescrits et les posologies respectent les recommandations. La prescription est donc cohérente et sécurisée.",
+    "justification": "- Pas d'intervention proposée. La prescription est cohérente avec les données biologiques et les posologies recommandées.",
     "sources": [],
     "alerts": [
       "Patient à risque : inhibiteur de la pompe à protons, situation fréquente d'IP (7 % des patients traités) [Prescription: PANTOPRAZOLE 40 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT]"
     ],
-    "date": "24/11/2026 12:52"
+    "date": "24/11/2026 13:48"
   },
   "107774859": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The current enalapril dose and nutritional support align with the patient’s renal function and albumin levels.",
+        "text": "Pas d'intervention proposée. La prescription est cohérente avec les données biologiques et les recommandations.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with stage 3a chronic kidney disease (estimated GFR 56 mL/min/1.73 m²) and hypoalbuminemia (31 g/L). Enalapril 20 mg daily remains within the standard therapeutic range for this degree of renal impairment and does not exceed maximum authorized doses. Fortimel Protein Nutrient appropriately addresses the low albumin level through oral nutritional supplementation. No ANSM alerts or provided guideline excerpts indicate a contraindication or clinically critical risk for these ongoing treatments. Given the stable laboratory parameters and appropriate dosing, the prescription requires no changes.",
-    "justification": "- No intervention proposed. The current enalapril dose and nutritional support align with the patient’s renal function and albumin levels.",
+    "reasoning": "Le patient présente une albuminémie basse (31 g/L) et une CRP élevée (52 mg/L), ainsi qu'un DFG estimé bas (56 mL/min/1,73 m²) et une hémoglobine basse (9,1 g/dL). La kaliémie est normale (4,6 mmol/L). Les extraits [R2] et [R3] confirment que la kaliémie <5,5 mmol/L et un DFG >15 mL/min/1,73 m² ne contre-indiquent pas l'énalapril. Aucun problème clinique ou posologique critique n'est retenu.",
+    "justification": "- Pas d'intervention proposée. La prescription est cohérente avec les données biologiques et les recommandations.",
     "sources": [],
     "alerts": [],
-    "date": "24/11/2026 12:54"
+    "date": "24/11/2026 13:49"
   },
   "107873616": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed; the colecalciferol dose is appropriate for the vitamin D deficiency and safe given the normal corrected calcium.",
+        "text": "Pas d'intervention proposée.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with severe renal impairment (eGFR 21 mL/min/1.73 m²) and significant vitamin D deficiency (32.5 nmol/L). Line L1 provides colecalciferol 160,000 IU every 14 days, which is a standard high-dose regimen for deficiency and remains safe in stage 4 CKD as long as serum calcium is monitored. Corrected calcium is within normal limits (2.42 mmol/L), and no other medications are prescribed to explain the low fasting glucose (3.76 mmol/L). Alert [A1] merely highlights a statistically frequent finding and does not indicate a prescribing error. Therefore, the current prescription is clinically appropriate and requires no changes.",
-    "justification": "- No intervention proposed; the colecalciferol dose is appropriate for the vitamin D deficiency and safe given the normal corrected calcium.",
+    "reasoning": "Le patient présente une carence en vitamine D (32,5 nmol/L, basse) et une insuffisance rénale chronique sévère (DFG à 21 mL/min/1,73 m², diminué), avec une glycémie basse (3,76 mmol/L) sans traitement antidiabétique prescrit. L'alerte [A1] est un signal statistique de carence en vitamine D, déjà couverte par la prescription de colecalciférol (L1). Cette posologie de 160 000 IU tous les 14 jours est adaptée à la correction de la carence et ne nécessite pas d'ajustement dans le contexte d'insuffisance rénale. Aucun autre traitement n'est en cours pour justifier une interaction ou un ajustement posologique. La prescription est donc validée.",
+    "justification": "- Pas d'intervention proposée.",
     "sources": [],
     "alerts": [
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:55"
+    "date": "24/11/2026 13:50"
   },
   "108159650": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring renal function (serum creatinine and estimated GFR) within the next week, as guidelines recommend rechecking one month after initiating dapagliflozine and ramipril when the baseline DFG is 45 mL/min/1.73 m².",
+        "text": "Nous suggérons de surveiller la fonction rénale et la tension artérielle dans les semaines suivant l'initiation de l'association dapagliflozine et ramipril, compte tenu du DFG à 45 mL/min/1,73 m².",
         "sources": [
           {
             "type": "document",
@@ -436,8 +464,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with a low estimated glomerular filtration rate (DFG) of 45 mL/min/1.73 m² and recently initiated both dapagliflozine (L1) and ramipril (L2). The statistical alerts [A1] and [A2] merely flag frequent clinical situations regarding renal function decline and vitamin D levels, without indicating a prescribing error. Clinical guidelines state that a transient DFG decrease is expected with this combination and should not trigger discontinuation, but they recommend rechecking renal function approximately one month after initiation when the baseline DFG is near or below 45 mL/min/1.73 m². Consequently, the prescription is appropriate and requires routine laboratory monitoring rather than modification.",
-    "justification": "- We suggest monitoring renal function (serum creatinine and estimated GFR) within the next week, as guidelines recommend rechecking one month after initiating dapagliflozine and ramipril when the baseline DFG is 45 mL/min/1.73 m².",
+    "reasoning": "Les anomalies biologiques notables sont un DFG estimé à 45 mL/min/1,73 m² (bas), une vitamine D à 42,5 nmol/L (basse), une CRP à 5,2 mg/L (haute) et un TP à 57 % (bas). Les alertes [A1] et [A2] sont de type « Patient à risque » et signalent des situations statistiques fréquentes sans indiquer de problème immédiat. L'association dapagliflozine et ramipril est justifiée pour la protection d'organes, mais le DFG à 45 mL/min/1,73 m² et l'introduction récente des traitements nécessitent un contrôle de la fonction rénale et de la tension artérielle, conformément aux recommandations. Aucune dose ne dépasse les limites recommandées.",
+    "justification": "- Nous suggérons de surveiller la fonction rénale et la tension artérielle dans les semaines suivant l'initiation de l'association dapagliflozine et ramipril, compte tenu du DFG à 45 mL/min/1,73 m².",
     "sources": [
       "reco_sfd.pdf, page 15"
     ],
@@ -445,20 +473,30 @@
       "Patient à risque : antidiabétique, situation fréquente d'IP (5 % des patients traités) [Prescription: DAPAGLIFLOZINE 10 MG (FORXIGA), CPR]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:56"
+    "date": "24/11/2026 13:50"
   },
   "108435049": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
-        "type": "verification",
-        "text": "We suggest verifying with the prescriber the concurrent use of candesartan (L11) and losartan (L15), as dual RAAS blockade is contraindicated, particularly given the patient's reduced eGFR (54 mL/min/1.73m²).",
+        "type": "intervention",
+        "text": "Nous proposons d'arrêter le losartan (L15) en raison de l'association avec le candésartan (L11), contre-indiquée surtout avec un DFG à 54 mL/min/1,73 m².",
         "sources": [],
-        "lines_to_modify": []
+        "lines_to_modify": [
+          15
+        ]
       },
       {
         "type": "intervention",
-        "text": "We propose reducing the total Movicol dose to a maximum of 8 sachets per day (L3 + L14), as 20 sachets daily significantly exceeds the recommended maximum and increases electrolyte imbalance risk.",
+        "text": "Nous proposons de réduire le pantoprazole (L12) à 40 mg/jour, la posologie actuelle de 80 mg dépassant la dose maximale autorisée.",
+        "sources": [],
+        "lines_to_modify": [
+          12
+        ]
+      },
+      {
+        "type": "intervention",
+        "text": "Nous proposons de réduire la posologie totale de Movicol (L3 et L14) à 4 sachets/jour, le dosage actuel de 20 sachets dépassant largement la dose maximale.",
         "sources": [
           {
             "type": "alert",
@@ -472,7 +510,7 @@
       },
       {
         "type": "monitoring",
-        "text": "We suggest clinical and ECG monitoring during the combination of amiodarone (L9) and finasteride (L7) to watch for ventricular arrhythmias.",
+        "text": "Nous proposons une surveillance électrocardiographique étroite lors de l'association amiodarone (L9) et finastéride (L7), conformément à l'alerte sur le risque de torsades de pointes.",
         "sources": [
           {
             "type": "alert",
@@ -482,8 +520,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient has moderate chronic kidney disease (eGFR 54 mL/min/1.73m²) and severe vitamin D deficiency (25 nmol/L). Two ongoing lines of ARBs (candesartan and losartan) represent a contraindicated dual RAAS blockade. The total Movicol dose (L3 + L14) reaches 20 sachets daily, far exceeding the maximum recommended dose. The combination of amiodarone and finasteride triggers a precaution for ventricular arrhythmias, requiring ECG monitoring. No other dosing errors or critical interactions are identified.",
-    "justification": "- We suggest verifying with the prescriber the concurrent use of candesartan (L11) and losartan (L15), as dual RAAS blockade is contraindicated, particularly given the patient's reduced eGFR (54 mL/min/1.73m²).\n- We propose reducing the total Movicol dose to a maximum of 8 sachets per day (L3 + L14), as 20 sachets daily significantly exceeds the recommended maximum and increases electrolyte imbalance risk.\n- We suggest clinical and ECG monitoring during the combination of amiodarone (L9) and finasteride (L7) to watch for ventricular arrhythmias.",
+    "reasoning": "Le patient présente une insuffisance rénale chronique modérée (DFG bas à 54 mL/min/1,73 m²) et une hypovitaminose D (25-OH-Vitamine D basse à 25 nmol/L). L'association candésartan (L11) et losartan (L15) constitue une bithérapie par ARA II formellement contre-indiquée, majorant les risques rénaux et métaboliques. Les posologies journalières de pantoprazole (80 mg) et de Movicol (20 sachets) dépassent les doses maximales autorisées. L'association amiodarone et finastéride justifie une surveillance ECG selon l'alerte A2. Nous proposons donc d'ajuster les posologies et d'arrêter l'un des ARA II.",
+    "justification": "- Nous proposons d'arrêter le losartan (L15) en raison de l'association avec le candésartan (L11), contre-indiquée surtout avec un DFG à 54 mL/min/1,73 m².\n- Nous proposons de réduire le pantoprazole (L12) à 40 mg/jour, la posologie actuelle de 80 mg dépassant la dose maximale autorisée.\n- Nous proposons de réduire la posologie totale de Movicol (L3 et L14) à 4 sachets/jour, le dosage actuel de 20 sachets dépassant largement la dose maximale.\n- Nous proposons une surveillance électrocardiographique étroite lors de l'association amiodarone (L9) et finastéride (L7), conformément à l'alerte sur le risque de torsades de pointes.",
     "sources": [
       "KBS: MOVICOL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: MOVICOL, PDR PR SOL BUV, SACHET ; MOVICOL, PDR PR SOL BUV, SACHET]",
       "KBS: Interaction MÉDICAMENTS À L'ORIGINE D'UN HYPOGONADISME MASCULIN + SUBSTANCES SUSCEPTIBLES DE DONNER DES TORSADES DE POINTES (Précaution d'emploi) : Risque majoré de troubles du rythme ventriculaire, notamment de torsades de pointes. Conduite à tenir : Surveillance clinique et électrocardiographique pendant l'association. [Prescription: FINASTERIDE 5 MG (LABO ARROW LAB), CPR ; AMIODARONE 200 MG (LABO ARROW LAB), CPR SÉC]"
@@ -497,89 +535,109 @@
       "Patient à risque : antidépresseur, situation fréquente d'IP (5 % des patients traités) [Prescription: VENLAFAXINE LP 37.5 MG (LABO BLUEFISH), GÉLU LP]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 12:57"
+    "date": "24/11/2026 13:51"
   },
   "108656548": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed.",
-        "sources": [],
+        "text": "Pas d'intervention proposée.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "LEVODOPA+CARBIDOPA LP sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP ; LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP]"
+          }
+        ],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with no laboratory abnormalities. Alert [A1] concerning multiple levodopa/carbidopa lines applies, but its stated exception is met because the combined daily dose of 600 mg of levodopa is standard for Parkinson’s disease and does not exceed the maximum authorized limit. As the dosage is clinically appropriate and no contraindications exist, no treatment-related problem is retained. The prescription is therefore validated without modification.",
-    "justification": "- No intervention proposed.",
-    "sources": [],
+    "reasoning": "Les lignes L1 et L2 prescrivent simultanément de la lévodopa+carbidopa LP, soit un total de 600 mg/150 mg par jour. Cette dose totale se situe dans les limites usuelles de l'AMM (jusqu'à 800 mg/200 mg/j) et le fractionnement est une pratique courante en neurologie pour optimiser la couverture clinique et limiter les effets indésirables. L'alerte [A1] indique explicitement que cette association n'est à signaler que si la dose dépasse le maximum ou est inhabituelle, ce qui n'est pas le cas ici. Aucune anomalie biologique n'est rapportée et aucun autre traitement n'est prescrit. La prescription est donc cohérente et ne nécessite aucune modification.",
+    "justification": "- Pas d'intervention proposée.",
+    "sources": [
+      "KBS: LEVODOPA+CARBIDOPA LP sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP ; LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP]"
+    ],
     "alerts": [
       "LEVODOPA+CARBIDOPA LP sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP ; LEVODOPA+CARBIDOPA LP 200 MG+50 MG (SINEMET LP), CPR LP]"
     ],
-    "date": "24/11/2026 12:58"
+    "date": "24/11/2026 13:52"
   },
   "108786209": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed.",
+        "text": "Pas d'intervention proposée. La prescription de colecalciférol à 50 000 IU mensuelle est adaptée au statut vitaminique du patient et ne nécessite pas de modification.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with mildly elevated transaminases and markedly elevated gamma-glutamyl transferase, alongside low albumin (34 g/L) and a high corrected calcium (2.68 mmol/L) that remains normal upon ionized measurement. The 25-OH vitamin D level is sufficient (124.9 nmol/L), which supports the continuation of the standard monthly colecalciferol 50,000 IU maintenance regimen. The provided clinical guidelines exclusively address diabetes management and are therefore irrelevant to this prescription. As the dosage falls within accepted ranges and aligns with the laboratory profile, no clinical issue is identified.",
-    "justification": "- No intervention proposed.",
+    "reasoning": "Les ALAT et ASAT sont élevées, l'albuminémie est basse, la calcémie corrigée est élevée mais la calcémie ionisée est normale, la CRP et les plaquettes sont hautes. La vitamine D 25-OH est à 124,9 nmol/L, indiquant un statut suffisant. Le DFG est de 67 mL/min/1,73 m². Aucune alerte n'est fournie et les extraits concernent le diabète, sans lien avec la prescription. La posologie de colecalciférol est standard et adaptée, aucun problème clinique n'est retenu.",
+    "justification": "- Pas d'intervention proposée. La prescription de colecalciférol à 50 000 IU mensuelle est adaptée au statut vitaminique du patient et ne nécessite pas de modification.",
     "sources": [],
     "alerts": [],
-    "date": "24/11/2026 12:59"
+    "date": "24/11/2026 13:53"
   },
   "109347790": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed.",
+        "text": "Pas d'intervention proposée. Les posologies du sotalol, de la dapagliflozine, de l'énoxaparine et de l'atorvastatine sont adaptées au DFG de 90 mL/min et aux paramètres hépatiques.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with normal renal function (estimated GFR 90 mL/min/1,73 m²) and normal electrolyte levels. Mild isolated hyperbilirubinemia and elevated inflammatory markers are noted, but there is no evidence of hepatic or renal impairment affecting drug metabolism. All provided system alerts are statistical flags regarding prescribing frequency and do not represent clinical contraindications or dangerous interactions. Consequently, all ongoing treatments adhere to standard dosing guidelines and remain appropriate for this patient's current biological profile.",
-    "justification": "- No intervention proposed.",
+    "reasoning": "Le bilan biologique révèle une hypoalbuminémie, une hyperbilirubinémie, une CRP élevée et une leucocytose avec neutrophilie, sans altération de la fonction rénale (DFG à 90 mL/min) ni hépatocellulaire (ALAT/ASAT normales). Les alertes [A1] à [A3] sont de nature statistique et ne constituent pas des signalements d'erreur clinique. Les posologies du sotalol, de la dapagliflozine, de l'énoxaparine, de l'atorvastatine et du pantoprazole sont conformes aux données du patient et aux recommandations. Aucun problème posologique ou interaction critique n'est identifié.",
+    "justification": "- Pas d'intervention proposée. Les posologies du sotalol, de la dapagliflozine, de l'énoxaparine et de l'atorvastatine sont adaptées au DFG de 90 mL/min et aux paramètres hépatiques.",
     "sources": [],
     "alerts": [
       "Patient à risque : inhibiteur de la pompe à protons, situation fréquente d'IP (7 % des patients traités) [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT]",
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 10 MG (LABO EG LABO), CPR]",
       "Patient à risque : antidiabétique, situation fréquente d'IP (5 % des patients traités) [Prescription: DAPAGLIFLOZINE 10 MG (FORXIGA), CPR]"
     ],
-    "date": "24/11/2026 13:00"
+    "date": "24/11/2026 13:54"
   },
   "110780982": {
-    "decision": "PATIENT VALIDATED",
+    "decision": "MONITORING PROPOSED",
     "points": [
       {
-        "type": "validation",
-        "text": "No intervention proposed.",
-        "sources": [],
+        "type": "monitoring",
+        "text": "Nous suggérons de surveiller régulièrement la fonction rénale et la kaliémie compte tenu de la dose élevée de furosémide (290 mg/jour) associée à la dapagliflozine chez cette patiente de 89 ans.",
+        "sources": [
+          {
+            "type": "alert",
+            "text": "FUROSEMIDE sur plusieurs lignes en cours, dose totale 290 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: FUROSEMIDE 500 MG (LABO TEVA), CPR SÉC ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]"
+          },
+          {
+            "type": "document",
+            "source": "recommandations_IC.pdf",
+            "page": 32
+          }
+        ],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory results reveal low albumin (32 g/L), elevated inflammatory markers (CRP 17.5 mg/L, leukocytes 10.8 10^3/mm³), and significantly elevated NT-proBNP (3641 pg/mL), alongside preserved renal function (DFG 73 mL/min/1.73 m²) and normal potassium (4.1 mmol/L). Alerts [A1] and [A2] confirm that the combined furosemide and carraghinate/titan dioxide regimens represent intentional split dosing rather than duplication, and remain within acceptable limits. Statistical alerts [A3] and [A4] for dapagliflozin and apixaban highlight common clinical scenarios but do not indicate a problem given the patient's renal parameters and lack of additional dose-reduction criteria. All ongoing treatments align logically with the biological findings and current guidelines for heart failure, COPD, and nutritional support, with no dosing errors or contraindications identified.",
-    "justification": "- No intervention proposed.",
-    "sources": [],
+    "reasoning": "La patiente présente une albuminémie basse (32 g/L) et une CRP élevée (17,5 mg/L) associées à une leucocytose, évoquant un état inflammatoire. Le NT-proBNP est élevé (3641 pg/mL), en faveur d'une insuffisance cardiaque. La dose totale de furosémide atteint 290 mg/jour (L1 et L4), ce qui dépasse les doses usuelles mais peut être volontaire dans l'insuffisance cardiaque résistante. Cette posologie élevée, combinée à la dapagliflozine et au bisoprolol, justifie une surveillance rapprochée de la fonction rénale et des électrolytes. Aucun autre ajustement posologique n'est nécessaire pour l'apixaban, le carbimazole ou le chlorure de potassium.",
+    "justification": "- Nous suggérons de surveiller régulièrement la fonction rénale et la kaliémie compte tenu de la dose élevée de furosémide (290 mg/jour) associée à la dapagliflozine chez cette patiente de 89 ans.",
+    "sources": [
+      "KBS: FUROSEMIDE sur plusieurs lignes en cours, dose totale 290 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: FUROSEMIDE 500 MG (LABO TEVA), CPR SÉC ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]",
+      "recommandations_IC.pdf, page 32"
+    ],
     "alerts": [
       "FUROSEMIDE sur plusieurs lignes en cours, dose totale 290 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: FUROSEMIDE 500 MG (LABO TEVA), CPR SÉC ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]",
       "CARRAGHENATE+TITANE DIOXYDE+ZINC OXYDE sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: CARRAGHENATE+TITANE DIOXYDE+ZINC OXYDE 2.5%+2%+2% (TITANOREINE), CRÈME, TUBE 40 G ; CARRAGHENATE+TITANE DIOXYDE+ZINC OXYDE 2.5%+2%+2% (TITANOREINE), CRÈME, TUBE 40 G]",
       "Patient à risque : antidiabétique, situation fréquente d'IP (5 % des patients traités) [Prescription: DAPAGLIFLOZINE 10 MG (FORXIGA), CPR]",
       "Patient à risque : anticoagulant oral, situation fréquente d'IP (9 % des patients traités) [Prescription: APIXABAN 2.5 MG (ELIQUIS), CPR]"
     ],
-    "date": "24/11/2026 13:00"
+    "date": "24/11/2026 13:54"
   },
   "112389631": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring renal function regularly during the combined use of acetylsalicylic acid (75 mg/day) and irbesartan (150 mg/day), as this combination may reduce antihypertensive efficacy and increase acute kidney injury risk.",
+        "text": "Nous suggérons de surveiller la fonction rénale (créatinine) compte tenu de l'association aspirine 75 mg/jour et irbésartan 150 mg/jour.",
         "sources": [
           {
             "type": "alert",
@@ -589,8 +647,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient's biological records are empty, so no laboratory abnormalities or directions are present. Alert [A1] applies to the combination of acetylsalicylic acid (75 mg/day) and irbesartan (150 mg/day), recommending regular renal monitoring due to potential acute kidney injury and reduced antihypertensive effects. Alerts [A2] and [A3] are statistical risk flags for finasteride and atorvastatin use and do not justify actions without abnormal results. Consequently, no dose modifications are required, and only routine monitoring is retained.",
-    "justification": "- We suggest monitoring renal function regularly during the combined use of acetylsalicylic acid (75 mg/day) and irbesartan (150 mg/day), as this combination may reduce antihypertensive efficacy and increase acute kidney injury risk.",
+    "reasoning": "Le dossier ne présente aucune valeur biologique. L'alerte [A1] concernant l'association aspirine et irbésartan s'applique et recommande une hydratation ainsi qu'une surveillance de la fonction rénale. Les autres associations et posologies restent dans les fourchettes usuelles. Aucun problème clinique majeur n'est retenu, seul un suivi biologique est suggéré.",
+    "justification": "- Nous suggérons de surveiller la fonction rénale (créatinine) compte tenu de l'association aspirine 75 mg/jour et irbésartan 150 mg/jour.",
     "sources": [
       "KBS: Interaction ACIDE ACETYLSALICYLIQUE + ANTAGONISTES DES RÉCEPTEURS DE L'ANGIOTENSINE II (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, sous diurétiques, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; IRBESARTAN 150 MG (LABO ARROW), CPR]"
     ],
@@ -599,14 +657,14 @@
       "Patient à risque : traitement urologique (alpha-bloquant, inhibiteur de la 5-alpha-réductase), situation fréquente d'IP (5 % des patients traités) [Prescription: FINASTERIDE 5 MG (LABO ARROW LAB), CPR]",
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 20 MG (LABO ARROW GENERIQUES), CPR]"
     ],
-    "date": "24/11/2026 13:02"
+    "date": "24/11/2026 13:55"
   },
   "112557637": {
     "decision": "MONITORING PROPOSED",
     "points": [
       {
         "type": "monitoring",
-        "text": "We suggest monitoring for central nervous system depression and falls due to the combination of risperidone, mirtazapine, and oxazepam in this 78-year-old patient.",
+        "text": "Nous suggérons de surveiller la vigilance et le risque de chute chez ce patient de 78 ans compte tenu de l'association risperidone, mirtazapine et oxazépan.",
         "sources": [
           {
             "type": "alert",
@@ -616,8 +674,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with low vitamin D (29.4 nmol/L) and low albumin (29 g/L), alongside a slightly high ALAT (48 UI/L). Alert [A2] flags a central depression risk with the concurrent use of risperidone, mirtazapine, and oxazepam, classified as \"to be taken into account\". Alert [A1] confirms the memantine overlap is intentional and remains within the maximum daily dose. The vitamin D deficiency appropriately justifies the colecalciferol prescription. Given the patient's age and sedative polypharmacy, clinical monitoring for CNS depression and falls is recommended, while other treatments are correctly dosed.",
-    "justification": "- We suggest monitoring for central nervous system depression and falls due to the combination of risperidone, mirtazapine, and oxazepam in this 78-year-old patient.",
+    "reasoning": "Le patient de 78 ans présente une fonction rénale préservée (DFG 87 mL/min) et une hypovitaminose D (29,4 nmol/L) correctement traitée par un apport hebdomadaire. Une élévation modérée des ALAT (48 UI/L) est observée sans autre atteinte hépatique. L'alerte [A2] relative à l'association de sédatifs (risperidone, mirtazapine, oxazépan) précise une précaution d'emploi (« A prendre en compte ») sans restriction absolue. La mémantine à 15 mg/j résulte d'une titration par chevauchement de lignes, conforme au guide [A1]. Aucun critère biologique ou posologique ne justifie une modification immédiate ; nous retenons une surveillance clinique ciblée.",
+    "justification": "- Nous suggérons de surveiller la vigilance et le risque de chute chez ce patient de 78 ans compte tenu de l'association risperidone, mirtazapine et oxazépan.",
     "sources": [
       "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: OXAZEPAM 10 MG (SERESTA), CPR ; RISPERIDONE 1 MG/ML (RISPERDAL), SOL BUV, FLAC 60 ML]"
     ],
@@ -627,14 +685,14 @@
       "Patient à risque : antidépresseur, situation fréquente d'IP (5 % des patients traités) [Prescription: MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP]",
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 13:03"
+    "date": "24/11/2026 13:56"
   },
   "112736010": {
-    "decision": "PATIENT VALIDATED",
+    "decision": "MONITORING PROPOSED",
     "points": [
       {
-        "type": "validation",
-        "text": "No intervention proposed. The standard 75 mg daily maintenance doses of aspirin and clopidogrel are appropriate for dual antiplatelet therapy, and the elevated troponin supports an acute coronary syndrome indication, aligning with the interaction alert's precaution for use.",
+        "type": "monitoring",
+        "text": "Nous suggérons de surveiller cliniquement les signes hémorragiques compte tenu de l'association aspirine/clopidogrel chez un patient de 78 ans.",
         "sources": [
           {
             "type": "alert",
@@ -644,40 +702,40 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The laboratory results show low albumin (32 g/L), high CRP (8.8 mg/L), high HbA1c (7.6%), low eGFR (51 mL/min/1.73 m²), and high high-sensitivity troponin I (104 ng/L). The interaction alert between aspirin and clopidogrel applies as a precaution for use rather than a contraindication, as the elevated troponin indicates a likely acute coronary syndrome, which is a validated indication for this combination. According to the guidelines, no renal dose adjustment is required for these maintenance doses. Consequently, no problems are retained, and the prescription is validated.",
-    "justification": "- No intervention proposed. The standard 75 mg daily maintenance doses of aspirin and clopidogrel are appropriate for dual antiplatelet therapy, and the elevated troponin supports an acute coronary syndrome indication, aligning with the interaction alert's precaution for use.",
+    "reasoning": "Les anomalies biologiques notables incluent un DFG estimé bas (51 mL/min/1,73 m²), une albuminémie basse, ainsi que des CRP, troponine I, HbA1c et triglycérides élevés. L'alerte [A1] identifie une interaction entre l'aspirine et le clopidogrel, classée ASDEC-PE, dont la conduite à tenir recommande une surveillance clinique dans les indications validées. Les posologies sont standards et ne nécessitent pas d'ajustement rénal, mais l'âge du patient et l'association antiagrégante justifient une surveillance hémorragique.",
+    "justification": "- Nous suggérons de surveiller cliniquement les signes hémorragiques compte tenu de l'association aspirine/clopidogrel chez un patient de 78 ans.",
     "sources": [
       "KBS: Interaction ACIDE ACETYLSALICYLIQUE + CLOPIDOGREL (ASDEC - PE) : Majoration du risque hémorragique par addition des activités antiagrégantes plaquettaires. Conduite à tenir : Association déconseillée : - en dehors des indications validées pour cette association dans les syndromes coronariens aigus. Précaution d'emploi : - dans les indications validées pour cette association dans les syndromes coronariens aigus. Surveillance clinique. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; CLOPIDOGREL 75 MG (LABO ARROW), CPR]"
     ],
     "alerts": [
       "Interaction ACIDE ACETYLSALICYLIQUE + CLOPIDOGREL (ASDEC - PE) : Majoration du risque hémorragique par addition des activités antiagrégantes plaquettaires. Conduite à tenir : Association déconseillée : - en dehors des indications validées pour cette association dans les syndromes coronariens aigus. Précaution d'emploi : - dans les indications validées pour cette association dans les syndromes coronariens aigus. Surveillance clinique. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; CLOPIDOGREL 75 MG (LABO ARROW), CPR]"
     ],
-    "date": "24/11/2026 13:04"
+    "date": "24/11/2026 13:58"
   },
   "112881949": {
     "decision": "PATIENT VALIDATED",
     "points": [
       {
         "type": "validation",
-        "text": "No intervention proposed. The prescription aligns with the laboratory findings and standard dosing guidelines.",
+        "text": "Pas d'intervention proposée. Le paracétamol (L1) respecte la dose journalière maximale usuelle et le colécalciférol (L2) traite correctement la carence en vitamine D.",
         "sources": [],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The laboratory results indicate vitamin D deficiency (59.6 nmol/L), mild anemia, hypoalbuminemia, and elevated CRP. Paracetamol is prescribed at 3000 mg/day, which remains within the maximum daily dose and is safe given normal transaminases. Colecalciferol 50,000 IU every 14 days appropriately addresses the documented vitamin D deficiency, consistent with alert [A1]. No other active treatments or guideline excerpts suggest a clinically critical issue. Therefore, the prescription is appropriate and requires no changes.",
-    "justification": "- No intervention proposed. The prescription aligns with the laboratory findings and standard dosing guidelines.",
+    "reasoning": "Les analyses révèlent une albuminémie basse (34 g/L), une anémie (hémoglobine 11,5 g/dL), une CRP élevée (11,2 mg/L) et un taux de vitamine D à 59,6 nmol/L. Le colécalciférol (L2) est indiqué pour corriger cette carence, tandis que le paracétamol (L1) est administré à 3 g/j, dose maximale usuelle et sûre. L'alerte [A1] signale statistiquement ce déficit vitaminique mais ne justifie pas d'action supplémentaire. Aucun ajustement posologique ou contrôle biologique spécifique n'est requis.",
+    "justification": "- Pas d'intervention proposée. Le paracétamol (L1) respecte la dose journalière maximale usuelle et le colécalciférol (L2) traite correctement la carence en vitamine D.",
     "sources": [],
     "alerts": [
       "Patient à risque : 25-OH-vitamine D inférieure à 75 nmol/L, situation fréquente d'IP (5 % des patients concernés)"
     ],
-    "date": "24/11/2026 13:05"
+    "date": "24/11/2026 13:58"
   },
   "113022218": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
         "type": "intervention",
-        "text": "We propose stopping tinzaparin (L7) to avoid the contraindicated combination with apixaban and the associated high bleeding risk.",
+        "text": "Nous proposons d'arrêter la tinzaparine (L7) compte tenu du chevauchement avec la warfarine et l'apixabane, cette triple association augmentant fortement le risque hémorragique.",
         "sources": [
           {
             "type": "alert",
@@ -689,40 +747,30 @@
         ]
       },
       {
-        "type": "verification",
-        "text": "We suggest verifying the roxadustat dose or temporarily interrupting it, as the hemoglobin level of 18.3 g/dL exceeds the recommended target.",
+        "type": "intervention",
+        "text": "Nous proposons d'interronper ou de réduire le roxadustat (L12) car l'hémoglobine est élevée à 18,3 g/dL, dépassant les cibles thérapeutiques habituelles pour éviter la thrombose.",
         "sources": [],
-        "lines_to_modify": []
+        "lines_to_modify": [
+          12
+        ]
       },
       {
         "type": "monitoring",
-        "text": "We suggest monitoring serum potassium regularly, as the combination of ramipril and potassium chloride is not recommended despite the current normal level.",
+        "text": "Nous suggérons de surveiller l'INR plus fréquemment en raison de la prise de paracétamol à 3 g/jour associée à la warfarine, afin d'adapter rapidement la posologie si nécessaire.",
         "sources": [
           {
             "type": "alert",
-            "text": "Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + POTASSIUM (Association DECONSEILLEE) : Pour une quantité de potassium > à 1 mmol/prise, hyperkaliémie potentiellement létale, notamment chez l'insuffisant rénale ( addition des effets hyperkaliémiants). Conduite à tenir : Sauf s'il existe une hypokaliémie. [Prescription: RAMIPRIL 1.25 MG (LABO VIATRIS), CPR ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]"
-          }
-        ],
-        "lines_to_modify": []
-      },
-      {
-        "type": "verification",
-        "text": "We suggest verifying the administration timing of ferrous sulfate and levothyroxine to ensure they are separated by at least two hours.",
-        "sources": [
-          {
-            "type": "alert",
-            "text": "Interaction FER + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution de l'absorption digestive des hormones thyroïdiennes. Conduite à tenir : Prendre les hormones thyroïdiennes à distance du fer (plus de 2 heures, si possible). [Prescription: FER 80 MG (TARDYFERON), CPR ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]"
+            "text": "Interaction ANTIVITAMINES K + PARACETAMOL (Précaution d'emploi) : Risque d’augmentation de l’effet de l’antivitamine K et du risque hémorragique en cas de prise de paracétamol aux doses maximales (4 g/j) pendant au moins 4 jours. Conduite à tenir : Contrôle plus fréquent de l’INR. Adaptation éventuelle de la posologie de l’antivitamine K pendant le traitement par le paracétamol et après son arrêt. [Prescription: WARFARINE 2 MG (COUMADINE), CPR SÉC ; PARACETAMOL 500 MG (DAFALGAN), CPR EFFERV SÉC]"
           }
         ],
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with elevated creatinine (146 µmol/L), high hemoglobin (18.3 g/dL), and a low TSH (0.22 mUI/L). Alert [A3] indicates a contraindication between apixaban and tinzaparin, which takes priority. Alert [A5] flags a non-recommended combination between ramipril and potassium chloride, though potassium is currently normal. We retained the anticoagulant overlap as a critical intervention, the high hemoglobin on roxadustat as a verification, and the remaining alerts as monitoring or administration timing checks.",
-    "justification": "- We propose stopping tinzaparin (L7) to avoid the contraindicated combination with apixaban and the associated high bleeding risk.\n- We suggest verifying the roxadustat dose or temporarily interrupting it, as the hemoglobin level of 18.3 g/dL exceeds the recommended target.\n- We suggest monitoring serum potassium regularly, as the combination of ramipril and potassium chloride is not recommended despite the current normal level.\n- We suggest verifying the administration timing of ferrous sulfate and levothyroxine to ensure they are separated by at least two hours.",
+    "reasoning": "Les biologies montrent une créatinine élevée à 146 µmol/L, une hémoglobine élevée à 18,3 g/dL et un INR élevé à 2,35. L'alerte [A3] interdit formellement l'association des anticoagulants oraux directs à l'héparine, ce qui explique le chevauchement actuel avec la tinzaparine et l'apixabane. L'alerte [A7] signale un risque accru d'élévation de l'INR sous paracétamol à forte dose. Nous retenons donc une intervention urgente sur le chevauchement anticoagulant et une autre sur l'excès d'hémoglobine sous roxadustat.",
+    "justification": "- Nous proposons d'arrêter la tinzaparine (L7) compte tenu du chevauchement avec la warfarine et l'apixabane, cette triple association augmentant fortement le risque hémorragique.\n- Nous proposons d'interronper ou de réduire le roxadustat (L12) car l'hémoglobine est élevée à 18,3 g/dL, dépassant les cibles thérapeutiques habituelles pour éviter la thrombose.\n- Nous suggérons de surveiller l'INR plus fréquemment en raison de la prise de paracétamol à 3 g/jour associée à la warfarine, afin d'adapter rapidement la posologie si nécessaire.",
     "sources": [
       "KBS: Interaction ANTICOAGULANTS ORAUX + HÉPARINES (CI - PE) : Augmentation du risque hémorragique. Conduite à tenir : Les anticoagulants oraux d'action directe ne doivent pas être administrés conjointement à l'héparine. Lors du relais de l'un par l'autre, respecter l'intervalle entre les prises. Lors du relais héparine/antivitamine K (nécessitant plusieurs jours), renforcer la surveillance clinique et biologique. [Prescription: APIXABAN 2.5 MG (ELIQUIS), CPR ; TINZAPARINE 10 000 IU ANTIXA/0.5 ML (INNOHEP), SOL INJ, SRG]",
-      "KBS: Interaction INHIBITEURS DE L'ENZYME DE CONVERSION + POTASSIUM (Association DECONSEILLEE) : Pour une quantité de potassium > à 1 mmol/prise, hyperkaliémie potentiellement létale, notamment chez l'insuffisant rénale ( addition des effets hyperkaliémiants). Conduite à tenir : Sauf s'il existe une hypokaliémie. [Prescription: RAMIPRIL 1.25 MG (LABO VIATRIS), CPR ; POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU]",
-      "KBS: Interaction FER + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution de l'absorption digestive des hormones thyroïdiennes. Conduite à tenir : Prendre les hormones thyroïdiennes à distance du fer (plus de 2 heures, si possible). [Prescription: FER 80 MG (TARDYFERON), CPR ; LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]"
+      "KBS: Interaction ANTIVITAMINES K + PARACETAMOL (Précaution d'emploi) : Risque d’augmentation de l’effet de l’antivitamine K et du risque hémorragique en cas de prise de paracétamol aux doses maximales (4 g/j) pendant au moins 4 jours. Conduite à tenir : Contrôle plus fréquent de l’INR. Adaptation éventuelle de la posologie de l’antivitamine K pendant le traitement par le paracétamol et après son arrêt. [Prescription: WARFARINE 2 MG (COUMADINE), CPR SÉC ; PARACETAMOL 500 MG (DAFALGAN), CPR EFFERV SÉC]"
     ],
     "alerts": [
       "FUROSEMIDE sur plusieurs lignes en cours, dose totale 375 mg par jour : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: FUROSEMIDE 500 MG (LABO TEVA), CPR SÉC ; FUROSEMIDE 500 MG (LABO TEVA), CPR SÉC]",
@@ -737,14 +785,14 @@
       "Patient à risque : lévothyroxine, situation fréquente d'IP (6 % des patients traités) [Prescription: LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC]",
       "Patient à risque : traitement de la goutte, situation fréquente d'IP (11 % des patients traités) [Prescription: FEBUXOSTAT 80 MG (LABO VIATRIS), CPR]"
     ],
-    "date": "24/11/2026 13:05"
+    "date": "24/11/2026 14:00"
   },
   "113106436": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
         "type": "intervention",
-        "text": "We propose reviewing the fluticasone+salmeterol regimen (L7 and L8), as the total daily dose of 3000/300 mcg exceeds the maximum recommended dose.",
+        "text": "Nous proposons de fusionner les lignes L7 et L8 en 2 bouffées quotidiennes de Sérétide 500/50 µg, car la dose totale initiale de 3000 µg/j dépasse la limite autorisée.",
         "sources": [
           {
             "type": "alert",
@@ -758,7 +806,7 @@
       },
       {
         "type": "monitoring",
-        "text": "We suggest monitoring TSH levels regularly, as pantoprazole may reduce levothyroxine absorption, potentially requiring a dose adjustment.",
+        "text": "Nous suggérons de contrôler régulièrement la TSH en raison de l'association pantoprazole-lévothyroxine, sachant que la valeur actuelle est normale.",
         "sources": [
           {
             "type": "alert",
@@ -768,8 +816,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with a low estimated GFR (46 mL/min/1.73 m²), low albumin (33 g/L), and low prothrombin activity (69%). Alert A1 indicates that the combined fluticasone+salmeterol lines (L7 and L8) total 3000/300 mcg/day, which exceeds the maximum recommended dose. Alert A2 highlights a potential interaction between pantoprazole and levothyroxine that may reduce thyroid hormone absorption, though TSH remains normal. We retain the excessive inhaler dose as an intervention and the PPI-thyroid interaction as a monitoring point.",
-    "justification": "- We propose reviewing the fluticasone+salmeterol regimen (L7 and L8), as the total daily dose of 3000/300 mcg exceeds the maximum recommended dose.\n- We suggest monitoring TSH levels regularly, as pantoprazole may reduce levothyroxine absorption, potentially requiring a dose adjustment.",
+    "reasoning": "Le DFG estimé est abaissé à 46 mL/min/1,73 m² et l'albuminémie est basse à 33 g/L. L'alerte [A1] s'applique aux lignes L7 et L8 car leur dose totale cumulée de 3000 µg/jour dépasse la dose maximale autorisée, ce qui nécessite une intervention. L'alerte [A2] concernant le pantoprazole et la lévothyroxine s'applique également, mais la TSH étant normale, elle ne justifie qu'une surveillance. Les problèmes retenus sont la réduction de la dose totale de corticostéroïde inhalé et le suivi biologique de l'association gastro-intestinale-thyroïdienne.",
+    "justification": "- Nous proposons de fusionner les lignes L7 et L8 en 2 bouffées quotidiennes de Sérétide 500/50 µg, car la dose totale initiale de 3000 µg/j dépasse la limite autorisée.\n- Nous suggérons de contrôler régulièrement la TSH en raison de l'association pantoprazole-lévothyroxine, sachant que la valeur actuelle est normale.",
     "sources": [
       "KBS: FLUTICASONE+SALMETEROL sur plusieurs lignes en cours : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale [Prescription: FLUTICASONE+SALMETEROL 500 UG+50 UG/DOSE (SERETIDE DISKUS), PDR PR INHAL, RÉCIPIENT UNIDOSE 60 DOSES ; FLUTICASONE+SALMETEROL 500 UG+50 UG/DOSE (SERETIDE DISKUS), PDR PR INHAL, RÉCIPIENT UNIDOSE 60 DOSES]",
       "KBS: Interaction ANTISÉCRÉTOIRES INHIBITEURS DE LA POMPE À PROTONS + HORMONES THYROÏDIENNES (Précaution d'emploi) : Diminution probable de l'absorption des hormones thyroïdiennes, par augmentation du pH intra-gastrique par l'antisécrétoire. Conduite à tenir : Contrôle clinique et biologique régulier, avec augmentation éventuelle de la posologie des hormones thyroïdiennes. [Prescription: PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT ; LEVOTHYROXINE 100 UG (LEVOTHYROX), CPR SÉC]"
@@ -782,22 +830,14 @@
       "Patient à risque : lévothyroxine, situation fréquente d'IP (6 % des patients traités) [Prescription: LEVOTHYROXINE 100 UG (LEVOTHYROX), CPR SÉC]",
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 20 MG (LABO EG LABO), CPR]"
     ],
-    "date": "24/11/2026 13:11"
+    "date": "24/11/2026 14:01"
   },
   "113743623": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
         "type": "intervention",
-        "text": "We propose reducing febuxostat to 40 mg daily given the estimated glomerular filtration rate of 27 mL/min/1.73 m², which exceeds the maximum authorized dose for severe renal impairment.",
-        "sources": [],
-        "lines_to_modify": [
-          5
-        ]
-      },
-      {
-        "type": "verification",
-        "text": "We suggest verifying that levothyroxine and sevelamer are administered at least two hours apart to prevent reduced thyroid hormone absorption.",
+        "text": "Nous proposons d'espacer l'administration de la lévothyroxine (L13) et du sevelamer (L12) de plus de deux heures pour préserver l'absorption hormonale.",
         "sources": [
           {
             "type": "alert",
@@ -808,7 +848,7 @@
       },
       {
         "type": "monitoring",
-        "text": "We suggest monitoring renal function and blood pressure regularly given the combination of perindopril, furosemide, and aspirin in a patient with an eGFR of 27 mL/min/1.73 m².",
+        "text": "Nous suggérons de surveiller la fonction rénale et la kaliémie mensuellement, compte tenu du DFG à 27 mL/min et de l'âge (90 ans) sous acide acétylsalicylique, furosémide et périndopril.",
         "sources": [
           {
             "type": "alert",
@@ -826,8 +866,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient has stage 4 chronic kidney disease with a high serum creatinine of 158 µmol/L and a low eGFR of 27 mL/min/1.73 m². Alert [A1] applies regarding levothyroxine and sevelamer separation, while alerts [A2], [A4], and [A5] apply to the aspirin, furosemide, and perindopril combination due to renal impairment and age. Alert [A3] applies but remains acceptable at antiplatelet doses. We identified that febuxostat 80 mg exceeds the maximum dose for this renal function, requiring an intervention, alongside verification and monitoring steps.",
-    "justification": "- We propose reducing febuxostat to 40 mg daily given the estimated glomerular filtration rate of 27 mL/min/1.73 m², which exceeds the maximum authorized dose for severe renal impairment.\n- We suggest verifying that levothyroxine and sevelamer are administered at least two hours apart to prevent reduced thyroid hormone absorption.\n- We suggest monitoring renal function and blood pressure regularly given the combination of perindopril, furosemide, and aspirin in a patient with an eGFR of 27 mL/min/1.73 m².",
+    "reasoning": "Le patient présente une insuffisance rénale chronique sévère (DFG estimé à 27 mL/min/1,73 m², créatinine à 158 µmol/L) et une hypoalbuminémie (34 g/L). Les alertes [A1], [A2], [A4] et [A5] s'appliquent respectivement à l'association lévothyroxine-sevelamer et aux risques rénaux liés à l'association aspirine-furosémide-périndopril dans ce contexte de fragilité rénale. Nous retenons une intervention sur les horaires d'administration et une surveillance renale et électrolytique.",
+    "justification": "- Nous proposons d'espacer l'administration de la lévothyroxine (L13) et du sevelamer (L12) de plus de deux heures pour préserver l'absorption hormonale.\n- Nous suggérons de surveiller la fonction rénale et la kaliémie mensuellement, compte tenu du DFG à 27 mL/min et de l'âge (90 ans) sous acide acétylsalicylique, furosémide et périndopril.",
     "sources": [
       "KBS: Interaction HORMONES THYROÏDIENNES + RÉSINES CHÉLATRICES (Précaution d'emploi) : Diminution de l'absorption digestive des hormones thyroïdiennes. Conduite à tenir : Prendre les hormones thyroïdiennes à distance de la résine (plus de 2 heures, si possible). [Prescription: LEVOTHYROXINE 25 UG (LEVOTHYROX), CPR SÉC ; SEVELAMER 800 MG (LABO VIATRIS), CPR]",
       "KBS: Interaction ACIDE ACETYLSALICYLIQUE + DIURÉTIQUES (Précaution d'emploi) : Pour des doses anti-inflammatoires d'acide acétylsalicylique (>= 1g par prise et/ou >= 3g par jour) ou pour des doses antalgiques ou antipyrétiques (>= 500 mg par prise et/ou < 3g par jour) : Insuffisance rénale aiguë chez le patient à risque (âgé, déshydraté, avec une fonction rénale altérée), par diminution de la filtration glomérulaire secondaire à une diminution de la synthèse des prostaglandines rénales. Par ailleurs, réduction de l'effet antihypertenseur. Conduite à tenir : Hydrater le malade et surveiller la fonction rénale en début de traitement et régulièrement pendant l’association. [Prescription: ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET ; FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC]",
@@ -844,22 +884,14 @@
       "Patient à risque : statine, situation fréquente d'IP (6 % des patients traités) [Prescription: ATORVASTATINE 10 MG (LABO EG LABO), CPR]",
       "Patient à risque : traitement de la goutte, situation fréquente d'IP (11 % des patients traités) [Prescription: FEBUXOSTAT 80 MG (LABO VIATRIS), CPR]"
     ],
-    "date": "24/11/2026 13:12"
+    "date": "24/11/2026 14:02"
   },
   "114512205": {
-    "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
+    "decision": "MONITORING PROPOSED",
     "points": [
       {
-        "type": "intervention",
-        "text": "We propose reducing escitalopram to 10 mg daily, as the current 20 mg dose exceeds the maximum authorised dose for patients over 65 years.",
-        "sources": [],
-        "lines_to_modify": [
-          12
-        ]
-      },
-      {
         "type": "monitoring",
-        "text": "We suggest monitoring and correcting serum potassium (3.2 mmol/L) and magnesium (0.69 mmol/L), which are low and may increase arrhythmia risk with escitalopram and propranolol.",
+        "text": "Nous suggérons de surveiller un ECG et de corriger les kaliémie et magnésémie afin de limiter le risque de torsades de pointes lié à l'association propranolol-escitalopram.",
         "sources": [
           {
             "type": "alert",
@@ -869,8 +901,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "The patient presents with low potassium (3.2 mmol/L) and magnesium (0.69 mmol/L), alongside an elevated NT-proBNP (1668 pg/mL) suggestive of heart failure. Alert [A2] flags a precaution regarding the combination of propranolol and escitalopram, noting an increased risk of ventricular arrhythmias. The escitalopram dose of 20 mg daily exceeds the maximum authorised dose of 10 mg for patients over 65 years. The apixaban regimen (10 mg/day) aligns with standard dosing for this age and renal function. We therefore prioritize correcting the escitalopram overdose and monitoring the electrolyte imbalance.",
-    "justification": "- We propose reducing escitalopram to 10 mg daily, as the current 20 mg dose exceeds the maximum authorised dose for patients over 65 years.\n- We suggest monitoring and correcting serum potassium (3.2 mmol/L) and magnesium (0.69 mmol/L), which are low and may increase arrhythmia risk with escitalopram and propranolol.",
+    "reasoning": "Les analyses biologiques révèlent une hypokaliémie (3,2 mmol/L) et une hypomagnésiémie (0,69 mmol/L). L'association de propranolol (L4) et d'escitalopram (L12) fait l'objet de l'alerte [A2] classée « Précaution d'emploi », qui recommande une surveillance électrocardiographique. Ces carences ioniques majorent cliniquement le risque arythmogène de cette combinaison. La posologie d'apixaban à 10 mg/jour (L3) est adaptée au profil rénal et à l'âge du patient. Aucune modification urgente n'est donc requise, seule une surveillance renforcée est proposée.",
+    "justification": "- Nous suggérons de surveiller un ECG et de corriger les kaliémie et magnésémie afin de limiter le risque de torsades de pointes lié à l'association propranolol-escitalopram.",
     "sources": [
       "KBS: Interaction BRADYCARDISANTS + SUBSTANCES SUSCEPTIBLES DE DONNER DES TORSADES DE POINTES (Précaution d'emploi) : Risque majoré de troubles du rythme ventriculaire, notamment de torsades de pointes. Conduite à tenir : Surveillance clinique et électrocardiographique pendant l'association. [Prescription: PROPRANOLOL LP 160 MG (LABO TEVA), GÉLU LP ; ESCITALOPRAM 10 MG (LABO ARROW LAB), CPR SÉC]"
     ],
@@ -883,14 +915,14 @@
       "Patient à risque : traitement urologique (alpha-bloquant, inhibiteur de la 5-alpha-réductase), situation fréquente d'IP (5 % des patients traités) [Prescription: ALFUZOSINE LP 10 MG (LABO EG), CPR LP]",
       "Patient à risque : anticoagulant oral, situation fréquente d'IP (9 % des patients traités) [Prescription: APIXABAN 5 MG (ELIQUIS), CPR]"
     ],
-    "date": "24/11/2026 13:13"
+    "date": "24/11/2026 14:03"
   },
   "114552729": {
     "decision": "PHARMACEUTICAL INTERVENTION PROPOSED",
     "points": [
       {
         "type": "intervention",
-        "text": "We propose reducing dabigatran to 150 mg per day given the concomitant amiodarone use and the patient's age (85 years), as the current 220 mg/day exceeds the interaction alert's maximum recommended dose.",
+        "text": "Nous proposons de réduire le dabigatran à 150 mg par jour en raison de l'association à l'amiodarone et de l'âge de la patiente.",
         "sources": [
           {
             "type": "alert",
@@ -902,8 +934,8 @@
         ]
       },
       {
-        "type": "verification",
-        "text": "We suggest verifying with the prescriber the necessity of combining mirtazapine and zopiclone, given the patient's advanced age (85 years) and the alert's warning regarding additive central nervous system depression and fall risk.",
+        "type": "monitoring",
+        "text": "Nous suggérons de surveiller la vigilance et le risque de chute chez cette personne âgée de 85 ans, compte tenu de l'association mirtazapine et zopiclone.",
         "sources": [
           {
             "type": "alert",
@@ -913,8 +945,8 @@
         "lines_to_modify": []
       }
     ],
-    "reasoning": "Laboratory values reveal low albumin (33 g/L), low hemoglobin (11 g/dL), elevated CRP (22.3 mg/L), and low TSH (0.39 mUI/L), with potassium at 3.5 mmol/L. Alert [A2] regarding amiodarone and dabigatran applies, noting increased dabigatran levels and a maximum daily dose of 150 mg. Alert [A1] flags the combination of mirtazapine and zopiclone as \"to be taken into account\". Given the patient's age (85 years), the dabigatran dose of 220 mg/day exceeds the recommended maximum when combined with amiodarone, warranting a dose reduction. The concurrent use of two CNS depressants also requires clinical review due to fall risks.",
-    "justification": "- We propose reducing dabigatran to 150 mg per day given the concomitant amiodarone use and the patient's age (85 years), as the current 220 mg/day exceeds the interaction alert's maximum recommended dose.\n- We suggest verifying with the prescriber the necessity of combining mirtazapine and zopiclone, given the patient's advanced age (85 years) and the alert's warning regarding additive central nervous system depression and fall risk.",
+    "reasoning": "La patiente de 85 ans présente une albuminémie basse (33 g/L), une hémoglobinémie modérée (11 g/dL) et une CRP élevée (22,3 mg/L), sans anomalie rénale majeure (DFG 76 mL/min). L'alerte [A2] signale une interaction entre l'amiodarone et le dabigatran majorant le risque hémorragique avec une posologie maximale recommandée de 150 mg/jour. La dose actuelle de 220 mg/jour dépasse cette limite et nécessite une réduction. L'association sédatives [A1] est signalée comme « à prendre en compte » et justifie un suivi de la vigilance.",
+    "justification": "- Nous proposons de réduire le dabigatran à 150 mg par jour en raison de l'association à l'amiodarone et de l'âge de la patiente.\n- Nous suggérons de surveiller la vigilance et le risque de chute chez cette personne âgée de 85 ans, compte tenu de l'association mirtazapine et zopiclone.",
     "sources": [
       "KBS: Interaction AMIODARONE + DABIGATRAN (Précaution d'emploi) : Augmentation des concentrations plasmatiques de dabigatran, avec majoration du risque de saignement. Conduite à tenir : Dans l'indication post-chirurgicale : surveillance clinique et adaptation de la posologie du dabigatran si nécessaire, sans excéder 150 mg/j. [Prescription: AMIODARONE 200 MG (LABO ARROW LAB), CPR SÉC ; DABIGATRAN ETEXILATE 110 MG (PRADAXA), GÉLU]",
       "KBS: Interaction MÉDICAMENTS SÉDATIFS + AUTRES MÉDICAMENTS SÉDATIFS (CI - ASDEC - APEC) : Majoration de la dépression centrale. L'altération de la vigilance peut rendre dangereuses la conduite de véhicules et l'utilisation de machines. Conduite à tenir : A prendre en compte: - pour tous les médicaments sédatifs entre eux sauf: - avec l'oxybate de sodium (association déconseillée) - entre l'oxybate de sodium et les opiacés ou les barbituriques (contre- indication). [Prescription: MIRTAZAPINE 15 MG (LABO BLUEFISH), CPR ORODISP ; ZOPICLONE 7.5 MG (LABO ARROW LAB), CPR SÉC]"
@@ -930,6 +962,6 @@
       "Patient à risque : traitement urologique (alpha-bloquant, inhibiteur de la 5-alpha-réductase), situation fréquente d'IP (5 % des patients traités) [Prescription: SILODOSINE 4 MG (LABO ARROW), GÉLU]",
       "Patient à risque : anticoagulant oral, situation fréquente d'IP (9 % des patients traités) [Prescription: DABIGATRAN ETEXILATE 110 MG (PRADAXA), GÉLU]"
     ],
-    "date": "24/11/2026 13:14"
+    "date": "24/11/2026 14:05"
   }
 }
