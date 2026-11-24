@@ -1,0 +1,588 @@
+{
+  "patient": {
+    "id": "114512205",
+    "reference_date": "2025-08-08",
+    "age": 80,
+    "height_cm": 191,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "25-OH-Vitamine D": {
+        "value": 96,
+        "unit": "nmol/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "ALAT (sang)": {
+        "value": 16,
+        "unit": "UI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "ASAT (sang)": {
+        "value": 19,
+        "unit": "UI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Albumine (sang)": {
+        "value": 32,
+        "unit": "g/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 18,
+        "unit": "µmol/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "CK totales (sang)": {
+        "value": 65,
+        "unit": "UI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "CO2 total (sang)": {
+        "value": 27,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "CRP (sang)": {
+        "value": 6.5,
+        "unit": "mg/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Capacité totale de fixation de la transferrine (sang)": {
+        "value": 52.5,
+        "unit": "µmol/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Chlore (sang)": {
+        "value": 108,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Coefficient de saturation de la transferrine (sang)": {
+        "value": 24,
+        "unit": "%",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 33.2,
+        "unit": "g/dL",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Créatinine (sang)": {
+        "value": 57,
+        "unit": "µmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 95,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Fer (sang)": {
+        "value": 12.4,
+        "unit": "µmol/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Ferritine (sang)": {
+        "value": 293,
+        "unit": "µg/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Fibrinogène": {
+        "value": 5.24,
+        "unit": "g/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Folates - vitamine B9 (sang)": {
+        "value": 4.7,
+        "unit": "ng/mL",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 95,
+        "unit": "UI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Glycémie (sang)": {
+        "value": 4.73,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "value": 0.85,
+        "unit": "g/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Hématies": {
+        "value": 3.8,
+        "unit": "10^6/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Hématocrite": {
+        "value": 36.4,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Hémoglobine": {
+        "value": 12.1,
+        "unit": "g/dL",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 14.4,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Leucocytes": {
+        "value": 10.7,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 20.4,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 2.2,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Magnésium (sang)": {
+        "value": 0.69,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Monocytes (%)": {
+        "value": 13.4,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 1.43,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "NT-proBNP (sang)": {
+        "value": 1668,
+        "unit": "pg/mL",
+        "test_datetime": "2025-07-25 08:00:00",
+        "request_date": "2025-07-25 08:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 65,
+        "unit": "UI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Phosphore (sang)": {
+        "value": 1.16,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Plaquettes": {
+        "value": 270,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 1.2,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0.13,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 60.9,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 6.52,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 4.1,
+        "unit": "%",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.44,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Potassium (sang)": {
+        "value": 3.2,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 58,
+        "unit": "g/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Réticulocytes (%)": {
+        "value": 1.19,
+        "unit": "%",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "value": 49.4,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Sodium (sang)": {
+        "value": 145,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "TCA patient": {
+        "value": 34.5,
+        "unit": "s",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "TCA ratio patient/témoin": {
+        "value": 1.11,
+        "unit": "[ratio]",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "TCA témoin": {
+        "value": 31,
+        "unit": "s",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "TSH (sang)": {
+        "value": 1.8,
+        "unit": "mUI/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "value": 54,
+        "unit": "%",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Temps de Quick patient": {
+        "value": 19.8,
+        "unit": "s",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Temps de Quick témoin": {
+        "value": 13.3,
+        "unit": "s",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 31.8,
+        "unit": "pg",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Transferrine (sang)": {
+        "value": 2.1,
+        "unit": "g/L",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Urée (sang)": {
+        "value": 3,
+        "unit": "mmol/L",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Vitamine B12 (sang)": {
+        "value": 405,
+        "unit": "pg/mL",
+        "test_datetime": "2025-07-23 08:20:00",
+        "request_date": "2025-07-23 08:20:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 95.8,
+        "unit": "fL",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 11.5,
+        "unit": "fL",
+        "test_datetime": "2025-07-28 05:00:00",
+        "request_date": "2025-07-28 05:00:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "PREGABALINE 75 MG (LABO VIATRIS), GÉLU",
+      "start_date": "2025-07-22",
+      "end_date": "2025-08-21",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 75,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 gélule(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "PERINDOPRIL TERT-BUTYLAMINE+AMLODIPINE 4 MG+5 MG (LABO EG), CPR",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 4,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "APIXABAN 5 MG (ELIQUIS), CPR",
+      "start_date": "2025-07-22",
+      "end_date": "2025-08-21",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "PROPRANOLOL LP 160 MG (LABO TEVA), GÉLU LP",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 160,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 gélule(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "CALCIPOTRIOL+BETAMETHASONE 50 UG+0.5 MG/G (DAIVOBET), POM, TUBE 60 G",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "application(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 3000,
+          "unit": "ug"
+        },
+        {
+          "dosage": 30,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 application(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Midi",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        },
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 sachet(s) per day — midi — every day"
+    },
+    {
+      "drug_label": "DOLIPRANE 500 MG, GÉLULE",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "gélule(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 4,
+      "day_frequency": "TLJ",
+      "intake_times": "Midi",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "4 sachet(s) per day — midi — every day"
+    },
+    {
+      "drug_label": "ALFUZOSINE LP 10 MG (LABO EG), CPR LP",
+      "start_date": "2025-07-22",
+      "end_date": "2025-08-21",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "ROSUVASTATINE 20 MG (LABO TEVA), CPR",
+      "start_date": "2025-07-22",
+      "end_date": "2025-08-21",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "PROPRANOLOL 40 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2025-07-22",
+      "end_date": "2025-08-21",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 40,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "ESCITALOPRAM 10 MG (LABO ARROW LAB), CPR SÉC",
+      "start_date": "2025-07-23",
+      "end_date": "2025-08-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — specific times — every day"
+    }
+  ]
+}
