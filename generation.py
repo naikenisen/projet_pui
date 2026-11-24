@@ -24,7 +24,8 @@ DECISION_INTERVENTION = "PHARMACEUTICAL INTERVENTION PROPOSED"
 
 SYSTEM_PROMPT = """You are a French hospital clinical pharmacist. You are given a patient and their prescription in JSON format.
 The record comes from a French hospital: drug labels, laboratory parameter names, alerts and guideline excerpts are
-in French. Write your answer in English.
+in French. Write "reasoning" and the "text" of the points in French; keep the JSON keys and the "type" values in
+English.
 
 Record content:
 - "reference_date" is the date on which the prescription is analysed. Missing data is not available.
@@ -93,12 +94,13 @@ their direction, the alerts that really apply (exceptions included), then the pr
 
 Rules for the points:
 - 1 to 4 points, one per problem, from the most to the least important.
-- Each point is one or two short sentences (40 words at most) and starts with “We propose” or “We suggest”
-  (or “No intervention proposed” for a validation). Do not make a point about a compliant prescription or about
+- Each point is one or two short sentences (40 words at most) and starts with “Nous proposons” or “Nous
+  suggérons” (or “Pas d'intervention proposée” for a validation). Do not make a point about a compliant prescription or about
   an item with no practical consequence.
-- Example wordings: “We propose reducing apixaban to 2.5 mg twice daily given the serum creatinine of
-  155 µmol/L and the age (95 years)”, “We suggest checking with the prescriber the total irbesartan dose
-  of 450 mg/day (L11 + L19), above the maximum dose”, “We propose monitoring potassium...”.
+- Example wordings: “Nous proposons de réduire l'apixaban à 2,5 mg deux fois par jour compte tenu de la
+  créatinine à 155 µmol/L et de l'âge (95 ans)”, “Nous suggérons de vérifier avec le prescripteur la dose totale
+  d'irbésartan de 450 mg/jour (L11 + L19), supérieure à la dose maximale”, “Nous proposons de surveiller la
+  kaliémie...”.
 - Name the drug involved and the patient values that justify the point. Do not write any alert or excerpt
   identifier (A1, R2) in "text"; you may refer to a line by its identifier (L3).
 - "references": only the identifiers of the provided alerts and excerpts on which the point really relies.
