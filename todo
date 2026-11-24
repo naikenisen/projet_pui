@@ -1,6 +1,8 @@
-# mandatory - pharmacy work
+# mandatory
 [] add all the necessary rules to the KBS (jeux de règles expertes sur les associations fréquentes)
-[] complete the list of guidelines used by the RAG (download all guidelines)
+[] add all new pdf to the chromaDB
+[] use the PTB computer to add all RCP to the chromaDB
+[] make a run on 300 patients
 
 # optional
 [] read kbs.py and remove unecessary functions
