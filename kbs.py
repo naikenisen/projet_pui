@@ -45,10 +45,17 @@ def word_sequences(label):
     return {label[first.start():last.end()] for i, first in enumerate(words) for last in words[i:]}
 
 
+# "IRBESARTAN 150 MG (LABO ARROW), CPR" -> "IRBESARTAN"
+def drug_name(label):
+    return re.split(r"[\d,(]", label, maxsplit=1)[0].strip().upper()
+
+
 # Translates the patient record into facts (templates described in base.clp)
 def assert_patient(env, record):
     data = env.find_template("data")
     patient = record["patient"]
+    if patient.get("reference_date"):
+        env.find_template("reference-date").assert_fact(date=patient["reference_date"][:10])
     for name, value in patient.items():
         if is_number(value):
             data.assert_fact(name=name, value=value)
@@ -62,9 +69,13 @@ def assert_patient(env, record):
         env.find_template("treatment").assert_fact(
             line=line,
             label=treatment["drug_label"],
+            name=drug_name(treatment["drug_label"]),
             quantity=quantity if is_number(quantity) else 0,
             unit=treatment.get("intake_unit") or "",
             ingredients=len(ingredients),
+            start=(treatment.get("start_date") or "")[:10],
+            end=(treatment.get("end_date") or "")[:10],
+            as_needed=bool(treatment.get("as_needed")),
         )
         for number, ingredient in enumerate(ingredients, start=1):
             if is_number(ingredient.get("dosage")):

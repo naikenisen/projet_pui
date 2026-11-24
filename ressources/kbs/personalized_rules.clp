@@ -17,7 +17,7 @@
   (apixaban-criterion ?c1)
   (apixaban-criterion ?c2&~?c1)
   =>
-  (assert (alert (message "Apixaban : la dose recommandée est 2,5 mg deux fois par jour (au moins 2 critères parmi âge ≥ 80 ans, poids ≤ 60 kg, créatinine ≥ 133 µmol/L)") (lines ?l))))
+  (assert (alert (message "Apixaban : intervention pharmaceutique, réduire la dose à 2,5 mg deux fois par jour (au moins 2 critères parmi âge ≥ 80 ans, poids ≤ 60 kg, créatinine ≥ 133 µmol/L). Dans l'IP, demander au prescripteur de confirmer que le patient est bien traité pour une ACFA avant de réduire la dose") (lines ?l))))
 
 ; Ramipril + spironolactone : risque d'hyperkaliémie
 (defrule ramipril-spironolactone

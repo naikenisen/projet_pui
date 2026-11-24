@@ -9,14 +9,24 @@
   (slot name)
   (slot value))
 
+; Date on which the prescription is analysed, e.g. (reference-date (date "2026-08-15"))
+(deftemplate reference-date
+  (slot date))
+
 ; Prescription line, numbered from 0
+; name: label before the strength, e.g. "IRBESARTAN" for "IRBESARTAN 150 MG (LABO ARROW), CPR"
 ; quantity: quantity per day (0 if unknown), unit: intake unit, ingredients: number of active ingredients
+; start and end: dates "YYYY-MM-DD" ("" if unknown)
 (deftemplate treatment
   (slot line)
   (slot label)
+  (slot name (default ""))
   (slot quantity (default 0))
   (slot unit (default ""))
-  (slot ingredients (default 0)))
+  (slot ingredients (default 0))
+  (slot start (default ""))
+  (slot end (default ""))
+  (slot as_needed (default FALSE)))
 
 ; Active ingredient number <number> of a line, e.g. dosage 5 and unit "mg" for "APIXABAN 5 MG"
 (deftemplate ingredient
@@ -42,6 +52,11 @@
 (deftemplate dose-per-kg
   (slot line)
   (slot mg))
+
+; Scheduled line ongoing on the reference date
+(deftemplate ongoing-line
+  (slot line)
+  (slot name))
 
 ; Alert for the pharmacist, with the prescription lines involved
 (deftemplate alert
@@ -84,6 +99,36 @@
   (data (name "weight_kg") (value ?w&:(> ?w 0)))
   =>
   (assert (dose-per-kg (line ?l) (mg (/ ?mg ?w)))))
+
+; ---------- Same drug on several lines ----------
+
+; Dates "YYYY-MM-DD" compare as strings
+(defrule ongoing-scheduled-line
+  (reference-date (date ?today))
+  (treatment (line ?l) (name ?n&~"") (as_needed FALSE) (start ?s) (end ?e))
+  (test (and (<= (str-compare ?s ?today) 0) (or (eq ?e "") (>= (str-compare ?e ?today) 0))))
+  =>
+  (assert (ongoing-line (line ?l) (name ?n))))
+
+; Often deliberate, to obtain a specific dosage. The alert gives the total dose so that the LLM can judge it.
+; Fires for each pair of lines, but CLIPS ignores the identical alerts.
+; Low priority so the daily doses are computed first.
+(defrule same-drug-several-lines
+  (declare (salience -5))
+  (ongoing-line (line ?l1) (name ?n))
+  (ongoing-line (line ?l2&:(> ?l2 ?l1)) (name ?n))
+  =>
+  (bind ?lines (create$))
+  (do-for-all-facts ((?o ongoing-line)) (eq ?o:name ?n) (bind ?lines (create$ ?lines ?o:line)))
+  (bind ?total 0)
+  (bind ?doses 0)
+  (do-for-all-facts ((?d daily-dose)) (member$ ?d:line ?lines)
+    (bind ?total (+ ?total ?d:mg))
+    (bind ?doses (+ ?doses 1)))
+  (bind ?message (str-cat ?n " sur plusieurs lignes en cours"))
+  (if (= ?doses (length$ ?lines))
+    then (bind ?message (str-cat ?message ", dose totale " (format nil "%g" ?total) " mg par jour")))
+  (assert (alert (message (str-cat ?message " : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale")) (lines ?lines))))
 
 ; ---------- Interactions (facts of generic_rules.clp) ----------
 

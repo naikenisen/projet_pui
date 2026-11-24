@@ -47,8 +47,8 @@ What you do NOT know: the record contains no diagnosis, medical history, indicat
   or excerpt.
 - If a point relies only on your own knowledge (no alert or excerpt), only propose an intervention or a
   verification for an obvious error (dose above the marketing authorisation maximum, contraindication confirmed by
-  laboratory values) or for the same drug on several lines. A dosage within the usual ranges, even debatable,
-  calls for neither intervention nor verification.
+  laboratory values). A dosage within the usual ranges, even debatable, calls for neither intervention nor
+  verification.
 
 Knowledge-Based System (KBS) alerts [A1], [A2]... and guideline excerpts [R1], [R2]... may be provided.
 Alerts from the ANSM Thesaurus give their level in parentheses: CI or CONTRE-INDICATION = contraindication,
@@ -78,11 +78,10 @@ Consistency with the patient (check for each point):
 Each point has a type:
 - "intervention": a confirmed and clinically important problem requires changing the prescription.
 - "verification": reserved for cases where (1) if the hypothesis were confirmed, the problem would justify an
-  intervention and (2) information missing from the record is essential to decide. Typical example: the same
-  drug on several ongoing scheduled lines (deliberate total dose or forgotten line?). A list of these multiple
-  lines, with the total dose, may be provided. Combining two strengths to obtain a precise dose is common (e.g.
-  levothyroxine 150 + 12.5 µg): only propose a verification if the total dose is unusual or exceeds the maximum
-  dose.
+  intervention and (2) information missing from the record is essential to decide.
+  The same drug on several ongoing lines is not a problem in itself: it is usually deliberate, to obtain a
+  specific dosage (e.g. levothyroxine 150 + 12.5 µg). Judge the total dose: only propose a verification if it is
+  unusual or exceeds the maximum dose.
 - "monitoring": acceptable combination or dosage that nevertheless justifies specific clinical or laboratory
   monitoring (e.g. potassium, INR, ECG, blood glucose, renal function).
 - "validation": nothing to report. Used alone, as a single point, when the prescription is validated.
@@ -98,8 +97,8 @@ Rules for the points:
   (or “No intervention proposed” for a validation). Do not make a point about a compliant prescription or about
   an item with no practical consequence.
 - Example wordings: “We propose reducing apixaban to 2.5 mg twice daily given the serum creatinine of
-  155 µmol/L and the age (95 years)”, “We suggest checking with the prescriber whether the two irbesartan lines
-  (150 mg and 300 mg/day) are deliberate”, “We propose monitoring potassium...”.
+  155 µmol/L and the age (95 years)”, “We suggest checking with the prescriber the total irbesartan dose
+  of 450 mg/day (L11 + L19), above the maximum dose”, “We propose monitoring potassium...”.
 - Name the drug involved and the patient values that justify the point. Do not write any alert or excerpt
   identifier (A1, R2) in "text"; you may refer to a line by its identifier (L3).
 - "references": only the identifiers of the provided alerts and excerpts on which the point really relies.
@@ -151,11 +150,6 @@ def line_status(treatment, reference_date):
     return "ongoing"
 
 
-# "IRBESARTAN 150 MG (LABO ARROW), CPR" -> "IRBESARTAN"
-def drug_name(label):
-    return re.split(r"[\d,(]", label, maxsplit=1)[0].strip().upper()
-
-
 def read_lab_ranges():
     if not os.path.exists(LAB_RANGES_FILE):
         return {}
@@ -198,28 +192,6 @@ def summarize_record(record):
             line["dose_per_administration_day"] = f"{number(dose[0])} {dose[1]}"
         treatments.append(line)
     return {"patient": summary, "treatments": treatments}
-
-
-# Drugs on several ongoing scheduled lines, e.g. "IRBESARTAN: L11 (150 mg) + L19 (300 mg) = 450 mg per day"
-def multiple_lines(record):
-    reference_date = record["patient"].get("reference_date")
-    groups = {}
-    for number_, treatment in enumerate(record["treatments"], start=1):
-        if treatment.get("as_needed") or line_status(treatment, reference_date) != "ongoing":
-            continue
-        groups.setdefault(drug_name(treatment["drug_label"]), []).append((number_, dose_per_day(treatment)))
-    sentences = []
-    for name, lines in groups.items():
-        if not name or len(lines) < 2:
-            continue
-        doses = [dose for _, dose in lines]
-        if all(doses) and len({symbol for _, symbol in doses}) == 1:
-            detail = " + ".join(f"L{n} ({number(dose[0])} {dose[1]})" for n, dose in lines)
-            detail += f" = {number(sum(d[0] for d in doses))} {doses[0][1]} per day"
-        else:
-            detail = " + ".join(f"L{n}" for n, _ in lines)
-        sentences.append(f"{name}: {detail}")
-    return sentences
 
 
 # A1, R2... identifiers copied into the text despite the prompt (L3 identifiers are kept)
@@ -281,10 +253,6 @@ def source_label(source):
 def analyse_patient(record, passages=(), alerts=()):
     alerts, passages = list(alerts), list(passages)
     message = json.dumps(summarize_record(record), ensure_ascii=False, indent=1)
-    if multiples := multiple_lines(record):
-        message += "\n\nSame drug on several ongoing scheduled lines:\n" + "\n".join(
-            f"- {sentence}" for sentence in multiples
-        )
     if alerts:
         message += "\n\nKBS alerts:\n" + "\n".join(f"[A{i}] {alert}" for i, alert in enumerate(alerts, start=1))
     if passages:
