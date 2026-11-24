@@ -43,6 +43,23 @@
 
 ; ---------- Facts deduced by the rules ----------
 
+; Status of a line on the reference date: "ongoing", "ended" or "upcoming"
+(deftemplate line-status
+  (slot line)
+  (slot status))
+
+; Scheduled line ongoing on the reference date
+(deftemplate ongoing-line
+  (slot line)
+  (slot name))
+
+; Active ingredient dose per administration day, e.g. (line-dose (line 0) (amount 3000) (unit "mg"))
+; unit: "mg", "µg", "IU", "anti-Xa IU" or "U"
+(deftemplate line-dose
+  (slot line)
+  (slot amount)
+  (slot unit))
+
 ; Dose in mg per administration day
 (deftemplate daily-dose
   (slot line)
@@ -53,46 +70,86 @@
   (slot line)
   (slot mg))
 
-; Scheduled line ongoing on the reference date
-(deftemplate ongoing-line
-  (slot line)
-  (slot name))
-
 ; Alert for the pharmacist, with the prescription lines involved
 (deftemplate alert
   (slot message)
   (multislot lines))
 
+; ---------- Line status ----------
+
+; Dates "YYYY-MM-DD" compare as strings
+(defrule line-upcoming
+  (reference-date (date ?today))
+  (treatment (line ?l) (start ?s&:(> (str-compare ?s ?today) 0)))
+  =>
+  (assert (line-status (line ?l) (status "upcoming"))))
+
+(defrule line-ended
+  (reference-date (date ?today))
+  (treatment (line ?l) (start ?s&:(<= (str-compare ?s ?today) 0)) (end ?e&~""&:(< (str-compare ?e ?today) 0)))
+  =>
+  (assert (line-status (line ?l) (status "ended"))))
+
+(defrule line-ongoing
+  (reference-date (date ?today))
+  (treatment (line ?l) (start ?s&:(<= (str-compare ?s ?today) 0)) (end ?e&:(or (eq ?e "") (>= (str-compare ?e ?today) 0))))
+  =>
+  (assert (line-status (line ?l) (status "ongoing"))))
+
+; Without a reference date, every line is considered ongoing
+(defrule line-ongoing-without-reference-date
+  (not (reference-date))
+  (treatment (line ?l))
+  =>
+  (assert (line-status (line ?l) (status "ongoing"))))
+
 ; ---------- Dose computation ----------
 
-(deftemplate unit-to-mg
+(deftemplate unit-conversion
   (slot unit)
-  (slot factor))
+  (slot factor)
+  (slot symbol))
 
-; Intake units (milligramme(s)...) and active ingredient dosage units (mg...)
+; Intake units that are already an amount of active ingredient (milligramme(s)...)
+; and active ingredient dosage units (mg...)
 (deffacts units
-  (unit-to-mg (unit "milligramme(s)") (factor 1))
-  (unit-to-mg (unit "gramme(s)") (factor 1000))
-  (unit-to-mg (unit "microgramme(s)") (factor 0.001))
-  (unit-to-mg (unit "mg") (factor 1))
-  (unit-to-mg (unit "g") (factor 1000))
-  (unit-to-mg (unit "ug") (factor 0.001)))
+  (unit-conversion (unit "milligramme(s)") (factor 1) (symbol "mg"))
+  (unit-conversion (unit "gramme(s)") (factor 1000) (symbol "mg"))
+  (unit-conversion (unit "microgramme(s)") (factor 1) (symbol "µg"))
+  (unit-conversion (unit "unité(s) internationale(s)") (factor 1) (symbol "IU"))
+  (unit-conversion (unit "unité(s) internationale(s) anti-Xa") (factor 1) (symbol "anti-Xa IU"))
+  (unit-conversion (unit "mg") (factor 1) (symbol "mg"))
+  (unit-conversion (unit "g") (factor 1000) (symbol "mg"))
+  (unit-conversion (unit "ug") (factor 1) (symbol "µg"))
+  (unit-conversion (unit "iu") (factor 1) (symbol "IU"))
+  (unit-conversion (unit "axa_iu") (factor 1) (symbol "anti-Xa IU"))
+  (unit-conversion (unit "u") (factor 1) (symbol "U")))
 
-; Intake unit is a mass: 0.7 gramme(s) per day -> 700 mg
-(defrule daily-dose-from-intake-unit
+; Intake units of a unit form: the active ingredient dosage is the amount per unit
+(deffacts unit-forms
+  (unit-form "comprimé") (unit-form "gélule") (unit-form "sachet") (unit-form "ampoule") (unit-form "seringue")
+  (unit-form "capsule") (unit-form "suppositoire") (unit-form "stylo") (unit-form "film"))
+
+; Intake unit is an amount of active ingredient: 0.7 gramme(s) per day -> 700 mg
+(defrule line-dose-from-intake-unit
   (treatment (line ?l) (quantity ?q&:(> ?q 0)) (unit ?u))
-  (unit-to-mg (unit ?u) (factor ?f))
+  (unit-conversion (unit ?u) (factor ?f) (symbol ?s))
   =>
-  (assert (daily-dose (line ?l) (mg (* ?q ?f)))))
+  (assert (line-dose (line ?l) (amount (* ?q ?f)) (unit ?s))))
 
-; Otherwise, with a single active ingredient: 2 comprimé(s) of 350 mg per day -> 700 mg
-(defrule daily-dose-from-dosage
+; Unit form with a single active ingredient: 2 comprimé(s) of 350 mg per day -> 700 mg
+(defrule line-dose-from-dosage
   (treatment (line ?l) (quantity ?q&:(> ?q 0)) (unit ?u) (ingredients 1))
-  (not (unit-to-mg (unit ?u)))
+  (unit-form ?form&:(eq (str-index ?form ?u) 1))
   (ingredient (line ?l) (dosage ?d) (unit ?du))
-  (unit-to-mg (unit ?du) (factor ?f))
+  (unit-conversion (unit ?du) (factor ?f) (symbol ?s))
   =>
-  (assert (daily-dose (line ?l) (mg (* ?q ?d ?f)))))
+  (assert (line-dose (line ?l) (amount (* ?q ?d ?f)) (unit ?s))))
+
+(defrule daily-dose
+  (line-dose (line ?l) (amount ?a) (unit ?u&"mg"|"µg"))
+  =>
+  (assert (daily-dose (line ?l) (mg (if (eq ?u "mg") then ?a else (/ ?a 1000))))))
 
 (defrule dose-per-kg
   (daily-dose (line ?l) (mg ?mg))
@@ -102,17 +159,15 @@
 
 ; ---------- Same drug on several lines ----------
 
-; Dates "YYYY-MM-DD" compare as strings
 (defrule ongoing-scheduled-line
-  (reference-date (date ?today))
-  (treatment (line ?l) (name ?n&~"") (as_needed FALSE) (start ?s) (end ?e))
-  (test (and (<= (str-compare ?s ?today) 0) (or (eq ?e "") (>= (str-compare ?e ?today) 0))))
+  (line-status (line ?l) (status "ongoing"))
+  (treatment (line ?l) (name ?n&~"") (as_needed FALSE))
   =>
   (assert (ongoing-line (line ?l) (name ?n))))
 
 ; Often deliberate, to obtain a specific dosage. The alert gives the total dose so that the LLM can judge it.
 ; Fires for each pair of lines, but CLIPS ignores the identical alerts.
-; Low priority so the daily doses are computed first.
+; Low priority so the doses are computed first.
 (defrule same-drug-several-lines
   (declare (salience -5))
   (ongoing-line (line ?l1) (name ?n))
@@ -120,14 +175,17 @@
   =>
   (bind ?lines (create$))
   (do-for-all-facts ((?o ongoing-line)) (eq ?o:name ?n) (bind ?lines (create$ ?lines ?o:line)))
+  (bind ?unit "")
   (bind ?total 0)
   (bind ?doses 0)
-  (do-for-all-facts ((?d daily-dose)) (member$ ?d:line ?lines)
-    (bind ?total (+ ?total ?d:mg))
-    (bind ?doses (+ ?doses 1)))
+  (do-for-all-facts ((?d line-dose)) (member$ ?d:line ?lines)
+    (if (eq ?unit "") then (bind ?unit ?d:unit))
+    (if (eq ?unit ?d:unit) then
+      (bind ?total (+ ?total ?d:amount))
+      (bind ?doses (+ ?doses 1))))
   (bind ?message (str-cat ?n " sur plusieurs lignes en cours"))
   (if (= ?doses (length$ ?lines))
-    then (bind ?message (str-cat ?message ", dose totale " (format nil "%g" ?total) " mg par jour")))
+    then (bind ?message (str-cat ?message ", dose totale " (format nil "%g" ?total) " " ?unit " par jour")))
   (assert (alert (message (str-cat ?message " : association de dosages souvent volontaire pour obtenir une posologie précise, à signaler seulement si la dose totale est inhabituelle ou dépasse la dose maximale")) (lines ?lines))))
 
 ; ---------- Interactions (facts of generic_rules.clp) ----------

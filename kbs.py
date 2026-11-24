@@ -101,6 +101,12 @@ def create_environment(rules=""):
     return env
 
 
+# base.clp alone is enough to deduce the status and dose of the lines
+@functools.lru_cache(maxsize=None)
+def base_environment():
+    return create_environment()
+
+
 # Cached because generic_rules.clp is slow to load; cleared when the personalized rules change
 @functools.lru_cache(maxsize=None)
 def kbs_environment():
@@ -110,11 +116,15 @@ def kbs_environment():
     return env
 
 
-# Alerts of the record, one per message, followed by the labels of the lines involved
-def apply_rules(record, env):
+def run_rules(env, record):
     env.reset()
     assert_patient(env, record)
     env.run()
+
+
+# Alerts of the record, one per message, followed by the labels of the lines involved
+def apply_rules(record, env):
+    run_rules(env, record)
 
     labels = [treatment["drug_label"] for treatment in record["treatments"]]
     alerts = {}
@@ -130,6 +140,21 @@ def apply_rules(record, env):
 
 def check_rules(record):
     return apply_rules(record, kbs_environment())
+
+
+# Status and dose per administration day of each line, deduced by base.clp
+# e.g. [{"status": "ongoing", "dose": (3000, "mg")}, {"status": "ended"}]
+def line_details(record):
+    env = base_environment()
+    run_rules(env, record)
+
+    details = [{} for _ in record["treatments"]]
+    for fact in env.facts():
+        if fact.template.name == "line-status":
+            details[fact["line"]]["status"] = str(fact["status"])
+        elif fact.template.name == "line-dose":
+            details[fact["line"]]["dose"] = (fact["amount"], str(fact["unit"]))
+    return details
 
 
 def load_patient(folder, patient_id):

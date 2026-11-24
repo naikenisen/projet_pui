@@ -8,7 +8,7 @@ import re
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from kbs import load_patient, normalize
+from kbs import line_details, load_patient, normalize
 
 load_dotenv()
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
@@ -109,45 +109,10 @@ Rules for the points:
 
 LAB_RANGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "lab_reference_ranges.json")
 
-# Intake units that are already an amount of active ingredient
-QUANTITY_UNITS = {"milligramme(s)": (1, "mg"), "gramme(s)": (1000, "mg"), "microgramme(s)": (1, "µg"),
-                  "unité(s) internationale(s)": (1, "IU"), "unité(s) internationale(s) anti-Xa": (1, "anti-Xa IU")}
-# Unit forms: the active ingredient dosage is the amount per unit
-UNIT_FORMS = ("comprimé", "gélule", "sachet", "ampoule", "seringue", "capsule", "suppositoire", "stylo", "film")
-DOSAGE_UNITS = {"mg": (1, "mg"), "g": (1000, "mg"), "ug": (1, "µg"), "iu": (1, "IU"), "axa_iu": (1, "anti-Xa IU"), "u": (1, "U")}
-
 
 # Number without useless zeros or scientific notation
 def number(value):
     return f"{value:g}" if value < 1e6 else f"{value:.0f}"
-
-
-# Active ingredient dose per administration day, e.g. (3000, "mg"), or None if it cannot be computed
-def dose_per_day(treatment):
-    quantity = treatment.get("quantity_per_day")
-    if not isinstance(quantity, (int, float)) or quantity <= 0:
-        return None
-    unit = treatment.get("intake_unit") or ""
-    if unit in QUANTITY_UNITS:
-        factor, symbol = QUANTITY_UNITS[unit]
-        return quantity * factor, symbol
-    ingredients = treatment.get("active_ingredients") or []
-    if (any(unit.startswith(form) for form in UNIT_FORMS) and len(ingredients) == 1
-            and ingredients[0].get("unit") in DOSAGE_UNITS and isinstance(ingredients[0].get("dosage"), (int, float))):
-        factor, symbol = DOSAGE_UNITS[ingredients[0]["unit"]]
-        return quantity * ingredients[0]["dosage"] * factor, symbol
-    return None
-
-
-def line_status(treatment, reference_date):
-    if not reference_date:
-        return "ongoing"
-    start, end = (treatment.get("start_date") or "")[:10], (treatment.get("end_date") or "")[:10]
-    if start and start > reference_date:
-        return "upcoming"
-    if end and end < reference_date:
-        return "ended"
-    return "ongoing"
 
 
 def read_lab_ranges():
@@ -168,7 +133,8 @@ def lab_interpretation(name, value, ranges):
     return ""
 
 
-# Record sent to the LLM: empty fields removed, lab values interpreted, lines L1, L2... with status and computed dose
+# Record sent to the LLM: empty fields removed, lab values interpreted, lines L1, L2... with the status and dose
+# deduced by the KBS
 def summarize_record(record):
     patient = record["patient"]
     summary = {key: value for key, value in patient.items() if key != "biology" and value is not None}
@@ -181,15 +147,16 @@ def summarize_record(record):
         summary["biology"][name] = f"{text} on {measure.get('test_datetime') or '?'}"
 
     treatments = []
-    for number_, treatment in enumerate(record["treatments"], start=1):
+    for number_, (treatment, details) in enumerate(zip(record["treatments"], line_details(record)), start=1):
         line = {"id": f"L{number_}"}
         line |= {key: treatment[key] for key in ("drug_label", "dosage_regimen", "start_date", "end_date")
                  if treatment.get(key)}
-        line["status"] = line_status(treatment, patient.get("reference_date"))
+        line["status"] = details["status"]
         if treatment.get("as_needed"):
             line["as_needed"] = True
-        elif dose := dose_per_day(treatment):
-            line["dose_per_administration_day"] = f"{number(dose[0])} {dose[1]}"
+        elif "dose" in details:
+            amount, unit = details["dose"]
+            line["dose_per_administration_day"] = f"{number(amount)} {unit}"
         treatments.append(line)
     return {"patient": summary, "treatments": treatments}
 
