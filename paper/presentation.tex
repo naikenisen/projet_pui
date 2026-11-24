@@ -184,6 +184,36 @@
   \end{ganttchart}
 \end{frame}
 
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot1.png}
+\end{frame}
+
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot2.png}
+\end{frame}
+
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot3.png}
+\end{frame}
+
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot4.png}
+\end{frame}
+
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot5.png}
+\end{frame}
+
+\begin{frame}{Capture d'écran du logiciel}
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{screenshots/screenshot6.png}
+\end{frame}
+
 \begin{frame}{Retombées attendues}
   \small
   \begin{itemize}
@@ -252,6 +282,51 @@ digraph architecture {
 \begin{frame}{Architecture}
   \centering
   \dotfigure{presentation_figure_1}{figure_1.pdf}
+\end{frame}
+
+\begin{frame}[fragile]{Mélange d'experts}
+  \footnotesize
+  \begin{columns}[T]
+    \begin{column}{0.42\textwidth}
+      \structure{\textbf{Une couche de Qwen3.6-35B-A3B}}
+      \vspace{-0.6em}
+      \begin{align*}
+        \mathbf{s} &= \operatorname{softmax}(W_r\, \mathbf{x}) \in \mathbb{R}^{256} \\
+        T &= \text{les 8 plus grands } s_i \\
+        \mathbf{y} &= \text{FFN}_0(\mathbf{x}) + \textstyle\sum_{i \in T} s_i\, \text{FFN}_i(\mathbf{x})
+      \end{align*}
+    \end{column}
+    \begin{column}{0.56\textwidth}
+      \structure{\textbf{Un expert = 3 matrices}}
+      \[ \text{FFN}_i(\mathbf{x}) = W_i^{\text{down}} \big( \operatorname{SiLU}(W_i^{\text{gate}} \mathbf{x}) \odot W_i^{\text{up}} \mathbf{x} \big) \]
+      \vspace{-0.8em}
+      \begin{tabular}{@{}ll@{}}
+        1 expert : & $3 \times 2048 \times 512 \approx 3{,}1$ M \\
+        mémoire : & $256 \text{ experts} \times 40 \text{ couches} \approx 32$ B \\
+        calcul : & $9 \text{ experts} \times 40 \text{ couches} \approx 1{,}1$ B \\
+      \end{tabular}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.4em}
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily\tiny]
+class MoE(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.router = nn.Linear(2048, 256, bias=False)
+        self.experts = nn.ModuleList([FFN(2048, 512) for _ in range(256)])   # 256 experts en mémoire
+        self.shared = FFN(2048, 512)                                         # expert partagé
+
+    def forward(self, x):                                # x : (tokens, 2048)
+        w, ids = self.router(x).softmax(-1).topk(8)      # 8 experts choisis par token
+        y = self.shared(x)
+        for e in ids.unique():                           # seuls les experts choisis calculent
+            tok, j = (ids == e).nonzero(as_tuple=True)
+            y[tok] += w[tok, j, None] * self.experts[e](x[tok])
+        return y
+\end{lstlisting}
+  \centering
+  \structure{\textbf{Mémoire : 35 B paramètres \qquad Calcul par token : 3 B paramètres}}
 \end{frame}
 
 \begin{frame}{Indexation}
@@ -691,77 +766,36 @@ digraph kbs_steps {
 \end{frame}
 
 \begin{frame}{Système à base de connaissances}
-  \heading{Le moteur RETE selon le guide CLIPS}
+  \heading{Moteur RETE : exemple du guide CLIPS}
   \small
-  \begin{enumerate}
-    \setlength{\itemsep}{0.8em}
-    \item Au chargement, un \structure{réseau des motifs} est construit avec tous les motifs des règles.
-    \item Chaque fait créé est \structure{filtré} dans ce réseau : s'il correspond à un motif, la règle est \structure{partiellement instanciée}.
-    \item Les \structure{variables} sont comparées d'un motif à l'autre, du premier au dernier.
-    \item Si elles sont cohérentes, la règle est \structure{activée} et placée dans l'\structure{agenda}.
-  \end{enumerate}
+  \begin{tabular}{@{}ll}
+    Règle : & \texttt{(a ?) (b ?) (c ?)} \\
+    Faits : & \texttt{f-1 (a 1) \ f-2 (b 1) \ f-3 (b 2) \ f-4 (c 1)} \\
+  \end{tabular}
+
+  \vspace{1.2em}
+  \centering
+  \footnotesize
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Étape} & \textbf{Résultat} \\
+    \midrule
+    \textcolor{puiblue}{\textbf{1. Filtrer les faits}} & motif 1 : \texttt{f-1} \\
+      & motif 2 : \texttt{f-2}, \texttt{f-3} \\
+      & motif 3 : \texttt{f-4} \\
+    \midrule
+    \textcolor{puiblue}{\textbf{2. Joindre les motifs}} & motifs 1--2 : \texttt{(f-1,f-2)} \texttt{(f-1,f-3)} \\
+      & motifs 1--3 : \texttt{(f-1,f-2,f-4)} \texttt{(f-1,f-3,f-4)} \\
+    \midrule
+    \textcolor{puiblue}{\textbf{3. Activer la règle}} & 2 activations dans l'agenda \\
+    \bottomrule
+  \end{tabular}
+
 
   \vfill
-  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, annexe D.1.}
-\end{frame}
-
-\begin{frame}[fragile]{Système à base de connaissances}
-  \heading{Exemple du guide CLIPS : la commande \texttt{matches}}
-  \begin{columns}[T]
-    \begin{column}{0.46\textwidth}
-\begin{lstlisting}[language=CLIPS, basicstyle=\ttfamily\scriptsize]
-(defrule example-1
-   (a ?)
-   (b ?)
-   (c ?)
-   =>)
-
-CLIPS> (facts)
-f-1     (a 1)
-f-2     (b 1)
-f-3     (b 2)
-f-4     (c 1)
-\end{lstlisting}
-    \end{column}
-    \begin{column}{0.50\textwidth}
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-CLIPS> (matches example-1)
-Matches for Pattern 1
-f-1
-Matches for Pattern 2
-f-2
-f-3
-Matches for Pattern 3
-f-4
-Partial matches for CEs 1 - 2
-f-1,f-3
-f-1,f-2
-Partial matches for CEs 1 - 3
-f-1,f-2,f-4
-f-1,f-3,f-4
-\end{lstlisting}
-    \end{column}
-  \end{columns}
-  \vfill
-  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, section 13.6.4.}
-\end{frame}
-
-\begin{frame}{Système à base de connaissances}
-  \small
-  \heading{Ce qui coûte, selon le guide CLIPS}
-  Filtrer un fait dans le réseau des motifs : temps à peu près constant. \\
-  Comparer les variables entre motifs : la partie lente.
-
-  \heading{Ordre des motifs dans une règle}
-  \begin{enumerate}
-    \setlength{\itemsep}{0.3em}
-    \item Du plus spécifique au plus général.
-    \item Les motifs les plus rares en premier.
-    \item Les motifs volatils (souvent ajoutés ou retirés) en dernier.
-  \end{enumerate}
-
-  \vfill
-  \scriptsize\textit{Source : CLIPS Basic Programming Guide 6.4.2, annexe D.1.}
+  \raggedright
+  \tiny\textit{Source : CLIPS Basic Programming Guide 6.4.2, annexe D.1 et section 13.6.4.}
 \end{frame}
 
 \begin{filecontents*}[overwrite]{presentation_figure_4.dot}
