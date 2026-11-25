@@ -183,3 +183,17 @@ div.st-key-patient-list { border: 1px solid var(--border); border-radius: 4px; b
     white-space: normal; overflow-wrap: anywhere; }
 .data-table td.short { white-space: nowrap; }
 .data-table tr.abnormal td { color: var(--red); background: var(--red-bg); font-weight: 500; }
+
+/* Pharmaceutical intervention (IP) Oui / Non in the patient header */
+.st-key-ip-frame {
+    background: var(--blue-light); border: 1.5px solid var(--blue); border-radius: 6px; padding: 0.2rem 0.6rem;
+}
+.ip-title { font-size: 0.95rem; font-weight: 700; color: var(--blue-dark); }
+.st-key-ip-frame [data-testid="stBaseButton-segmented_control"] { background: var(--surface); }
+.st-key-ip-frame [data-testid="stBaseButton-segmented_controlActive"] { font-weight: 700; color: #FFFFFF; }
+.st-key-ip-frame button:first-child[data-testid="stBaseButton-segmented_controlActive"] {
+    background: var(--green); border-color: var(--green);
+}
+.st-key-ip-frame button:last-child[data-testid="stBaseButton-segmented_controlActive"] {
+    background: var(--red); border-color: var(--red);
+}

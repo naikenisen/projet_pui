@@ -1,13 +1,8 @@
-# mandatory
-[] add all the necessary rules to the KBS (jeux de règles expertes sur les associations fréquentes)
-[] add all new pdf to the chromaDB
-[] use the PTB computer to add all RCP to the chromaDB
-[] make a run on 300 patients
-[] catégories à ajouter à l'interface pour chaque patients : IP oui ou non
-[] catégories à ajouter pour chaque alerts : techniquement corecte oui / non, cliniqumeent pertinent oui/non
-
-# optional
-[] read kbs.py and remove unecessary functions
-[] read generation.py and remove unecessary functions
-[] speed up inference
-[] utiliser un LLM pour faire tous les mois la création du fichier statistical_rules.clp
+# Todo classified by priority
+[1] add flags to main, indexing and generation for pytorch execution instead of openrouter
+[2] use the PTB computer to add all RCP to the chromaDB
+[3] add all the necessary rules to the KBS (jeux de règles expertes sur les associations fréquentes)
+[4] read kbs.py and remove unecessary functions
+[5] read generation.py and remove unecessary functions
+[6] speed up inference
+[7] utiliser un LLM pour faire tous les mois la création du fichier statistical_rules.clp

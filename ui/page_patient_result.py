@@ -25,39 +25,50 @@ def render_page(records, results):
     position = next(i for i, r in enumerate(records) if r["patient"]["id"] == patient_id)
     _navigation_bar(records, position, results.get(patient_id))
     _patient_record(records[position], results.get(patient_id), read_lab_ranges())
-    if results.get(patient_id) and "error" not in results[patient_id]:
-        _score_bar(patient_id)
 
 
-# Pharmacist scores of the software opinion, keyed by the patient ID of inference_results.json
+# Pharmacist evaluation of the software opinion, keyed by the patient ID of inference_results.json:
+# {"ip": "Oui", "points": {"0": {"technically_correct": "Oui", "clinically_relevant": "Non"}}}
 LABEL_RESULTS_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "label_results.json")
-SCORES = [0, 1, 2, 3, 4, 5]
+YES_NO = ["Oui", "Non"]
 
 
-def load_scores():
+def load_labels():
     if not os.path.exists(LABEL_RESULTS_FILE):
         return {}
     with open(LABEL_RESULTS_FILE, encoding="utf-8") as file:
         return json.load(file)
 
 
-# A new score replaces the previous one; unselecting the score removes it
-def save_score(patient_id):
-    scores = load_scores()
-    score = st.session_state[f"score-{patient_id}"]
-    if score is None:
-        scores.pop(patient_id, None)
+# Answers of the patient (point=None) or of one opinion point
+def answers(labels, patient_id, point=None):
+    patient_labels = labels.setdefault(patient_id, {})
+    if point is None:
+        return patient_labels
+    return patient_labels.setdefault("points", {}).setdefault(str(point), {})
+
+
+def widget_key(patient_id, question, point):
+    return f"{question}-{patient_id}-{point}"
+
+
+# A new answer replaces the previous one; unselecting the answer removes it
+def save_answer(patient_id, question, point):
+    labels = load_labels()
+    answer = st.session_state[widget_key(patient_id, question, point)]
+    if answer is None:
+        answers(labels, patient_id, point).pop(question, None)
     else:
-        scores[patient_id] = score
+        answers(labels, patient_id, point)[question] = answer
     with open(LABEL_RESULTS_FILE, "w", encoding="utf-8") as file:
-        json.dump(scores, file, ensure_ascii=False, indent=2)
+        json.dump(labels, file, ensure_ascii=False, indent=2)
 
 
-def _score_bar(patient_id):
-    label("Évaluation de l'avis du logiciel (0 = erreur ou non pertinent, 5 = très pertinent)")
+def _yes_no(title, patient_id, question, point=None, label_visibility="visible"):
     st.segmented_control(
-        "Note", SCORES, default=load_scores().get(patient_id), key=f"score-{patient_id}",
-        on_change=save_score, args=(patient_id,), label_visibility="collapsed",
+        title, YES_NO, default=answers(load_labels(), patient_id, point).get(question),
+        key=widget_key(patient_id, question, point), on_change=save_answer, args=(patient_id, question, point),
+        label_visibility=label_visibility,
     )
 
 
@@ -113,11 +124,19 @@ def _navigation_bar(records, position, result):
         [1.3, 4.6, 1, 0.7, 1], vertical_alignment="center"
     )
     back_column.button("← Liste des patients", on_click=close_patient, use_container_width=True)
-    title_column.markdown(
-        f'<span class="page-title">Patient {html.escape(patient_id)}</span> &nbsp; '
-        f'<span class="status {code}">{html.escape(state_label)}</span>',
-        unsafe_allow_html=True,
-    )
+    # The pharmacist says if the patient needs a pharmaceutical intervention (IP)
+    with title_column.container(horizontal=True, gap="medium", vertical_alignment="center"):
+        st.markdown(
+            f'<span class="page-title">Patient {html.escape(patient_id)}</span> &nbsp; '
+            f'<span class="status {code}">{html.escape(state_label)}</span>',
+            unsafe_allow_html=True, width="content",
+        )
+        if code not in ("not_analysed", "error"):
+            # Highlighted frame (CSS .st-key-ip-frame)
+            with st.container(key="ip-frame", horizontal=True, gap="small", vertical_alignment="center",
+                              width="content"):
+                st.markdown('<span class="ip-title">IP</span>', unsafe_allow_html=True, width="content")
+                _yes_no("Intervention pharmaceutique (IP)", patient_id, "ip", label_visibility="collapsed")
     if position > 0:
         previous_column.button("‹ Précédent", on_click=open_patient, args=(records[position - 1]["patient"]["id"],),
                                use_container_width=True)
@@ -240,14 +259,15 @@ def _render_opinion(result, patient_id):
     )
     if "points" in result:
         for number, point in enumerate(result["points"]):
-            _point(point, key=f"point-{patient_id}-{number}")
+            _point(point, patient_id, number)
     else:
         _legacy_opinion(result, patient_id)
     st.markdown(f'<div class="muted">Analysé le {result["date"]}</div>', unsafe_allow_html=True)
 
 
-# Opinion point in a frame (CSS st-key-frame-<type>), with its sources at the bottom
-def _point(point, key):
+# Opinion point in a frame (CSS st-key-frame-<type>), with its sources and the pharmacist evaluation at the bottom
+def _point(point, patient_id, number):
+    key = f"point-{patient_id}-{number}"
     type_ = point["type"]
     with st.container(key=f"frame-{type_}-{key}"):
         st.markdown(f'<p class="point {type_}">{html.escape(point["text"])}</p>', unsafe_allow_html=True)
@@ -256,12 +276,15 @@ def _point(point, key):
             if not point["sources"]:
                 st.markdown('<span class="llm-source">connaissances du modèle uniquement : aucune alerte ni référentiel</span>',
                             unsafe_allow_html=True)
-            for number, source in enumerate(point["sources"]):
+            for source_number, source in enumerate(point["sources"]):
                 if source["type"] == "alert":
-                    _alert_link(source["text"], key=f"{key}-{number}")
-                elif st.button(f"{source['source']}, p. {source['page']}", key=f"{key}-{number}", type="tertiary",
+                    _alert_link(source["text"], key=f"{key}-{source_number}")
+                elif st.button(f"{source['source']}, p. {source['page']}", key=f"{key}-{source_number}", type="tertiary",
                                help=f"Ouvrir {source['source']} à la page {source['page']}"):
                     open_document(source["source"], source["page"])
+        with st.container(horizontal=True, gap="medium"):
+            _yes_no("Techniquement correct", patient_id, "technically_correct", number)
+            _yes_no("Cliniquement pertinent", patient_id, "clinically_relevant", number)
 
 
 # Matches "reco_sfd.pdf, page 12", "reco_sfd.pdf p. 12" or "reco_sfd.pdf"
