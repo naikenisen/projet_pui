@@ -1,0 +1,286 @@
+{
+  "patient": {
+    "id": "171552010",
+    "reference_date": "2026-04-07",
+    "age": 87,
+    "height_cm": 176,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "Anticorps anti-HBs (hépatite B)": {
+        "value": 124.56,
+        "unit": "mUI/mL",
+        "test_datetime": "2026-04-04 07:00:00",
+        "request_date": "2026-04-04 07:00:00"
+      },
+      "Charge virale de l'EBV": {
+        "value": 3109,
+        "unit": "copie(s)/mL",
+        "test_datetime": "2026-04-04 07:00:00",
+        "request_date": "2026-04-04 07:00:00"
+      },
+      "Charge virale de l'EBV (log)": {
+        "value": 3.49,
+        "unit": "log",
+        "test_datetime": "2026-04-04 07:00:00",
+        "request_date": "2026-04-04 07:00:00"
+      },
+      "Index sérologique (agent non précisé)": {
+        "value": 0.324,
+        "unit": "S/CO",
+        "test_datetime": "2026-04-04 07:00:00",
+        "request_date": "2026-04-04 07:00:00"
+      },
+      "Index sérologique (agent non précisé) [UA/mL]": {
+        "value": 131.331,
+        "unit": "UA/mL",
+        "test_datetime": "2026-04-04 07:00:00",
+        "request_date": "2026-04-04 07:00:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "LERCANIDIPINE 10 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "OPIUM POUDRE+CAFEINE+PARACETAMOL 10 MG+30 MG+300 MG (LAMALINE), GÉLU",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        },
+        {
+          "dosage": 30,
+          "unit": "mg"
+        },
+        {
+          "dosage": 300,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 gélule(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "LEVODOPA+BENSERAZIDE 100 MG+25 MG (MODOPAR 125 DISPERSIBLE), CPR SÉC PR SUSP BUV",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 25,
+          "unit": "mg"
+        },
+        {
+          "dosage": 100,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 comprimé(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "LEVODOPA+BENSERAZIDE 50 MG+12.5 MG (MODOPAR 62.5), GÉLU",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 50,
+          "unit": "mg"
+        },
+        {
+          "dosage": 12.5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 gélule(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "DULOXETINE 60 MG (LABO ARROW), GÉLU GASTRO-RÉSISTANTE",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 60,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 gélule(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        },
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "COLECALCIFEROL 50 000 IU/2 ML (ZYMAD), SOL BUV, AMP",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "ampoule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1/30",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 50000,
+          "unit": "iu"
+        }
+      ],
+      "dosage_regimen": "1 ampoule(s) per day — matin — 1 day(s) out of 30"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 8,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "8 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "LEVODOPA+BENSERAZIDE 50 MG+12.5 MG (MODOPAR 62.5), GÉLU",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 6,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "6 gélule(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "LEVODOPA+BENSERAZIDE 100 MG+25 MG (MODOPAR 125 DISPERSIBLE), CPR SÉC PR SUSP BUV",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 6,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "6 comprimé(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "DELICAL BOISSON HP HC EDULCOREE NUTRIMENT ",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "bouteille(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "1 bouteille(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "DOLIPRANE 500 MG, GÉLULE",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "gélule(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "ENALAPRIL 20 MG (LABO EG), CPR SÉC",
+      "start_date": "2026-04-04",
+      "end_date": "2026-05-04",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "OPIUM POUDRE+CAFEINE+PARACETAMOL 10 MG+30 MG+300 MG (LAMALINE), GÉLU",
+      "start_date": "2026-04-03",
+      "end_date": "2026-05-03",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 9,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "9 gélule(s) per day — specific times — every day"
+    }
+  ]
+}

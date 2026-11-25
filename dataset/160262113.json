@@ -1,0 +1,52 @@
+{
+  "patient": {
+    "id": "160262113",
+    "reference_date": "2024-10-06",
+    "age": null,
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
+  },
+  "treatments": [
+    {
+      "drug_label": "SPIRAMYCINE 3 M_IU (ROVAMYCINE), CPR",
+      "start_date": "2024-09-27",
+      "end_date": "2024-10-07",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 3,
+          "unit": "10*6.iu"
+        }
+      ],
+      "dosage_regimen": "3 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "AMOXICILLINE+CLAVULANIQUE ACIDE 500 MG+62.5 MG (LABO SANDOZ), AD, CPR",
+      "start_date": "2024-09-27",
+      "end_date": "2024-10-07",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        },
+        {
+          "dosage": 62.5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 comprimé(s) per day — specific times — every day"
+    }
+  ]
+}

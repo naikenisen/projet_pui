@@ -1,0 +1,410 @@
+{
+  "patient": {
+    "id": "186068953",
+    "reference_date": "2025-07-01",
+    "age": 96,
+    "height_cm": 168,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "25-OH-Vitamine D": {
+        "value": 54.2,
+        "unit": "nmol/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "ASAT (sang)": {
+        "value": 20,
+        "unit": "UI/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Albumine (sang)": {
+        "value": 28,
+        "unit": "g/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Albumine (urines)": {
+        "value": 1673,
+        "unit": "mg/L",
+        "test_datetime": "2025-01-19 07:00:00",
+        "request_date": "2025-01-19 07:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 6,
+        "unit": "µmol/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "CO2 total (sang)": {
+        "value": 24,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "CRP (sang)": {
+        "value": 5.5,
+        "unit": "mg/L",
+        "test_datetime": "2025-01-22 08:00:00",
+        "request_date": "2025-01-22 08:00:00"
+      },
+      "Calcium (sang)": {
+        "value": 2.38,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "value": 2.68,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Calcium ionisé (sang veineux)": {
+        "value": 1.2,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Calcium ionisé ajusté à pH 7,4 (sang veineux)": {
+        "value": 1.18,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Capacité totale de fixation de la transferrine (sang)": {
+        "value": 35.2,
+        "unit": "µmol/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Chlore (sang)": {
+        "value": 109,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Coefficient de saturation de la transferrine (sang)": {
+        "value": 36,
+        "unit": "%",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 32.5,
+        "unit": "g/dL",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Créatinine (sang)": {
+        "value": 135,
+        "unit": "µmol/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Créatinine (urines)": {
+        "value": 5741,
+        "unit": "µmol/L",
+        "test_datetime": "2025-01-19 07:00:00",
+        "request_date": "2025-01-19 07:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 31,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Fer (sang)": {
+        "value": 12.7,
+        "unit": "µmol/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Ferritine (sang)": {
+        "value": 550,
+        "unit": "µg/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Fibrinogène": {
+        "value": 6.32,
+        "unit": "g/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Folates - vitamine B9 (sang)": {
+        "value": 6.5,
+        "unit": "ng/mL",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 31,
+        "unit": "UI/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Glycémie (sang)": {
+        "value": 5.29,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "value": 0.95,
+        "unit": "g/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Hématies": {
+        "value": 3.23,
+        "unit": "10^6/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Hématocrite": {
+        "value": 28,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Hémoglobine": {
+        "value": 9.1,
+        "unit": "g/dL",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Hémoglobine glyquée (HbA1c)": {
+        "value": 7.8,
+        "unit": "%",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 12.5,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Leucocytes": {
+        "value": 7.3,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 21.7,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 1.6,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Magnésium (sang)": {
+        "value": 0.69,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Monocytes (%)": {
+        "value": 13.4,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 0.98,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "NT-proBNP (sang)": {
+        "value": 2850,
+        "unit": "pg/mL",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 98,
+        "unit": "UI/L",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      },
+      "Phosphore (sang)": {
+        "value": 1.07,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Plaquettes": {
+        "value": 195,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 0.5,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0.04,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 62.1,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 4.53,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 2.3,
+        "unit": "%",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.17,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Potassium (sang)": {
+        "value": 4.7,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Protéines (urines)": {
+        "value": 3.16,
+        "unit": "g/L",
+        "test_datetime": "2025-01-19 07:00:00",
+        "request_date": "2025-01-19 07:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 61,
+        "unit": "g/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Préalbumine (sang)": {
+        "value": 0.15,
+        "unit": "g/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Rapport albumine/créatinine (urines)": {
+        "value": 291.4,
+        "unit": "mg/mmol",
+        "test_datetime": "2025-01-19 07:00:00",
+        "request_date": "2025-01-19 07:00:00"
+      },
+      "Rapport protéines/créatinine (urines)": {
+        "value": 550,
+        "unit": "mg/mmol",
+        "test_datetime": "2025-01-19 07:00:00",
+        "request_date": "2025-01-19 07:00:00"
+      },
+      "Réticulocytes (%)": {
+        "value": 0.6,
+        "unit": "%",
+        "test_datetime": "2025-01-22 08:00:00",
+        "request_date": "2025-01-22 08:00:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "value": 20.6,
+        "unit": "10^3/mm³",
+        "test_datetime": "2025-01-22 08:00:00",
+        "request_date": "2025-01-22 08:00:00"
+      },
+      "Sodium (sang)": {
+        "value": 140,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "TSH (sang)": {
+        "value": 1.03,
+        "unit": "mUI/L",
+        "test_datetime": "2025-01-18 07:00:00",
+        "request_date": "2025-01-18 07:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 28.2,
+        "unit": "pg",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Transferrine (sang)": {
+        "value": 1.41,
+        "unit": "g/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Urée (sang)": {
+        "value": 8.8,
+        "unit": "mmol/L",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Vitamine B12 (sang)": {
+        "value": 282,
+        "unit": "pg/mL",
+        "test_datetime": "2025-01-23 07:00:00",
+        "request_date": "2025-01-23 07:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 86.7,
+        "unit": "fL",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 11.2,
+        "unit": "fL",
+        "test_datetime": "2025-01-27 05:23:00",
+        "request_date": "2025-01-27 05:23:00"
+      },
+      "pH (sang veineux)": {
+        "value": 7.364,
+        "unit": "[upH]",
+        "test_datetime": "2025-01-20 07:00:00",
+        "request_date": "2025-01-20 07:00:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "COLECALCIFEROL 50 000 IU/2 ML (ZYMAD), SOL BUV, AMP",
+      "start_date": "2025-01-18",
+      "end_date": "2025-07-17",
+      "intake_unit": "ampoule(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1/30",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 50000,
+          "unit": "iu"
+        }
+      ],
+      "dosage_regimen": "1 ampoule(s) per day — matin — 1 day(s) out of 30"
+    }
+  ]
+}

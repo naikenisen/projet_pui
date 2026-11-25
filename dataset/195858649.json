@@ -1,0 +1,331 @@
+{
+  "patient": {
+    "id": "195858649",
+    "reference_date": "2024-05-14",
+    "age": null,
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "ALAT (sang)": {
+        "value": 16,
+        "unit": "UI/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "ASAT (sang)": {
+        "value": 24,
+        "unit": "UI/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Albumine (sang)": {
+        "value": 31,
+        "unit": "g/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 10,
+        "unit": "µmol/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "CO2 total (sang)": {
+        "value": 26,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "CRP (sang)": {
+        "value": 27.6,
+        "unit": "mg/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Calcium (sang)": {
+        "value": 2.24,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "value": 2.46,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Chlore (sang)": {
+        "value": 109,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 34.3,
+        "unit": "g/dL",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Créatinine (sang)": {
+        "value": 69,
+        "unit": "µmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 85,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 24,
+        "unit": "UI/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "value": 5.36,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Hématies": {
+        "value": 4.71,
+        "unit": "10^6/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Hématocrite": {
+        "value": 42.6,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Hémoglobine": {
+        "value": 14.6,
+        "unit": "g/dL",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 12.8,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Leucocytes": {
+        "value": 8.2,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 20,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 1.64,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Monocytes (%)": {
+        "value": 8.8,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 0.72,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Parathormone intacte (PTH 1-84)": {
+        "value": 65.1,
+        "unit": "ng/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 75,
+        "unit": "UI/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Phosphore (sang)": {
+        "value": 1.02,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Plaquettes": {
+        "value": 482,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 0.9,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0.07,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 64.9,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 5.32,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 5.4,
+        "unit": "%",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.44,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Potassium (sang)": {
+        "value": 4.1,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 71,
+        "unit": "g/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Sodium (sang)": {
+        "value": 141,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "TSH (sang)": {
+        "value": 1.07,
+        "unit": "mUI/L",
+        "test_datetime": "2024-04-17 08:00:00",
+        "request_date": "2024-04-17 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 31,
+        "unit": "pg",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Urée (sang)": {
+        "value": 7.3,
+        "unit": "mmol/L",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 90.4,
+        "unit": "fL",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 8.8,
+        "unit": "fL",
+        "test_datetime": "2024-04-23 08:00:00",
+        "request_date": "2024-04-23 08:00:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-04-23",
+      "end_date": "2024-05-23",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 8,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "8 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-04-23",
+      "end_date": "2024-05-23",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        },
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "CLINUTREN ENERGY FIBRE NUTRIMENT",
+      "start_date": "2024-04-23",
+      "end_date": "2024-05-23",
+      "intake_unit": "bouteille(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "1 bouteille(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "start_date": "2024-04-16",
+      "end_date": "2024-05-16",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 6,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "6 gélule(s) per day — matin, midi, soir — every day"
+    }
+  ]
+}

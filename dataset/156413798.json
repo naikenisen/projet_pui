@@ -1,0 +1,343 @@
+{
+  "patient": {
+    "id": "156413798",
+    "reference_date": "2024-10-24",
+    "age": 86,
+    "height_cm": 168,
+    "weight_kg": 66.5,
+    "body_surface_area_m2": 1.756,
+    "bmi_kg_m2": 23.6,
+    "biology": {}
+  },
+  "treatments": [
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        },
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        }
+      ],
+      "dosage_regimen": "2 sachet(s) per day — matin, midi — every day"
+    },
+    {
+      "drug_label": "NORMACOL LAVEMENT, AD, SOL RECT, RÉCIPIENT UNIDOSE 130 ML",
+      "start_date": "2024-10-24",
+      "end_date": "2024-10-25",
+      "intake_unit": "lavement(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 23.66,
+          "unit": "g"
+        }
+      ],
+      "dosage_regimen": "1 lavement(s) per day — matin — frequency 1"
+    },
+    {
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 6,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "6 gélule(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "MAGNESIUM 100 MG (MAG 2), CPR",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 100,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 comprimé(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "ENOXAPARINE 4 000 IU ANTIXA/0.4 ML (LOVENOX), SOL INJ, SRG",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "seringue(s) pré-remplie(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 40,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 seringue(s) pré-remplie(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "TIAPRIDE 100 MG/2 ML (TIAPRIDAL), SOL INJ, AMP",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "milligramme(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 100,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "milligramme(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "MORPHINE 20 MG/ML (ORAMORPH), SOL BUV EN GTTE, FLAC 20 ML",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "goutte(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 400,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "goutte(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "FUROSEMIDE 40 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "milligramme(s)",
+      "quantity_per_day": 60,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 40,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "60 milligramme(s) per day — matin, midi — every day"
+    },
+    {
+      "drug_label": "ACETYLSALICYLIQUE ACIDE 75 MG (KARDEGIC), PDR PR SOL BUV, SACHET",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 75,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 sachet(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "comprimé(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "EZETIMIBE+SIMVASTATINE 10 MG+20 MG (INEGY), CPR",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        },
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "BISOPROLOL 2.5 MG (LABO VIATRIS), CPR SÉC",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 2.5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "NORMACOL LAVEMENT, AD, SOL RECT, RÉCIPIENT UNIDOSE 130 ML",
+      "start_date": "2024-10-24",
+      "end_date": "2024-10-25",
+      "intake_unit": "lavement(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "1",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10.4,
+          "unit": "g"
+        }
+      ],
+      "dosage_regimen": "2 lavement(s) per day — matin — frequency 1"
+    },
+    {
+      "drug_label": "NORMACOL LAVEMENT, AD, SOL RECT, RÉCIPIENT UNIDOSE 130 ML",
+      "start_date": "2024-10-24",
+      "end_date": "2024-10-25",
+      "intake_unit": "lavement(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "1",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "3 lavement(s) per day — matin — frequency 1"
+    },
+    {
+      "drug_label": "ESCITALOPRAM 5 MG (LABO ARROW LAB), CPR",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "PANTOPRAZOLE 20 MG (LABO ARROW GENERIQUES), CPR GASTRO-RÉSISTANT",
+      "start_date": "2024-10-23",
+      "end_date": "2024-11-22",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "ALLOPURINOL 100 MG (LABO ARROW LAB), CPR",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 100,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-10-24",
+      "end_date": "2024-11-23",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 8,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "8 sachet(s) per day — matin, midi — every day"
+    }
+  ]
+}

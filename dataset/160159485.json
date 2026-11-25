@@ -1,0 +1,602 @@
+{
+  "patient": {
+    "id": "160159485",
+    "reference_date": "2026-07-14",
+    "age": null,
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "25-OH-Vitamine D": {
+        "value": 33.9,
+        "unit": "nmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "ALAT (sang)": {
+        "value": 23,
+        "unit": "UI/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "ASAT (sang)": {
+        "value": 17,
+        "unit": "UI/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Albumine (sang)": {
+        "value": 28,
+        "unit": "g/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Bicarbonates réels (sang artériel)": {
+        "value": 14.4,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Bicarbonates standards (sang artériel)": {
+        "value": 16.1,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 4,
+        "unit": "µmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "CO2 total (sang artériel)": {
+        "value": 15.3,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "CO2 total (sang)": {
+        "value": 20,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "CRP (sang)": {
+        "value": 1,
+        "unit": "mg/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Calcium (sang)": {
+        "value": 2.45,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "value": 2.75,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Calcium ionisé (sang artériel)": {
+        "value": 1.38,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Calcium ionisé ajusté à pH 7,4 (sang artériel)": {
+        "value": 1.32,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Capacité totale de fixation de la transferrine (sang)": {
+        "value": 52.2,
+        "unit": "µmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Carboxyhémoglobine (sang artériel)": {
+        "value": 0.7,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Chlore (sang artériel)": {
+        "value": 113,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Chlore (sang)": {
+        "value": 109,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Cholestérol HDL (sang)": {
+        "value": 1.29,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol HDL (sang) [g/L]": {
+        "value": 0.5,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol LDL (sang)": {
+        "value": 1.04,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol LDL (sang) [g/L]": {
+        "value": 0.4,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol non HDL (sang)": {
+        "value": 1.72,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol non HDL (sang) [g/L]": {
+        "value": 0.67,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol total (sang)": {
+        "value": 3.01,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Cholestérol total (sang) [g/L]": {
+        "value": 1.16,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Coefficient de saturation de la transferrine (sang)": {
+        "value": 18,
+        "unit": "%",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 32.2,
+        "unit": "g/dL",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Contenu en O2 (sang artériel)": {
+        "value": 13,
+        "unit": "mL/dL",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Créatinine (sang)": {
+        "value": 213,
+        "unit": "µmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 24,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Déoxyhémoglobine (sang artériel)": {
+        "value": 2.8,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Excès de base (sang artériel)": {
+        "value": -10.4,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Fer (sang)": {
+        "value": 9.4,
+        "unit": "µmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Ferritine (sang)": {
+        "value": 126,
+        "unit": "µg/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Folates - vitamine B9 (sang)": {
+        "value": 2.5,
+        "unit": "ng/mL",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 21,
+        "unit": "UI/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Glycémie (sang)": {
+        "value": 8.1,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "value": 1.46,
+        "unit": "g/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Haptoglobine (sang)": {
+        "value": 1.32,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Hématies": {
+        "value": 2.97,
+        "unit": "10^6/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Hématies [/mL]": {
+        "value": 19000,
+        "unit": "/mL",
+        "test_datetime": "2026-06-07 02:29:00",
+        "request_date": "2026-06-07 00:15:00"
+      },
+      "Hématocrite": {
+        "value": 27.6,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Hématocrite (sang artériel)": {
+        "value": 29.6,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Hémoglobine": {
+        "value": 8.9,
+        "unit": "g/dL",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Hémoglobine (sang artériel)": {
+        "value": 9.6,
+        "unit": "g/dL",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Hémoglobine glyquée (HbA1c)": {
+        "value": 5.7,
+        "unit": "%",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 13.8,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Lactate (sang artériel)": {
+        "value": 2.1,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Leucocytes": {
+        "value": 8.5,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Leucocytes [/mL]": {
+        "value": 12000,
+        "unit": "/mL",
+        "test_datetime": "2026-06-05 10:23:00",
+        "request_date": "2026-06-05 10:23:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 24.8,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 2.1,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Methémoglobine (sang artériel)": {
+        "value": 0.8,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Monocytes (%)": {
+        "value": 6.7,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 0.57,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Oxyhémoglobine (sang artériel)": {
+        "value": 95.7,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "PSA total": {
+        "value": 56.6,
+        "unit": "µg/L",
+        "test_datetime": "2026-06-05 09:54:00",
+        "request_date": "2026-06-05 09:54:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 77,
+        "unit": "UI/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Phosphore (sang)": {
+        "value": 1.28,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Plaquettes": {
+        "value": 410,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 0.6,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0.05,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 64.7,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 5.5,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 3.2,
+        "unit": "%",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.27,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Potassium (sang artériel)": {
+        "value": 4.7,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Potassium (sang)": {
+        "value": 5,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 66,
+        "unit": "g/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Réticulocytes (%)": {
+        "value": 1.23,
+        "unit": "%",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "value": 39.7,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Saturation en O2 (sang artériel)": {
+        "value": 97.2,
+        "unit": "%",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Sodium (sang artériel)": {
+        "value": 134,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Sodium (sang)": {
+        "value": 141,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "TCA patient": {
+        "value": 33.6,
+        "unit": "s",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "TCA ratio patient/témoin": {
+        "value": 1.08,
+        "unit": "[ratio]",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "TCA témoin": {
+        "value": 31,
+        "unit": "s",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "TSH (sang)": {
+        "value": 11.9,
+        "unit": "mUI/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "value": 95,
+        "unit": "%",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Temps de Quick patient": {
+        "value": 14,
+        "unit": "s",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Temps de Quick témoin": {
+        "value": 13.6,
+        "unit": "s",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 30,
+        "unit": "pg",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Transferrine (sang)": {
+        "value": 2.09,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Triglycérides (sang)": {
+        "value": 1.5,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Triglycérides (sang) [g/L]": {
+        "value": 1.33,
+        "unit": "g/L",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Trou anionique (sang artériel)": {
+        "value": 11.9,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "Urée (sang)": {
+        "value": 27.5,
+        "unit": "mmol/L",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Vitamine B12 (sang)": {
+        "value": 498,
+        "unit": "pg/mL",
+        "test_datetime": "2026-06-04 08:00:00",
+        "request_date": "2026-06-04 08:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 92.9,
+        "unit": "fL",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 11.7,
+        "unit": "fL",
+        "test_datetime": "2026-06-15 07:00:00",
+        "request_date": "2026-06-15 07:00:00"
+      },
+      "p50 (sang artériel)": {
+        "value": 28.4,
+        "unit": "mmHg",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "pCO2 (sang artériel)": {
+        "value": 29.6,
+        "unit": "mmHg",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "pH (sang artériel)": {
+        "value": 7.308,
+        "unit": "[upH]",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      },
+      "pO2 (sang artériel)": {
+        "value": 102,
+        "unit": "mmHg",
+        "test_datetime": "2026-06-15 11:07:00",
+        "request_date": "2026-06-15 11:07:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "DARBEPOETINE ALFA 20 UG/0.5 ML (ARANESP), SOL INJ, SRG",
+      "start_date": "2026-06-15",
+      "end_date": "2026-07-14",
+      "intake_unit": "seringue(s) pré-remplie(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "Autre",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "ug"
+        }
+      ],
+      "dosage_regimen": "1 seringue(s) pré-remplie(s) per day — matin — irregular schedule"
+    }
+  ]
+}

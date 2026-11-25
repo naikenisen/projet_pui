@@ -1,0 +1,428 @@
+{
+  "patient": {
+    "id": "169823482",
+    "reference_date": "2024-09-13",
+    "age": 81,
+    "height_cm": 165,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "ASAT (sang)": {
+        "value": 10,
+        "unit": "UI/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Albumine (sang)": {
+        "value": 29,
+        "unit": "g/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 20,
+        "unit": "µmol/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Blastes": {
+        "value": 4,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "CO2 total (sang)": {
+        "value": 30,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "CRP (sang)": {
+        "value": 22,
+        "unit": "mg/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Calcium (sang)": {
+        "value": 2.34,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "value": 2.61,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Chlore (sang)": {
+        "value": 105,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 35.5,
+        "unit": "g/dL",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Créatinine (sang)": {
+        "value": 63,
+        "unit": "µmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 85,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Erythroblastes": {
+        "value": 10.9,
+        "unit": "%",
+        "test_datetime": "2024-09-10 07:27:00",
+        "request_date": "2024-09-10 07:27:00"
+      },
+      "Facteur II": {
+        "value": 67,
+        "unit": "%",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Facteur V": {
+        "value": 66,
+        "unit": "%",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Facteur VII": {
+        "value": 70,
+        "unit": "%",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Fibrinogène": {
+        "value": 3.11,
+        "unit": "g/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 27,
+        "unit": "UI/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Hématies": {
+        "value": 3.31,
+        "unit": "10^6/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Hématocrite": {
+        "value": 27.9,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Hémoglobine": {
+        "value": 9.9,
+        "unit": "g/dL",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 14.6,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Leucocytes": {
+        "value": 1.1,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 57.4,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 0.6,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Monocytes (%)": {
+        "value": 3,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 0.03,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Myélocytes": {
+        "value": 0.9,
+        "unit": "%",
+        "test_datetime": "2024-09-07 10:13:00",
+        "request_date": "2024-09-07 10:13:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 52,
+        "unit": "UI/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Plaquettes": {
+        "value": 27,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 0,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 33.7,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 0.37,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 2,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.02,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Potassium (sang)": {
+        "value": 3.5,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 71,
+        "unit": "g/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Réticulocytes (%)": {
+        "value": 0.77,
+        "unit": "%",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Réticulocytes (valeur absolue)": {
+        "value": 25.5,
+        "unit": "10^3/mm³",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Sodium (sang)": {
+        "value": 142,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "TCA patient": {
+        "value": 43.9,
+        "unit": "s",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "TCA ratio patient/témoin": {
+        "value": 1.42,
+        "unit": "[ratio]",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "TCA témoin": {
+        "value": 31,
+        "unit": "s",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "TSH (sang)": {
+        "value": 2.71,
+        "unit": "mUI/L",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "value": 66,
+        "unit": "%",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Temps de Quick patient": {
+        "value": 17.1,
+        "unit": "s",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Temps de Quick témoin": {
+        "value": 13.1,
+        "unit": "s",
+        "test_datetime": "2024-09-05 05:00:00",
+        "request_date": "2024-09-05 05:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 29.9,
+        "unit": "pg",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Urée (sang)": {
+        "value": 3.7,
+        "unit": "mmol/L",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 84.3,
+        "unit": "fL",
+        "test_datetime": "2024-09-11 07:00:00",
+        "request_date": "2024-09-11 07:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 11.5,
+        "unit": "fL",
+        "test_datetime": "2024-09-10 07:27:00",
+        "request_date": "2024-09-10 07:27:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "FILGRASTIM 48 M_U/0.5 ML (NIVESTIM), SOL INJ OU PR PERF, SRG",
+      "start_date": "2024-09-13",
+      "end_date": "2024-09-18",
+      "intake_unit": "seringue(s) pré-remplie(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Midi",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 48,
+          "unit": "10*6.u"
+        },
+        {
+          "dosage": 480,
+          "unit": "ug"
+        }
+      ],
+      "dosage_regimen": "1 seringue(s) pré-remplie(s) per day — midi — every day"
+    },
+    {
+      "drug_label": "FUROSEMIDE 20 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2024-09-10",
+      "end_date": "2024-09-17",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "LACTULOSE 10 G/15 ML (DUPHALAC), SOL BUV, SACHET",
+      "start_date": "2024-09-07",
+      "end_date": "2024-09-17",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 4,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "g"
+        }
+      ],
+      "dosage_regimen": "4 sachet(s) per day — matin, midi — every day"
+    },
+    {
+      "drug_label": "TRANSFUSION - PLAQUETTES",
+      "start_date": "2024-09-12",
+      "end_date": "2024-09-13",
+      "intake_unit": "poche(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "1",
+      "intake_times": "Midi",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "1 poche(s) per day — midi — frequency 1"
+    },
+    {
+      "drug_label": "AMPHOTERICINE B 10% (FUNGIZONE), SUSP BUV, FLAC 40 ML",
+      "start_date": "2024-09-09",
+      "end_date": "2024-09-16",
+      "intake_unit": "cuillerée(s) à café",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 4000,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 cuillerée(s) à café per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "POTASSIUM CHLORURE 600 MG (DIFFU-K), GÉLU",
+      "start_date": "2024-09-12",
+      "end_date": "2024-09-17",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 4,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 600,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "4 gélule(s) per day — matin, soir — every day"
+    }
+  ]
+}

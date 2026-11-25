@@ -1,0 +1,191 @@
+{
+  "patient": {
+    "id": "176026618",
+    "reference_date": "2024-01-03",
+    "age": null,
+    "height_cm": null,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {}
+  },
+  "treatments": [
+    {
+      "drug_label": "APIXABAN 5 MG (ELIQUIS), CPR",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "CALCIUM+COLECALCIFEROL 500 MG+400 IU (CALCIDOSE VITAMINE D3), PDR PR SOL BUV, SACHET",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 sachet(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "CALCIUM+COLECALCIFEROL 500 MG+400 IU (CALCIDOSE VITAMINE D3), PDR PR SOL BUV, SACHET",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 4,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 400,
+          "unit": "iu"
+        }
+      ],
+      "dosage_regimen": "4 sachet(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        },
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "MEMANTINE 10 MG (LABO ARROW LAB), CPR SÉC",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "BISOPROLOL 5 MG (LABO VIATRIS), CPR SÉC",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 4,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "4 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "LEVOTHYROXINE 50 UG (LEVOTHYROX), CPR SÉC",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 50,
+          "unit": "ug"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "PRAVASTATINE 20 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "MIRTAZAPINE 15 MG (LABO BLUEFISH), CPR ORODISP",
+      "start_date": "2024-01-03",
+      "end_date": "2024-01-03",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1.5,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 15,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1.5 comprimé(s) per day — soir — every day"
+    }
+  ]
+}

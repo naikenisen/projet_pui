@@ -1,0 +1,566 @@
+{
+  "patient": {
+    "id": "201515540",
+    "reference_date": "2026-04-28",
+    "age": 79,
+    "height_cm": 160,
+    "weight_kg": null,
+    "body_surface_area_m2": null,
+    "bmi_kg_m2": null,
+    "biology": {
+      "ALAT (sang)": {
+        "value": 28,
+        "unit": "UI/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "ASAT (sang)": {
+        "value": 45,
+        "unit": "UI/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Albumine (sang)": {
+        "value": 28,
+        "unit": "g/L",
+        "test_datetime": "2026-04-24 07:00:00",
+        "request_date": "2026-04-24 07:00:00"
+      },
+      "Bilirubine totale (sang)": {
+        "value": 8,
+        "unit": "µmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "CO2 total (sang)": {
+        "value": 23,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "CRP (sang)": {
+        "value": 63.6,
+        "unit": "mg/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Calcium (sang)": {
+        "value": 2.34,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-24 07:00:00",
+        "request_date": "2026-04-24 07:00:00"
+      },
+      "Calcium corrigé selon l'albumine": {
+        "value": 2.64,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-24 07:00:00",
+        "request_date": "2026-04-24 07:00:00"
+      },
+      "Chlore (sang)": {
+        "value": 105,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Concentration corpusculaire moyenne en hémoglobine (CCMH)": {
+        "value": 33,
+        "unit": "g/dL",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Créatinine (sang)": {
+        "value": 44,
+        "unit": "µmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "DFG estimé (CKD-EPI)": {
+        "value": 95,
+        "unit": "mL/min/1,73 m²",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Fibrinogène": {
+        "value": 6.44,
+        "unit": "g/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Gamma-GT (sang)": {
+        "value": 211,
+        "unit": "UI/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Glycémie (sang)": {
+        "value": 10.28,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Glycémie (sang) [g/L]": {
+        "value": 1.85,
+        "unit": "g/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Hématies": {
+        "value": 4.08,
+        "unit": "10^6/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Hématies [/mL]": {
+        "value": 26000,
+        "unit": "/mL",
+        "test_datetime": "2026-04-25 19:00:00",
+        "request_date": "2026-04-25 19:00:00"
+      },
+      "Hématocrite": {
+        "value": 37.9,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Hémoglobine": {
+        "value": 12.5,
+        "unit": "g/dL",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Indice de distribution des hématies (IDR)": {
+        "value": 13.6,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Leucocytes": {
+        "value": 5.9,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Leucocytes [/mL]": {
+        "value": 5000,
+        "unit": "/mL",
+        "test_datetime": "2026-04-25 19:00:00",
+        "request_date": "2026-04-25 19:00:00"
+      },
+      "Lymphocytes (%)": {
+        "value": 20.4,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Lymphocytes (valeur absolue)": {
+        "value": 1.2,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Monocytes (%)": {
+        "value": 7.9,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Monocytes (valeur absolue)": {
+        "value": 0.47,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "NT-proBNP (sang)": {
+        "value": 57,
+        "unit": "pg/mL",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Phosphatases alcalines (sang)": {
+        "value": 207,
+        "unit": "UI/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Plaquettes": {
+        "value": 149,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires basophiles (%)": {
+        "value": 0.8,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires basophiles (valeur absolue)": {
+        "value": 0.05,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires neutrophiles (%)": {
+        "value": 67.9,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires neutrophiles (valeur absolue)": {
+        "value": 4.01,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires éosinophiles (%)": {
+        "value": 3,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Polynucléaires éosinophiles (valeur absolue)": {
+        "value": 0.18,
+        "unit": "10^3/mm³",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Potassium (sang)": {
+        "value": 4.3,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Protéines totales (sang)": {
+        "value": 76,
+        "unit": "g/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Sodium (sang)": {
+        "value": 141,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "TCA patient": {
+        "value": 29.5,
+        "unit": "s",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "TCA ratio patient/témoin": {
+        "value": 0.95,
+        "unit": "[ratio]",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "TCA témoin": {
+        "value": 31,
+        "unit": "s",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Taux de prothrombine (TP)": {
+        "value": 98,
+        "unit": "%",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Temps de Quick patient": {
+        "value": 13.8,
+        "unit": "s",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Temps de Quick témoin": {
+        "value": 13.6,
+        "unit": "s",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Teneur corpusculaire moyenne en hémoglobine (TCMH)": {
+        "value": 30.6,
+        "unit": "pg",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Urée (sang)": {
+        "value": 4.9,
+        "unit": "mmol/L",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Volume globulaire moyen (VGM)": {
+        "value": 92.9,
+        "unit": "fL",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      },
+      "Volume plaquettaire moyen (VMP)": {
+        "value": 10.1,
+        "unit": "fL",
+        "test_datetime": "2026-04-27 08:00:00",
+        "request_date": "2026-04-27 08:00:00"
+      }
+    }
+  },
+  "treatments": [
+    {
+      "drug_label": "PARACETAMOL 500 MG (DOLIPRANE), GÉLU",
+      "start_date": "2026-04-27",
+      "end_date": "2026-05-04",
+      "intake_unit": "gélule(s)",
+      "quantity_per_day": 6,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 500,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "6 gélule(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 46.6,
+          "unit": "mg"
+        },
+        {
+          "dosage": 13.125,
+          "unit": "g"
+        },
+        {
+          "dosage": 350.7,
+          "unit": "mg"
+        },
+        {
+          "dosage": 178.5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "ECONAZOLE 1% (LABO ARROW), CRÈME, TUBE 30 G",
+      "start_date": "2026-04-26",
+      "end_date": "2026-05-10",
+      "intake_unit": "application(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 0.3,
+          "unit": "g"
+        }
+      ],
+      "dosage_regimen": "1 application(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "OXAZEPAM 10 MG (SERESTA), CPR",
+      "start_date": "2026-04-22",
+      "end_date": "2026-05-12",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": null,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": true,
+      "active_ingredients": [
+        {
+          "dosage": 10,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "comprimé(s) as needed — specific times — every day"
+    },
+    {
+      "drug_label": "SITAGLIPTINE 50 MG (LABO VIATRIS), CPR",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 50,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "AMOXICILLINE+CLAVULANIQUE ACIDE 1 G+125 MG (LABO SANDOZ), AD, PDR PR SUSP BUV, SACHET",
+      "start_date": "2026-04-25",
+      "end_date": "2026-04-29",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Midi.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 1000,
+          "unit": "mg"
+        },
+        {
+          "dosage": 1,
+          "unit": "g"
+        },
+        {
+          "dosage": 125,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 sachet(s) per day — matin, midi, soir — every day"
+    },
+    {
+      "drug_label": "MIRTAZAPINE 15 MG (LABO ARROW), CPR ORODISP",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 15,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — soir — every day"
+    },
+    {
+      "drug_label": "AMOXICILLINE+CLAVULANIQUE ACIDE 1 G+200 MG (LABO SANDOZ), PDR PR SOL INJ OU PR PERF, IV",
+      "start_date": "2026-04-23",
+      "end_date": "2026-04-30",
+      "intake_unit": "gramme(s)",
+      "quantity_per_day": 3,
+      "day_frequency": "TLJ",
+      "intake_times": "Ttes les 8 h",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 1,
+          "unit": "g"
+        },
+        {
+          "dosage": 200,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "3 gramme(s) per day — ttes les 8 h — every day"
+    },
+    {
+      "drug_label": "METFORMINE CHLORHYDRATE 1 000 MG (LABO ARROW LAB), CPR SÉC",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 1000,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "INSULINE ASPARTE 100 U/ML (LABO SANOFI), SOL INJ, FLAC 10 ML",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-23",
+      "intake_unit": "unité(s) internationale(s)",
+      "quantity_per_day": 0,
+      "day_frequency": "TLJ",
+      "intake_times": "Specifique",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 1000,
+          "unit": "u"
+        }
+      ],
+      "dosage_regimen": "0 unité(s) internationale(s) per day — specific times — every day"
+    },
+    {
+      "drug_label": "PAROXETINE 20 MG (LABO ARROW), CPR SÉC",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 2,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin.Soir",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 20,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "2 comprimé(s) per day — matin, soir — every day"
+    },
+    {
+      "drug_label": "INSULINE GLARGINE 100 U/ML (ABASAGLAR), SOL INJ, STYLO 3 ML (KWIKPEN)",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "unité(s) internationale(s)",
+      "quantity_per_day": 44,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 300,
+          "unit": "u"
+        }
+      ],
+      "dosage_regimen": "44 unité(s) internationale(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "MOVICOL, PDR PR SOL BUV, SACHET",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "sachet(s)",
+      "quantity_per_day": 8,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [],
+      "dosage_regimen": "8 sachet(s) per day — matin — every day"
+    },
+    {
+      "drug_label": "BISOPROLOL 2.5 MG (LABO VIATRIS), CPR SÉC",
+      "start_date": "2026-04-23",
+      "end_date": "2026-05-13",
+      "intake_unit": "comprimé(s)",
+      "quantity_per_day": 1,
+      "day_frequency": "TLJ",
+      "intake_times": "Matin",
+      "as_needed": false,
+      "active_ingredients": [
+        {
+          "dosage": 2.5,
+          "unit": "mg"
+        }
+      ],
+      "dosage_regimen": "1 comprimé(s) per day — matin — every day"
+    }
+  ]
+}
