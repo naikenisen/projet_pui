@@ -3,6 +3,8 @@
 [] add all new pdf to the chromaDB
 [] use the PTB computer to add all RCP to the chromaDB
 [] make a run on 300 patients
+[] catégories à ajouter à l'interface pour chaque patients : IP oui ou non
+[] catégories à ajouter pour chaque alerts : techniquement corecte oui / non, cliniqumeent pertinent oui/non
 
 # optional
 [] read kbs.py and remove unecessary functions
