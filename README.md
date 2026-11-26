@@ -84,6 +84,12 @@ Sharing a collection assumes compatible embedding dimensions, preprocessing and 
 
 ## FRONTEND
 
+Launch Streamlit with inference options after the `--` separator:
+
+```bash
+streamlit run app.py -- --local --model Qwen/Qwen2.5-1.5B-Instruct --embedding-model Qwen/Qwen3-Embedding-0.6B
+```
+
 ```
 # The frontend code is organized in pages, one script for each pages of the app
 

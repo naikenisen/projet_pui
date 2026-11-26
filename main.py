@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from datetime import datetime
+from threading import Lock
 
 from generation import analyse_patient
 from inference import InferenceBackend, add_inference_arguments, backend_from_args
@@ -11,6 +12,7 @@ from kbs import check_rules
 from retrieval import retrieve_context
 
 RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "inference_results.json")
+ANALYSIS_LOCK = Lock()
 
 
 def load_results():
@@ -38,6 +40,22 @@ def analyse(record, backend: InferenceBackend | None = None):
     return {**result, "alerts": alerts, "date": date}
 
 
+def analyse_folder(folder, backend: InferenceBackend | None = None, *, overwrite=False):
+    backend = backend if backend is not None else InferenceBackend()
+    # Streamlit sessions share the results file and mutable cached CLIPS environments.
+    with ANALYSIS_LOCK:
+        results = {} if overwrite else load_results()
+        for file_name in sorted(os.listdir(folder)):
+            with open(os.path.join(folder, file_name), encoding="utf-8") as file:
+                record = json.load(file)
+            patient_id = record["patient"]["id"]
+            if patient_id in results and "error" not in results[patient_id]:
+                continue
+            results[patient_id] = analyse(record, backend=backend)
+            save_results(results)
+            yield patient_id
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     add_inference_arguments(parser)
@@ -48,13 +66,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     backend = backend_from_args(args)
 
-    results = {} if args.all else load_results()
-    for file_name in sorted(os.listdir(args.folder)):
-        with open(os.path.join(args.folder, file_name), encoding="utf-8") as file:
-            record = json.load(file)
-        patient_id = record["patient"]["id"]
-        if patient_id in results and "error" not in results[patient_id]:
-            continue
-        results[patient_id] = analyse(record, backend=backend)
-        save_results(results)
+    for patient_id in analyse_folder(args.folder, backend=backend, overwrite=args.all):
         print(f"Patient {patient_id} analysed and result saved in inference_results.json")

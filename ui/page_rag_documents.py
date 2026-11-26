@@ -19,7 +19,7 @@ def render_page():
 # {PDF name: number of passages} of the documents stored in ChromaDB
 def indexed_documents():
     counts = {}
-    for meta in get_collection().get(include=["metadatas"])["metadatas"]:
+    for meta in get_collection(backend=st.session_state.backend).get(include=["metadatas"])["metadatas"]:
         counts[meta["source"]] = counts.get(meta["source"], 0) + 1
     return dict(sorted(counts.items()))
 
@@ -98,7 +98,7 @@ def _not_indexed(indexed):
         name_column.markdown(f"**{name}**")
         if button_column.button("Indexer", key=f"index-{name}", use_container_width=True):
             with st.spinner(f"Indexation de {name} en cours..."):
-                count = index_pdf(document_path(name))
+                count = index_pdf(document_path(name), backend=st.session_state.backend)
             st.toast(f"{name} : {count} passages indexés")
             st.rerun()
 
@@ -115,7 +115,7 @@ def _add_guideline():
         for file in files:
             with st.spinner(f"Indexation de {file.name} en cours..."):
                 try:
-                    count = index_pdf(save_pdf(file.name, file.getvalue()))
+                    count = index_pdf(save_pdf(file.name, file.getvalue()), backend=st.session_state.backend)
                     st.toast(f"{file.name} : {count} passages indexés")
                 except Exception as error:
                     st.error(f"{file.name} : {error}")

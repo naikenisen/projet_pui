@@ -1,5 +1,6 @@
 # Entry point of the Streamlit interface: streamlit run app.py
 
+import argparse
 import os
 
 # The patients folder is relative to the project root
@@ -8,10 +9,18 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 
 from ui import common, page_analysis_results, page_kbs_rules, page_rag_documents
+from inference import InferenceBackend, add_inference_arguments, backend_from_args
 
 common.configure_page()
 common.inject_style()
 common.render_app_bar()
+
+parser = argparse.ArgumentParser()
+add_inference_arguments(parser)
+args = parser.parse_args()
+backend = backend_from_args(args)
+
+st.session_state.backend = backend
 
 # Keeps the patient list filter and search when switching pages
 for key in ("filter", "search"):

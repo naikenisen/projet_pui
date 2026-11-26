@@ -10,8 +10,7 @@ import pymupdf4llm
 from inference import EMBEDDING_MODEL, InferenceBackend, add_inference_arguments, backend_from_args
 
 RAG_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag")
-#PDF_FOLDER = os.path.join(RAG_FOLDER, "RAG_Docs")
-PDF_FOLDER = os.path.join(RAG_FOLDER, "RAG_Docs_testing")
+PDF_FOLDER = os.path.join(RAG_FOLDER, "RAG_Docs")
 CHROMA_DIR = os.path.join(RAG_FOLDER, "chroma_db")
 COLLECTION_NAME = "rag_docs"
 
