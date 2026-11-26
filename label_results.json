@@ -1,310 +1,1107 @@
 {
   "100539781": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "104304501": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "108435049": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "113022218": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "113106436": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "113743623": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "114552729": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "115364479": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "116817628": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "116891652": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "118055590": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "118359619": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "119851123": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "125459954": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "126854832": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "127237850": {
-    "points": {},
+    "points": {
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "127409494": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "128377603": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "134471519": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "135630253": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "136570685": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "138896083": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "144428245": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "148974945": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "150895265": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "151694462": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "155019326": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "156413798": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "156478005": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "157440791": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "162728112": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "164182938": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "167888811": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "168734834": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "171409871": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "171552010": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "171591209": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "175534160": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "176026618": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "178412565": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "180353252": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "181571374": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "182356818": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "183948105": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "185544890": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "3": {
+        "clinically_relevant": "Non",
+        "technically_correct": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "190996512": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "194041738": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "199105006": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "203453983": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "204574231": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "204626582": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "204931287": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "209375201": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "210179601": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "210599126": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "211751962": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "212660021": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "213490222": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "215357071": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "218444016": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "225923609": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "226932729": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Oui"
   },
   "230295235": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "231060723": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "234223705": {
-    "points": {},
+    "points": {
+      "3": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "100133744": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "101881762": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "2": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "104246548": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "2": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "114512205": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "114900931": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "114913220": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "116994228": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "119365514": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Non"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Non"
   },
   "119677548": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "121703530": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Non",
+        "clinically_relevant": "Non"
+      }
+    },
     "ip": "Non"
   },
   "124172768": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      },
+      "1": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   },
   "125646434": {
-    "points": {},
+    "points": {
+      "0": {
+        "technically_correct": "Oui",
+        "clinically_relevant": "Oui"
+      }
+    },
     "ip": "Oui"
   }
 }
