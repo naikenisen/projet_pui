@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import math
 import os
 import re
 
@@ -212,6 +213,39 @@ def read_response(response, alerts, passages, line_count):
     return points
 
 
+# Opening of the value of a "type" key in the LLM response: "type": "
+TYPE_VALUE_PATTERN = re.compile(r'"type"\s*:\s*"')
+
+
+# Probability that the LLM writes "intervention" as the type of a point, read on the first token of the value;
+# the highest one among the points is kept. None if the provider returned no logprobs.
+def intervention_probability(logprobs):
+    if not logprobs or not logprobs.content:
+        return None
+    tokens = logprobs.content
+    token_starts, position = [], 0
+    for token in tokens:
+        token_starts.append(position)
+        position += len(token.token)
+    text = "".join(token.token for token in tokens)
+
+    probabilities = []
+    for found in TYPE_VALUE_PATTERN.finditer(text):
+        value_start = found.end()
+        if value_start >= len(text):
+            continue
+        # Token that contains the first letter of the value, and its part before this letter (e.g. ' "')
+        index = max(i for i, start in enumerate(token_starts) if start <= value_start)
+        prefix = text[token_starts[index]:value_start]
+        probability = 0
+        for candidate in tokens[index].top_logprobs:
+            value = candidate.token[len(prefix):].lower() if candidate.token.startswith(prefix) else ""
+            if value and (value.startswith("intervention") or "intervention".startswith(value)):
+                probability += math.exp(candidate.logprob)
+        probabilities.append(probability)
+    return max(probabilities, default=None)
+
+
 def source_label(source):
     if source["type"] == "alert":
         return "KBS: " + source["text"]
@@ -238,7 +272,12 @@ def analyse_patient(record, passages=(), alerts=()):
         max_tokens=12000 if REASONING else 2500,
         temperature=0,
         response_format={"type": "json_object"},
-        extra_body={"reasoning": {"enabled": REASONING}},
+        logprobs=True,
+        top_logprobs=20,
+        # Only the providers that support all the parameters (some ignore logprobs);
+        # Darkbloom (fp4) cuts the responses
+        extra_body={"reasoning": {"enabled": REASONING},
+                    "provider": {"require_parameters": True, "ignore": ["Darkbloom"]}},
     )
     response = completion.choices[0].message.content
 
@@ -255,6 +294,7 @@ def analyse_patient(record, passages=(), alerts=()):
                 sources.append(source_label(source))
     return {
         "decision": DECISION_BY_TYPE[POINT_TYPES[most_severe]],
+        "intervention_probability": intervention_probability(completion.choices[0].logprobs),
         "points": points,
         "reasoning": str(response.get("reasoning", "")).strip(),
         "justification": "\n".join("- " + point["text"] for point in points),
