@@ -5,15 +5,9 @@ import json
 import os
 import re
 
-from dotenv import load_dotenv
-from openai import OpenAI
-
+from inference import InferenceBackend, add_inference_arguments, backend_from_args
 from kbs import line_details, load_patient, normalize
 
-load_dotenv()
-client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
-
-MODEL = "qwen/qwen3.6-35b-a3b"
 # Reasoning: much more consistent opinions, but ~40 s per patient instead of 10 s
 REASONING = True
 
@@ -219,7 +213,8 @@ def source_label(source):
 
 
 # The decision is the one of the most severe point, to stay consistent with the points
-def analyse_patient(record, passages=(), alerts=()):
+def analyse_patient(record, passages=(), alerts=(), backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
     alerts, passages = list(alerts), list(passages)
     message = json.dumps(summarize_record(record), ensure_ascii=False, indent=1)
     if alerts:
@@ -229,18 +224,12 @@ def analyse_patient(record, passages=(), alerts=()):
             f"[R{i}] ({p['source']}, page {p['page']})\n{p['text']}" for i, p in enumerate(passages, start=1)
         )
 
-    completion = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": message},
-        ],
+    response = backend.generate(
+        SYSTEM_PROMPT, message,
         max_tokens=12000 if REASONING else 2500,
-        temperature=0,
-        response_format={"type": "json_object"},
-        extra_body={"reasoning": {"enabled": REASONING}},
+        reasoning=REASONING,
+        json_mode=True,
     )
-    response = completion.choices[0].message.content
 
     response = json.loads(response[response.find("{"):response.rfind("}") + 1])
     points = read_response(response, alerts, passages, len(record["treatments"]))
@@ -264,10 +253,11 @@ def analyse_patient(record, passages=(), alerts=()):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    add_inference_arguments(parser)
     parser.add_argument("--folder", required=True, help="folder containing the patient JSON files")
     parser.add_argument("--patient-id", required=True, help="patient number (JSON file name without .json)")
     args = parser.parse_args()
 
-    result = analyse_patient(load_patient(args.folder, args.patient_id))
+    result = analyse_patient(load_patient(args.folder, args.patient_id), backend=backend_from_args(args))
     print(result["decision"])
     print(result["justification"])

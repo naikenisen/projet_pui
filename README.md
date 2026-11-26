@@ -5,10 +5,14 @@ clinical guidelines (RAG) and a large language model (LLM).
 
 **Online demo:** https://projetpui.streamlit.app/
 
-To run locally, a  `.env` file at the project root including you API key for OpenRouter is required :
+Remote inference requires an OpenRouter API key, set in the environment or in a `.env` file at the project root:
 ```
 OPENROUTER_API_KEY=your_key
 ```
+
+The OpenRouter client is shared and created only when a remote request is needed. Importing the modules or
+displaying CLI help does not require a key; a remote request without one raises an explicit error.
+Use `--local` for Hugging Face inference without an OpenRouter key (see below).
 
 ## BACKEND
 
@@ -46,6 +50,30 @@ To have the LLM draft a personalized rule (it is displayed, then saved after con
 ```bash
 python3 create_rule.py --folder dataset --request "Alert if metformin with an eGFR < 30 mL/min"
 ```
+
+### Local inference (Hugging Face)
+
+Install the optional local dependencies in your Python environment.
+
+Without `--local`, the existing OpenRouter models and behavior remain the default. With `--local`, the defaults
+are their Hugging Face equivalents: `Qwen/Qwen3.6-35B-A3B` for generation and `Qwen/Qwen3-Embedding-8B` for embeddings.
+Default model IDs are defined in [inference.py](./inference.py).
+Override them explicitly if you want to try other models with `--embedding-model` and `--model`:
+
+
+```bash
+python3 indexing.py --local --embedding-model Qwen/Qwen3-Embedding-0.6B
+
+python3 main.py --local --remaining --model Qwen/Qwen2.5-1.5B-Instruct --embedding-model Qwen/Qwen3-Embedding-0.6B
+
+python3 generation.py --local --model Qwen/Qwen2.5-1.5B-Instruct --folder dataset --patient-id 100133744
+```
+
+Models are downloaded from Hugging Face on first use and cached on disk. 
+
+Chroma collections are identified by embedding model, independently of local or remote inference.
+The default 8B model keeps the existing `rag_docs` collection.
+Sharing a collection assumes compatible embedding dimensions, preprocessing and normalization.
 
 ### Details of the pipeline
 
