@@ -8,6 +8,7 @@ from datetime import datetime
 
 from generation import analyse_patient
 from kbs import check_rules
+from rcp import rcp_excerpts
 from retrieval import retrieve_context
 
 RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "inference_results.json")
@@ -33,7 +34,7 @@ def analyse(record):
     try:
         alerts = check_rules(record)
         passages = retrieve_context(record)
-        result = analyse_patient(record, passages, alerts)
+        result = analyse_patient(record, passages, alerts, rcp_excerpts(record))
     except Exception as error:
         return {"error": f"{type(error).__name__}: {error}", "date": date}
     return {**result, "alerts": alerts, "date": date}

@@ -22,6 +22,7 @@ OPENROUTER_API_KEY=your_key
 | `retrieval.py` | Searches the vector database for the passages useful for a patient |
 | `kbs.py` | Knowledge-Based System (KBS): turns a patient into facts and runs the CLIPS rules on them |
 | `create_rule.py` | Drafts a personalized CLIPS rule with the LLM from a pharmacist request, checks it and saves it |
+| `rcp.py` | Finds the ANSM RCP of each ongoing drug (`ressources/rag/RCP/markdown/`) and extracts its dosage (4.2) and contraindications (4.3) sections |
 | `generation.py` | Analyses a patient with the LLM along with retrieved passages and KBS results |
 | `main.py` | Launch retrieval then KBS then generation|
 
@@ -40,6 +41,7 @@ python3 indexing.py           # index new docs from ressources/rag/RAG_Docs/ to 
 # Run inference on one individual patient
 python3 retrieval.py  --folder dataset --patient-id 100133744   # retreive relevant passages
 python3 kbs.py        --folder dataset --patient-id 100133744   # detected alerts
+python3 rcp.py        --folder dataset --patient-id 100133744   # RCP found for each prescription line
 python3 generation.py --folder dataset --patient-id 100133744   # decision + justification (no KBS/RAG)
 ```
 To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
