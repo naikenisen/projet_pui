@@ -67,10 +67,6 @@ python3 generation.py --local --folder dataset --patient-id 100133744
 
 Models are downloaded from Hugging Face on first use and cached on disk. 
 
-Chroma collections are identified by embedding model, independently of local or remote inference.
-The default 8B model keeps the existing `rag_docs` collection.
-Sharing a collection assumes compatible embedding dimensions, preprocessing and normalization.
-
 ### Details of the pipeline
 
 - 📄 [Figure 2 – RAG](paper/figures_en/figure_2.pdf)
