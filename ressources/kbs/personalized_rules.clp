@@ -32,9 +32,3 @@
   (dose-per-kg (line ?l) (mg ?mg&:(< ?mg 10)))
   =>
   (assert (alert (message "Daptomycine : la posologie recommandée est désormais de 10 mg/kg/jour ; la dose prescrite est inférieure (ex : 8 mg/kg/jour), à réévaluer et adapter au poids du patient") (lines ?l))))
-
-; Movicol : une dose élevée n'est pas un motif d'IP
-(defrule movicol-dose
-  (prescribed (line ?l) (drug "movicol"))
-  =>
-  (assert (alert (message "Movicol : une dose totale élevée (plusieurs sachets par jour ou sur plusieurs lignes) n'est pas pertinente cliniquement, ne pas proposer d'intervention pharmaceutique sur ce seul motif") (lines ?l))))
