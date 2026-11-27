@@ -173,7 +173,7 @@ def _patient_record(record, result, ranges):
         label(f"Prescription ({len(treatments)} lignes){legend}")
         with st.container(key="zone-prescription", border=False):
             prescription_rows, prescription_classes = prescription_table(treatments, to_modify)
-            _table(["N°", "Médicament", "Posologie", "Début", "Fin"], prescription_rows,
+            _table(["N°", "Médicament", "Posologie", "Commentaire", "Début", "Fin"], prescription_rows,
                    row_classes=prescription_classes, short_columns=("N°", "Début", "Fin"))
         label("Avis pharmaceutique")
         with st.container(key="zone-opinion", border=False):
@@ -184,15 +184,20 @@ def _patient_record(record, result, ranges):
 LOW, HIGH, NORMAL = "Bas", "Élevé", "Normal"
 
 
+SEX_LABELS = {"F": "Femme", "M": "Homme"}
+
+
 def patient_profile(patient):
     parts = []
+    if patient.get("sex") in SEX_LABELS:
+        parts.append(SEX_LABELS[patient["sex"]])
     if patient.get("age") is not None:
         parts.append(f"{patient['age']} ans")
     for key, unit in (("weight_kg", "kg"), ("height_cm", "cm"), ("bmi_kg_m2", "kg/m² (IMC)"),
                       ("body_surface_area_m2", "m² (SC)")):
         if patient.get(key) is not None:
             parts.append(f"{patient[key]} {unit}")
-    return " · ".join(parts) or "Âge, poids et taille non disponibles"
+    return " · ".join(parts) or "Sexe, âge, poids et taille non disponibles"
 
 
 # Same interpretation as the one sent to the LLM; "" without reference range
@@ -221,8 +226,8 @@ def lines_to_modify(result):
 
 # (rows, classes) of the prescription table: lines to modify in red
 def prescription_table(treatments, to_modify):
-    rows = [[f"L{number}", t.get("drug_label", ""), t.get("dosage_regimen", ""), t.get("start_date") or "",
-             t.get("end_date") or ""] for number, t in enumerate(treatments, start=1)]
+    rows = [[f"L{number}", t.get("drug_label", ""), t.get("dosage_regimen", ""), t.get("prescription_comment") or "",
+             t.get("start_date") or "", t.get("end_date") or ""] for number, t in enumerate(treatments, start=1)]
     classes = ["abnormal" if number in to_modify else "" for number in range(1, len(treatments) + 1)]
     return rows, classes
 

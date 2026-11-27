@@ -11,7 +11,7 @@ HOSPITAL_NAME = "CHU Dijon Bourgogne"
 SOFTWARE_NAME = "Logiciel d'analyse pharmaceutique assistée par IA"
 STYLE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "style.css")
 # One JSON file per patient, relative to the project root
-PATIENTS_FOLDER = "dataset"
+PATIENTS_FOLDER = "full_dataset"
 
 
 # Must be the first Streamlit call of the script

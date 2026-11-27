@@ -7,10 +7,6 @@ from openai.types.chat import ChatCompletionMessageParam
 
 from dotenv import load_dotenv
 
-import torch
-from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
-from sentence_transformers import SentenceTransformer
-
 MODEL = "qwen/qwen3.6-35b-a3b"
 EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"
 
@@ -22,8 +18,12 @@ def get_openrouter_client() -> OpenAI:
         raise ValueError("OPENROUTER_API_KEY is required for remote inference.")
     return OpenAI(base_url="https://openrouter.ai/api/v1", api_key=api_key)
 
+# torch and transformers are only imported for local inference: OpenRouter does not need them
 @lru_cache(maxsize=1)
 def load_local_generator(model_id: str):
+    import torch
+    from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
+
     config = AutoConfig.from_pretrained(model_id)
     model_class = AutoModelForImageTextToText if hasattr(config, "vision_config") else AutoModelForCausalLM
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -36,6 +36,9 @@ def load_local_generator(model_id: str):
 
 @lru_cache(maxsize=1)
 def load_local_embedder(model_id: str):
+    import torch
+    from sentence_transformers import SentenceTransformer
+
     return SentenceTransformer(model_id, device="cuda" if torch.cuda.is_available() else "cpu")
 
 

@@ -22,13 +22,16 @@ in French. Write "reasoning" and the "text" of the points in French; keep the JS
 English.
 
 Record content:
-- "reference_date" is the date on which the prescription is analysed. Missing data is not available.
+- The record gives the patient's sex ("F" or "M"), age, weight and height when known, and their latest laboratory
+  values. When present, "reference_date" is the date on which the prescription is analysed; otherwise the lines are
+  the current prescription. Missing data is not available.
 - Each laboratory value is given with its unit and date; “(low)” or “(high)” means that it is outside the
   hospital's reference range.
 - Each treatment line has an identifier (L1, L2...), a label (product, strength, form), a dosage regimen,
   dates, a status on the reference date (“ongoing”, “ended”, “upcoming”) and, when it can be computed,
   "dose_per_administration_day" (already computed: use it as is, do not redo the computation). For a
-  “1 day(s) out of N” regimen, this dose is only taken one day out of N.
+  “1 day(s) out of N” regimen, this dose is only taken one day out of N. "prescription_comment" is the prescriber's
+  instruction for the line (condition of an “as needed” intake, administration, monitoring).
 - Only “ongoing” lines are active. Two lines whose dates do not overlap follow one another: this is not a
   duplicate. A scheduled line and an “as needed” line of the same drug (e.g. morphine) are a common practice,
   not a duplicate.
@@ -148,7 +151,8 @@ def summarize_record(record):
     treatments = []
     for number_, (treatment, details) in enumerate(zip(record["treatments"], line_details(record)), start=1):
         line = {"id": f"L{number_}"}
-        line |= {key: treatment[key] for key in ("drug_label", "dosage_regimen", "start_date", "end_date")
+        line |= {key: treatment[key]
+                 for key in ("drug_label", "dosage_regimen", "prescription_comment", "start_date", "end_date")
                  if treatment.get(key)}
         line["status"] = details["status"]
         if treatment.get("as_needed"):

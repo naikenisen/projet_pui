@@ -84,6 +84,7 @@ Facts created from the patient file:
   "age" (years), "weight_kg", "height_cm", "bmi_kg_m2", "body_surface_area_m2", and the laboratory values,
   with their exact name and unit (convert the threshold to this unit):
 {biology}
+- (data (name "sex") (value <string>)): "F" or "M", only present when known, e.g. (data (name "sex") (value "F")).
 - (treatment (line <n>) (label <string>) (quantity <quantity per day>) (unit <intake unit>) (ingredients <count>)):
   one prescription line; ingredients is the number of active ingredients.
 - (ingredient (line <n>) (number <n>) (dosage <number>) (unit <string>)): active ingredient of a line,

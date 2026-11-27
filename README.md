@@ -33,7 +33,7 @@ Use `--local` for Hugging Face inference without an OpenRouter key (see below).
 
 ### Run from a terminal
 
-Patients are read from `dataset/`; results are saved in `inference_results.json`.
+Patients are read from `full_dataset/`; results are saved in `inference_results.json`.
 
 ```bash
 # FRun the full pipeline on the dataset
@@ -42,15 +42,15 @@ python3 main.py --all         # analyse all patients (overwrites results)
 python3 indexing.py           # index new docs from ressources/rag/RAG_Docs/ to the vectorial database
 
 # Run inference on one individual patient
-python3 retrieval.py  --folder dataset --patient-id 100133744   # retreive relevant passages
-python3 kbs.py        --folder dataset --patient-id 100133744   # detected alerts
-python3 rcp.py        --folder dataset --patient-id 100133744   # RCP found for each prescription line
-python3 generation.py --folder dataset --patient-id 100133744   # decision + justification (no KBS/RAG)
+python3 retrieval.py  --folder full_dataset --patient-id <patient_id>   # retreive relevant passages
+python3 kbs.py        --folder full_dataset --patient-id <patient_id>   # detected alerts
+python3 rcp.py        --folder full_dataset --patient-id <patient_id>   # RCP found for each prescription line
+python3 generation.py --folder full_dataset --patient-id <patient_id>   # decision + justification (no KBS/RAG)
 ```
 To have the LLM draft a personalized rule (it is displayed, then saved after confirmation):
 
 ```bash
-python3 create_rule.py --folder dataset --request "Alert if metformin with an eGFR < 30 mL/min"
+python3 create_rule.py --folder full_dataset --request "Alert if metformin with an eGFR < 30 mL/min"
 ```
 
 ### Local inference (Hugging Face)
@@ -64,7 +64,7 @@ python3 indexing.py --local
 
 python3 main.py --local --remaining 
 
-python3 generation.py --local --folder dataset --patient-id 100133744
+python3 generation.py --local --folder full_dataset --patient-id <patient_id>
 ```
 
 Models are downloaded from Hugging Face on first use and cached on disk. 
@@ -101,8 +101,10 @@ ui/
 ## DATA AND OTHER FILES
 
 ```
-dataset/                         80 patients, one JSON per patient (<id>.json): lab values and treatments
-full_dataset/                    1919 patients (not versioned), same format
+archive/                         previous extraction (not versioned): dataset/, inference_results.json,
+                                 label_results.json, preprocessing/ip.json and the old CSV and JSON files
+full_dataset/                    patients of the latest extraction (not versioned), built by preprocessing/preprocessing.py:
+                                 current prescription lines, latest lab values, sex and clinical values
 ressources/
 ├── kbs/
 │   ├── base.clp                 CLIPS fact model, unit conversions, dose calculations, generic interaction rule
@@ -113,8 +115,9 @@ ressources/
 │   ├── RAG_Docs/                guidelines (PDF) used by the RAG
 │   └── chroma_db/               vector database created by indexing.py
 └── lab_reference_ranges.json    lab reference ranges, used by retrieval.py and generation.py
-preprocessing/                   builds patient JSONs from the anonymised CSV extractions
-                                 (preprocessing/original_dataset/, not versioned)
+preprocessing/                   python3 preprocessing/preprocessing.py: anonymises the raw CSV extractions
+                                 (raw_extraction/ -> original_dataset/, random identifiers without seed, not versioned)
+                                 then builds full_dataset/; the rows sharing a prescription number are merged
 paper/                           article, presentation and figures (paper/figures_en/)
 ```
 

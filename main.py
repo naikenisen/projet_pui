@@ -56,7 +56,7 @@ def analyse_folder(folder, backend: InferenceBackend | None = None, *, overwrite
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     add_inference_arguments(parser)
-    parser.add_argument("--folder", default="dataset", help="folder containing the patient JSON files")
+    parser.add_argument("--folder", default="full_dataset", help="folder containing the patient JSON files")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--remaining", action="store_true", help="only the patients without a result")
     mode.add_argument("--all", action="store_true", help="all the patients; the results file is overwritten")
