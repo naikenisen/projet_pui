@@ -314,7 +314,7 @@ def _open_rcp(file_name):
     try:
         name, text = read_dosage(file_name)
     except FileNotFoundError:
-        st.error(f"Le RCP « {file_name} » est introuvable dans ressources/rag/RCP/markdown.")
+        st.error(f"Le RCP « {file_name} » est introuvable dans ressources/rag/RCP.")
         return
     st.markdown(f"**{name}**")
     st.markdown(text)

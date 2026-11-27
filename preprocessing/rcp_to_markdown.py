@@ -340,7 +340,7 @@ def convertir(code: str, html: str) -> tuple[str, str]:
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("csv", nargs="?", default=DOSSIER / "CIS_RCP.csv", type=Path)
-    ap.add_argument("-o", "--sortie", default=DOSSIER / "markdown", type=Path)
+    ap.add_argument("-o", "--sortie", default=DOSSIER.parent / "ressources" / "rag" / "RCP", type=Path)
     ap.add_argument("--limit", type=int, help="nombre max de médicaments à convertir")
     ap.add_argument("--codes", nargs="+", help="ne convertir que ces codes CIS")
     args = ap.parse_args()

@@ -8,7 +8,7 @@ import re
 from kbs import line_details, load_patient, normalize
 
 # Each file holds a front matter then only the section 4.2 (Posologie et mode d'administration)
-RCP_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag", "RCP", "markdown")
+RCP_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag", "RCP")
 
 
 def words(text):
