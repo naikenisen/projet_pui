@@ -45,7 +45,9 @@ What you do NOT know: the record contains no diagnosis, medical history, indicat
   laboratory values). A dosage within the usual ranges, even debatable, calls for neither intervention nor
   verification.
 
-Knowledge-Based System (KBS) alerts [A1], [A2]... and guideline excerpts [R1], [R2]... may be provided.
+Knowledge-Based System (KBS) alerts [A1], [A2]..., guideline excerpts [R1], [R2]... and RCP excerpts [C1], [C2]...
+may be provided. An RCP excerpt gives the dosage (section 4.2) of an ongoing drug from its ANSM summary of product
+characteristics: use it to check the doses against the patient's data.
 Alerts from the ANSM Thesaurus give their level in parentheses: CI or CONTRE-INDICATION = contraindication,
 ASDEC or Association DECONSEILLEE = combination not recommended, PE or Précaution d'emploi = precaution for use,
 APEC or A prendre en compte = to be taken into account. A combined level (e.g. “CI - ASDEC - APEC”) means that the
@@ -96,9 +98,10 @@ Rules for the points:
   d'irbésartan de 450 mg/jour (L11 + L19), supérieure à la dose maximale”, “Nous proposons de surveiller la
   kaliémie...”.
 - Name the drug involved and the patient values that justify the point. Do not write any alert or excerpt
-  identifier (A1, R2) in "text"; you may refer to a line by its identifier (L3).
-- "references": only the identifiers of the provided alerts and excerpts on which the point really relies.
-  Never invent an identifier; empty list if the point relies on your own knowledge.
+  identifier (A1, R2, C1) in "text"; you may refer to a line by its identifier (L3).
+- "references": the identifiers of all the provided alerts and excerpts that support the point; for a dosage, also cite
+  the RCP excerpt of the drug when it is provided. Never invent an identifier; empty list if the point relies on
+  your own knowledge.
 - "lines_to_modify": for an "intervention" point only, the identifiers of the lines you propose to modify or
   stop; empty list for the other types."""
 
@@ -157,8 +160,8 @@ def summarize_record(record):
     return {"patient": summary, "treatments": treatments}
 
 
-# A1, R2... identifiers copied into the text despite the prompt (L3 identifiers are kept)
-REFERENCE_IN_TEXT_PATTERN = re.compile(r"\s*(?:\([^()]*\b[AR]\d+\b[^()]*\)|\[[AR]\d+(?:\s*,\s*[AR]\d+)*\])")
+# A1, R2, C3... identifiers copied into the text despite the prompt (L3 identifiers are kept)
+REFERENCE_IN_TEXT_PATTERN = re.compile(r"\s*(?:\([^()]*\b[ARC]\d+\b[^()]*\)|\[[ARC]\d+(?:\s*,\s*[ARC]\d+)*\])")
 
 
 # From most to least severe
@@ -180,10 +183,13 @@ def point_type(value):
 
 
 # Replaces the identifiers cited by the LLM with the matching alerts, excerpts and lines; unknown ones are ignored
-def read_response(response, alerts, passages, line_count):
+def read_response(response, alerts, passages, rcps, line_count):
     references = {f"A{i}": {"type": "alert", "text": alert} for i, alert in enumerate(alerts, start=1)}
     references |= {
         f"R{i}": {"type": "document", "source": p["source"], "page": p["page"]} for i, p in enumerate(passages, start=1)
+    }
+    references |= {
+        f"C{i}": {"type": "rcp", "source": r["source"], "name": r["name"]} for i, r in enumerate(rcps, start=1)
     }
     points = []
     for point in response.get("points") or []:
@@ -209,19 +215,25 @@ def read_response(response, alerts, passages, line_count):
 def source_label(source):
     if source["type"] == "alert":
         return "KBS: " + source["text"]
+    if source["type"] == "rcp":
+        return "RCP: " + source["name"]
     return f"{source['source']}, page {source['page']}"
 
 
 # The decision is the one of the most severe point, to stay consistent with the points
-def analyse_patient(record, passages=(), alerts=(), backend: InferenceBackend | None = None):
+def analyse_patient(record, passages=(), alerts=(), rcps=(), backend: InferenceBackend | None = None):
     backend = backend if backend is not None else InferenceBackend()
-    alerts, passages = list(alerts), list(passages)
+    alerts, passages, rcps = list(alerts), list(passages), list(rcps)
     message = json.dumps(summarize_record(record), ensure_ascii=False, indent=1)
     if alerts:
         message += "\n\nKBS alerts:\n" + "\n".join(f"[A{i}] {alert}" for i, alert in enumerate(alerts, start=1))
     if passages:
         message += "\n\nGuideline excerpts:\n" + "\n\n".join(
             f"[R{i}] ({p['source']}, page {p['page']})\n{p['text']}" for i, p in enumerate(passages, start=1)
+        )
+    if rcps:
+        message += "\n\nRCP excerpts:\n" + "\n\n".join(
+            f"[C{i}] ({r['name']})\n{r['text']}" for i, r in enumerate(rcps, start=1)
         )
 
     response = backend.generate(
@@ -232,7 +244,7 @@ def analyse_patient(record, passages=(), alerts=(), backend: InferenceBackend | 
     )
 
     response = json.loads(response[response.find("{"):response.rfind("}") + 1])
-    points = read_response(response, alerts, passages, len(record["treatments"]))
+    points = read_response(response, alerts, passages, rcps, len(record["treatments"]))
     if any(point["type"] != "validation" for point in points):
         points = [point for point in points if point["type"] != "validation"]
     most_severe = min((POINT_TYPES.index(point["type"]) for point in points), default=POINT_TYPES.index("validation"))

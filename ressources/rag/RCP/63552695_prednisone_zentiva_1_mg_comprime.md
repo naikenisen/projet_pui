@@ -1,0 +1,50 @@
+---
+code_cis: 63552695
+denomination: "PREDNISONE ZENTIVA 1 mg, comprimé"
+date_mise_a_jour: 28/07/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Voie orale
+
+Les comprimés seront avalés avec un peu d'eau, au cours du repas.
+
+**RESERVE A L'ADULTE ET A L'ENFANT DE PLUS DE 6 ANS**
+
+PREDNISONE ZENTIVA 1 mg est plus particulièrement adapté aux traitements d'entretien. Pour les traitements d'attaque, il existe des dosages plus appropriés.
+
+Chez l'enfant de moins de 6 ans, il existe des formes pharmaceutiques plus adaptées.
+
+#### Posologie
+
+##### ADULTES
+
+La posologie est variable en fonction du diagnostic, de la sévérité de l'affection, du pronostic, de la réponse du patient et de la tolérance au traitement.
+
+Traitement d'entretien : de 5 à 15 mg/jour, soit de 5 à 15 comprimés par jour.
+
+##### Population pédiatrique
+
+##### ENFANTS DE PLUS DE 6 ANS (en raison du dosage et de la forme pharmaceutique)
+
+La posologie doit être adaptée à l'affection et au poids de l'enfant.
+
+Traitement d'entretien : de 0,25 à 0,5 mg/kg/jour. A titre indicatif : 6 à 12 comprimés pour un enfant de 25 kg.
+
+La prescription de la corticothérapie à jour alterné (un jour sans corticoïde et le deuxième jour avec une posologie double de la posologie quotidienne qui aurait été requise) s'utilise chez l'enfant pour tenter de limiter le retard de croissance. Ce schéma à jour alterné ne peut s'envisager qu'après le contrôle de la maladie inflammatoire par les fortes doses de corticoïdes, et lorsqu'au cours de la décroissance aucun rebond n'est observé.
+
+**ARRET DU TRAITEMENT**
+
+Le rythme du sevrage dépend principalement de la durée du traitement, de la dose de départ et de la maladie.
+
+Le traitement entraîne une mise au repos des sécrétions d'ACTH et de cortisol avec parfois une insuffisance surrénalienne durable. Lors du sevrage, l'arrêt doit se faire progressivement, par paliers en raison du risque de rechute : réduction de 10 % tous les 8 à 15 jours en moyenne.
+
+Pour les cures courtes de moins de 10 jours, l'arrêt du traitement ne nécessite pas de décroissance.
+
+Lors de la décroissance des doses (cure prolongée) : à la posologie de 5 à 7 mg d'équivalent prednisone, lorsque la maladie causale ne nécessite plus de corticothérapie, il est souhaitable de remplacer le corticoïde de synthèse par 20 mg/jour d'hydrocortisone jusqu'à la reprise de la fonction corticotrope. Si une corticothérapie doit être maintenue à une dose inférieure à 5 mg d'équivalent prednisone par jour, il est possible d'y adjoindre une petite dose d'hydrocortisone pour atteindre un équivalent d'hydrocortisone de 20 à 30 mg par jour.
+
+Lorsque le patient est seulement sous hydrocortisone, il est possible de tester l'axe corticotrope par des tests endocriniens. Ces tests n'éliminent pas à eux seuls, la possibilité de survenue d'insuffisance surrénale au cours d'un stress.
+
+Sous hydrocortisone ou même à distance de l'arrêt, le patient doit être prévenu de la nécessité d'augmenter la posologie habituelle ou de reprendre un traitement substitutif (par exemple 100 mg d'hydrocortisone en intramusculaire toutes les 6 à 8 heures) en cas de stress : intervention chirurgicale, traumatisme, infection.

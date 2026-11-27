@@ -1,0 +1,24 @@
+---
+code_cis: 64409255
+denomination: "BETAXOLOL BIOGARAN 20 mg, comprimé pelliculé sécable"
+date_mise_a_jour: 26/06/2019
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+La posologie usuelle est de 1 comprimé à 20 mg par jour en une seule prise dans les deux indications.
+
+##### Posologie en cas d'insuffisance rénale
+
+Il convient d'adapter la posologie à l'état de la fonction rénale : jusqu'à une clairance de la créatinine de 20 ml par minute il n'est pas nécessaire de changer la posologie. Cependant, une surveillance clinique est recommandée en début de traitement jusqu'à l'équilibration des taux sanguins (4 jours en moyenne).
+
+**En cas d'insuffisance rénale sévère** (clairance de la créatinine < 20 ml/min), la dose initiale recommandée est de 10 mg/jour (prise indépendamment du rythme et des horaires de séances d'épuration extrarénale chez le sujet dialysé).
+
+**Chez l'insuffisant hépatique**, aucune modification de la posologie n'est nécessaire ; une surveillance clinique est cependant souhaitable en début de traitement.
+
+#### Mode d’administration
+
+Voie orale.

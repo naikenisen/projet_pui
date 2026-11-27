@@ -1,0 +1,64 @@
+---
+code_cis: 60335124
+denomination: "LINEZOLIDE FRESENIUS KABI 600 mg, comprimé pelliculé"
+date_mise_a_jour: 04/10/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+LINEZOLIDE FRESENIUS KABI, comprimés pelliculés peut être utilisé en traitement initial. Le traitement, après avoir été débuté par voie I.V., peut être relayé par voie orale, lorsque cette dernière est cliniquement indiquée. Dans ce cas, aucun ajustement de dose n’est nécessaire, la biodisponibilité orale du linézolide étant voisine de 100%.
+
+#### Posologie et durée de traitement recommandées chez les adultes :
+
+La durée du traitement dépend de l’agent pathogène, du site et de la sévérité de l'infection ainsi que de la réponse clinique du patient.
+
+Les recommandations de durée du traitement données ci-dessous sont celles utilisées lors des essais cliniques. Des traitements plus courts pourraient convenir pour certains types d'infections, mais ils n’ont pas encore été évalués dans le cadre d’essais cliniques.
+
+La durée maximale du traitement est de 28 jours. La tolérance et l'efficacité du linézolide n'ont pas été établies pour une durée d’utilisation supérieure à 28 jours (voir rubrique 4.4).
+
+Il n’est pas nécessaire d’augmenter la posologie recommandée ou la durée de traitement pour les infections avec bactériémie.
+
+Les doses recommandées pour les comprimés sont les suivantes :
+
+| ***Infections*** | ***Posologie*** | ***Durée du traitement*** |
+| --- | --- | --- |
+| *Pneumonie nosocomiale* | *600 mg par voie orale deux fois par jour* | *10-14 jours consécutifs* |
+| *Pneumonie communautaire* | *600 mg par voie orale deux fois par jour* | *10-14 jours consécutifs* |
+| *Infections compliquées de la peau et des tissus mous* | *600 mg par voie orale deux fois par jour* | *10-14 jours consécutifs* |
+
+#### Population pédiatrique
+
+La tolérance et l'efficacité chez l'enfant et l'adolescent (< 18 ans) n’ont pas pu être établies. Les données disponibles sont décrites dans les rubriques 4.8, 5.1 et 5.2, mais aucune recommandation sur la posologie ne peut être faite.
+
+#### Sujet âgé
+
+Aucun ajustement posologique n’est nécessaire.
+
+#### Patients avec insuffisance rénale
+
+Aucun ajustement posologique n’est nécessaire (voir rubriques 4.4 et 5.2).
+
+#### Patients ayant une insuffisance rénale sévère (CLCR < 30 ml/min) :
+
+Aucun ajustement posologique n’est nécessaire. Les conséquences cliniques d’une exposition plus élevée (jusqu’à 10 fois) aux deux principaux métabolites du linézolide chez le patient présentant une insuffisance rénale sévère étant inconnues, le linézolide devra être utilisé avec précaution chez ces patients et uniquement lorsque les bénéfices attendus sont supérieurs aux risques potentiels.
+
+L'élimination du linézolide après 3 heures d'hémodialyse étant d’environ 30 %, il devra être administré après dialyse chez les patients soumis à ce type de traitement. Les principaux métabolites du linézolide sont en partie éliminés lors de l'hémodialyse, mais leur concentration après dialyse reste néanmoins bien plus élevée que chez les patients ayant une fonction rénale normale ou une insuffisance rénale légère à modérée.
+
+En conséquence, le linézolide devra être utilisé avec prudence chez les patients hémodialysés, et uniquement lorsque les bénéfices attendus sont supérieurs aux risques potentiels.
+
+On ne dispose pas à ce jour de données concernant l’administration du linézolide chez les patients ayant une dialyse péritonéale continue ambulatoire (DPCA) ou sous traitements alternatifs pour traiter l’insuffisance rénale (autre que l’hémodialyse).
+
+#### Patients avec insuffisance hépatique
+
+Aucun ajustement posologique n’est nécessaire. Cependant, les données cliniques sont limitées et il est recommandé d’utiliser le linézolide chez ces patients uniquement lorsque les bénéfices attendus sont supérieurs aux risques potentiels (voir rubriques 4.4 et 5.2).
+
+#### Mode d’administration
+
+La dose recommandée de linézolide devra être administrée par voie orale deux fois par jour.
+
+Voie d’administration : voie orale.
+
+Les comprimés peuvent être pris pendant ou en dehors des repas.

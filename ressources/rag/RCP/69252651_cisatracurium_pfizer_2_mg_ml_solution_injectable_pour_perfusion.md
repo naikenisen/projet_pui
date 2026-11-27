@@ -1,0 +1,175 @@
+---
+code_cis: 69252651
+denomination: "CISATRACURIUM PFIZER 2 mg/ml, solution injectable/pour perfusion"
+date_mise_a_jour: 09/06/2017
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+CISATRACURIUM PFIZER ne doit être administré que par des anesthésistes ou des praticiens familiarisés avec l'utilisation et l'action des curares, ou sous leur contrôle. Du matériel d'intubation trachéale, d'assistance respiratoire et d'oxygénation artérielle adéquat doit être disponible. La surveillance des fonctions neuromusculaires lors de l'utilisation de CISATRACURIUM PFIZER est recommandée afin d'ajuster individuellement les besoins.
+
+#### Posologie
+
+**Utilisation par injection intraveineuse en bolus**
+
+***Posologie chez l'adulte***
+
+Intubation trachéale
+
+La dose de CISATRACURIUM PFIZER recommandée pour l'intubation chez l'adulte est de 0,15 mg/kg de poids corporel. Cette dose procure de bonnes ou d'excellentes conditions d'intubation 120 secondes après l'injection, après induction de l'anesthésie par du propofol.
+
+Des doses plus élevées réduisent le délai d'installation du bloc neuromusculaire.
+
+Le tableau ci-dessous résume les données pharmacodynamiques moyennes obtenues après injection de CISATRACURIUM PFIZER à des doses de 0,1 à 0,4 mg/kg de poids corporel chez des patients adultes sains au cours d'anesthésies avec des opioïdes (thiopental/fentanyl/midazolam) ou du propofol.
+
+| **Dose initiale de cisatracurium<br>(mg/kg de poids corporel)** | **Type d'anesthésie** | **Délai de suppression de 90 % de T1\*<br>(min.)** | **Délai de suppression maximum de T1\*<br>(min.)** | **Délai de récupération spontanée de 25 % de T1\*<br>(min.)** |  |
+| --- | --- | --- | --- | --- | --- |
+| 0,1 | opioïdes | 3,4 | 4,8 | 45 |  |
+| 0,15 | propofol | 2,6 | 3,5 | 55 |  |
+| 0,2 | opioïdes | 2,4 | 2,9 | 65 |  |
+| 0,4 | opioïdes | 1,5 | 1,9 | 91 |  |
+
+\* T1: simple twitch ou première composante d'une réponse au train-de-quatre du muscle adducteur du pouce après stimulation électrique supramaximale du nerf cubital.
+
+L'anesthésie à l'enflurane ou l'isoflurane peut prolonger (jusqu'à 15 %) la durée d'action clinique d'une dose initiale de dose initiale de cisatracurium.
+
+Entretien
+
+Le bloc neuromusculaire peut être prolongé par des doses d'entretien de CISATRACURIUM PFIZER. Une dose de 0,03 mg/kg de poids corporel, administrée au cours d'une anesthésie avec des opioïdes ou du propofol, procure environ 20 minutes supplémentaires de curarisation cliniquement efficace. L'injection de plusieurs doses d'entretien ne provoque pas d'augmentation progressive de la durée de curarisation.
+
+Récupération spontanée
+
+Lorsque la récupération spontanée du bloc neuromusculaire est commencée, sa vitesse est indépendante de la dose de CISATRACURIUM PFIZER administrée. Au cours d'une anesthésie avec des opioïdes ou du propofol, les délais moyens de récupération spontanée de 25 à 75 % et de 5 à 95 % sont d'environ 13 et 30 minutes respectivement.
+
+Antagonisation
+
+Le bloc neuromusculaire induit par CISATRACURIUM PFIZER est aisément antagonisé avec des doses standard d'anticholinestérasiques. Après administration d'un anticholinestérasique à environ 10 % de récupération de T1, les délais moyens de récupération de 25 à 75 % et jusqu'à récupération complète (T4/T1 supérieur ou égal à 0,7) sont respectivement de 4 et 9 minutes environ.
+
+##### Population pédiatrique
+
+Intubation trachéale (chez l'enfant âgé de 1 mois à 12 ans)
+
+Comme chez l'adulte, la dose d'intubation recommandée de CISATRACURIUM PFIZER est de 0,15 mg/kg de poids corporel, administrée en 5 à 10 secondes. Cette dose procure de bonnes à excellentes conditions d'intubation 120 secondes après l'injection de CISATRACURIUM PFIZER. Les tableaux ci-dessous présentent les données pharmacodynamiques pour cette dose.
+
+Le cisatracurium n'a pas été étudié pour l'intubation chez les enfants des classes ASA III - IV. Les données disponibles de l'utilisation de cisatracurium chez les enfants âgés de moins de 2 ans subissant une intervention chirurgicale majeure ou prolongée sont limitées.
+
+Chez les enfants âgés de 1 mois à 12 ans, le cisatracurium a une durée d'action plus courte et un profil de récupération spontanée plus rapide que ceux observés chez l'adulte, dans des conditions anesthésiques similaires. De légères différences dans le profil pharmacodynamique ont été observées entre les enfants âgés de 1 à 11 mois et ceux âgés de 1 à 12 ans; elles sont résumées dans les tableaux ci-dessous:
+
+##### Enfants âgés de 1 à 11 mois
+
+| **Dose de cisatracurium (mg/kg de poids corporel)** | **Type d'anesthésie** | **Délai de suppression de 90 % de T1 (min)** | **Délai de suppression maximum de T1 (min)** | **Délai de récupération spontanée de 25 % T1 (min)** |  |
+| --- | --- | --- | --- | --- | --- |
+| 0,15 | halothane | 1,4 | 2,0 | 52 |  |
+| 0,15 | opioïdes | 1,4 | 1,9 | 47 |  |
+
+##### Enfants âgés de 1 à 12 ans
+
+| **Dose de cisatracurium (mg/kg de poids corporel)** | **Type d'anesthésie** | **Délai de suppression de 90 % de T1 (min)** | **Délai de suppression maximum de T1 (min)** | **Délai de récupération spontanée de 25 % T1 (min)** |  |
+| --- | --- | --- | --- | --- | --- |
+| 0,15 | halothane | 2,3 | 3,0 | 43 |  |
+| 0,15 | opioïdes | 2,6 | 3,6 | 38 |  |
+
+**Quand l'utilisation de CISATRACURIUM PFIZER n'est pas requise pour l'intubation** : une dose inférieure à 0,15 mg/kg peut être utilisée. Les données pharmacodynamiques correspondant aux doses de 0,08 et 0,1 mg/kg chez les enfants âgés de 2 à 12 ans sont présentées dans le tableau ci-dessous:
+
+| **Dose de cisatracurium (mg/kg de poids corporel)** | **Type d'anesthésie** | **Délai de suppression de 90 % de T1 (min)** | **Délai de suppression maximum de T1 (min)** | **Délai de récupération spontanée de 25 % T1 (min)** |  |
+| --- | --- | --- | --- | --- | --- |
+| 0,08 | halothane | 1,7 | 2,5 | 31 |  |
+| 0,1 | opioïdes | 1,7 | 2,8 | 28 |  |
+
+L'administration de cisatracurium après suxaméthonium n'a pas été étudiée chez l'enfant (voir rubrique 4.5).
+
+La durée d'action clinique du cisatracurium semble être allongée jusqu'à 20 % par l'halothane. Il n'y a pas de données concernant l'utilisation du cisatracurium chez les enfants au cours d'anesthésies avec les autres agents anesthésiques halogénés. Néanmoins, l'action curarisante du cisatracurium devrait être également potentialisée par ces agents.
+
+Entretien (chez l'enfant âgé de 2 à 12 ans)
+
+Le bloc neuromusculaire peut être prolongé par des doses d'entretien de CISATRACURIUM PFIZER. Chez l'enfant âgé de 2 à 12 ans, une dose de 0,02 mg/kg de poids corporel administrée au cours d'une anesthésie à l'halothane procure environ 9 minutes supplémentaires de curarisation cliniquement efficace. L'injection de plusieurs doses d'entretien ne provoque pas d'augmentation progressive de la durée de curarisation.
+
+Les données disponibles sont insuffisantes pour recommander une dose d'entretien chez l'enfant de moins de 2 ans. Néanmoins, des données très limitées provenant des études cliniques chez l'enfant de moins de 2 ans suggèrent qu'une dose d'entretien de 0,03 mg/kg pourrait prolonger le bloc neuromusculaire cliniquement efficace d'une durée pouvant aller jusqu'à 25 minutes en cas d'anesthésie aux opioïdes.
+
+Récupération spontanée
+
+Lorsque la récupération spontanée du bloc neuromusculaire est en cours, sa vitesse est indépendante de la dose de cisatracurium administrée. Au cours d'une anesthésie avec des opioïdes ou l'halothane, les délais moyens de récupération spontanée de 25 à 75 % et de 5 à 95 % sont respectivement de 11 et 28 minutes.
+
+Antagonisation
+
+Le bloc neuromusculaire induit par l'administration de cisatracurium est facilement antagonisé avec des doses standard d'anticholinestérasiques. Après administration de l'antagoniste à environ 13 % de récupération de T1, les délais moyens de récupération de 25 à 75 % et jusqu'à récupération complète (T4/T1 supérieur ou égal à 0,7) sont respectivement de 2 et 5 minutes environ.
+
+**Utilisation en perfusion intraveineuse**
+
+***Posologie chez l'adulte et chez l'enfant de 2 à 12 ans***
+
+L'entretien du bloc neuromusculaire peut être obtenu par perfusion continue de CISATRACURIUM PFIZER. Un débit initial de perfusion de 3 µg/kg de poids corporel par minute (0,18 mg/kg/h) est recommandé pour rétablir 89 à 99 % de suppression de T1 après l'obtention de signes de récupération spontanée. Après une période initiale de stabilisation du bloc neuromusculaire, un débit de 1 à 2 µg/kg de poids corporel par minute (0,06 à 0,12 mg/kg/h) semble suffisant pour maintenir le bloc neuromusculaire à ce niveau chez la plupart des patients.
+
+Il peut être nécessaire de réduire jusqu'à 40 % le débit de perfusion si le cisatracurium est administré au cours d'anesthésies à l'isoflurane ou à l'enflurane (voir rubrique 4.5).
+
+Le débit de perfusion dépendra de la concentration de cisatracurium dans la solution de perfusion, du degré de bloc neuromusculaire souhaité et du poids du patient. Le tableau ci-dessous fournit des règles d'utilisation de CISATRACURIUM PFIZER non dilué.
+
+**Débit de perfusion de CISATRACURIUM PFIZER**
+
+| **Poids corporel du patient (kg)** | **Dose (µg/kg/min)** | **Débit de perfusion** |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1,0** | **1,5** | **2,0** | **3,0** |  |  |  |
+| 20 | 0,6 | 0,9 | 1,2 | 1,8 | ml/h |  |
+| 70 | 2,1 | 3,2 | 4,2 | 6,3 | ml/h |  |
+| 100 | 3,0 | 4,5 | 6,0 | 9,0 | ml/h |  |
+
+La perfusion continue à débit constant de cisatracurium ne provoque pas d'augmentation ou de diminution progressive du temps de curarisation.
+
+Après arrêt de la perfusion de cisatracurium, la récupération spontanée du bloc neuromusculaire intervient à une vitesse comparable à celle obtenue après administration d'un bolus unique.
+
+**Utilisation par injection intraveineuse en bolus et/ou utilisation en perfusion intraveineuse**
+
+***Posologie chez l'adulte***
+
+Posologie chez le patient en Unité de Soins Intensifs (USI)
+
+CISATRACURIUM PFIZER peut être administré en bolus et/ou en perfusion chez les adultes en USI.
+
+Un débit de perfusion initial de 3 µg/kg de poids corporel par minute (0,18 mg/kg/h) est recommandé chez l'adulte en USI. Il peut exister d'importantes variations interindividuelles des besoins qui peuvent augmenter ou diminuer en fonction du temps. Au cours des essais cliniques, le débit moyen de perfusion a été de 3 µg/kg par minute [bornes: 0,5 à 10,2 µg/kg/min, 0,03 à 0,6 mg/kg/h].
+
+Le délai moyen de récupération spontanée totale après perfusion au long cours (jusqu'à 6 jours) de cisatracurium chez les patients en USI a été de 50 minutes environ.
+
+Le profil de récupération après perfusion de cisatracurium chez les patients en USI est indépendant de la durée de la perfusion.
+
+**Population particulières**
+
+***Posologie chez le sujet âgé***
+
+Aucune modification de posologie n'est nécessaire chez le sujet âgé. Chez ces patients, le cisatracurium a un profil pharmacodynamique similaire à celui observé chez le patient adulte jeune mais, comme pour tous les autres curares, il peut avoir un délai d'action légèrement plus long.
+
+***Posologie chez l'insuffisant rénal***
+
+Aucune modification de posologie n'est nécessaire chez l'insuffisant rénal.
+
+Chez ces patients, le cisatracurium a un profil pharmacodynamique similaire à celui observé chez les patients dont la fonction rénale est normale, mais il peut avoir un délai d'action légèrement plus long.
+
+***Posologie chez l'insuffisant hépatique***
+
+Aucune modification de posologie n'est nécessaire chez l'insuffisant hépatique sévère. Chez ces patients, le cisatracurium a un profil pharmacodynamique similaire à celui observé chez les patients dont la fonction hépatique est normale, mais il peut avoir un délai d'action légèrement plus court.
+
+***Posologie chez le sujet atteint d'une pathologie cardiovasculaire***
+
+L'administration de doses de cisatracurium par injection en bolus rapide (en 5 à 10 secondes) à des patients adultes ayant une pathologie cardiovasculaire sévère (New York Heart Association Class I-III) et subissant une intervention pour pontage coronarien, n'a pas provoqué d'effets cardiovasculaires cliniquement significatifs aux doses utilisées (allant jusqu'à 0,4 mg/kg soit 8 fois la DE95). Cependant, les données pour des doses supérieures à 0,3 mg/kg sont limitées dans cette population de patients.
+
+Le cisatracurium n'a pas été étudié chez les enfants subissant une intervention de chirurgie cardiaque.
+
+**Population pédiatrique**
+
+***Posologie chez le nouveau-né (âgé de moins de 1 mois)***
+
+L'administration de cistracurium chez le nouveau-né n'est pas recommandée dans la mesure où elle n'a pas été étudiée.
+
+#### Mode d'administration
+
+CISATRACURIUM PFIZER ne doit être administré que par des anesthésistes ou des cliniciens familiarisés avec l'utilisation et l'action des curares, ou sous leur contrôle.
+
+CISATRACURIUM PFIZER ne contient aucun conservateur antimicrobien et est destiné à être utilisé chez un seul patient.
+
+Le médicament doit être contrôlé visuellement avant emploi. La solution ne doit être utilisée que si elle est limpide et incolore ou quasiment incolore jusqu'à légèrement jaune/jaune verdâtre et pratiquement dépourvue de particules, et si le récipient n'est pas endommagé. Le produit doit être éliminé si son aspect visuel a changé ou si son récipient est endommagé.
+
+Lorsque d'autres médicaments sont administrés dans le même cathéter que CISATRACURIUM PFIZER il est recommandé de rincer CISATRACURIUM PFIZER avec une solution intraveineuse adaptée, par exemple une solution de chlorure de sodium pour perfusion intraveineuse à 9 mg/ml (0,9 % p/v).
+
+Comme avec pour tout produit administré par voie intraveineuse, lorsque la veine retenue pour l'injection est petite, il est recommandé de rincer CISATRACURIUM PFIZER avec une solution intraveineuse adaptée, par exemple une solution de chlorure de sodium pour perfusion intraveineuse à 9 mg/ml (0,9 % p/v).
+
+Pour les instructions sur la dilution du médicament avant administration, voir la rubrique 6.6.

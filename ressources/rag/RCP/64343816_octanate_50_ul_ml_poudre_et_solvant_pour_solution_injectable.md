@@ -1,0 +1,70 @@
+---
+code_cis: 64343816
+denomination: "OCTANATE 50 Ul/ml, poudre et solvant pour solution injectable"
+date_mise_a_jour: 20/04/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Le traitement doit être instauré sous la surveillance d’un médecin expérimenté dans le traitement de l’hémophilie.
+
+Surveillance du traitement
+
+Au cours du traitement, il est conseillé d'effectuer une détermination appropriée des taux de facteur VIII afin d'évaluer la dose à administrer ainsi que la fréquence de renouvellement des injections. Selon les patients, la réponse au facteur VIII peut varier, entraînant des taux de récupération et des demi-vies différentes. Une posologie basée sur le poids corporel peut nécessiter une adaptation chez les patients dont le poids est trop faible ou chez les patients en surpoids. Dans le cas d’une intervention chirurgicale majeure, en particulier, un contrôle précis du traitement substitutif par des tests de coagulation (activité plasmatique du facteur VIII) est indispensable.
+
+#### Posologie
+
+La posologie et la durée du traitement de substitution dépendent de la sévérité du déficit en facteur VIII, de la localisation et de l’importance de l’épisode hémorragique ainsi que de l’état clinique du patient.
+
+Le nombre d’unités de facteur VIII administrées est exprimé en Unités Internationales (UI), ramenées au concentré standard actuel de l’OMS pour les préparations de facteur VIII. L’activité coagulante du facteur VIII dans le plasma est exprimée soit en pourcentage (par rapport au plasma humain normal) soit en Unités Internationales (par rapport à un standard international du facteur VIII plasmatique).
+
+Une Unité Internationale (UI) d’activité coagulante du facteur VIII correspond à la quantité de facteur VIII contenue dans un ml de plasma humain normal.
+
+##### Traitement à la demande
+
+Le calcul de la dose nécessaire de facteur VIII est basé sur le résultat empirique qu’une unité internationale (UI) de facteur VIII par kg de poids corporel augmente l’activité coagulante du facteur VIII plasmatique de 1,5% -2% de l’activité normale. La posologie nécessaire est déterminée à l’aide de la formule suivante:
+
+Unités nécessaires = poids corporel (kg) x augmentation souhaitée du taux de facteur VIII (%) (Ul/dl) x 0,5
+
+La quantité à administrer et la fréquence d’administration doivent toujours être guidées par l’efficacité clinique individuelle du cas.
+
+Dans le cas des événements hémorragique suivants, l’activité coagulante du facteur VIII ne doit pas chuter en dessous du taux d’activité coagulante plasmatique indiqué (en % de la normale) pendant la durée mentionnée.
+
+Le tableau ci-dessous peut être utilisé comme guide pour les posologies lors d’épisodes hémorragiques et de chirurgie:
+
+| Degré de l’hémorragie/Type d’intervention chirurgicale | Taux de facteur FVIII nécessaire (%) | Fréquence des doses (heures)/Durée de traitement (Jours) |
+| --- | --- | --- |
+| Hémorragie |  |  |
+| Début d’hémarthrose, saignement musculaire ou buccal | 20 -40 | Renouveler toutes les 12 à 24 heures sur au moins 1 jour, jusqu’à ce que l’épisode hémorragique soit résolu comme indiqué par la douleur ou que la cicatrisation soit obtenue. |
+| Hémarthrose plus étendue, hémorragie musculaire ou<br>hématome | 30 -60 | Renouveler la perfusion toutes les 12 à 24 heures pendant 3 à 4 jours ou plus jusqu’à ce que la douleur et le handicap aigu disparaissent. |
+| Hémorragies mettant en jeu le pronostic vital | 60 -100 | Renouveler la perfusion toutes les 8 à 24 heures, jusqu’à disparition du risque vital. |
+| Chirurgie |  |  |
+| *Chirurgie* *m**ineure*<br>Dont extraction dentaire | 30-60 | Toutes les 24 heures, au moins 1 jour, jusqu’à ce que la cicatrisation soit obtenue. |
+| *Chirurgie* *m**ajeure* | 80 -100 (pré et post-opératoire) | Renouveler la perfusion toutes les 8 à 24 heures, jusqu’à cicatrisation suffisante de la plaie, puis poursuivre le traitement pendant au moins 7 jours supplémentaires pour maintenir l’activité coagulante du FVIII entre 30% et 60%. |
+
+##### Prophylaxie
+
+Pour le traitement prophylactique à long terme des épisodes hémorragiques chez les patients atteints d’hémophilie A sévère, les posologies sont de 20 à 40 UI de facteur VIII ·par kg de poids corporel, espacées de 2 à 3 jours. Dans certains cas, notamment chez les patients plus jeunes, des intervalles d’administration plus courts ou des posologies plus élevées peuvent être nécessaires.
+
+##### Perfusion continue
+
+Une analyse pharmacocinétique doit être effectuée avant une intervention chirurgicale pour obtenir une estimation de la clairance.
+
+La vitesse initiale de perfusion peut être calculée de la manière suivante : clairance x concentration souhaitée à l’état d’équilibre = vitesse de perfusion (UI/kg/h).
+
+La clairance doit être de nouveau calculée quotidiennement après les 24 premières heures de perfusion continue selon la formule ci-dessus.
+
+##### Population pédiatrique
+
+Une étude clinique menée chez 15 patients âgés de 6 ans ou moins n’a pas démontré la nécessité d’adapter la posologie chez les enfants.
+
+La posologie pour les enfants, en prophylaxie ou à la demande, est la même que celle pour les adultes.
+
+#### Mode d’administration
+
+Voie intraveineuse.
+
+Il est recommandé de ne pas administrer plus de 2 à 3 ml par minute.
+
+Pour les instructions concernant la reconstitution du médicament avant administration, voir la rubrique 6.6.

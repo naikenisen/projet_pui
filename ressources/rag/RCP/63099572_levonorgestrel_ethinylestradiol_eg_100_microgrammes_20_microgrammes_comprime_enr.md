@@ -1,0 +1,80 @@
+---
+code_cis: 63099572
+denomination: "LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé"
+date_mise_a_jour: 26/11/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Mode d'emploi de LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé
+
+Les comprimés doivent être pris dans l’ordre indiqué sur la plaquette à peu près à la même heure chaque jour, avec un peu de liquide si nécessaire. Prendre un comprimé par jour pendant 21 jours consécutifs. Entamer la plaquette suivante après une période de 7 jours sans comprimés, au cours de laquelle une hémorragie de privation survient généralement. Le saignement débute généralement 2 à 3 jours après la prise du dernier comprimé et ne se termine pas nécessairement avant le début de la plaquette suivante.
+
+#### Comment instaurer le traitement par LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé
+
+- aucune contraception hormonale antérieure (au cours du dernier mois)
+
+La prise des comprimés doit débuter le premier jour du cycle naturel de la femme (= le premier jour des règles).
+
+Elle peut éventuellement débuter entre le deuxième et le cinquième jour mais, dans ce cas, une méthode contraceptive mécanique supplémentaire est recommandée au cours des 7 premiers jours du premier cycle.
+
+- relais d'un autre contraceptif hormonal combiné (contraceptif oral combiné (COC), anneau vaginal, dispositif transdermique)
+
+La prise de LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé débutera de préférence le lendemain de la prise du dernier comprimé actif du COC précédent (ou après le retrait de l'anneau vaginal ou du dispositif transdermique), mais au plus tard le jour qui suit la fin de la période habituelle sans comprimés (ou sans anneau vaginal ou sans patch) ou le lendemain de la prise du dernier comprimé de placebo du contraceptif hormonal précédent.
+
+- relais d'une contraception utilisant un progestatif seul (pilule, injection, implant) ou d'un dispositif intra-utérin (DIU)
+
+La femme peut débuter LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé à n'importe quel moment à partir d'une micropilule (pour un implant ou un DIU, le jour de son retrait, pour un contraceptif injectable, le jour où l'injection suivante aurait dû avoir lieu), mais il convient dans tous les cas de lui conseiller d'utiliser une méthode contraceptive supplémentaire mécanique pendant les 7 premiers jours de la prise des comprimés.
+
+- après un avortement du premier trimestre
+
+La prise des comprimés peut débuter immédiatement. Dans ce cas, aucune autre mesure contraceptive n'est nécessaire.
+
+- après un accouchement ou un avortement du 2ème trimestre
+
+Pour l'allaitement maternel, voir la rubrique 4.6.
+
+La prise des comprimés débutera 21 à 28 jours après l'accouchement ou l'avortement du 2ème trimestre. Si elle débute plus tardivement, une méthode contraceptive supplémentaire doit être utilisée pendant les 7 premiers jours de la prise des comprimés. Si la femme a déjà eu des rapports sexuels, il convient d'exclure une grossesse avant de commencer le COC actuel ou la femme devra attendre les prochaines règles.
+
+#### Comprimés oubliés
+
+Les concentrations des deux hormones contenues dans LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé sont très faibles. En conséquence, la marge d'efficacité contraceptive est faible en cas d'oubli d'un comprimé. Si la femme prend un comprimé avec un retard de **moins de 12 heures,** l'efficacité contraceptive n'est pas diminuée. Elle devra prendre le comprimé oublié dès qu'elle s'en rendra compte et prendra les comprimés suivants à l'heure habituelle.
+
+Si elle prend un comprimé avec un retard de plus de 12 heures, la sécurité contraceptive pourra être réduite. Les deux règles de base suivantes sont applicables en cas d'oubli de comprimés :
+
+1. La prise des comprimés ne doit jamais être interrompue pendant plus de 7 jours.
+
+2. Une inhibition efficace de l'axe hypothalamo-hypophyso-ovarien nécessite une prise ininterrompue des comprimés pendant 7 jours.
+
+Par conséquent, les conseils suivants peuvent être donnés pour la pratique quotidienne:
+
+Semaine 1
+
+La femme doit prendre le dernier comprimé oublié dès qu'elle s'en rend compte, même si cela implique la prise de deux comprimés en même temps. Elle continuera ensuite à prendre les comprimés suivants à l'heure habituelle. En outre, elle devra utiliser une contraception mécanique supplémentaire, des préservatifs par exemple, au cours des 7 jours qui suivent. Si des rapports sexuels ont eu lieu au cours des 7 jours qui précèdent l'oubli d'un comprimé, il existe un risque de grossesse. Plus le nombre de comprimés oublié est important, plus l'on se rapproche de la période d'interruption sans comprimés et plus le risque de grossesse augmente.
+
+Semaine 2
+
+La femme doit prendre le dernier comprimé oublié dès qu'elle s'en rend compte, même si cela implique de prendre deux comprimés en même temps. Elle continuera ensuite à prendre les comprimés suivants à l'heure habituelle. Si la femme a correctement pris ses comprimés au cours des 7 jours qui précèdent le premier comprimé oublié, aucune mesure contraceptive supplémentaire n'est nécessaire. Si elle n'a pas correctement pris ses comprimés ou si elle a oublié de prendre plusieurs comprimés, il faut recommander des précautions contraceptives supplémentaires pendant les 7 jours qui suivent.
+
+Semaine 3
+
+Le risque de moindre fiabilité contraceptive est important parce que l'on se rapproche de la période de 7 jours sans comprimés. Il est cependant possible d'éviter la réduction de la protection contraceptive par un ajustement de la dose. Si l'on se conforme aux recommandations suivantes, il n'est pas nécessaire de recourir à des précautions contraceptives supplémentaires, à condition que tous les comprimés aient été pris correctement au cours des 7 jours qui précèdent le premier comprimé oublié. Si ce n'est pas le cas, la femme devra se conformer à la première de ces deux options et il lui faudra également recourir à des précautions contraceptives supplémentaires pendant les 7 jours qui suivent.
+
+1. La femme doit prendre le dernier comprimé oublié dès qu'elle s'en rend compte, même si cela implique de prendre deux comprimés en même temps. Elle continuera ensuite à prendre les comprimés suivants à l'heure habituelle. La plaquette suivante est entamée aussitôt après avoir terminé la plaquette en cours, donc sans arrêt entre 2 plaquettes. Il n'apparaîtra probablement pas d'hémorragie de privation avant la fin de la seconde plaquette, mais il est possible que la patiente constate des spottings ou métrorragies au cours des jours de prise des comprimés.
+
+2. Il est également possible de cesser de prendre les comprimés de la plaquette en cours. La femme doit alors respecter un arrêt de 7 jours maximum sans prendre aucun comprimé, incluant les jours où des comprimés ont été oubliés, puis continuer en entamant la plaquette suivante.
+
+Si la femme a oublié plusieurs comprimés et ne présente pas d'hémorragie de privation pendant la phase d'arrêt sans comprimés, il convient d'envisager l'éventualité d'une grossesse.
+
+#### Conseils en cas de troubles gastro-intestinaux
+
+En cas de symptômes gastro-intestinaux sévères, une absorption incomplète des principes actifs est possible et des mesures contraceptives supplémentaires doivent donc être prises.
+
+Si des vomissements ou une diarrhée sévère surviennent dans les 3 à 4 heures qui suivent la prise d'un comprimé, la femme doit appliquer les conseils donnés en cas d'oubli d'un comprimé. Si la femme ne veut pas modifier son schéma normal de prise des comprimés, elle devra prendre les comprimés supplémentaires dans une autre plaquette.
+
+#### Comment déplacer ou retarder les règles
+
+Pour retarder la survenue des règles, la femme doit commencer une nouvelle plaquette immédiatement après avoir terminé la plaquette précédente, sans interruption. Les règles peuvent être retardées aussi longtemps qu'on le souhaite, mais jamais au-delà de la fin de la seconde plaquette. Au cours de cette période, la femme peut présenter des métrorragies ou des spottings. LEVONORGESTREL/ETHINYLESTRADIOL EG 100 microgrammes/20 microgrammes, comprimé enrobé peut ensuite être repris de façon régulière après la période habituelle de 7 jours sans comprimés.
+
+Pour décaler ses règles à un autre jour de la semaine, on peut conseiller à la femme de raccourcir la prochaine période d'interruption sans comprimés du nombre de jours souhaité. Plus on raccourcit la phase d'interruption, plus le risque d'absence d'hémorragie de privation augmente et plus la femme risque de présenter une métrorragie ou un spotting pendant l'utilisation de la plaquette suivante (exactement comme lorsque l'on cherche à retarder les règles).

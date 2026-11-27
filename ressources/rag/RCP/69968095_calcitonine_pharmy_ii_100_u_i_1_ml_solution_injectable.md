@@ -1,0 +1,40 @@
+---
+code_cis: 69968095
+denomination: "CALCITONINE PHARMY II 100 U.I./1 ml, solution injectable"
+date_mise_a_jour: 01/12/2020
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Par voie sous-cutanée, intramusculaire ou intraveineuse chez les personnes âgées de 18 ans ou plus.
+
+La calcitonine de saumon peut être administrée au coucher afin de réduire l'incidence des nausées ou des vomissements qui pourraient se produire, en particulier au début du traitement.
+
+En raison de la preuve d’un risque accru de cancers et de l’utilisation de longue durée de la calcitonine (voir rubrique4.4) la durée de traitement dans toutes les indications doit être limitée à la période la plus courte possible et en utilisant la dose efficace minimale.
+
+##### Prévention de la perte osseuse aiguë
+
+La posologie recommandée est de 100 U.I. par jour ou 50 U.I. deux fois par jour, en administration sous-cutanée ou intramusculaire. La dose peut être réduite à 50 U.I. par jour au début de la remobilisation. La durée de traitement recommandée est de 2 semaines et dans tous les cas ne doit pas excéder 4 semaines, en raison du risque accru de cancer associé à une utilisation au long cours de calcitonine.
+
+##### Maladie de Paget
+
+La posologie recommandée est de 100 U.I. par jour, administrée par voie sous-cutanée ou intramusculaire; toutefois, un schéma posologique minimal de 50 U.I. trois fois par semaine a apporté une amélioration clinique et biochimique. La posologie doit être adaptée aux besoins de chaque patient. La durée de traitement doit être arrêtée dès qu’il s’avère efficace pour le patient et que les symptômes ont disparu. La durée de traitement ne doit pas normalement dépasser 3 mois, en raison de la preuve d’un risque accru de cancers lors de l’utilisation de longue durée de la calcitonine. Dans des cas exceptionnels, par exemple chez des patients à haut risque de fracture pathologique, la durée de traitement peut être prolongée jusqu’à une durée maximale recommandée de 6 mois.
+
+Un renouvellement périodique du traitement peut être envisagé chez ces patients et doit tenir compte des bénéfices potentiels et de la preuve d’un risque accru de cancers et de l’utilisation de longue durée de la calcitonine.
+
+L’effet de la calcitonine peut être suivi par la mesure de marqueurs appropriés du remodelage osseux tels que les phosphatases alcalines sériques ou l’hydroxyproline ou la déoxypyridinoline urinaires.
+
+Hypercalcémie d'origine maligne
+
+La dose de départ recommandée est de 100 U.I. toutes les 6 à 8 heures, par injection sous-cutanée ou intramusculaire. De plus, après une réhydratation préalable, la calcitonine de saumon peut être administrée par voie intraveineuse.
+
+Si la réponse n'est pas satisfaisante après un ou deux jours, la dose peut être augmentée jusqu'à un maximum de 400 U.I. toutes les 6 à 8 heures. Dans les cas sévères ou d'urgence, une perfusion intraveineuse avec au maximum 10 U.I./kg de poids corporel dans 500 ml de solution de chlorure de sodium à 0,9 % p/v peut être administrée sur une période couvrant au moins 6 heures.
+
+Utilisation chez le sujet âgé et en cas d'insuffisance hépatique ou rénale
+
+L'expérience dont on dispose sur l'utilisation de la calcitonine chez le sujet âgé n'a pas mis en évidence de diminution de la tolérance ni la nécessité de modifier les doses chez ces patients. Il en est de même chez les patients présentant une insuffisance hépatique. La clairance métabolique est beaucoup plus faible chez les patients souffrant d'insuffisance rénale terminale que chez les sujets sains. La pertinence clinique de cette observation n'est toutefois pas connue (voir rubrique 5.2).
+
+##### Population pédiatrique
+
+La calcitonine est contre-indiquée chez les enfants et adolescents de moins de 18 ans.

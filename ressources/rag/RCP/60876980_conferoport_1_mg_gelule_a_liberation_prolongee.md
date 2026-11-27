@@ -1,0 +1,104 @@
+---
+code_cis: 60876980
+denomination: "CONFEROPORT 1 mg, gélule à libération prolongée"
+date_mise_a_jour: 02/06/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+CONFEROPORT est une formulation orale en une prise par jour de tacrolimus. Le traitement par CONFEROPORT nécessite une surveillance étroite par un personnel médical disposant des compétences et des équipements nécessaires. Seuls les médecins habitués à manier les médicaments immunosuppresseurs et ayant l’expérience de la prise en charge des patients transplantés sont à même de prescrire ce médicament et d’instaurer les modifications du traitement immunosuppresseur.
+
+Des formulations orales différentes contenant du tacrolimus ne doivent pas être substituées sans supervision clinique. La substitution par inadvertance, involontairement ou en l’absence de supervision entre des formulations orales différentes contenant du tacrolimus avec des caractéristiques de libération différentes est risquée. Cela peut entraîner un rejet du greffon ou une augmentation de l’incidence des effets indésirables, y compris sous-immunosuppression ou sur-immunosuppression, en raison de différences cliniquement significatives en terme d’exposition systémique au tacrolimus. Les patients doivent être maintenus sous une même formulation contenant du tacrolimus avec le schéma posologique quotidien correspondant ; la formulation ou le schéma posologique ne doivent être modifiés que sous la supervision étroite d’un spécialiste en transplantation (voir rubriques 4.4 et 4.8). À la suite de la conversion à tout autre formulation, une surveillance thérapeutique médicamenteuse doit être effectuée et des ajustements de posologie instaurés afin d’assurer le maintien de l’exposition systémique au tacrolimus.
+
+#### Posologie
+
+Les recommandations posologiques initiales présentées ci-dessous ne sont données qu’à titre indicatif. CONFEROPORT est administré en règle générale en association avec d’autres immunosuppresseurs en période post-opératoire initiale. La dose peut varier en fonction du protocole immunosuppresseur choisi. La posologie de CONFEROPORT doit essentiellement reposer sur l’évaluation clinique des signes de rejet et de tolérance pour chaque patient, aidée par la surveillance des concentrations sanguines (voir ci-dessous « Surveillance thérapeutique médicamenteuse »). En cas d’apparition de signes cliniques de rejet, une modification du protocole immunosuppresseur doit être envisagée.
+
+Chez les patients transplantés rénaux et hépatiques *de novo*, l’ASC0-24 du tacrolimus pour le tacrolimus à libération prolongée le 1er jour était, respectivement de 30 % et de 50 % inférieure à celle obtenue pour la gélule à libération immédiate à des doses équivalentes. Le 4ème jour, l’exposition systémique mesurée grâce aux concentrations résiduelles est similaire chez les patients transplantés rénaux et chez les patients transplantés hépatiques avec les deux formulations. Une surveillance fréquente et attentive des concentrations résiduelles du tacrolimus est recommandée au cours des deux premières semaines qui suivent la transplantation avec CONFEROPORT afin de s’assurer d’une exposition adéquate au médicament dans la période post-transplantation immédiate. Étant donné la faible clairance du tacrolimus, en cas d’ajustement de posologie, l’état d’équilibre CONFEROPORT peut n’apparaître qu’après plusieurs jours.
+
+L’immunosuppression doit être maintenue pour éviter le rejet du greffon ; par conséquent, aucune limitation de la durée du traitement par voie orale ne peut être donnée.
+
+*Prévention du rejet du greffon rénal*
+
+Le traitement par CONFEROPORT débutera à 0,20-0,30 mg/kg/jour, une fois par jour le matin. Le traitement doit débuter au plus tard 24 heures après la transplantation.
+
+En général, la posologie de CONFEROPORT est réduite pendant la période post-transplantation. Il est possible dans certains cas d’arrêter les autres traitements immunosuppresseurs concomitants et d’utiliser ainsi CONFEROPORT en monothérapie. Les changements de l’état du patient après la transplantation peuvent modifier la pharmacocinétique du tacrolimus et nécessiter des adaptations ultérieures de la posologie.
+
+*Prévention du rejet du greffon hépatique*
+
+Le traitement par CONFEROPORT débutera à 0,10-0,20 mg/kg/jour, une fois par jour le matin. Le traitement doit débuter 12 à 18 heures environ après la transplantation.
+
+En général, la posologie de CONFEROPORT est réduite pendant la période post-transplantation. Il est possible dans certains cas d’arrêter les autres traitements immunosuppresseurs concomitants et d’utiliser ainsi CONFEROPORT en monothérapie. L’amélioration de l’état du patient après la transplantation peut modifier la pharmacocinétique du tacrolimus et nécessiter des adaptations ultérieures de la posologie.
+
+*Substitution par CONFEROPORT des patients sous tacrolimus à libération immédiate*
+
+La substitution par CONFEROPORT une fois par jour chez les patients transplantés maintenus à la posologie de 1 gélule deux fois par jour de tacrolimus à libération immédiate, devra se faire sur la base d’une posologie quotidienne totale de 1:1 (mg:mg). CONFEROPORT doit être administré le matin.
+
+Chez les patients stables convertis de tacrolimus à libération immédiate (deux fois par jour) au tacrolimus à libération prolongée (une fois par jour) sur la base d’une posologie quotidienne totale de 1:1 (mg:mg), l’exposition systémique au tacrolimus (ASC0-24) pour le tacrolimus à libération prolongée était environ 10 % inférieure à celle du tacrolimus à libération immédiate. Le rapport entre les concentrations résiduelles de tacrolimus (C24) et l’exposition systémique (ASC0-24) pour tacrolimus à libération prolongée est similaire à celui de tacrolimus à libération immédiate. Lors de la substitution des gélules de tacrolimus à libération immédiate par CONFEROPORT, les concentrations résiduelles de tacrolimus doivent être mesurées avant la substitution et au cours des deux semaines qui suivent la substitution. Après la substitution, les concentrations résiduelles de tacrolimus doivent être surveillées et si nécessaire des ajustements de la posologie doivent être réalisés afin de maintenir une exposition systémique similaire. Des ajustements de la posologie doivent être réalisés afin de s’assurer qu’une exposition systémique similaire est maintenue.
+
+*Substitution de la ciclosporine par le tacrolimus*
+
+Une surveillance accrue est recommandée lors de la substitution d’un protocole à base de ciclosporine par un protocole à base de tacrolimus (voir rubriques 4.4 et 4.5). L’administration concomitante de ciclosporine et de tacrolimus n’est pas recommandée. Le traitement par CONFEROPORT doit être instauré en tenant compte des concentrations sanguines de ciclosporine et de l’état clinique du patient. L’administration doit être différée en cas de concentrations sanguines élevées de ciclosporine. En pratique, le traitement par tacrolimus doit être instauré 12-24 heures après l’arrêt de la ciclosporine. La surveillance des concentrations sanguines de ciclosporine doit se poursuivre après la substitution car la clairance de la ciclosporine peut être modifiée.
+
+*Traitement du rejet du greffon allogénique*
+
+L’augmentation de la posologie du tacrolimus, l’administration de doses supplémentaires de corticoïdes et l’introduction de cures brèves d’anticorps monoclonaux ou polyclonaux ont été utilisées pour traiter les épisodes de rejet. En cas d’apparition de signes de toxicité tels que des effets indésirables graves (voir rubrique 4.8), il peut être nécessaire de réduire la dose de CONFEROPORT.
+
+*Traitement du rejet du greffon allogénique après transplantation rénale ou hépatique*
+
+En cas de substitution d’un autre immunosuppresseur par CONFEROPORT une fois par jour, le traitement doit débuter à la dose orale initiale recommandée en prévention du rejet du greffon, respectivement en transplantation rénale et hépatique.
+
+*Traitement du rejet du greffon allogénique après transplantation cardiaque*
+
+Chez les patients adultes convertis à CONFEROPORT, une dose orale initiale de 0,15 mg/kg/jour doit être administrée une fois par jour, le matin.
+
+*Traitement du rejet du greffon allogénique après transplantation d’autres greffons*
+
+Bien qu’il n’y ait pas d’expérience clinique avec tacrolimus à libération prolongée, en transplantation pulmonaire, pancréatique ou intestinale, tacrolimus à libération immédiate a été utilisé aux doses orales initiales de 0,10 – 0,15 mg/kg/jour en transplantation pulmonaire, de 0,2 mg/kg/jour en transplantation pancréatique, et de 0,3 mg/kg/jour en transplantation intestinale.
+
+Surveillance thérapeutique médicamenteuse
+
+La posologie doit être basée essentiellement sur l’évaluation clinique des signes de rejet et de la tolérance pour chaque patient à l’aide de la surveillance des concentrations résiduelles du tacrolimus sur sang total.
+
+Afin d’aider à l’optimisation de la posologie, plusieurs techniques d’immunoanalyse sont disponibles pour déterminer les concentrations de tacrolimus dans le sang total. La comparaison des concentrations décrites dans la littérature par rapport aux valeurs individuelles observées en pratique clinique doit être évaluée avec prudence et en tenant compte de la méthode de dosage utilisée. Actuellement, en pratique clinique, le suivi des concentrations sur sang total est effectué par des méthodes d’immunodosage. Le rapport entre les concentrations résiduelles de tacrolimus (C24) et l’exposition systémique (ASC0-24) est similaire entre les deux formulations tacrolimus à libération prolongée et tacrolimus à libération immédiate.
+
+Les concentrations résiduelles sur sang total de tacrolimus doivent être surveillées en période post-transplantation. Les taux sanguins de tacrolimus doivent donc être déterminés 24 heures environ après l’administration de la dernière dose de CONFEROPORT, et juste avant la dose suivante. Une surveillance fréquente des concentrations résiduelles au cours des deux premières semaines qui suivent la transplantation est recommandée, suivie par une surveillance régulière pendant le traitement d’entretien. Les concentrations résiduelles de tacrolimus doivent également être étroitement surveillées suite à la substitution de tacrolimus à libération immédiate par CONFEROPORT, à toutes adaptations de la posologie, après des modifications du protocole immunosuppresseur ou après l’administration concomitante de substances susceptibles d’affecter les concentrations sur sang total du tacrolimus (voir rubrique 4.5). La périodicité du suivi des concentrations doit être basée sur l’état clinique. Étant donné la faible clairance du tacrolimus, en cas d’ajustement de posologie de CONFEROPORT, l’état d’équilibre visé peut n’apparaître qu’après plusieurs jours.
+
+Les données des études cliniques suggèrent que, lorsque les concentrations sanguines résiduelles de tacrolimus sont maintenues en dessous de 20 ng/ml, la majorité des patients peut être traitée efficacement. Il est nécessaire de tenir compte de l’état clinique du patient lors de l’interprétation des concentrations du produit dans le sang total.
+
+En pratique clinique, les concentrations résiduelles sur sang total sont généralement comprises entre 5-20 ng/ml chez les transplantés hépatiques et 10-20 ng/ml chez les transplantés rénaux et cardiaques dans la période post-transplantation immédiate. Au cours du traitement d’entretien, les concentrations sanguines sont généralement comprises entre 5-15 ng/ml chez les transplantés hépatiques, rénaux et cardiaques.
+
+##### Populations particulières de patients
+
+*Insuffisance hépatique*
+
+Une diminution de la dose peut être nécessaire chez les patients présentant une insuffisance hépatique sévère de façon à maintenir les concentrations résiduelles sanguines de tacrolimus dans les limites recommandées.
+
+*Insuffisance rénale*
+
+Comme la pharmacocinétique du tacrolimus n’est pas affectée par la fonction rénale (voir rubrique 5.2), aucune adaptation de la posologie n’est nécessaire. Cependant, en raison du potentiel néphrotoxique du tacrolimus, il est recommandé de surveiller étroitement la fonction rénale (notamment par des dosages de la créatininémie, le calcul de la clairance de la créatinine et la surveillance du débit urinaire).
+
+*Ethnie*
+
+En comparaison avec les patients caucasiens, les patients de race noire peuvent nécessiter des doses de tacrolimus supérieures pour atteindre des concentrations résiduelles similaires.
+
+*Sexe*
+
+Les données actuellement disponibles ne montrent pas que les hommes et les femmes nécessitent des doses différentes pour atteindre des concentrations résiduelles similaires.
+
+*Population plus âgée*
+
+Les données actuellement disponibles ne montrent pas la nécessité d’adapter la posologie chez les populations plus âgées.
+
+*Population pédiatrique*
+
+La sécurité et l’efficacité de CONFEROPORT chez les enfants âgés de moins de 18 ans n’ont pas encore été établies. Des données limitées sont disponibles mais aucune recommandation sur la posologie ne peut être donnée.
+
+*Mode d’administration*
+
+CONFEROPORT est une formulation orale de tacrolimus en prise unique quotidienne. Il est recommandé d’administrer la dose orale quotidienne de CONFEROPORT une fois par jour, le matin.
+
+CONFEROPORT, gélule à libération prolongée doit être pris immédiatement après avoir été sorti de la plaquette thermoformée. Il convient d’avertir les patients de ne pas avaler le dessiccant. Les gélules doivent être avalées ***entières*** avec un liquide (de l’eau de préférence). En général, CONFEROPORT doit être pris à jeun ou au moins 1 heure avant ou 2 à 3 heures après un repas pour permettre une absorption maximale (voir rubrique 5.2). Une dose oubliée le matin doit être prise le plus rapidement possible le même jour. Une dose double ne doit pas être prise le matin suivant.
+
+Pour les patients qui ne peuvent pas prendre de médicaments par voie orale pendant la période post-transplantation immédiate, un traitement par tacrolimus peut être initié par voie intraveineuse à la dose d’environ 1/5ème de la dose orale recommandée pour l’indication correspondante. Des formulations intraveineuses du tacrolimus sont disponibles.

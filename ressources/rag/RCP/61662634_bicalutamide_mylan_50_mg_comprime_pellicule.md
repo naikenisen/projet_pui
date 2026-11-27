@@ -1,0 +1,30 @@
+---
+code_cis: 61662634
+denomination: "BICALUTAMIDE MYLAN 50 mg, comprimé pelliculé"
+date_mise_a_jour: 21/01/2022
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+**Cancer de la prostate métastasé**
+
+Chez l’homme adulte, y compris le sujet âgé, un comprimé de 50 mg par jour, à commencer avec la castration médicale ou chirurgicale.
+
+**Cancer de la prostate localement avancé**
+
+Chez l’homme adulte, y compris le sujet âgé, trois comprimés de 50 mg par jour. Il est actuellement recommandé de traiter 5 ans.
+
+En cas d'insuffisance rénale, aucun ajustement posologique n'est nécessaire.
+
+En cas d'insuffisance hépatique légère, aucun ajustement posologique n'est nécessaire. En cas d'insuffisance hépatique modérée à sévère, une accumulation peut être observée (voir rubriques 4.3 et 4.4).
+
+#### Mode d’administration
+
+Ce médicament doit être pris par voie orale.
+
+Les comprimés doivent être pris avec un verre d'eau, sans être croqués.
+
+Ce médicament peut être pris pendant ou en dehors des repas. L'observance est améliorée quand le médicament est toujours pris à la même heure de la journée.

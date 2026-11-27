@@ -1,0 +1,44 @@
+---
+code_cis: 64907754
+denomination: "BRINZOLAMIDE SANDOZ 10 mg/mL, collyre en suspension"
+date_mise_a_jour: 18/05/2020
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+En monothérapie ou en association, la posologie est d’une goutte de BRINZOLAMIDE SANDOZ dans le cul-de-sac conjonctival de l’œil ou des yeux atteint(s), deux fois par jour. Certains patients peuvent avoir une meilleure réponse avec une goutte trois fois par jour.
+
+#### Populations particulières
+
+##### Sujets âgés
+
+Aucun ajustement de la posologie n’est nécessaire chez les patients âgés.
+
+##### Insuffisance hépatique et rénale
+
+Le brinzolamide n’a pas été étudié chez les patients ayant une insuffisance hépatique et par conséquent son utilisation n’est pas recommandée chez ces patients.
+
+Le brinzolamide n’a pas été étudié chez les patients ayant une insuffisance rénale sévère (clairance de la créatinine < 30 mL/min) ou chez les patients présentant une acidose hyperchlorémique. Etant donné que le brinzolamide et ses principaux métabolites sont majoritairement excrétés par le rein, BRINZOLAMIDE SANDOZ est par conséquent contre-indiqué chez ces patients (voir rubrique 4.3).
+
+##### Population pédiatrique
+
+La sécurité et l’efficacité de BRINZOLAMIDE SANDOZ chez les nourrissons, les enfants et les adolescents âgés de 0 à 17 ans n’ont pas été établies. Les données actuellement disponibles sont décrites aux rubriques 4.8 et 5.1. L’utilisation de BRINZOLAMIDE SANDOZ n’est pas recommandée chez les nourrissons, les enfants et les adolescents.
+
+#### Mode d’administration
+
+Voie ophtalmique.
+
+Une occlusion nasolacrymale ou une fermeture douce des paupières après l’instillation est recommandée. Ceci peut réduire l’absorption systémique des médicaments administrés par voie ophtalmique et conduire à une diminution des effets secondaires systémiques.
+
+Demander aux patients de bien agiter le flacon avant usage. Après avoir retiré le capuchon, si la bague de sécurité est trop lâche, la retirer avant utilisation du produit.
+
+Pour éviter la contamination de l’embout compte-gouttes et de la suspension, il faut faire attention à ne pas toucher les paupières, les surfaces voisines ou d’autres surfaces avec l’embout compte-gouttes du flacon. Indiquer aux patients de conserver le flacon bien fermé quand il n’est pas utilisé.
+
+En cas de remplacement d’un autre traitement anti-glaucomateux ophtalmique par BRINZOLAMIDE SANDOZ, interrompre l’autre médicament et commencer BRINZOLAMIDE SANDOZ le jour suivant.
+
+En cas d’utilisation de plusieurs médicaments administrés par voie ophtalmique, les instillations doivent être espacées d’au moins 5 minutes. Les pommades ophtalmiques doivent être administrées en dernier.
+
+Si une instillation est oubliée, le traitement doit être poursuivi avec l'instillation suivante comme prévu. La posologie ne doit pas excéder une goutte trois fois par jour dans l’œil (les yeux) atteint(s).

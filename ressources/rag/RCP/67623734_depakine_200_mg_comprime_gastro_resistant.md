@@ -1,0 +1,43 @@
+---
+code_cis: 67623734
+denomination: "DEPAKINE 200 mg, comprimé gastro-résistant"
+date_mise_a_jour: 16/12/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Enfants de sexe féminin et femmes en âge de procréer
+
+Le traitement par valproate doit être instauré et surveillé par un médecin spécialiste expérimenté dans la prise en charge de l'épilepsie.
+
+Le valproate ne doit pas être utilisé chez les enfants de sexe féminin et les femmes en âge de procréer sauf en cas d’inefficacité ou d’intolérance aux autres traitements.
+
+Dans ce cas, le valproate doit être prescrit et dispensé conformément au programme de prévention de la grossesse du valproate (voir rubriques 4.3 et 4.4).
+
+Cette forme n'est pas adaptée à l'enfant de moins de 6 ans (risque de fausse-route).
+
+Parmi les formes pharmaceutiques orales, les formes sirop, solution buvable et granulés LP sont particulièrement adaptées à l'administration chez les enfants de moins de 11 ans.
+
+#### Posologie
+
+Posologie moyenne par 24 heures :
+
+- nourrissons et enfants : 30 mg par kg (les formes sirop, solution buvable ou granulés à libération prolongée seront de préférence utilisées).
+- adolescents et adultes : 20 à 30 mg par kg (les formes comprimés ou comprimé chrono ou granulés à libération prolongée seront de préférence utilisées).
+
+#### Patients atteints d’insuffisance rénale
+
+Chez les patients atteints d’insuffisance rénale, il peut s’avérer nécessaire de diminuer la posologie, et chez les patients sous hémodialyse, il pourra être nécessaire de l’augmenter. Le valproate de sodium est dialysable (voir la rubrique 4.9). La posologie doit être modifiée selon la surveillance clinique du patient (voir la rubrique 4.4).
+
+#### Mode d’administration
+
+Voie orale.
+
+La dose quotidienne est à administrer en 2 ou 3 prises, de préférence au cours des repas.
+
+Mise en route du traitement
+
+- S'il s'agit d'un malade déjà en traitement et recevant d'autres antiépileptiques, introduire progressivement le valproate de sodium pour atteindre la dose optimum en deux semaines environ, puis réduire éventuellement les thérapeutiques associées en fonction du contrôle obtenu ;
+- S'il s'agit d'un malade ne recevant pas d'autres antiépileptiques, l'ascension de la posologie s'effectue de préférence par paliers successifs tous les 2 ou 3 jours de façon à atteindre la posologie optimum en une semaine environ ;
+- En cas de nécessité, l'association d'autres antiépileptiques doit être réalisée de manière progressive (voir rubrique 4.5).

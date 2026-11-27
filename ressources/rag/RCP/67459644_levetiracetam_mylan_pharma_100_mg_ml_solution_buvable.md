@@ -1,0 +1,150 @@
+---
+code_cis: 67459644
+denomination: "LEVETIRACETAM MYLAN PHARMA 100 mg/mL, solution buvable"
+date_mise_a_jour: 30/07/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+##### Crises partielles
+
+La dose recommandée en monothérapie (à partir de 16 ans) et en association est la même et est décrite ci-dessous.
+
+##### Toutes les indications
+
+##### Adulte (≥ 18 ans) et adolescent (12 à 17 ans) pesant 50 kg ou plus
+
+La dose thérapeutique initiale est de 500 mg deux fois par jour. Cette dose peut être débutée dès le premier jour de traitement. Toutefois, une dose initiale plus faible de 250 mg deux fois par jour peut être administrée, en fonction de l’évaluation par le médecin de la réduction des crises par rapport aux effets indésirables éventuels. Cette dose peut être augmentée à 500 mg deux fois par jour au bout de deux semaines de traitement.
+
+En fonction de la réponse clinique et de la tolérance, la dose quotidienne peut être augmentée jusqu’à 1500 mg deux fois par jour. Les augmentations et diminutions posologiques peuvent se faire par paliers de 500 mg deux fois par jour toutes les 2 à 4 semaines.
+
+##### Adolescents (12 à 17 ans) pesant moins de 50 kg et enfants à partir de 1 mois
+
+Le médecin doit prescrire la forme pharmaceutique, la présentation et le dosage les plus appropriés en fonction du poids, de l’âge et de la dose. Consulter la rubrique *Population pédiatrique* pour les détails concernant les adaptations posologiques en fonction du poids.
+
+#### Arrêt du traitement
+
+Si le traitement par lévétiracétam doit être interrompu, il est recommandé de l’arrêter progressivement (par exemple, chez les adultes et les adolescents pesant plus de 50 kg : diminution de 500 mg deux fois par jour toutes les deux à quatre semaines ; chez les nourrissons de plus de six mois, les enfants et les adolescents pesant moins de 50 kg : la diminution de dose ne doit pas dépasser 10 mg/kg deux fois par jour toutes les deux semaines ; chez le nourrisson (moins de 6 mois) : la diminution de dose ne doit pas dépasser 7 mg/kg deux fois par jour toutes les deux semaines).
+
+#### Populations particulières
+
+##### Sujet âgé (65 ans et plus)
+
+Un ajustement de la dose est recommandé chez les sujets âgés présentant une altération de la fonction rénale (voir "Insuffisance rénale" ci-après).
+
+##### Insuffisance rénale
+
+La dose quotidienne doit être adaptée d'après la fonction rénale.
+
+Pour l’adulte, utiliser le tableau ci-dessous et ajuster la posologie comme indiqué. Il est nécessaire de calculer la clairance de la créatinine (CLcr) du patient en mL/min. La CLcr en mL/min peut être estimée à partir de la valeur de la créatinine sérique (en mg/dL), chez l’adulte et l’adolescent de plus de 50 kg selon la formule suivante :
+
+| CLcr (mL/min) = | [140-âge (années)] x poids (kg) | (x 0,85 pour les femmes) |
+| --- | --- | --- |
+| 72 x créatinine sérique (mg/dL) |  |  |
+
+Ensuite, la clairance de la créatinine est ajustée à la surface corporelle comme suit :
+
+| CLcr (mL/min/1,73 m²) = | CLcr (mL/min) | x 1,73 |
+| --- | --- | --- |
+| Surface corporelle (m²) |  |  |
+
+**Adaptation posologique chez l’adulte et l’adolescent pesant plus de 50 kg ayant une insuffisance rénale**
+
+| Groupe | Clairance de la créatinine (mL/min/1,73 m²) | Posologie et fréquence d’administration |
+| --- | --- | --- |
+| Fonction rénale normale | ≥ 80 | 500 à 1500 mg deux fois par jour |
+| Insuffisance rénale légère | 50-79 | 500 à 1000 mg deux fois par jour |
+| Insuffisance rénale modérée | 30-49 | 250 à 750 mg deux fois par jour |
+| Insuffisance rénale sévère | < 30 | 250 à 500 mg deux fois par jour |
+| Insuffisance rénale terminale sous dialyse (1) | - | 500 à 1000 mg une fois par jour (2) |
+
+(1) Une dose de charge de 750 mg est recommandée le premier jour du traitement par lévétiracétam.
+
+(2) Après une séance de dialyse, une dose supplémentaire de 250 à 500 mg est recommandée.
+
+Chez l’enfant insuffisant rénal, la dose de lévétiracétam doit être ajustée selon la fonction rénale car la clairance du lévétiracétam est dépendante de celle-ci. Cette recommandation se base sur une étude chez l’adulte insuffisant rénal.
+
+La CLcr en mL/min/1,73 m² peut être estimée à partir de la détermination de la créatinine sérique (mg/dL), chez le jeune adolescent, l’enfant et le nourrisson, en utilisant la formule suivante (formule de Schwartz) :
+
+| CLcr (mL/min/1,73 m²) = | Taille (cm) x ks |
+| --- | --- |
+| Créatinine sérique (mg/dL) |  |
+
+ks = 0,45 chez le nourrisson né à terme et jusqu’à 1 an ; ks = 0,55 chez l’enfant de moins de 13 ans et chez l’adolescente ; ks = 0,7 chez l’adolescent.
+
+**Adaptation posologique chez le nourrisson, l’enfant et l’adolescent pesant moins de 50 kg atteints d’insuffisance rénale**
+
+| Groupe | Clairance de la créatinine (mL/min/1,73 m²) | Dose et fréquence (1) |  |
+| --- | --- | --- | --- |
+| Nourrissons de 1 à moins de 6 mois | Nourrissons de 6 à 23 mois, enfants et adolescents pesant moins de 50 kg |  |  |
+| Fonction rénale normale | ≥ 80 | 7 à 21 mg/kg (0,07 à 0,21 mL/kg) 2 fois par jour | 10 à 30 mg/kg (0,10 à 0,30 mL/kg) deux fois par jour |
+| Insuffisance rénale légère | 50-79 | 7 à 14 mg/kg (0,07 à 0,14 mL/kg) 2 fois par jour | 10 à 20 mg/kg (0,10 à 0,20 mL/kg) deux fois par jour |
+| Insuffisance rénale modérée | 30-49 | 3,5 à 10,5 mg/kg (0,035 à 0,105 mL/kg) 2 fois par jour | 5 à 15 mg/kg (0,05 à 0,15 mL/kg) deux fois par jour |
+| Insuffisance rénale sévère | < 30 | 3,5 à 7 mg/kg (0,035 à 0,07 mL/kg) 2 fois par jour | 5 à 10 mg/kg (0,05 à 0,10 mL/kg) deux fois par jour |
+| Patients atteints d’insuffisance rénale au stade terminal sous dialyse | - | 7 à 14 mg/kg (0,07 à 0,14 mL/kg) une fois par jour (2) (4) | 10 à 20 mg/kg (0,10 à 0,20 mL/kg) une fois par jour (3) (5) |
+
+**(1)** Lévétiracétam en solution buvable doit être utilisé pour les doses inférieures à 250 mg, pour des doses non multiples de 250 mg, quand la dose recommandée ne peut être atteinte en prenant plusieurs comprimés ainsi que pour les patients ne pouvant pas avaler de comprimé.
+
+**(2)** Une dose de charge de 10,5 mg/kg (0,105 mL/kg) est recommandée le premier jour de traitement par lévétiracétam.
+
+**(3)** Une dose de charge de 15 mg/kg (0,15 mL/kg) est recommandée le premier jour de traitement par lévétiracétam.
+
+**(4)** Après dialyse, une dose supplémentaire de 3,5 à 7 mg/kg (0,035 à 0,07 mL/kg) est recommandée.
+
+**(5)** Après dialyse, une dose supplémentaire de 5 à 10 mg/kg (0,05 à 0,10 mL/kg) est recommandée.
+
+##### Insuffisance hépatique
+
+Aucun ajustement de la dose n’est nécessaire chez le patient atteint d'insuffisance hépatique légère à modérée. Chez le patient atteint d'insuffisance hépatique sévère, la clairance de la créatinine peut sous-estimer l’insuffisance rénale. Par conséquent, une réduction de 50 % de la dose quotidienne d’entretien est recommandée en cas de clairance de la créatinine < 60 mL/min/1,73 m².
+
+#### Population pédiatrique
+
+Le médecin doit prescrire la forme pharmaceutique, la présentation et le dosage les plus adaptés en fonction de l'âge, du poids et de la dose.
+
+LEVETIRACETAM, solution buvable est la forme à utiliser de préférence chez les nourrissons et les enfants de moins de 6 ans. De plus, les dosages disponibles en comprimé ne sont pas appropriés au traitement initial des enfants pesant moins de 25 kg, aux patients ne pouvant pas avaler de comprimé ou à l’administration de doses inférieures à 250 mg. Dans tous ces cas, LEVETIRACETAM, solution buvable doit être utilisée.
+
+##### En monothérapie
+
+La sécurité et l’efficacité du lévétiracétam chez l’enfant et l’adolescent de moins de 16 ans n’ont pas été établies en monothérapie.
+
+Pas de donnée disponible.
+
+##### Adolescents (16 à 17 ans) pesant 50 kg ou plus, ayant des crises partielles avec ou sans généralisation secondaire et présentant une épilepsie nouvellement diagnostiquée
+
+Se référer à la rubrique ci-dessus concernant *l’adulte* *(≥ 18 ans) et l’adolescent (12 à 17 ans) pesant 50 kg ou plus*.
+
+##### Traitement en association chez le nourrisson de 6 à 23 mois, l’enfant (2 à 11 ans) et l’adolescent (12 à 17 ans) pesant moins de 50 kg
+
+La dose thérapeutique initiale est de 10 mg/kg 2 fois par jour. En fonction de la réponse clinique et de la tolérance, la dose peut être augmentée de 10 mg/kg deux fois par jour toutes les 2 semaines, jusqu’à 30 mg/kg deux fois par jour. Les augmentations et diminutions de doses ne doivent pas dépasser 10 mg/kg deux fois par jour toutes les 2 semaines. La dose efficace la plus faible doit être utilisée pour toutes les indications.
+
+La posologie chez l’enfant de 50 kg ou plus est la même que chez l’adulte pour toutes les indications. Se référer à la rubrique ci-dessus concernant *l’adulte* *(≥ 18 ans) et l’adolescent (12 à 17 ans) pesant 50 kg ou plus* pour toutes les indications.
+
+**Recommandations posologiques chez le nourrisson à partir de 6 mois, l’enfant et l’adolescent**
+
+| **Poids** | **Dose initiale :**<br>**10 mg/kg 2 fois par jour** | **Dose maximale :**<br>**30 mg/kg 2 fois par jour** |
+| --- | --- | --- |
+| 6 kg (1) | 60 mg (0,6 mL) deux fois par jour | 180 mg (1,8 mL) deux fois par jour |
+| 10 kg (1) | 100 mg (1 mL) deux fois par jour | 300 mg (3 mL) deux fois par jour |
+| 15 kg (1) | 150 mg (1,5 mL) deux fois par jour | 450 mg (4,5 mL) deux fois par jour |
+| 20 kg (1) | 200 mg (2 mL) deux fois par jour | 600 mg (6 mL) deux fois par jour |
+| 25 kg | 250 mg deux fois par jour | 750 mg deux fois par jour |
+| À partir de 50 kg (2) | 500 mg deux fois par jour | 1 500 mg deux fois par jour |
+
+(1) Les enfants de 25 kg ou moins doivent de préférence initier le traitement avec LEVETIRACETAM MYLAN PHARMA 100 mg/mL, solution buvable
+
+(2) La posologie chez l’enfant et l’adolescent de 50 kg ou plus est la même que chez l’adulte.
+
+##### Traitement en association chez le nourrisson âgé de 1 mois à moins de 6 mois
+
+Le médecin doit prescrire la forme pharmaceutique, la présentation et le dosage les plus adaptés en fonction de l'âge, du poids et de la dose.
+
+LEVETIRACETAM MYLAN PHARMA 100 mg/mL, solution buvable : Flacon de 300 mL avec une seringue pour administration orale de 10 mL (délivrant jusqu’à 1000 mg de lévétiracétam) et graduée tous les 0,25 mL (correspondant à 25 mg). Cette présentation doit être prescrite pour **les enfants de 4 ans et plus**, les adolescents et les adultes.
+
+D’autres présentations existent adaptées à l’âge, le poids et la dose.
+
+#### Mode d’administration
+
+La solution buvable peut être diluée dans un verre d’eau ou un biberon et peut être prise pendant ou en dehors des repas. Après administration orale, le goût amer du lévétiracétam peut être perçu.

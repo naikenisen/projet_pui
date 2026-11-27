@@ -1,0 +1,42 @@
+---
+code_cis: 67851467
+denomination: "BROMAZEPAM EG 6 mg, comprimé quadrisécable"
+date_mise_a_jour: 28/09/2020
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+L'utilisation du bromazépam n'est pas recommandée chez l'enfant, en l'absence d'étude.
+
+De plus, le comprimé n'est pas une forme adaptée à l'enfant de moins de 6 ans (risque de fausse route).
+
+#### Dose
+
+**Dans tous les cas, le traitement sera initié à la dose efficace la plus faible et la dose maximale ne sera pas dépassée.**
+
+##### En pratique courante:
+
+Chez l'adulte, en début de traitement, la posologie quotidienne moyenne du BROMAZEPAM est de 6 mg par jour, répartis le plus souvent de la manière suivante:
+
+- 1/4 de comprimé le matin (1,5 mg) ;
+- 1/4 de comprimé à midi (1,5 mg) ;
+- 1/2 comprimé le soir (3 mg).
+
+**Elle doit être ensuite adaptée individuellement en fonction de la réponse thérapeutique.**
+
+##### En psychiatrie:
+
+Selon la gravité de l'anxiété à traiter: chez les malades ambulatoires, la posologie s'établit entre 6 et 18 mg; chez des sujets dont la sévérité du syndrome anxieux exige l'hospitalisation, il est possible de prescrire des doses plus élevées, 24 voire 36 mg par jour.
+
+Chez l'enfant, le sujet âgé, l'insuffisant rénal ou hépatique: il est recommandé de réduire la posologie, de moitié par exemple.
+
+#### Durée
+
+Le traitement doit être aussi bref que possible. L'indication sera réévaluée régulièrement surtout en l'absence de symptômes. La durée globale du traitement ne devrait pas excéder 8 à 12 semaines pour la majorité des patients, y compris la période de réduction de la posologie (voir rubrique 4.4).
+
+Dans certains cas, il pourra être nécessaire de prolonger le traitement au-delà des périodes préconisées. Ceci suppose des évaluations précises et répétées de l'état du patient.
+
+##### Prévention et traitement du delirium tremens et des autres manifestations du sevrage alcoolique:
+
+Traitement bref de l'ordre de 8 à 10 jours.
