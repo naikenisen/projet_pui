@@ -30,7 +30,7 @@ def split(text):
 
 def extract_passages(pdf_path):
     pdf_name = os.path.basename(pdf_path)
-    pages = pymupdf4llm.to_markdown(pdf_path, page_chunks=True, use_ocr=False)
+    pages = pymupdf4llm.to_markdown(pdf_path, page_chunks=True, use_ocr=True)
 
     passages = []
     for page_number, page in enumerate(pages, start=1):
