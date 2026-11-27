@@ -1,22 +1,29 @@
+import os
 import argparse
 from functools import lru_cache
 
-from openai import NOT_GIVEN
+from openai import OpenAI, NOT_GIVEN
 from openai.types.chat import ChatCompletionMessageParam
 
-from openrouter_client import get_openrouter_client
+from dotenv import load_dotenv
+
+import torch
+from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
+from sentence_transformers import SentenceTransformer
 
 MODEL = "qwen/qwen3.6-35b-a3b"
 EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"
-LOCAL_MODEL = "Qwen/Qwen3.6-35B-A3B"
-LOCAL_EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-8B"
 
+@lru_cache(maxsize=1)
+def get_openrouter_client() -> OpenAI:
+    load_dotenv()
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        raise ValueError("OPENROUTER_API_KEY is required for remote inference.")
+    return OpenAI(base_url="https://openrouter.ai/api/v1", api_key=api_key)
 
 @lru_cache(maxsize=1)
 def load_local_generator(model_id: str):
-    import torch
-    from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
-
     config = AutoConfig.from_pretrained(model_id)
     model_class = AutoModelForImageTextToText if hasattr(config, "vision_config") else AutoModelForCausalLM
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -29,17 +36,14 @@ def load_local_generator(model_id: str):
 
 @lru_cache(maxsize=1)
 def load_local_embedder(model_id: str):
-    import torch
-    from sentence_transformers import SentenceTransformer
-
     return SentenceTransformer(model_id, device="cuda" if torch.cuda.is_available() else "cpu")
 
 
 class InferenceBackend:
-    def __init__(self, local: bool = False, model: str | None = None, embedding_model: str | None = None):
+    def __init__(self, local: bool = False):
         self.local = local
-        self.model = model if model is not None else (LOCAL_MODEL if local else MODEL)
-        self.embedding_model = embedding_model if embedding_model is not None else (LOCAL_EMBEDDING_MODEL if local else EMBEDDING_MODEL)
+        self.model = MODEL
+        self.embedding_model = EMBEDDING_MODEL
 
     def generate(self, system_prompt: str, message: str, *, max_tokens: int,
                  reasoning: bool = False, json_mode: bool = False) -> str:
@@ -106,9 +110,7 @@ class InferenceBackend:
 
 def add_inference_arguments(parser: argparse.ArgumentParser):
     parser.add_argument("--local", action="store_true", help="run inference locally with Hugging Face models")
-    parser.add_argument("--model", help="generation model ID (Hugging Face with --local, OpenRouter otherwise)")
-    parser.add_argument("--embedding-model", help="embedding model ID (Hugging Face with --local, OpenRouter otherwise)")
 
 
 def backend_from_args(args: argparse.Namespace) -> InferenceBackend:
-    return InferenceBackend(local=args.local, model=args.model, embedding_model=args.embedding_model)
+    return InferenceBackend(local=args.local)

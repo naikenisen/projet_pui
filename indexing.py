@@ -52,21 +52,10 @@ def compute_embeddings(texts, backend: InferenceBackend | None = None):
     return vectors
 
 
-def collection_name(backend: InferenceBackend):
-    model_id = backend.embedding_model.lower()
-    if model_id == EMBEDDING_MODEL.lower():
-        return COLLECTION_NAME
-    model_name = re.sub(r"[^a-z0-9-]+", "_", model_id).strip("_")
-    if not model_name:
-        raise ValueError(f"Cannot create a collection name from embedding model ID {backend.embedding_model!r}.")
-    return f"{COLLECTION_NAME}_{model_name}"
-
-
 def get_collection(backend: InferenceBackend | None = None):
     backend = backend if backend is not None else InferenceBackend()
     chroma = chromadb.PersistentClient(path=CHROMA_DIR)
-    name = collection_name(backend)
-    return chroma.get_or_create_collection(name, embedding_function=None, metadata={"hnsw:space": "cosine"})
+    return chroma.get_or_create_collection(COLLECTION_NAME, embedding_function=None, metadata={"hnsw:space": "cosine"})
 
 
 # Replaces the PDF passages in ChromaDB and returns their count
