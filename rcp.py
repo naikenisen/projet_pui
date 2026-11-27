@@ -10,6 +10,8 @@ from kbs import line_details, load_patient, normalize
 RCP_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag", "RCP", "markdown")
 # 4.2 Posologie et mode d'administration, 4.3 Contre-indications
 SECTIONS = ("4.2", "4.3")
+# Only the dosage is sent to the LLM
+LLM_SECTIONS = ("4.2",)
 
 
 def words(text):
@@ -47,13 +49,13 @@ def find_rcp(label):
 
 
 # (denomination, markdown text of the sections 4.2 and 4.3) of an RCP file
-def read_sections(file_name):
+def read_sections(file_name, sections=SECTIONS):
     # basename prevents leaving the folder with a name like "../../file.md"
     with open(os.path.join(RCP_FOLDER, os.path.basename(file_name)), encoding="utf-8") as file:
         text = file.read()
     denomination = re.search(r'^denomination: "?(.*?)"?$', text, re.M)
     parts = []
-    for number in SECTIONS:
+    for number in sections:
         # From the "### 4.2." heading to the next numbered heading
         found = re.search(rf"^#+ *{re.escape(number)}\.?([^\n]*)\n(.*?)(?=^#+ *\d+\.\d|\Z)", text, re.S | re.M)
         if found:
@@ -61,7 +63,7 @@ def read_sections(file_name):
     return (denomination.group(1) if denomination else file_name), "\n\n".join(parts)
 
 
-# One excerpt per RCP of the ongoing lines: {"source": file name, "name": denomination, "text": sections}
+# One excerpt per RCP of the ongoing lines: {"source": file name, "name": denomination, "text": dosage section}
 def rcp_excerpts(record):
     file_names = []
     for treatment, details in zip(record["treatments"], line_details(record)):
@@ -70,7 +72,7 @@ def rcp_excerpts(record):
             file_names.append(file_name)
     excerpts = []
     for file_name in file_names:
-        name, text = read_sections(file_name)
+        name, text = read_sections(file_name, LLM_SECTIONS)
         if text:
             excerpts.append({"source": file_name, "name": name, "text": text})
     return excerpts

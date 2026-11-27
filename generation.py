@@ -52,9 +52,8 @@ What you do NOT know: the record contains no diagnosis, medical history, indicat
   verification.
 
 Knowledge-Based System (KBS) alerts [A1], [A2]..., guideline excerpts [R1], [R2]... and RCP excerpts [C1], [C2]...
-may be provided. An RCP excerpt gives the dosage (section 4.2) and the contraindications (section 4.3) of an ongoing
-drug from its ANSM summary of product characteristics: use it to check the doses and contraindications against the
-patient's data.
+may be provided. An RCP excerpt gives the dosage (section 4.2) of an ongoing drug from its ANSM summary of product
+characteristics: use it to check the doses against the patient's data.
 Alerts from the ANSM Thesaurus give their level in parentheses: CI or CONTRE-INDICATION = contraindication,
 ASDEC or Association DECONSEILLEE = combination not recommended, PE or Précaution d'emploi = precaution for use,
 APEC or A prendre en compte = to be taken into account. A combined level (e.g. “CI - ASDEC - APEC”) means that the
@@ -106,9 +105,9 @@ Rules for the points:
   kaliémie...”.
 - Name the drug involved and the patient values that justify the point. Do not write any alert or excerpt
   identifier (A1, R2, C1) in "text"; you may refer to a line by its identifier (L3).
-- "references": the identifiers of all the provided alerts and excerpts that support the point; for a dosage or a
-  contraindication, also cite the RCP excerpt of the drug when it is provided. Never invent an identifier; empty
-  list if the point relies on your own knowledge.
+- "references": the identifiers of all the provided alerts and excerpts that support the point; for a dosage, also cite
+  the RCP excerpt of the drug when it is provided. Never invent an identifier; empty list if the point relies on
+  your own knowledge.
 - "lines_to_modify": for an "intervention" point only, the identifiers of the lines you propose to modify or
   stop; empty list for the other types."""
 
