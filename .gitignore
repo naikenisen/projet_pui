@@ -8,6 +8,7 @@ venv/
 preprocessing/dataset/
 ressources/kbs/KBS_Docs/RCP/
 preprocessing/original_dataset/
+preprocessing/old_original_dataset/
 preprocessing/raw_extraction/
 CLAUDE.md
 # Graphviz figures generated when compiling the presentation
