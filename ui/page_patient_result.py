@@ -15,7 +15,7 @@ from generation import (
     lab_interpretation,
     read_lab_ranges,
 )
-from rcp import read_sections
+from rcp import read_dosage
 from ui.common import badge, label
 from ui.page_rag_documents import open_document
 
@@ -282,7 +282,7 @@ def _point(point, patient_id, number):
                     _alert_link(source["text"], key=f"{key}-{source_number}")
                 elif source["type"] == "rcp":
                     if st.button(f"RCP : {source['name']}", key=f"{key}-{source_number}", type="tertiary",
-                                 help="Ouvrir la posologie et les contre-indications du RCP"):
+                                 help="Ouvrir la posologie du RCP"):
                         _open_rcp(source["source"])
                 elif st.button(f"{source['source']}, p. {source['page']}", key=f"{key}-{source_number}", type="tertiary",
                                help=f"Ouvrir {source['source']} à la page {source['page']}"):
@@ -312,7 +312,7 @@ def _legacy_opinion(result, patient_id):
 @st.dialog("Résumé des caractéristiques du produit (ANSM)", width="large")
 def _open_rcp(file_name):
     try:
-        name, text = read_sections(file_name)
+        name, text = read_dosage(file_name)
     except FileNotFoundError:
         st.error(f"Le RCP « {file_name} » est introuvable dans ressources/rag/RCP/markdown.")
         return

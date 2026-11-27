@@ -22,7 +22,7 @@ OPENROUTER_API_KEY=your_key
 | `retrieval.py` | Searches the vector database for the passages useful for a patient |
 | `kbs.py` | Knowledge-Based System (KBS): turns a patient into facts and runs the CLIPS rules on them |
 | `create_rule.py` | Drafts a personalized CLIPS rule with the LLM from a pharmacist request, checks it and saves it |
-| `rcp.py` | Finds the ANSM RCP of each ongoing drug (`ressources/rag/RCP/markdown/`) and extracts its dosage (4.2) and contraindications (4.3) sections |
+| `rcp.py` | Finds the ANSM RCP of each ongoing drug (`ressources/rag/RCP/markdown/`) and reads its dosage section (4.2) |
 | `generation.py` | Analyses a patient with the LLM along with retrieved passages and KBS results |
 | `main.py` | Launch retrieval then KBS then generation|
 
