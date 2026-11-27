@@ -13,3 +13,4 @@ CLAUDE.md
 # Graphviz figures generated when compiling the presentation
 paper/presentation_figure_*.dot
 paper/presentation_figure_*.pdf
+preprocessing/CIS_RCP.csv
