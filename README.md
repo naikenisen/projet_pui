@@ -55,18 +55,14 @@ python3 create_rule.py --folder dataset --request "Alert if metformin with an eG
 
 Install the optional local dependencies in your Python environment.
 
-Without `--local`, the existing OpenRouter models and behavior remain the default. With `--local`, the defaults
-are their Hugging Face equivalents: `Qwen/Qwen3.6-35B-A3B` for generation and `Qwen/Qwen3-Embedding-8B` for embeddings.
-Default model IDs are defined in [inference.py](./inference.py).
-Override them explicitly if you want to try other models with `--embedding-model` and `--model`:
-
+Without `--local`, the existing OpenRouter behavior remain the default. 
 
 ```bash
-python3 indexing.py --local --embedding-model Qwen/Qwen3-Embedding-0.6B
+python3 indexing.py --local 
 
-python3 main.py --local --remaining --model Qwen/Qwen2.5-1.5B-Instruct --embedding-model Qwen/Qwen3-Embedding-0.6B
+python3 main.py --local --remaining 
 
-python3 generation.py --local --model Qwen/Qwen2.5-1.5B-Instruct --folder dataset --patient-id 100133744
+python3 generation.py --local --folder dataset --patient-id 100133744
 ```
 
 Models are downloaded from Hugging Face on first use and cached on disk. 
@@ -84,10 +80,10 @@ Sharing a collection assumes compatible embedding dimensions, preprocessing and 
 
 ## FRONTEND
 
-Launch Streamlit with inference options after the `--` separator:
+Launch Streamlit with local inference option after the `--` separator:
 
 ```bash
-streamlit run app.py -- --local --model Qwen/Qwen2.5-1.5B-Instruct --embedding-model Qwen/Qwen3-Embedding-0.6B
+streamlit run app.py -- --local
 ```
 
 ```
