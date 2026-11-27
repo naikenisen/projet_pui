@@ -35,7 +35,6 @@ Patients are read from `dataset/`; results are saved in `inference_results.json`
 # FRun the full pipeline on the dataset
 python3 main.py --remaining   # analyse patients without a result
 python3 main.py --all         # analyse all patients (overwrites results)
-python3 main.py --all --multithreads   # same, 8 patients analysed in parallel (also works with --remaining)
 python3 indexing.py           # index new docs from ressources/rag/RAG_Docs/ to the vectorial database
 
 # Run inference on one individual patient
