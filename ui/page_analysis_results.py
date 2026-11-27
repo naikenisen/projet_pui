@@ -1,9 +1,6 @@
 # "Résultats d'analyse" page: indicators, analysis launch and patient list.
 
 import html
-import os
-import subprocess
-import sys
 from dataclasses import dataclass, field
 
 import streamlit as st
@@ -62,20 +59,9 @@ def build_state():
     return ResultsState(patients, results, statuses, counts, sorted_patients)
 
 
-# Runs `main.py --remaining` and yields the id of each patient as soon as it is analysed
+# yields the id of each patient as soon as it is analysed
 def run_main():
-    script = os.path.abspath(main.__file__)
-    command = [sys.executable, "-u", script, "--remaining", "--folder", PATIENTS_FOLDER]
-    other_lines = []
-    with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
-                          cwd=os.path.dirname(script)) as process:
-        for line in process.stdout:
-            if line.startswith("Patient "):
-                yield line.split()[1]
-            else:
-                other_lines.append(line.rstrip())
-    if process.returncode:
-        raise RuntimeError("\n".join(other_lines[-5:]) or f"main.py exited with code {process.returncode}")
+    yield from main.analyse_folder(PATIENTS_FOLDER, backend=st.session_state.backend)
 
 
 def _render_overview(state):

@@ -2,18 +2,11 @@
 
 import argparse
 import json
-import os
 
-import chromadb
-from dotenv import load_dotenv
-from openai import OpenAI
-
-from generation import LAB_RANGES_FILE, MODEL, summarize_record
-from indexing import CHROMA_DIR, COLLECTION_NAME, EMBEDDING_MODEL
+from generation import LAB_RANGES_FILE, summarize_record
+from indexing import get_collection
+from inference import InferenceBackend, add_inference_arguments, backend_from_args
 from kbs import load_patient
-
-load_dotenv()
-client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
 
 RESULTS_PER_QUERY = 3
 MAX_PASSAGES = 8
@@ -90,29 +83,23 @@ def build_queries(record):
 
 
 # Short context sentences written by the LLM from the patient record, used as extra queries
-def llm_context(record):
-    completion = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": LLM_CONTEXT_PROMPT},
-            {"role": "user", "content": json.dumps(summarize_record(record), ensure_ascii=False)},
-        ],
+def llm_context(record, backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
+    text = backend.generate(
+        LLM_CONTEXT_PROMPT, json.dumps(summarize_record(record), ensure_ascii=False),
         max_tokens=1000,
-        temperature=0,
-        extra_body={"reasoning": {"enabled": False}},
     )
-    text = completion.choices[0].message.content or ""
     return [line.strip(" -•*") for line in text.splitlines() if line.strip(" -•*")]
 
 
 # Passages closest to the queries, without duplicates, sorted by distance
-def search(queries):
+def search(queries, backend: InferenceBackend | None = None):
     if not queries:
         return []
-    response = client.embeddings.create(model=EMBEDDING_MODEL, input=[INSTRUCTION + q for q in queries])
-    vectors = [element.embedding for element in response.data]
+    backend = backend if backend is not None else InferenceBackend()
+    collection = get_collection(backend=backend)
+    vectors = backend.embed([INSTRUCTION + q for q in queries])
 
-    collection = chromadb.PersistentClient(path=CHROMA_DIR).get_collection(COLLECTION_NAME, embedding_function=None)
     results = collection.query(query_embeddings=vectors, n_results=RESULTS_PER_QUERY)
 
     passages = {}
@@ -126,18 +113,22 @@ def search(queries):
 
 
 # Passages from the code queries first, then the new passages found from the LLM context
-def retrieve_context(record):
-    passages = search(build_queries(record))[:MAX_PASSAGES]
+def retrieve_context(record, backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
+    passages = search(build_queries(record), backend=backend)[:MAX_PASSAGES]
     known_texts = [p["text"] for p in passages]
-    llm_passages = [p for p in search(llm_context(record)) if p["text"] not in known_texts]
+    llm_passages = [
+        p for p in search(llm_context(record, backend=backend), backend=backend) if p["text"] not in known_texts
+    ]
     return passages + llm_passages[:MAX_LLM_PASSAGES]
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    add_inference_arguments(parser)
     parser.add_argument("--folder", required=True, help="folder containing the patient JSON files")
     parser.add_argument("--patient-id", required=True, help="patient number (JSON file name without .json)")
     args = parser.parse_args()
 
-    for p in retrieve_context(load_patient(args.folder, args.patient_id)):
+    for p in retrieve_context(load_patient(args.folder, args.patient_id), backend=backend_from_args(args)):
         print(f"[{p['source']}, page {p['page']}]\n{p['text']}\n")
