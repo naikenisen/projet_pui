@@ -1,0 +1,50 @@
+---
+code_cis: 69490275
+denomination: "ATENOLOL TEVA 100 mg, comprimé pelliculé sécable"
+date_mise_a_jour: 06/08/2020
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Hypertension artérielle
+
+La posologie recommandée est de 100 mg par jour en une prise, de préférence le matin.
+
+L'activité antihypertensive de l'aténolol justifie son utilisation en monothérapie à 1 comprimé par jour.
+
+Cependant, dans les cas d'hypertension sévère, une posologie supérieure pourra être nécessaire.
+
+L'association aux autres thérapeutiques antihypertensives, par exemple aux diurétiques, est possible.
+
+#### Prophylaxie des crises d'angor d'effort
+
+La posologie moyenne est de 1 comprimé à 100 mg par jour, elle peut être portée à 2 comprimés par jour si nécessaire.
+
+#### Infarctus du myocarde en phase aiguë
+
+Relais de la forme I.V. Le relais est pris par 50 mg per os 15 minutes après injection.
+
+Cette dose est renouvelée 12 heures après. A la 24ème heure, puis une fois par jour jusqu'au 10ème jour, administrer 100 mg par voie orale (1 comprimé).
+
+#### Troubles du rythme
+
+Après contrôle des troubles du rythme par l'aténolol administré par voie intraveineuse (si indiqué), l'aténolol sera administré par voie orale et la dose d'entretien recommandée est de 50 à 100 mg/jour.
+
+#### Patients âgés
+
+La posologie pourra être réduite.
+
+#### En cas d’insuffisance rénale
+
+La posologie est ajustée aux valeurs de la créatinine sérique ou de la clairance de la créatinine selon le tableau ci-dessous:
+
+| Créatinine sérique | Clairance de la créatinine (ClCR) (mL/min/1,73m2) | Posologie |  |
+| --- | --- | --- | --- |
+| mg/L | mmol/L |  |  |
+| < 25 | < 0,3 | ≥ 35 | inchangée (2 x 50 mg/j) en 1 prise |
+| 25 - 50 | 0,3 - 0,6 | 15 ≤ ClCR < 35 | 1 x 50 mg/j |
+| > 50 | > 0,6 | < 15 | 1 x 25 mg/j, soit ½ comprimé par jour de ATENOLOL TEVA 50 mg ou 1 x 50 mg tous les 2 jours |
+| Hémodialyse chronique: traitement initié en milieu hospitalier | 50 mg après chaque séance |  |  |
+
+Le comprimé dosé à 50 mg devra être, selon les cas, privilégié par rapport à celui dosé à 100 mg.

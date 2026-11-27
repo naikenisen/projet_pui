@@ -1,0 +1,95 @@
+---
+code_cis: 66752509
+denomination: "PEMETREXED OHRE PHARMA 25 mg/mL, solution à diluer pour perfusion"
+date_mise_a_jour: 01/03/2022
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+PEMETREXED OHRE PHARMA doit être administré uniquement sous le contrôle d'un médecin qualifié dans l’utilisation des chimiothérapies anticancéreuses.
+
+#### PEMETREXED OHRE PHARMA en association avec le cisplatine
+
+La posologie recommandée de PEMETREXED OHRE PHARMA est de 500 mg/m2 de surface corporelle, en perfusion intraveineuse (IV) de 10 minutes, le premier jour de chaque cycle de 21 jours. La posologie recommandée de cisplatine est de 75 mg/m2 de surface corporelle en perfusion de 2 heures, débutée environ 30 minutes après la fin de la perfusion de pémétrexed, le premier jour de chaque cycle de 21 jours. Les patients doivent recevoir un traitement anti-émétique adéquat et une hydratation appropriée, avant et/ou après la perfusion de cisplatine (se référer au Résumé des Caractéristiques du Produit du cisplatine pour des recommandations posologiques spécifiques).
+
+#### PEMETREXED OHRE PHARMA en monothérapie
+
+Chez les patients traités pour cancer bronchique non à petites cellules et qui ont reçu une chimiothérapie antérieure, la posologie recommandée de PEMETREXED OHRE PHARMA est de 500 mg/m2 de surface corporelle, administré en perfusion intraveineuse de 10 minutes, le premier jour de chaque cycle de 21 jours.
+
+#### Prémédication
+
+Afin de réduire la survenue et la sévérité des réactions cutanées, une corticothérapie devra être administrée la veille, le jour même et le lendemain de l’administration du pémétrexed. La posologie doit être équivalente à 4 mg de dexaméthasone par voie orale, deux fois par jour (voir rubrique 4.4).
+
+Afin de réduire la toxicité du pémétrexed, les patients traités doivent recevoir également une supplémentation en vitamines (voir rubrique 4.4). Les patients doivent prendre par voie orale de l'acide folique ou une association polyvitaminique contenant de l'acide folique (350 à 1 000 microgrammes) quotidiennement. Au moins cinq doses d’acide folique doivent être prises dans les 7 jours qui précèdent la première injection de pémétrexed, et les patients doivent continuer cette supplémentation pendant toute la durée du traitement et pendant 21 jours après la dernière injection de pémétrexed. Les patients doivent également recevoir une injection intramusculaire de vitamine B12 (1 000 microgrammes) dans la semaine précédant la première dose de pémétrexed puis une fois tous les trois cycles. Les injections ultérieures de vitamine B12 peuvent avoir lieu le même jour que l'administration de pémétrexed.
+
+#### Surveillance
+
+Avant chaque administration de pémétrexed, une numération formule sanguine complète (NFS) avec mesure du nombre différentiel de globules blancs et du taux de plaquettes doit être réalisée. Un bilan biochimique sera réalisé avant chaque administration de la chimiothérapie pour évaluer les fonctions hépatique et rénale.
+
+Avant le début de chaque cycle de chimiothérapie, le nombre absolu de polynucléaires neutrophiles (PNN) doit être supérieur ou égal à 1 500 cellules/mm3 et le nombre de plaquettes supérieur ou égal à 100 000 cellules/mm3. La clairance de la créatinine doit être supérieure ou égale à 45 mL/min.
+
+Le taux de bilirubine totale doit être inférieur ou égal à 1,5 fois la limite supérieure de la normale. Les taux de phosphatases alcalines (PA), d’aspartate aminotransférase (ASAT ou SGOT) et d’alanine aminotransférase (ALAT ou SGPT) doivent être inférieurs ou égaux à 3 fois la limite supérieure de la normale. Des taux de phosphatases alcalines, d’ASAT et d’ALAT inférieurs ou égaux à 5 fois la limite supérieure de la normale sont acceptables en cas de métastases hépatiques.
+
+#### Ajustements de la dose
+
+Au début d’un nouveau cycle, les ajustements de dose s'appuieront sur la numération formule sanguine au nadir et la toxicité non hématologique maximale observée au cours du cycle précédent. Le traitement peut être différé le temps nécessaire à la récupération. Dès récupération, les patients doivent être à nouveau traités selon les recommandations des tableaux 1, 2 et 3, qui concernent PEMETREXED OHRE PHARMA utilisé en monothérapie et en association avec le cisplatine.
+
+| Tableau 1 - Tableau de modification des doses de pémétrexed (en monothérapie ou en association) et de cisplatine - Toxicités hématologiques |  |
+| --- | --- |
+| Au nadir : PNN < 500 /mm3 et plaquettes > 50 000 /mm3 | 75 % de la dose précédente (pour pémétrexed et le cisplatine) |
+| Au nadir : plaquettes < 50 000 /mm3 quel que soit le taux de PNN | 75 % de la dose précédente (pour pémétrexed et le cisplatine) |
+| Au nadir : plaquettes < 50 000 /mm3 avec saignementa, quel que soit le taux de PNN | 50 % de la dose précédente (pour pémétrexed et le cisplatine) |
+
+a Ces critères répondent à la définition des saignements ≥ Grade 2 selon les Critères Communs de Toxicité (CTC) du National Cancer Institute (v2.0; NCI 1998)
+
+En cas de toxicités non-hématologiques ≥ Grade 3 (à l’exclusion d’une neurotoxicité), le traitement par PEMETREXED OHRE PHARMA doit être suspendu jusqu’à résolution à un niveau inférieur ou égal au niveau initial du patient avant traitement. Le traitement doit être poursuivi selon les recommandations du tableau 2.
+
+| Tableau 2 – Tableau de modification des doses de pémétrexed (en monothérapie ou en association) et de cisplatine - Toxicités non-hématologiques a, b |  |  |
+| --- | --- | --- |
+|  | Dose de pémétrexed (mg/m²) | Dose de cisplatine (mg/m²) |
+| Toute toxicité de Grade 3 ou 4, excepté mucite | 75 % de la dose précédente | 75 % de la dose précédente |
+| Toute diarrhée nécessitant une hospitalisation (quel que soit le grade) ou diarrhée de Grade 3 ou 4 | 75 % de la dose précédente | 75 % de la dose précédente |
+| Mucite de Grade 3 ou 4 | 50 % de la dose précédente | 100 % de la dose précédente |
+
+a Critères Communs de Toxicité (CTC) du National Cancer Institute (v2.0; NCI 1998)
+
+b A l’exclusion d’une neurotoxicité
+
+En cas de neurotoxicité, il est recommandé d’ajuster les doses de pémétrexed et de cisplatine comme précisé dans le tableau 3. Les patients doivent arrêter le traitement si une neurotoxicité de Grade 3 ou 4 est observée.
+
+| Tableau 3 - Tableau de modification des doses de pémétrexed (en monothérapie ou en association) et de cisplatine - Neurotoxicité |  |  |
+| --- | --- | --- |
+| Grade CTCa | Dose de pémétrexed (mg/m²) | Dose de cisplatine (mg/m²) |
+| 0 - 1 | 100 % de la dose précédente | 100 % de la dose précédente |
+| 2 | 100 % de la dose précédente | 50 % de la dose précédente |
+
+a Critères Communs de Toxicité (CTC) du National Cancer Institute (v2.0; NCI 1998)
+
+Le traitement par PEMETREXED OHRE PHARMA doit être arrêté si le patient présente une toxicité hématologique ou non- hématologique de Grade 3 ou 4 après 2 réductions de dose ou immédiatement si une neurotoxicité de Grade 3 ou 4 est observée.
+
+#### Populations particulières
+
+##### Sujets âgés
+
+Au cours des essais cliniques, il n’a pas été mis en évidence de risque plus élevé d’effets indésirables chez les patients de 65 ans et plus comparativement aux patients de moins de 65 ans. Des réductions de doses autres que celles recommandées pour l'ensemble des patients ne sont pas nécessaires.
+
+##### Population pédiatrique
+
+Il n’y a pas d’utilisation justifiée de PEMETREXED OHRE PHARMA dans la population pédiatrique dans le mésothéliome pleural malin et le cancer bronchique non à petites cellules.
+
+##### Insuffisants rénaux (formule standard de Cockcroft et Gault ou taux de filtration glomérulaire mesuré par la méthode de clairance plasmatique Tc99m-DTPA)
+
+Le pémétrexed est essentiellement éliminé sous forme inchangée dans les urines. Dans les études cliniques, des ajustements de doses autres que celles préconisées pour l'ensemble des patients n’ont pas été nécessaires chez les patients dont la clairance de la créatinine était ≥ 45 mL/min. Chez les patients ayant une clairance de la créatinine < 45 mL/min, les données sont insuffisantes ; l’utilisation du pémétrexed n’est donc pas recommandée chez ces patients (voir rubrique 4.4).
+
+##### Insuffisants hépatiques
+
+Aucune relation entre le taux d’ASAT (SGOT), d’ALAT (SGPT) ou de bilirubine totale et la pharmacocinétique du pémétrexed n’a été identifiée. Toutefois, il n'a pas été conduit d'étude spécifique chez des patients ayant une atteinte hépatique avec un taux de bilirubine supérieur à 1,5 fois la limite supérieure de la normale et/ou un taux d’aminotransférases supérieur à 3 fois la limite supérieure de la normale (en l’absence de métastases hépatiques) ou supérieur à 5 fois la limite supérieure de la normale (en cas de métastases hépatiques).
+
+#### Mode d’administration
+
+Pour les précautions à prendre avant la manipulation ou l’administration de PEMETREXED OHRE PHARMA, voir rubrique 6.6.
+
+PEMETREXED OHRE PHARMA doit être administré par voie intraveineuse. PEMETREXED OHRE PHARMA doit être administré en perfusion intraveineuse de 10 minutes, le premier jour de chaque cycle de 21 jours. Pour les instructions concernant la dilution du médicament avant administration, voir rubrique 6.6

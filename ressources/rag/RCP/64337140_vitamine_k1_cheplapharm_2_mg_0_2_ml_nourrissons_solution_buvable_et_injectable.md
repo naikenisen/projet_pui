@@ -1,0 +1,66 @@
+---
+code_cis: 64337140
+denomination: "VITAMINE K1 CHEPLAPHARM 2 mg/0,2 ml NOURRISSONS, solution buvable et injectable"
+date_mise_a_jour: 01/02/2022
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Voie orale ou injectable (I.V. ou I.M.) suivant les indications.
+
+#### Prévention de la maladie hémorragique du nouveau-né :
+
+##### Nouveau-nés en bonne santé de 36 semaines de gestation et plus :
+
+- Soit 1 mg administré par injection intramusculaire à la naissance ou peu après ;
+- Soit :
+  - 2 mg *per os* à la naissance ou peu après,
+  - puis une deuxième dose de 2 mg *per os* administrée entre le 4ème et le 7ème jour,
+  - puis une dose supplémentaire de 2 mg *per os* administrée 1 mois après la naissance.
+
+Pour les nouveau-nés allaités exclusivement au lait artificiel, la troisième dose orale peut être omise.
+
+Chez les enfants en allaitement maternel exclusif, il a été conseillé des doses orales supplémentaires, mais les données de tolérance et d’efficacité pour ces doses supplémentaires sont limitées (voir rubrique 5.1).
+
+##### Nouveau-nés prématurés de moins de 36 semaines de gestation pesant 2,5 kg ou plus, nouveau-nés à terme mais à risque (prématurité, asphyxie à la naissance, ictère rétentionnel, incapacité à avaler, utilisation d’anticoagulants ou d’antiépileptiques chez les mères):
+
+- 1 mg par voie IM ou IV à la naissance ou peu après.
+
+La quantité et la fréquence des doses ultérieures sont déterminées en fonction des paramètres de la coagulation. La vitamine K1 peut être administrée sans aucune dilution pour les nouveau-nés de 2,5 kg ou plus (voir Tableau 1)
+
+##### Nouveau-nés prématurés de moins de 36 semaines de gestation pesant moins de 2,5 kg :
+
+- 0,4 mg/kg (équivalent à 0,04 ml/kg) administrée par voie IM ou IV à la naissance ou peu après. Cette dose parentérale ne doit pas être dépassée.
+
+La quantité et la fréquence des doses ultérieures sont déterminées en fonction des paramètres de la coagulation.
+
+IL A ETE MONTRE QUE LA PROPHYLAXIE PAR VOIE ORALE EST INSUFFISANTE CHEZ LES PATIENTS PRESENTANT UNE MALADIE HEPATIQUE CHOLESTASIQUE SOUS-JACENTE ET UNE MALABSORPTION (voir rubrique 5.1).
+
+AVERTISSEMENT : une attention est nécessaire en calculant et en mesurant la dose en fonction du poids du nouveau-né (des erreurs de posologie de l’ordre de 10 fois la dose sont fréquentes).
+
+**Informations sur les doses dans la prophylaxie de la maladie hémorragique du nouveau-né prématuré :**
+
+Pour garantir une utilisation en toute sécurité chez le nouveau-né de moins de 2,5 kg, et notamment permettre l’utilisation de volumes faciles à manipuler pour l'injection, il est conseillé d’administrer la vitamine K1 diluée à 1/5 OU à 1/10 dans du glucose 5% selon les facilités d’administration (voir Tableau 1).
+
+Pour l'administration intramusculaire, la limite habituelle du volume d'injection doit être prise en compte.
+
+La compatibilité de la solution de vitamine K1 à 2 mg / 0,2 ml a été démontrée avec une solution de glucose 5% et ce, aux dilutions de 1/5 et de 1/10.
+
+**Tableau 1 Posologie pour les nouveau-nés prématurés :**
+
+| **Poids du nouveau-né** | **Dose de vitamine K1 à la naissance** | **Volume injectable**<br>**sans dilution** | **Volume injectable**<br>**avec dilution au 1/5**<br>Vitamine K1 (2 mg/0,2 ml) 0,2 ml + Glucose 5% 0,8 ml | **Volume injectable**<br>**avec dilution au 1/10**<br>Vitamine K1<br>(2 mg/0,2 ml) 0,2 ml+ Glucose 5% 1,8 ml |
+| --- | --- | --- | --- | --- |
+| 1 kg | 0,4 mg | 0,04 ml | 0,2 ml | 0,4 ml |
+| 1,25 kg | 0,5 mg | 0,05 ml | 0,25 ml | 0,5 ml |
+| 1,5 kg | 0,6 mg | 0,06 ml | 0,3 ml | 0,6 ml |
+| 1,75 kg | 0,7 mg | 0,07 ml | 0,35 ml | 0,7 ml |
+| 2 kg | 0,8 mg | 0,08 ml | 0,4 ml | 0,8 ml |
+| 2,25 kg | 0,9 mg | 0,09 ml | 0,45 ml | 0,9 ml |
+| ≥2,5 kg | 1 mg | 0,1 ml | Ne pas diluer | Ne pas diluer |
+
+#### Traitement de la maladie hémorragique du nouveau-né :
+
+- Dose initiale de 1 mg par voie IM ou IV lente.
+
+La quantité et la fréquence des doses ultérieures sont déterminées en fonction des paramètres de la coagulation.

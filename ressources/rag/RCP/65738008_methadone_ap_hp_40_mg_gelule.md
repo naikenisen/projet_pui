@@ -1,0 +1,77 @@
+---
+code_cis: 65738008
+denomination: "METHADONE AP-HP 40 mg, gélule"
+date_mise_a_jour: 16/03/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+**La forme gélule n’est pas destinée à la mise en place d’un traitement par la méthadone** (voir rubriques 4.1 et Conditions de prescription et de délivrance).
+
+#### Passage de la forme sirop à la forme gélule
+
+La forme gélule sera d’emblée prescrite à la posologie correspondant à la posologie d’entretien atteinte avec la forme sirop.
+
+La première prise de gélule doit avoir lieu le lendemain de la dernière prise de sirop, à l’heure habituelle.
+
+La posologie se situe habituellement entre 60 et 100 mg/jour, même si des doses supérieures peuvent être nécessaires chez certains patients.
+
+Les modifications de posologies ultérieures seront fondées, comme pour la forme sirop, sur la réévaluation clinique du patient en tenant compte des prises en charge associées.
+
+#### Mode d’administration
+
+Le traitement sera administré en une prise unique quotidienne (voir rubrique Conditions de prescription et de délivrance).
+
+La plaquette thermoformée est sécurisée. En raison du risque mortel en cas d’ingestion accidentelle, notamment par un enfant ou une personne naïve ou peu dépendante, les patients doivent être avertis de mettre les plaquettes thermoformées en sûreté, de ne jamais sortir les gélules à l’avance de la plaquette thermoformée, de tenir les plaquettes thermoformées hors de portée des enfants et de ne pas prendre ce médicament devant des enfants. Un service d’urgence doit être contacté immédiatement en cas d’ingestion accidentelle ou de suspicion d’ingestion (voir rubriques 4.4 et 4.8).
+
+#### Modalités d’arrêt progressif du traitement
+
+L’arrêt du traitement de substitution doit se faire par diminution progressive de la posologie de 1 à 5 mg, par paliers espacés d’au moins une semaine. Une prudence particulière est indispensable pendant toute cette période. Le suivi du patient sera rapproché afin de détecter, d’une part tout symptôme clinique évoquant un syndrome de sevrage (pour lequel un retour immédiat au palier précédent est nécessaire et d’autre part toute reprise des conduites addictives, qui expose le patient à un risque de surdosage aux opioïdes et qui serait incompatible avec la poursuite du traitement par la forme gélule (voir rubrique Conditions de prescription et de délivrance).
+
+En cas d’arrêt puis de reprise du traitement, les mêmes précautions que lors de la mise en place initiale du traitement et de l’augmentation progressive des doses doivent être prises en raison de la diminution de la tolérance.
+
+**CONDITIONS DE PRESCRIPTION ET DE DELIVRANCE DE LA GELULE DE METHADONE**
+
+**Le cadre de prescription et de délivrance de la gélule, tel que défini ci-dessous, a pour objet de limiter le risque d’abus, d’usage détourné ou d’intoxication accidentelle avec cette forme de méthadone, notamment la prise du médicament par des patients non dépendants aux opiacés, peu tolérants voire totalement naïfs, pour lesquels il existe un risque létal pour une dose de l’ordre de 1 mg/kg.**
+
+**En cas d’usage détourné ou de mésusage avéré de la gélule par un patient (tentative d’injection, usage illicite), le médecin devra obligatoirement revenir à une prescription de méthadone sous forme sirop.**
+
+Le traitement est réservé aux adultes et adolescents de plus de 15 ans volontaires pour accepter les règles du traitement.
+
+Les conditions de prescription et de délivrance de la gélule de méthadone sont les suivantes :
+
+1) Stupéfiant :
+
+Prescription sur ordonnances sécurisées.
+
+Durée maximale de prescription limitée à 28 jours. Délivrance fractionnée par périodes de 7 jours maximum.
+
+Le prescripteur peut préciser sur l’ordonnance la durée de chaque fraction, ou exclure le fractionnement en portant sur l’ordonnance la mention « délivrance en une seule fois », ou préciser que la dispensation doit se faire quotidiennement.
+
+La délivrance est effectuée par une pharmacie de ville ou par un CSAPA. Le nom du pharmacien choisi par le patient doit être mentionné sur l’ordonnance.
+
+2) Médicament soumis à prescription initiale réservée aux médecins exerçant en centres de soins d’accompagnement et de prévention en addictologie (CSAPA) ou aux médecins exerçant dans les services hospitaliers spécialisés dans les soins aux toxicomanes.
+
+Renouvellement non restreint.
+
+Médicament nécessitant une surveillance particulière pendant le traitement.
+
+*Mise en place du traitement :*
+
+Les patients sont volontaires et doivent accepter les règles de prise en charge :
+
+- Consultation en CSAPA ou en service hospitalier spécialisé dans les soins aux toxicomanes,
+- Se soumettre à des analyses urinaires périodiques de contrôle.
+
+**Une première analyse urinaire vérifiera la réalité de la prise de méthadone et l’absence de consommation récente d’opioïdes. Les analyses portent sur : la méthadone, les opioïdes naturels et/ou de synthèse, la cocaïne, l’amphétamine, les dérivés amphétaminiques, le cannabis et le LSD ainsi que sur l’alcool. La recherche et le dosage des produits listés ne sont pas systématiques mais sont effectués sur demande du prescripteur.**
+
+**Modalités de prescription et de délivrance**
+
+La primo-prescription de la gélule de méthadone doit être faite par un médecin exerçant en CSAPA ou en service hospitalier spécialisé dans les soins aux toxicomanes, auquel le médecin traitant aura adressé son patient, en accord avec ce dernier.
+
+Après la mise en place du traitement par la gélule de méthadone, le médecin primo-prescripteur adressera à nouveau le patient vers son médecin traitant.
+
+Lors du premier renouvellement de prescription par le médecin traitant, le patient devra présenter au pharmacien d’officine l’ordonnance de délégation du primo-prescripteur ainsi que celle du médecin traitant. Le patient devra également présenter au pharmacien d’officine, l’ordonnance de délégation du primo-prescripteur en cas de changement de pharmacie d’officine.

@@ -1,0 +1,30 @@
+---
+code_cis: 62350438
+denomination: "CATACOL 0,1 POUR CENT, collyre"
+date_mise_a_jour: 20/09/2019
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+**Voie locale.**
+
+En instillation oculaire.
+
+**Posologie**
+
+1 goutte de collyre, 2 à 4 fois par jour, 1 fois le matin, 1 fois le soir.
+
+*Population pédiatrique*
+
+Aucune donnée n’est disponible.
+
+**Mode d’administration**
+
+Se laver soigneusement les mains avant de procéder à l’instillation. Eviter de toucher l’œil ou les paupières avec l’embout compte-gouttes.
+
+Instiller la solution dans l’œil en regardant vers le haut et en tirant légèrement la paupière inférieure vers le bas. L’œil fermé, essuyer proprement l’excédent.
+
+Reboucher le flacon, après utilisation.
+
+En cas de traitement concomitant par un autre collyre, espacer de 5 minutes les instillations.

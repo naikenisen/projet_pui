@@ -1,0 +1,64 @@
+---
+code_cis: 63177843
+denomination: "METOCLOPRAMIDE SANDOZ 10 mg, comprimé sécable"
+date_mise_a_jour: 16/09/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+#### Posologie
+
+#### Toutes indications (adultes)
+
+La dose recommandée est de 10 mg par prise, 1 à 3 fois par jour.
+
+La dose journalière maximale recommandée est de 30 mg ou 0,5 mg/kg.
+
+La durée de traitement maximale recommandée est de 5 jours.
+
+#### Prévention des nausées et vomissements retardés induits par les antimitotiques (enfants âgés de 1 à 18 ans)
+
+La dose recommandée est de 0,1 à 0,15 mg/kg 1 à 3 fois par jour, par voie orale. La dose journalière maximale est de 0,5 mg/kg.
+
+##### Tableau de posologie
+
+| Age | Poids | Dose par prise | Fréquence |
+| --- | --- | --- | --- |
+| 1-3 ans | 10-14 kg | 1 mg | Jusqu’à 3 fois par jour |
+| 3-5 ans | 15-19 kg | 2 mg | Jusqu’à 3 fois par jour |
+| 5-9 ans | 20-29 kg | 2,5 mg | Jusqu’à 3 fois par jour |
+| 9-18 ans | 30-60 kg | 5 mg | Jusqu’à 3 fois par jour |
+| 15-18 ans | Plus de 60 kg | 10 mg | Jusqu’à 3 fois par jour |
+
+Pour la prévention des nausées et vomissements retardés induits par les antimitotiques, la durée maximale de traitement est de 5 jours.
+
+Les comprimés ne sont pas adaptés à une utilisation chez les enfants pesant moins de 30 kg. D’autres formes pharmaceutiques/dosages (par exemple la solution buvable) doivent être utilisées.
+
+#### Fréquence d’administration
+
+Un intervalle minimal de 6 heures entre 2 administrations doit être respecté, même en cas de vomissements ou de rejet de la dose (voir rubrique 4.4).
+
+#### Populations particulières
+
+##### Sujet âgé
+
+Chez les sujets âgés, une diminution de la dose doit être envisagée, en tenant compte de la fonction rénale et hépatique et de la fragilité globale de l’état de santé.
+
+##### Insuffisance rénale
+
+Chez les patients présentant une insuffisance rénale au stade terminal (clairance de la créatinine ≤15 ml/min), la dose journalière doit être diminuée de 75 %.
+
+Chez les patients présentant une insuffisance rénale modérée à sévère (clairance de la créatinine comprise entre 15 et 60 ml/min), la dose doit être diminuée de 50 % (voir rubrique 5.2).
+
+##### Insuffisance hépatique
+
+Chez les patients présentant une insuffisance hépatique sévère, la dose doit être diminuée de 50 % (voir rubrique 5.2).
+
+D’autres formes pharmaceutiques peuvent être plus appropriées pour une utilisation dans ces populations.
+
+##### Population pédiatrique
+
+Le métoclopramide est contre-indiqué chez l’enfant âgé de moins d’un an (voir rubrique 4.3).
+
+Ces comprimés n’étant pas adaptés à une utilisation chez l’enfant pesant moins de 30 kg, d’autres formes pharmaceutiques doivent être utilisées dans cette population.

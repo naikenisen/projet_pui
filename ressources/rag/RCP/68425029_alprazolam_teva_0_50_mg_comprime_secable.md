@@ -1,0 +1,44 @@
+---
+code_cis: 68425029
+denomination: "ALPRAZOLAM TEVA 0,50 mg, comprimé sécable"
+date_mise_a_jour: 20/10/2020
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+**Réservé à l’adulte**
+
+#### Posologie
+
+Dans tous les cas, le traitement sera initié à la dose efficace la plus faible et la dose maximale de 4 mg/jour ne sera pas dépassée.
+
+En général, chez l’adulte, le traitement sera débuté à la posologie de 0,75 mg à 1 mg par jour, réparti en 3 prises de la manière suivante :
+
+- 0,25 mg le matin et à midi, et 0,25 à 0,50 mg le soir.
+
+**La posologie sera ensuite adaptée individuellement en fonction de la réponse thérapeutique.**
+
+La posologie moyenne se situe entre 1 et 2 mg par jour.
+
+Chez le sujet âgé, l'insuffisant rénal ou hépatique : il est recommandé de diminuer la posologie, de moitié par exemple. Le dosage 0.25 mg est plus particulièrement adapté dans ces cas.
+
+Posologie : 0,5 mg à 0,75 mg par jour, fractionnés en plusieurs prises : augmenter progressivement la dose si nécessaire, et si la pathologie le permet.
+
+Population pédiatrique
+
+La sécurité d’emploi et l’efficacité de l’alprazolam n’ont pas été étudiées chez l’enfant et l’adolescent âgés de moins de 18 ans. Son utilisation n’est pas recommandée dans cette population.
+
+#### Durée
+
+Le traitement doit être aussi bref que possible. L'indication sera réévaluée régulièrement surtout en l'absence de symptômes. La durée globale du traitement ne devrait pas excéder 8 à 12 semaines pour la majorité des patients, y compris la période de réduction de la posologie (voir rubrique 4.4).
+
+Dans certains cas, il pourra être nécessaire de prolonger le traitement au-delà des périodes préconisées. Ceci suppose des évaluations précises et répétées de l'état du patient.
+
+Prévention et traitement du delirium tremens, et des autres manifestations du sevrage alcoolique : traitement bref de l'ordre de 8 à 10 jours.
+
+Arrêt du traitement :
+
+La posologie devra être réduite progressivement. Il est recommandé de réduire la dose quotidienne d’alprazolam à un rythme n’excédant pas 0,5 mg tous les trois jours. Chez certains patients, il peut en effet être nécessaire de réduire la dose de manière encore plus progressive (voir rubrique « Mises en garde spéciales et précautions d'emploi »).Mode d’administration
+
+Voie orale.

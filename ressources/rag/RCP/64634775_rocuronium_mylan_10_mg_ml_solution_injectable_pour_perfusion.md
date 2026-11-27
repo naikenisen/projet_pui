@@ -1,0 +1,98 @@
+---
+code_cis: 64634775
+denomination: "ROCURONIUM MYLAN 10 mg/mL, solution injectable/pour perfusion"
+date_mise_a_jour: 26/11/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Comme les autres agents de blocage neuromusculaire, ROCURONIUM Mylan ne doit être administré par, ou sous la surveillance de médecins expérimentés qui sont familiers avec le mode d’action et l'utilisation de ces médicaments.
+
+#### Posologie
+
+Comme avec tous les autres curarisants, la posologie du bromure de rocuronium doit être adaptée à chaque patient. La méthode d’anesthésie et la durée présumée de l’intervention, la méthode de sédation et la durée présumée de la ventilation mécanique, les interactions éventuelles avec d’autres médicaments administrés de façon concomitante et l’état général du patient doivent être pris en compte pour déterminer la dose. L’utilisation d’un monitorage instrumental approprié de la curarisation est recommandée lors du blocage neuromusculaire et de la phase de décurarisation.
+
+Les anesthésiques volatils potentialisent l’action des myorelaxants non dépolarisants tels que le bromure de rocuronium. Cette potentialisation ne devient cliniquement significative que pendant l’anesthésie quand les anesthésiques volatils ont atteint la concentration tissulaire nécessaire pour interagir. En conséquence, en cas d’intervention sous anesthésiques volatils, il est conseillé d'ajuster les doses de bromure de rocuronium en diminuant les doses d'entretien, en espaçant les intervalles d'administration ou en diminuant la vitesse de perfusion (voir rubrique 4.5).
+
+Chez l'adulte, les posologies suivantes sont proposées à titre indicatif pour l’intubation trachéale et la relaxation musculaire au cours des interventions chirurgicales de courte ou de longue durée et pour une utilisation dans les unités de soins intensifs.
+
+***Interventions chirurgicales***
+
+*Intubation trachéale*
+
+Lors d’une intubation, la dose standard de bromure de rocuronium nécessaire à une induction de routine pour l'anesthésie est de 0,6 mg/kg, après quoi les conditions d'intubation suffisantes sont établies dans les 60 secondes chez presque tous les patients. Une dose de 1,0 mg/kg de bromure de rocuronium est recommandée pour faciliter les conditions d'intubation trachéale lors d'une anesthésie par induction rapide, après quoi les conditions d'intubation adéquates sont établies dans les 60 secondes chez presque tous les patients. Lorsqu’une dose de 0,6 mg/kg de bromure de rocuronium est utilisée pour une anesthésie par induction rapide, il est recommandé d'intuber le patient 90 secondes après l'administration de bromure de rocuronium.
+
+*Césarienne*
+
+Les posologies de 0,6 mg/kg de bromure de rocuronium n'affectent pas le score Apgar, le tonus musculaire fœtal ou l'adaptation cardiorespiratoire. Dans les échantillons sanguins du cordon ombilical, il a été démontré que seules des quantités limitées de bromure de rocuronium traversent le placenta, ce qui ne conduit pas à des réactions cliniques indésirables chez le nouveau-né.
+
+Des posologies de 1,0 mg/kg ont été étudiées au cours de l'induction rapide, mais pas chez des patients qui subissent une césarienne.
+
+*Posologies élevées*
+
+S'il est nécessaire d'administrer une posologie plus élevée, des posologies initiales de bromure de rocuronium allant jusqu'à 2 mg/kg ont été administrées sans que des réactions cardiovasculaires indésirables ne soient observées. L'utilisation de doses plus élevées raccourcit le début d'apparition et prolonge la durée de l'effet (voir la section 5.1).
+
+*Dose d’entretien*
+
+La dose d'entretien recommandée est de 0,15 mg/kg de bromure de rocuronium. Lors de l'utilisation au long cours d'anesthésiques volatils, la dose est ramenée à 0,075 - 0,1 mg/kg de bromure de rocuronium. Il est préférable d'administrer ces doses d'entretien lorsque la réponse musculaire à une stimulation-test unique (« single twitch ») est revenue à 25 % de la réponse de contrôle (« twitch de contrôle ») ou lorsqu'apparaissent 2 ou 3 réponses au train de quatre.
+
+*Perfusion continue*
+
+Si ROCURONIUM MYLAN est administré par perfusion continue, il est recommandé de donner une dose de charge de 0,6 mg/kg de bromure de rocuronium et, lorsque le bloc neuromusculaire commence à régresser.
+
+Le débit de la perfusion doit être ajusté de façon à maintenir une réponse au « single twitch » à 10 % par rapport au « twitch de contrôle » ou 1 ou 2 réponses au train de quatre.
+
+Chez l'adulte, le débit de la perfusion est de 0,3-0,6 mg/kg/h sous anesthésie intraveineuse et de 0,3-0,4 mg/kg/h sous halogénés pour maintenir ce niveau de blocage neuromusculaire.
+
+Il est essentiel de surveiller en permanence le blocage neuromusculaire du fait de la variabilité des posologies d'un patient à un autre et selon la méthode d'anesthésie utilisée.
+
+##### Population pédiatrique
+
+Chez le nouveau-né (0 jour - 27 jours), le nourrisson (28 jours - 2 mois), le bébé (3 mois – 23 mois), l'enfant (2 - 11 ans) et l'adolescent (12 - 17 ans) la dose d'intubation recommandée au cours d'une anesthésie de routine et la dose d'entretien sont similaires à celles recommandées chez l'adulte.
+
+Toutefois, la durée d'action d’une dose unique lors de l’'intubation sera plus longue chez les nouveaux nés et les nourrissons que chez les enfants (voir rubrique 5.1).
+
+En perfusion continue, les vitesses de perfusion sont les mêmes que chez l'adulte, sauf pour l'enfant. Chez l'enfant, des vitesses de perfusion plus élevées peuvent être nécessaires.
+
+Chez l'enfant, les mêmes vitesses de perfusion initiales que chez l'adulte sont donc recommandées, mais elles doivent être ajustées pour maintenir une réponse au twitch à 10 % du twitch de contrôle ou pour maintenir 1 à 2 réponses à la stimulation au train de quatre pendant l'acte.
+
+Les données disponibles sont insuffisantes durant l’induction rapide chez la population pédiatrique. L'utilisation de bromure de rocuronium n’est donc pas recommandée pour faciliter l’intubation trachéale dans la population pédiatrique.
+
+*Patients âgés et patients insuffisants hépatique et/ou souffrant d’une maladie du canal biliaire et/ou d’une insuffisance rénale*
+
+La dose standard d'intubation pour les patients âgés et les patients insuffisants hépatique et/ou souffrant d’une maladie du canal biliaire et/ou d’une insuffisance rénale lors d’une anesthésie par induction de routine est de 0,6 mg/kg de bromure de rocuronium. Chez les patients pour lesquels on s’attends à une durée d’action prolongée, une posologie de 0,6 mg/kg de bromure de rocuronium doit être envisagée pour une induction rapide.
+
+Indépendamment de la technique d’anesthésie, la dose d'entretien recommandée pour ces patients est de 0,075 à 0,1 mg/kg de bromure de rocuronium, et la vitesse de perfusion recommandée est de 0,3 à 0,4 mg/kg/h (voir « perfusion continue » et la rubrique 4.4).
+
+*Patient en surcharge pondérale ou obèse*
+
+Chez le patient en surcharge pondérale ou chez le patient obèse (définis comme ayant un poids corporel supérieur ou égal à 30 % du poids idéal) les doses doivent être réduites en tenant compte du poids idéal.
+
+***Procédures en Soins Intensifs***
+
+*Intubation trachéale*
+
+Pour l'intubation trachéale, les doses utilisées doivent être les mêmes que celles décrites ci-dessus pour les interventions chirurgicales.
+
+Dose de maintien
+
+L'utilisation d'une dose de charge initiale de 0,6 mg/kg de bromure de rocuronium est recommandée, suivie d'une perfusion continue dès que la réponse au twitch a atteint 10% ou qu’il existe 1 à 2 réponses à la stimulation au train de quatre.
+
+Le dosage doit toujours être mesuré pour chaque patient. La vitesse de perfusion initiale recommandée pour le maintien d'un bloc neuromusculaire de 80-90% (1 à 2 réponses à la stimulation au train de quatre) est de 0,3 à 0,6 mg/kg/h pendant la première heure de l’administration, ce débit devra être diminué au cours des 6 à 12 heures suivantes, en fonction de la réponse individuelle.
+
+Par la suite, les besoins en doses ajustées restent relativement constants.
+
+Une grande variabilité des vitesses de perfusion ont été observées lors des essais cliniques. Les vitesses de perfusion moyennes allant de 0,2 à 0,5 mg/kg/h, en fonction de la nature et l'étendue de la défaillance d'un (des) organe(s), de l'administration concomitante de médicaments, et des caractéristiques individuelles de chaque patient. Pour obtenir un contrôle individuel et optimal du patient, la surveillance de la transmission neuromusculaire est fortement recommandée.
+
+Une administration allant jusqu’ à 7 jours a été étudiée.
+
+Populations particulières
+
+Le bromure de rocuronium n'est pas recommandé pour faciliter la ventilation mécanique dans la population pédiatrique et gériatrique en raison d'un manque de données concernant la sécurité et l'efficacité.
+
+#### Mode d’administration
+
+*Voie intraveineuse*
+
+Le bromure de rocuronium doit être administré par voie intraveineuse (i.v), en bolus ou en perfusion continue (voir rubrique 6.6).

@@ -1,0 +1,20 @@
+---
+code_cis: 67119549
+denomination: "ROZEX 0,75 %, émulsion pour application cutanée"
+date_mise_a_jour: 27/05/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Appliquer l’émulsion en couche mince sur toute la surface à traiter, deux fois par jour, matin et soir, après la toilette avec un nettoyant doux. Après application de ROZEX les patients doivent se laver les mains. Ils doivent utiliser des produits cosmétiques non comédogènes et non astringents. Il n’est pas nécessaire d’ajuster la posologie chez les personnes âgées.
+
+L’utilisation de ROZEX n’est pas recommandée chez l’enfant en raison de données insuffisantes sur la sécurité et l’efficacité.
+
+La durée habituelle du traitement est de 3 à 4 mois.
+
+La durée recommandée du traitement ne doit pas être dépassée. Cependant, si le traitement présente un intérêt manifeste, le médecin peut envisager de continuer le traitement 3 ou 4 mois de plus selon la sévérité de la rosacée.
+
+Au cours des études cliniques, le traitement de la rosacée par le métronidazole par voie topique a été poursuivi jusqu’à 2 ans.
+
+En l’absence d’amélioration significative, le traitement doit être arrêté.

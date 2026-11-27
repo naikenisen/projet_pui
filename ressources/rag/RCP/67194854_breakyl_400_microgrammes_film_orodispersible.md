@@ -1,0 +1,98 @@
+---
+code_cis: 67194854
+denomination: "BREAKYL 400 microgrammes, film orodispersible"
+date_mise_a_jour: 19/08/2021
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+Le traitement doit être instauré et suivi par un médecin ayant l’expérience de la prise en charge des traitements opioïdes chez les patients atteints de cancer. Afin de réduire au minimum les risques d’effets indésirables liés aux opioïdes et de déterminer la dose « efficace », il est indispensable que les patients soient étroitement surveillés par des professionnels de santé durant la phase de titration.
+
+La dose efficace de BREAKYL pour le traitement d’accès douloureux paroxystiques d’origine cancéreuse doit être déterminée par titration de dose, car elle ne peut pas être prédite à partir de la dose quotidienne du traitement de fond opioïde ou d’un autre médicament destiné au traitement de ces accès.
+
+**Titration de la dose**
+
+Les douleurs chroniques des patients doivent être contrôlées par un traitement de fond opioïde avant le début de la phase de titration avec BREAKYL. Chez les patients présentant plus de quatre épisodes d’accès douloureux paroxystiques par jour, l’augmentation de la dose du traitement de fond opioïde doit être envisagée avant de commencer la titration de BREAKYL.
+
+**Titration chez des patients passant d’un autre médicament contenant du fentanyl à BREAKYL**
+
+Compte tenu du fait que ces produits possèdent des profils d’absorption différents, la substitution ne doit pas se faire selon un rapport de 1 :1. Chez les patients passant d’une autre forme orale de citrate de fentanyl à BREAKYL, la titration de la dose de BREAKYL doit être réalisée indépendamment étant donné que la biodisponibilité entre les produits diffère significativement (voir le graphique à la rubrique 5.2).
+
+**Dose initiale :**
+
+La dose initiale de BREAKYL doit être de 200 microgrammes, avec augmentation progressive de la posologie si nécessaire conformément à la gamme de dosages disponibles (200, 400, 600, 800 et 1200 microgrammes). Le processus de titration doit être attentivement surveillé jusqu’à l’obtention d’une dose produisant l’effet analgésique adéquat avec des effets indésirables acceptables après la prise d’une seule dose par accès douloureux paroxystique. Cette dose est alors définie comme la dose efficace. Les prises de BREAKYL doivent être espacées d'au moins quatre heures.
+
+**Deux présentations de BREAKYL sont disponibles pour la titration de dose :**
+
+BREAKYL Start, contenant des films orodispersibles dosés chacun à 200, 400, 600 et 800 microgrammes et BREAKYL 200 microgrammes film orodispersible.
+
+Avec BREAKYL 200 microgrammes, des doses plus élevées peuvent être obtenues en appliquant simultanément plusieurs unités de BREAKYL 400 microgrammes, film orodispersible :
+
+- 1 film orodispersible de BREAKYL 200 est égal à une dose de 200 microgrammes
+- 2 films orodispersibles de BREAKYL 200 sont égaux à une dose de 400 microgrammes
+- 3 films orodispersibles de BREAKYL 200 sont égaux à une dose de 600 microgrammes
+- 4 films orodispersibles de BREAKYL 200 sont égaux à une dose de 800 microgrammes
+
+Si le dosage le plus élevé de BREAKYL Start (800 microgrammes) ou l'application simultanée de 4 films orodispersibles de BREAKYL 200 microgrammes (soit 800 microgrammes) ne soulage pas suffisamment les douleurs, BREAKYL 1200 microgrammes peut être indiqué. Il s’agit du dosage le plus élevé disponible de BREAKYL.
+
+Si le soulagement des douleurs est adéquat après la prise d'un dosage particulier, les accès douloureux paroxystiques suivants doivent être traités en utilisant la dose de BREAKYL qui a été identifiée.
+
+Si le soulagement des douleurs n’est *pas* adéquat dans les 30 minutes suivant l’application d'une dose particulière de BREAKYL, et si cette dose a bien tolérée par le patient, il devra prendre la dose supérieure suivante de BREAKYL afin de traiter le prochain accès douloureux paroxystique.
+
+Si le soulagement des douleurs n’est pas adéquat dans les 30 minutes suivant l’application de BREAKYL 1 200 microgrammes film orodispersible (dosage le plus élevé disponible), le patient devra discuter des autres options thérapeutiques avec son médecin. L’utilisation d’une combinaison de plusieurs films orodispersibles à dose faible pour atteindre la dose supérieure suivante est possible au cours de la phase de titration. L’utilisation d’une dose combinée totale excédant 1200 microgrammes n’a pas été évaluée dans des conditions contrôlées.
+
+Au cours d’une période d’accès douloureux paroxystiques, si un soulagement adéquat n’est *pas* obtenu dans les 30 minutes suivant l’application d’un film orodispersible de BREAKYL, le patient pourra utiliser des médicaments de secours pour les accès douloureux paroxystiques, s’ils ont été prescrits par son médecin. Le patient ne devra cependant pas prendre les médicaments opioïdes de secours lorsque des effets indésirables non acceptables de BREAKYL ou des signes de toxicité des opioïdes ont été notés.
+
+| Titration de dose – Pour des détails, voir le texte ci-dessus BREAKYL est disponible en 5 dosages : 200, 400, 600, 800 et 1200 µg Début Þ La dose initiale est de 200 µg ò Augmenter progressivement la dose en utilisant la dose supérieure suivante de BREAKYL jusqu’à ce que le patient obtienne une dose procurant une analgésie adéquate avec des effets indésirables acceptables ò Oui Non Si un soulagement des douleurs adéquat est atteint, traiter les accès douloureux paroxystiques suivants avec la dose identifiée. Si un soulagement adéquat des douleurs n’est pas atteint dans les 30 minutes suivant l’application et si la dose a été bien tolérée par le patient, utiliser la dose supérieure suivante de BREAKYL pour traiter le prochain accès douloureux paroxystique. Les prises de BREAKYL doivent être espacées d'au moins quatre heures. Lors de tout accès douloureux paroxystique, si un soulagement adéquat des douleurs n'est pas obtenu dans les 30 minutes, le patient pourra prendre un médicament de secours selon les instructions du médecin. |
+| --- |
+
+**Traitement d’entretien**
+
+Quand la dose efficace est déterminée, l’utilisation de BREAKYL doit être limitée à quatre périodes d’accès douloureux paroxystiques ou moins par jour, et les doses doivent être séparées d’au moins quatre heures. BREAKYL ne doit être utilisé qu’une seule fois par épisode.
+
+**Ajustement de la dose**
+
+L’ajustement de la dose de BREAKYL ou de celle du traitement de fond de l'analgésique opioïde (sur 24 heures) peut être nécessaire chez certains patients afin de continuer à procurer un soulagement adéquat des accès douloureux paroxystiques. Une augmentation de la dose de l’opioïde administré sur 24 heures pour le traitement des douleurs persistantes doit être envisagée chez les patients ayant quotidiennement plus de quatre périodes d’accès douloureux paroxystiques sur une période de plus de quatre jours consécutifs. En cas d’augmentation de la dose d’opioïde d’action prolongée, il peut être nécessaire de réévaluer la dose de BREAKYL utilisée pour traiter les accès douloureux paroxystiques.
+
+Toute nouvelle titration de la dose d’un analgésique doit être impérativement suivie par un médecin.
+
+En l’absence de contrôle adéquat de la douleur, la possibilité d’hyperalgésie, de tolérance et de progression de la maladie sous-jacente doit être envisagée (voir rubrique 4.4).
+
+**Arrêt du traitement**
+
+Le traitement par BREAKYL doit être immédiatement arrêté si le patient ne présente plus d’accès douloureux paroxystiques. Le traitement de la douleur chronique de fond doit être maintenu comme prescrit.
+
+Si l’arrêt de tous les traitements opioïdes est nécessaire, le patient doit être étroitement surveillé par le médecin afin de gérer le risque d’apparition de symptômes liés à un sevrage brutal.
+
+#### Mode d’administration
+
+Le patient doit :
+
+- ouvrir le sachet de BREAKYL immédiatement avant emploi selon les instructions indiquées sur le sachet ;
+- utiliser sa langue pour humidifier l’intérieur de sa joue ou se rincer la bouche à l'eau afin d'humecter la zone d'application de BREAKYL ;
+- avec les mains sèches, prendre le film orodispersible de BREAKYL entre l’index et le pouce avec la face rose du côté du pouce ;
+- placer le film orodispersible de BREAKYL dans la bouche, de telle façon que la face rose soit en contact uniforme avec la muqueuse interne de sa joue ;
+- appuyer et le maintenir en place pendant au moins 5 secondes jusqu’à ce qu’il adhère fermement ; la face blanche doit être ensuite visible.
+
+Le film orodispersible de BREAKYL doit rester en place de lui-même après cette période. Le patient peut boire au bout de 5 minutes.
+
+La dissolution d’un film orodispersible de BREAKYL est habituellement complète dans les 15 à 30 minutes suivant l’application. Dans certains cas, la dissolution complète du produit peut prendre plus de 30 minutes, mais cela n’affecte pas l’absorption du fentanyl. Il faudra demander au patient d’éviter de toucher le film orodispersible avec sa langue ou ses doigts et d’éviter de manger jusqu’à ce que le film orodispersible soit dissout.
+
+Si un film orodispersible de BREAKYL est mâché et dégluti, les concentrations maximales et la biodisponibilité pourraient être inférieures à celles obtenues lors d’une utilisation conforme aux instructions (voir rubrique 5.2).
+
+##### Population pédiatrique
+
+La sécurité et l’efficacité de BREAKYL chez les enfants âgés de 0 à 18 ans n’ont pas été établies. Aucune donnée n’est disponible.
+
+##### Utilisation chez le sujet âgé
+
+Les patients âgés sont plus sensibles aux effets du fentanyl par voie intraveineuse que des sujets plus jeunes. Chez le sujet âgé, le fentanyl est plus lentement éliminé et sa demi-vie terminale d’élimination est plus longue, ce qui peut entraîner une accumulation de la substance active et accroître le risque d'effets indésirables. La titration de la dose doit donc être effectuée de façon particulièrement prudente. Les études cliniques n’ont cependant pas montré de différence de la dose moyenne de BREAKYL obtenue après titration entre des patients âgés de ≥ 65 ans et des patients de moins de 65 ans.
+
+##### Populations particulières
+
+La titration doit être effectuée avec prudence chez les patients présentant des troubles de la fonction rénale ou hépatique.
+
+Les patients présentant une mucite de grade 1 doivent être étroitement surveillés ; une adaptation de la dose peut être envisagée. L’efficacité et la sécurité de BREAKYL n’ont pas été étudiées chez des patients présentant une mucite de sévérité supérieure au grade 1.
+
+Le film orodispersible ne doit pas être utilisé si le sachet a été endommagé avant son ouverture.

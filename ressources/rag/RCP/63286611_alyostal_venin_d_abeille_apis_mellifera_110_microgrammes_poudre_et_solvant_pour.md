@@ -1,0 +1,148 @@
+---
+code_cis: 63286611
+denomination: "ALYOSTAL VENIN D'ABEILLE Apis mellifera 110 microgrammes, poudre et solvant pour solution injectable"
+date_mise_a_jour: 26/10/2018
+source: ANSM - Résumé des Caractéristiques du Produit
+---
+
+### 4.2. Posologie et mode d'administration
+
+L'utilisation d'ALYOSTAL VENIN D’ABEILLE doit être supervisée par un médecin expérimenté en allergologie et dans l'immunothérapie allergénique.
+
+**Reconstitution de la solution et dilutions**
+
+La solution est reconstituée en ajoutant 1,1 ml de solvant au contenu d'un flacon de poudre.
+
+La concentration ainsi obtenue dans le flacon est de 100 µg/ml.
+
+Pour obtenir une concentration 10 fois plus faible (10 µg/ml), prélever un volume de 0,2 ml de la solution reconstituée et l’injecter dans le flacon contenant 1,8 ml de solvant. Cette opération sera renouvelée pour obtenir des dilutions successives au 1/10. Des flacons supplémentaires de solvant sont fournis si besoin séparément en fonction des dilutions utilisées.
+
+Pour les instructions concernant la reconstitution et le schéma de dilution du médicament avant administration, voir la rubrique 6.6.
+
+#### Posologie et mode d’administration
+
+***Utilisation pour le test diagnostique***
+
+. Prick-test : la concentration usuelle utilisée est de 100 µg/ml.
+
+. Test par intradermoréaction : le test sera réalisé en injectant 0,05 ml d’une solution de venin diluée à 0,001 µg/ml par voie intradermique. En cas de réponse négative, répéter l’injection en utilisant une concentration 10 fois plus élevée et ceci jusqu’à obtention d’une réaction cutanée positive, sans dépasser une concentration maximale de 1 µg/ml. Dans certains cas, notamment pour des patients particulièrement sensibilisés au venin d’abeille, il est prudent de démarrer les tests à la concentration de 0,0001 µg/ml.
+
+Le patient sera gardé sous surveillance médicale pendant au moins 30 minutes après un test diagnostique.
+
+Les recommandations internationales préconisent de réaliser le test diagnostique au moins 2 semaines après la réaction à une piqûre afin d’éviter la possibilité d’un faux-négatif durant la période réfractaire. Néanmoins, la période réfractaire peut être plus longue. Par conséquent, si le test est négatif à la suite d’une réaction systémique consécutive à une piqûre d'abeille, il est préférable de répéter le test après 1 à 2 mois.
+
+***Utilisation pour l’immunothérapie allergénique***
+
+Voie sous cutanée stricte.
+
+**Ne PAS injecter par voie intraveineuse.**
+
+Le produit sera injecté lentement par voie sous-cutanée sur la face externe du bras ou dans la région deltoïdienne, en prenant soin de ne pas faire une injection intra-veineuse (procéder à cet effet à une légère aspiration préalable qui peut être renouvelée tous les 0,2 ml au cours de l'injection lente).
+
+- Avant chaque injection, vérifier soigneusement la nature de l’allergène utilisé, le dosage, le volume et la date de l'injection précédente (intervalle entre chaque injection).
+
+Le patient doit être gardé sous surveillance médicale pendant au minimum 30 minutes après chaque injection.
+
+- Avertir le patient qu'il doit éviter les efforts physiques, les bains chauds, les repas copieux ou la prise d’alcool le jour de l'injection.
+
+La conduite de l’immunothérapie allergénique doit être régulièrement inscrite sur le carnet de suivi que doit conserver le patient.
+
+Schémas posologiques :
+
+L'immunothérapie allergénique par ALYOSTAL VENIN D’ABEILLE *Apis mellifera* comprend une phase d'initiation (augmentation progressive de doses) suivie d'une phase d'entretien.
+
+*a. Phase d'initiation du traitement*
+
+Le protocole pour atteindre la dose d'entretien sera adapté par un médecin expérimenté en allergologie, en fonction de l'état clinique et de la tolérance du patient. La progression des doses, le volume du produit injecté ainsi que la fréquence des injections sont fonction de la réactivité propre de chaque individu en tenant compte du fait que le risque de survenue d'effets indésirables systémiques est moins important avec une lente progression de doses.
+
+Quel que soit le protocole d'ascension de dose utilisé, l’initiation du traitement doit être réalisée sous surveillance stricte en milieu hospitalier.
+
+Les délais pour atteindre la dose d’entretien sont fonction de la méthode utilisée :
+
+- en quelques heures (Ultrarush) ou quelques jours (Rush),
+- en quelques semaines: schéma dit "cluster" ou méthode conventionnelle.
+
+Les schémas de progression de doses suivants sont issus de la littérature et ne sont proposés qu'à titre indicatif :
+
+| **PROTOCOLES** |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+|  | **ULTRA-RUSH** | **RUSH** | **CLUSTER** | **CONVENTIONNEL** |  |
+| **Jour** | **Heure** | **Dose en µg de venin** |  |  |  |
+| **J 1** | **0**<br>**0.5**<br>**1**<br>**1.5**<br>**2.5**<br>**3.5** | **0.1**<br>**1**<br>**10**<br>**20**<br>**30**<br>**40** | **0.01**<br>**0.1**<br>**1**<br>**2** | **0.001**<br>**0.01**<br>**1** | **0.01**<br>**0.1** |
+| **J 2** | **0**<br>**1**<br>**2**<br>**3** |  | **4**<br>**8**<br>**10**<br>**20** |  |  |
+| **J 3** | **0**<br>**1**<br>**2** |  | **40**<br>**60**<br>**80** |  |  |
+| **J 4** | **0** |  | **100** |  |  |
+| **J 8** | **0** |  | **100** | **1**<br>**5**<br>**10** | **1**<br>**2** |
+| **1** |  |  |  |  |  |
+| **2** |  |  |  |  |  |
+| **J 15** | **0**<br>**1** | **50**<br>**50** | **100** | **20**<br>**30** | **4**<br>**8** |
+| **J 22** | **0**<br>**1** |  |  | **50**<br>**50** | **10**<br>**20** |
+| **J 29** |  |  | **100** | **100** | **40** |
+| **J 36** |  |  |  | **100** | **60** |
+| **J 43**<br>**ou J 45** |  | **100** | **100** |  | **80** |
+| **J 50** |  |  |  |  | **100** |
+| **J 57** |  |  |  |  | **100** |
+| **J 64** |  |  |  | **100** |  |
+| **J 71**<br>**ou J 75** |  | **100** | **100** |  | **100** |
+| **J 85** |  |  |  |  | **100** |
+| **J 92** |  |  |  | **100** |  |
+| **J 99**<br>**ou J 105** |  | **100** | **100** |  |  |
+| **J 106** |  |  |  |  | **100** |
+
+*b. Phase de t**raitement d'entretien :*
+
+La dose d’entretien préconisée est de 100 µg d’extrait de venin. Elle peut être augmentée à 200 μg pour des apiculteurs ou pour des patients insuffisamment protégés par 100 µg. Elle peut être inférieure en fonction de la tolérance du patient.
+
+La dose d’entretien est injectée toutes les 4 semaines au cours de la première année et toutes les 4 à 6 semaines les années suivantes.
+
+L’immunothérapie allergénique peut être poursuivie pendant 3 à 5 ans, ou plus longtemps dans certains cas.
+
+*Interruption de traitement ou dépassement des délais recommandés entre 2 injections (sans lien avec la survenue d'effets secondaires) :*
+
+- L’immunothérapie allergénique nécessite le strict respect du protocole.
+- En cas d’interruption du traitement, il n’est pas défini de protocole précis pour la reprise du traitement.
+- Le médecin prescripteur adaptera les modalités de reprise du traitement en fonction de chaque cas clinique et de la durée écoulée depuis la dernière injection. Une phase de reprise progressive peut être nécessaire pour revenir à la dose d’entretien.
+- Une surveillance stricte en milieu hospitalier est requise lors de la reprise du traitement.
+
+*Adaptation de la dose en cas de survenue d'effets indésirables :*
+
+En cas d’effets indésirables graves, il convient de réévaluer le schéma thérapeutique et la poursuite éventuelle du traitement.
+
+En cas d'apparition d'une réaction locale au point d'injection, le schéma de diminution de doses ci-après est proposé à titre indicatif :
+
+| Diminution de la dose préconisée en cas d’effet indésirable local : diamètre maximum de la papule |  |  |
+| --- | --- | --- |
+| Enfants<br>Adolescents | Adultes | Diminution de la dose recommandée |
+| < 5 cm | < 8 cm | Continuer le traitement normalement selon le protocole |
+| 5 – 7 cm | 8 – 12 cm | Répéter la dernière dose injectée |
+| 7 – 12 cm | 12 – 20 cm | Réduire la dose à la dose précédant celle-ci |
+| 12 – 17 cm | > 20 cm | Réduire la dose à la 2ème dose précédant celle-ci |
+| > 17 cm |  | Réduire la dose à la 3ème dose précédant celle-ci |
+
+Ces réactions locales au point d'injection sont fréquentes mais elles ne sont pas prédictives d’une réaction générale. Un traitement anti-histaminique pris quelques heures avant l’injection peut aider à réduire leur apparition.
+
+Il est recommandé de remonter les doses ensuite et de se rapprocher de la dose thérapeutique.
+
+##### Population pédiatrique
+
+Les schémas de traitement préconisés sont identiques chez les adultes, adolescents et enfants de plus de 2 ans.
+
+Peu de données sont disponibles chez les enfants de moins de 5 ans.
+
+Le rapport bénéfice/risque devra être soigneusement évalué avant d'initier une immunothérapie au venin d'abeille chez un enfant de 2 à 5 ans.
+
+L'immunothérapie allergénique est contre-indiquée chez les enfants de moins de 2 ans (voir rubrique 4.3.).
+
+*Précautions à prendre pour la préparation, la manipulation et l’administration du médicament*
+
+- Nettoyer le bouchon perforable du flacon à l’alcool à 70°.
+
+- Utiliser une seringue de 1 ml graduée au 1/100e avec une aiguille de 15-5/10e (seringue de type tuberculinique).
+
+- Vérifier la concentration de la solution préparée dans le flacon avant usage.
+
+- Agiter le flacon pour homogénéiser la dose à injecter.
+
+- Prélever la solution au travers du bouchon du flacon, en mesurant avec précision la dose à injecter.
+
+- Désinfecter la peau avant l'injection (alcool à 70 °).
