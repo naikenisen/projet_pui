@@ -41,7 +41,7 @@ def _assistant(biology_parameters):
     if propose and request.strip():
         with st.spinner("Rédaction de la règle par le modèle..."):
             try:
-                st.session_state["proposed_rule"] = propose_rule(request.strip(), biology_parameters)
+                st.session_state["proposed_rule"] = propose_rule(request.strip(), biology_parameters, backend=st.session_state.backend)
             except Exception as error:
                 st.session_state.pop("proposed_rule", None)
                 st.error(f"Le modèle n'a pas pu rédiger de règle : {error}")

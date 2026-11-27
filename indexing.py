@@ -1,20 +1,18 @@
 # Splits the RAG PDFs into passages, computes their embeddings and stores them in ChromaDB.
 
+import argparse
 import os
+import re
 
 import chromadb
 import pymupdf4llm
-from dotenv import load_dotenv
-from openai import OpenAI
 
-load_dotenv()
-client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
+from inference import EMBEDDING_MODEL, InferenceBackend, add_inference_arguments, backend_from_args
 
 RAG_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ressources", "rag")
 PDF_FOLDER = os.path.join(RAG_FOLDER, "RAG_Docs")
 CHROMA_DIR = os.path.join(RAG_FOLDER, "chroma_db")
 COLLECTION_NAME = "rag_docs"
-EMBEDDING_MODEL = "qwen/qwen3-embedding-8b"
 
 # In characters
 PASSAGE_SIZE = 1500
@@ -46,27 +44,27 @@ def extract_passages(pdf_path):
     return passages
 
 
-def compute_embeddings(texts):
+def compute_embeddings(texts, backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
     vectors = []
     for start in range(0, len(texts), 32):
-        response = client.embeddings.create(model=EMBEDDING_MODEL, input=texts[start:start + 32])
-        for element in response.data:
-            vectors.append(element.embedding)
+        vectors.extend(backend.embed(texts[start:start + 32]))
     return vectors
 
 
-def get_collection():
+def get_collection(backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
     chroma = chromadb.PersistentClient(path=CHROMA_DIR)
     return chroma.get_or_create_collection(COLLECTION_NAME, embedding_function=None, metadata={"hnsw:space": "cosine"})
 
 
 # Replaces the PDF passages in ChromaDB and returns their count
-def index_pdf(pdf_path):
+def index_pdf(pdf_path, backend: InferenceBackend | None = None):
     passages = extract_passages(pdf_path)
     texts = [p["text"] for p in passages]
-    embeddings = compute_embeddings(texts)
+    embeddings = compute_embeddings(texts, backend=backend)
 
-    collection = get_collection()
+    collection = get_collection(backend=backend)
     collection.delete(where={"source": os.path.basename(pdf_path)})
     if passages:
         collection.upsert(
@@ -79,7 +77,11 @@ def index_pdf(pdf_path):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    add_inference_arguments(parser)
+    args = parser.parse_args()
+    backend = backend_from_args(args)
     for file_name in sorted(os.listdir(PDF_FOLDER)):
         if file_name.endswith(".pdf"):
-            count = index_pdf(os.path.join(PDF_FOLDER, file_name))
+            count = index_pdf(os.path.join(PDF_FOLDER, file_name), backend=backend)
             print(f"{file_name}: {count} passages indexed")

@@ -5,10 +5,14 @@ clinical guidelines (RAG) and a large language model (LLM).
 
 **Online demo:** https://projetpui.streamlit.app/
 
-To run locally, a  `.env` file at the project root including you API key for OpenRouter is required :
+Remote inference requires an OpenRouter API key, set in the environment or in a `.env` file at the project root:
 ```
 OPENROUTER_API_KEY=your_key
 ```
+
+The OpenRouter client is shared and created only when a remote request is needed. Importing the modules or
+displaying CLI help does not require a key; a remote request without one raises an explicit error.
+Use `--local` for Hugging Face inference without an OpenRouter key (see below).
 
 ## BACKEND
 
@@ -47,6 +51,22 @@ To have the LLM draft a personalized rule (it is displayed, then saved after con
 python3 create_rule.py --folder dataset --request "Alert if metformin with an eGFR < 30 mL/min"
 ```
 
+### Local inference (Hugging Face)
+
+Install the optional local dependencies in your Python environment.
+
+Without `--local`, the existing OpenRouter behavior remain the default. 
+
+```bash
+python3 indexing.py --local 
+
+python3 main.py --local --remaining 
+
+python3 generation.py --local --folder dataset --patient-id 100133744
+```
+
+Models are downloaded from Hugging Face on first use and cached on disk. 
+
 ### Details of the pipeline
 
 - 📄 [Figure 2 – RAG](paper/figures_en/figure_2.pdf)
@@ -55,6 +75,12 @@ python3 create_rule.py --folder dataset --request "Alert if metformin with an eG
 
 
 ## FRONTEND
+
+Launch Streamlit with local inference option after the `--` separator:
+
+```bash
+streamlit run app.py -- --local
+```
 
 ```
 # The frontend code is organized in pages, one script for each pages of the app

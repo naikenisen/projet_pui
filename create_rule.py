@@ -7,7 +7,7 @@ import re
 
 import clips
 
-from generation import MODEL, client
+from inference import InferenceBackend, add_inference_arguments, backend_from_args
 from kbs import BASE_FILE, PERSONALIZED_RULES_FILE, create_environment, kbs_environment, load_patient, read_file
 
 # CLIPS functions forbidden in personalized rules: file and system access
@@ -133,20 +133,14 @@ Examples:
 
 
 # Translates the request into a validated CLIPS rule, without saving it; ValueError if impossible
-def propose_rule(request, biology_parameters):
+def propose_rule(request, biology_parameters, backend: InferenceBackend | None = None):
+    backend = backend if backend is not None else InferenceBackend()
     biology = "\n".join(f"  {name} ({unit})" for name, unit in sorted(biology_parameters.items()))
-    completion = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": RULE_PROMPT.format(biology=biology)},
-            {"role": "user", "content": request},
-        ],
+    response = backend.generate(
+        RULE_PROMPT.format(biology=biology), request,
         max_tokens=2048,
-        temperature=0,
-        response_format={"type": "json_object"},
-        extra_body={"reasoning": {"enabled": False}},
+        json_mode=True,
     )
-    response = completion.choices[0].message.content
     response = json.loads(response[response.find("{"):response.rfind("}") + 1])
     if "error" in response:
         raise ValueError(response["error"])
@@ -160,12 +154,13 @@ def propose_rule(request, biology_parameters):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    add_inference_arguments(parser)
     parser.add_argument("--folder", required=True, help="folder containing the patient JSON files")
     parser.add_argument("--request", required=True, help="natural-language request: the LLM drafts a personalized rule")
     args = parser.parse_args()
 
     records = [load_patient(args.folder, name[:-5]) for name in sorted(os.listdir(args.folder)) if name.endswith(".json")]
-    rule = propose_rule(args.request, biology_parameters(records))
+    rule = propose_rule(args.request, biology_parameters(records), backend=backend_from_args(args))
     print(rule)
     if input(f"Save this rule to {os.path.relpath(PERSONALIZED_RULES_FILE)}? [y/N] ").strip().lower() == "y":
         errors = add_personalized_rule(rule)
