@@ -15,14 +15,14 @@ def clean(x, decimals=None):
     return int(x) if x.is_integer() else x
 
 
-# The CSV has one row per active ingredient: groups them into one list per prescription
-def group_active_ingredients(t, key):
+# The CSV repeats a prescription once per active ingredient: groups them into one list per prescription number
+def group_active_ingredients(t):
     ai = t[t["active_ingredient_dosage"] != ""].copy()
     ai["unit_lower"] = ai["active_ingredient_unit"].str.lower()
-    ai = ai.drop_duplicates(key + ["active_ingredient_dosage", "unit_lower"])
+    ai = ai.drop_duplicates(["prescription_number", "active_ingredient_dosage", "unit_lower"])
     ai["ai"] = [{"dosage": clean(d), "unit": u}
                 for d, u in zip(to_number(ai["active_ingredient_dosage"]), ai["active_ingredient_unit"])]
-    return ai.groupby(key, sort=False)["ai"].agg(list)
+    return ai.groupby("prescription_number", sort=False)["ai"].agg(list)
 
 
 # "gel - gélule(s)" -> "gélule(s)"
@@ -33,12 +33,8 @@ def intake_unit(text):
 # Readable dosage regimen, e.g. "2 comprimé(s) per day — matin, soir — every day"
 def dosage_regimen_text(r):
     unit = intake_unit(r.get("intake_unit", ""))
-    quantity = r.get("quantity_per_day", "")
-    try:
-        quantity = f"{float(quantity.replace(',', '.')):g}" if quantity else ""
-    except ValueError:
-        pass
-    parts = [f"{quantity} {unit} per day" if quantity else f"{unit} as needed"]
+    quantity = r.get("quantity_per_day")
+    parts = [f"{quantity:g} {unit} per day" if pd.notna(quantity) else f"{unit} as needed"]
 
     m = r.get("intake_times", "")
     if m == "Specifique":

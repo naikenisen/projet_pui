@@ -1,8 +1,12 @@
 {
   "treatments": {
+    "raw_file": "TRAITEMENTS.csv",
     "file": "ANONYMISED_TRAITEMENTS.csv",
+    "raw_id": "NDA",
     "columns": {
       "numero_anonyme": "patient_id",
+      "N° Prescription": "prescription_number",
+      "Commentaire Prescription": "prescription_comment",
       "Libellé Médicament Prescrit": "drug_label",
       "Date Début Prescription": "start_date",
       "Date Fin Prescription": "end_date",
@@ -22,7 +26,9 @@
     }
   },
   "biology": {
+    "raw_file": "BIO.csv",
     "file": "ANONYMISED_BIO.csv",
+    "raw_id": "Nda",
     "columns": {
       "numero_anonyme": "patient_id",
       "Examen_LibelleRecupere": "test",
@@ -33,9 +39,12 @@
     }
   },
   "clinical": {
+    "raw_file": "CLINIQUE.csv",
     "file": "ANONYMISED_CLINIQUE.csv",
+    "raw_id": "NDA",
     "columns": {
       "numero_anonyme": "patient_id",
+      "Sexe Patient": "sex",
       "Age Séjour (Années)": "age",
       "Taille Séjour": "height_cm",
       "Poids Séjour": "weight_kg",

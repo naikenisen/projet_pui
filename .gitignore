@@ -5,9 +5,11 @@ venv/
 .venv/
 *.out
 /full_dataset/
+/archive/
 preprocessing/dataset/
 ressources/kbs/KBS_Docs/RCP/
 preprocessing/original_dataset/
+preprocessing/raw_extraction/
 CLAUDE.md
 # Graphviz figures generated when compiling the presentation
 paper/presentation_figure_*.dot

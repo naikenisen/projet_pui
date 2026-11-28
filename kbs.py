@@ -57,7 +57,7 @@ def assert_patient(env, record):
     if patient.get("reference_date"):
         env.find_template("reference-date").assert_fact(date=patient["reference_date"][:10])
     for name, value in patient.items():
-        if is_number(value):
+        if is_number(value) or (name == "sex" and value):
             data.assert_fact(name=name, value=value)
     for name, measure in patient["biology"].items():
         if is_number(measure.get("value")):
